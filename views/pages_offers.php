@@ -21,7 +21,7 @@ include 'header.php';
         font-weight: 500;
     }
     .page_block{
-        background-image: url(../assets/images/offers.jpg);
+        background-image: url(../assets/images/page_offers.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
