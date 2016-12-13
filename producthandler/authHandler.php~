@@ -1,0 +1,282 @@
+<?php
+class AuthHandler {
+
+    function frontend_login($login, $table) {
+        $pass = md5($login['pass']);
+        $sql_fetch_auth = mysql_query("select * from $table where email='" . $login['email'] . "' and password='" . $pass . "'");
+        while ($get_fetch_auth = mysql_fetch_array($sql_fetch_auth)) {
+            $_SESSION['user_id'] = $get_fetch_auth['id'];
+            $_SESSION['user_name'] = $get_fetch_auth['first_name'];
+            $_SESSION['user_img'] = $get_fetch_auth['user_img'];
+            $sql_login = mysql_query("select * from auth_event where user_id='" . $_SESSION['user_id'] . "' and description='login' ORDER BY id DESC limit 0,1");
+            $get_login = mysql_fetch_array($sql_login);
+            $_SESSION['last_login'] = $get_login['time_stamp'];
+            $this->user_status($get_fetch_auth['id'], 'login');
+            header("location:index.php");
+        }
+        //print_r($_SESSION);
+    }
+
+    function frontend_logout($id) {
+        $this->user_status($id, 'logout');
+        session_destroy();
+        header("location:index.php");
+    }
+
+    function user_registration($data, $table) {
+        $email = $this->user_checking($data['email'], $table);
+        if ($email == 'No user') {
+            $pass = md5($data['pass']);
+            mysql_query("INSERT INTO $table(`surname`,`first_name`, `last_name`, `email`, `password`,`gender`,`birth_date`) VALUES ('" . $data['surname'] . "','" . $data['first_name'] . "','" . $data['last_name'] . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $data['birth_date'] . "')");
+            $login['pass'] = $data['pass'];
+            $login['username'] = $data['username'];
+            $this->frontend_login($data, $table);
+        }
+    }
+
+    function user_checking($email, $table) {
+        $sql_fetch_email = mysql_query("select * from $table where email='" . $email . "'");
+        $num = mysql_num_rows($sql_fetch_email);
+        if ($num > 0) {
+            $return = 'Yes user';
+        } else {
+            $return = 'No user';
+        }
+        return $return;
+    }
+
+    function frontend_change_password( $new_password, $table) {
+        $pass =$_REQUEST['admin'];
+        $new_pass = md5($new_password);
+        $sql_fetch_auth = mysql_query("select * from $table where password='" . $pass . "'");
+        while ($row = mysql_fetch_array($sql_fetch_auth)) {
+            mysql_query("update $table set password='$new_pass' where id='" . $row['id'] . "' ");
+        }
+    }
+
+    function forget_login_detail($email, $table) {
+        $sql_fetch_detail = mysql_query("select * from $table where email='" . $email . "'");
+        $get_fetch_auth = mysql_fetch_array($sql_fetch_detail);
+        include '../phpPlugin/mailer/class.phpmailer.php';
+        //$email = array('41rahulpatidar@gmail.com'); //'imteyaz_bari@yahoo.com ';
+        $mail = new PHPMailer; // call the class  
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
+        $mail->SMTPAuth = true;  // authentication enabled
+        $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 465;
+        $mail->Username = "sayedhk123@gmail.com"; //Username for SMTP authentication any valid email created in your domain
+        $mail->Password = "sayedhk@123"; //Password for SMTP authentication
+        $mail->AddReplyTo("sayedhk123@gmail.com", "Reply name"); //reply-to address
+        $mail->SetFrom("sayedhk123@gmail.com", "Asif18 SMTP Mailer"); //From address of the mail
+        // put your while loop here like below,
+        $mail->Subject = 'Your Login Detail'; //Subject od your mail
+        //foreach ($email as $to_add) {
+        $mail->AddAddress($email, "Asif18");              // name is optional
+        //}
+        //To address who will receive this email
+        //$description=print_r($get_fetch_auth);
+        $password = $get_fetch_auth['password'];
+        $pass = sha1(md5($password));
+        $description = '<html>
+            <div style="width:100%;margin-top: 5%;">
+            <div style="width: 50%;text-align: center;">IF You change Your Password then click on link </div>
+                        <div style="width: 52.5%;text-align: center;"></div>
+                           <div >
+                             <table>
+                               <tr><td>Link</td><td>:</td><td>http://192.168.3.45/nf3/frontend/views/forgetpass.php?admin=' . $get_fetch_auth['password'] . '</td></tr>
+                                                                    
+                           </table>
+                           </div>
+                        </div>
+                          </html>';
+        $mail->MsgHTML($description); //Put your body of the message you can place html code here
+//        $url = 'file:///home/atharva/Downloads/Order.pdf';
+//        $mail->AddAttachment($url); //Attach a file here if any or comment this line, 
+        $send = $mail->Send();
+    }
+
+    function user_status($id, $status) {
+        mysql_query("INSERT INTO `auth_event`(`time_stamp`, `client_ip`, `user_id`, `origin`, `description`) VALUES ('" . date('Y-m-d H:i:s') . "','" . $_SERVER['SERVER_ADDR'] . "','$id','','$status')");
+    }
+
+    ## For User Billing address ##
+
+    function userBillAdd($user_id) {
+        $result = resultAssociate("SELECT concat(first_name,' ',last_name) as name,company_name,address1,city,zip,country,email_id,mobile_no FROM `nfw_user_billing_information` where user_id =  $user_id");
+        return $result;
+    }
+
+    ## For user shipping address ##
+
+    function userShipAdd($user_id) {
+        $result = resultAssociate("SELECT concat(s_first_name,' ',s_last_name) as name,s_company_name,s_address1,s_city,s_zip,s_country,s_email_id,s_mobile_no FROM `nfw_user_shipping_information` where user_id =  $user_id");
+        return $result;
+    }
+
+    ## For Update user detail
+
+    function updateUserDetail($surname, $fname, $lname, $email, $gender, $pass, $user_id) {
+        $pas = md5($pass);
+        mysql_query("update auth_user set surname = '$surname', first_name = '$fname', last_name = '$lname', email = '$email',gender = '$gender',password = '$pas' where id = $user_id");
+        $this->userProfile($user_id);
+    }
+
+    ## For user order detail ##       
+
+    function userOrderDetail($order_id, $ids) {
+        $get_user_order = resultAssociate("SELECT npo.id as order_ids,npo.op_date,npo.op_time,npo.total_price,nbi.*,nsi.* FROM `nfw_product_order` as npo
+                                join nfw_product_cart as npc on npo.id = npc.order_id
+                                join nfw_user_billing_information as nbi on  npo.id = nbi.order_id 
+                                join nfw_user_shipping_information as nsi on npo.id = nsi.order_id
+                                where npo.id = $order_id and npo.user_id = $ids ");
+
+        return $get_user_order;
+    }
+
+    # find cart id from user id
+
+    function findProductId($user_id, $order_id) {
+        //echo "SELECT npc.id FROM `nfw_product_order` as npo join nfw_product_cart as npc on npo.id = npc.order_id where npo.user_id = $user_id order by npo.id desc limit 0,1";
+        $data = resultAssociate("SELECT npc.id FROM `nfw_product_order` as npo join nfw_product_cart as npc on npo.id = npc.order_id where npo.user_id = $user_id and npo.id = $order_id ");
+        return $data;
+    }
+
+    ### for Order history##
+
+    function allCartId($user_id, $order_id) {
+        $result = resultAssociate("SELECT * FROM `nfw_product_order`  where user_id = $user_id and id = $order_id ");
+        return $result;
+    }
+
+    ## for find order status ##
+
+    function orderStatus($order_id) {
+        $result = resultAssociate("SELECT tag.title FROM `nfw_order_status` as nos join nfw_order_status_tag as tag on nos.status = tag.id where nos.order_id = $order_id ");
+        return $result;
+    }
+
+    ## For user profile ###
+
+    function userProfile($user_id) {
+        $query = "SELECT * FROM `auth_user` where id = $user_id ";
+        return resultAssociate($query);
+    }
+
+    ###### For user customizetion measurement ######
+
+    function userMeasurement($user_id, $table_name) {
+        $query = "SELECT * FROM $table_name  where user_id = $user_id ";
+        return resultAssociate($query);
+    }
+
+    ##### Functions 21 Aug 2015 ###
+
+    function authuserAddress($ids) {
+        $get_user_order = resultAssociate("SELECT npo.id as order_ids,npo.op_date,npo.op_time,npo.total_price,nbi.*,nsi.* FROM `nfw_product_order` as npo
+                                join nfw_product_cart as npc on npo.id = npc.order_id
+                                join nfw_user_billing_information as nbi on  npo.id = nbi.order_id 
+                                join nfw_user_shipping_information as nsi on npo.id = nsi.order_id
+                                where npo.user_id = $ids order by npo.id desc limit 0,1  ");
+
+        return $get_user_order;
+    }
+
+    function authProductId($user_id) {
+        //echo "SELECT npc.id FROM `nfw_product_order` as npo join nfw_product_cart as npc on npo.id = npc.order_id where npo.user_id = $user_id order by npo.id desc limit 0,1";
+        $data = resultAssociate("SELECT npc.id FROM `nfw_product_order` as npo join nfw_product_cart as npc on npo.id = npc.order_id 
+                                 where npo.user_id = $user_id order by npo.id desc limit 0,1");
+
+        return $data;
+    }
+
+//   function allauthCartId($user_id){
+//        $result = resultAssociate("SELECT * FROM `nfw_product_order`  where user_id = $user_id  ");
+//        return $result;
+//        }  
+
+    function allauthCartId() {
+        $result = resultAssociate("SELECT concat('00',npo.id) as id,np.title,np.sku,npo.op_date,npo.op_time,np.price,npc.extra_price,npo.total_quantity,npo.total_price FROM `nfw_product_order` 
+                                        as npo join nfw_product_cart as npc on npo.id = npc.order_id
+                                        join nfw_product as np on npc.product_id = np.id");
+        return $result;
+    }
+
+    function singleOrderDetail($user_id) {
+
+        $lastId = $this->authuserAddress($user_id);
+        $lastOrderId = $lastId[0]['order_ids'];
+        $result = resultAssociate("SELECT concat('00',npo.id) as ord,np.title,np.sku,npo.op_date,npo.op_time,npo.total_price,npo.total_quantity 
+                                         FROM `nfw_product_cart` as npc 
+                                         join nfw_product as np on npc.product_id = np.id
+                                         join nfw_product_order as npo on npc.order_id = npo.id
+                                          where npo.id = $lastOrderId ");
+        return $result;
+    }
+
+    ## For insert address(POP UP Action)
+    function userBillingShippingAdd($user_id, $data) {
+        $add1 = $data['address1'];
+        $add2 = $data['address2'];
+        $city = $data['city'];
+        $state = $data['state'];
+        $country = $data['country'];
+        $zip = $data['zip'];
+        $contact = $data['contact_no'];
+        
+        if(isset($data['bill']) && isset($data['ship']) ){
+            mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('$add1','$add2','$city','$state','$country','$zip','$contact','$user_id','yes','yes','no','no') ");
+        }
+        
+        if(isset($data['bill']) && !isset($data['ship']) ){
+            mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('$add1','$add2','$city','$state','$country','$zip','$contact','$user_id','no','yes','no','no') ");
+        }
+        
+        if(isset($data['ship']) && !isset($data['bill']) ){
+            mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('$add1','$add2','$city','$state','$country','$zip','$contact','$user_id','yes','no','no','no') ");
+        }
+    }
+    ## For get all Addresses
+    function findAddress($user_id) {
+        $query = "SELECT concat(address1,' ',address2,' ',city,' ',state,' ',country,' ',zip) as addr ,id
+                             FROM `nfw_billing_shipping_address` where user_id = $user_id ";
+        $result = resultAssociate($query);
+        return $result;
+    }
+    ##24-Aug-2015
+    #Insert bill & ship data into nfw_billing_shipping_address table
+    function bill_ship_insert($data,$user_id){
+         $bill_id = '';
+         $ship_id = '';
+         if($data['shipping_add']){
+             mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('".$data['address1']."','".$data['address2']."','".$data['city']."','".$data['state']."','".$data['country']."','".$data['zip']."','".$data['mobile_no']."','$user_id','no','yes','no','yes') ");
+             $bill_id = mysql_insert_id();
+             mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('".$data['s_address1']."','".$data['s_address2']."','".$data['s_city']."','".$data['s_state']."','".$data['s_country']."','".$data['s_zip']."','".$data['s_mobile_no']."','$user_id','yes','no','yes','no') ");
+             $ship_id = mysql_insert_id();
+         }
+        else{
+             mysql_query("insert into nfw_billing_shipping_address (address1,address2,city,state,country,zip,contact_no,user_id,shipping_address,billing_address,default_shipping_address,default_billing_address) values('".$data['s_address1']."','".$data['s_address2']."','".$data['s_city']."','".$data['s_state']."','".$data['s_country']."','".$data['s_zip']."','".$data['s_mobile_no']."','$user_id','yes','yes','yes','yes') ");
+             $ship_id = mysql_insert_id();
+             $bill_id = $ship_id;
+             }
+             
+           return [$bill_id, $ship_id];
+       }
+    ### End ####
+    function ChangeBillShip($bill_id,$ship_id){
+         mysql_query("update nfw_billing_shipping_address set default_shipping_address = 'no',default_billing_address = 'no' ");
+         mysql_query("update nfw_billing_shipping_address set default_shipping_address = 'yes'  where id = $ship_id");
+         mysql_query("update nfw_billing_shipping_address set default_billing_address = 'yes'  where id = $bill_id");
+        
+       }
+  function getDefaultAddress($colomn){
+      $query = "SELECT concat(address1,' ',address2) as add1,concat(city,' ',state,' ',country,' ',zip) as add2,contact_no,id
+                               FROM `nfw_billing_shipping_address` where $colomn = 'yes' ";
+      $result = resultAssociate($query);
+      return $result;
+  }
+       
+}
+
+?>

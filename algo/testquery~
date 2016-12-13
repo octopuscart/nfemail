@@ -1,0 +1,87 @@
+(select nfw_product_id, colorbunch from(
+SELECT nfw_product_id, nfw_color_id, 
+(select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
+ FROM nfw_product_color as npc 
+where nfw_color_id in (27,7) 
+group by nfw_product_id
+) as a
+where colorbunch = '27,7' )
+
+union
+
+(select nfw_product_id, colorbunch from(
+SELECT nfw_product_id, nfw_color_id, 
+(select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
+ FROM nfw_product_color as npc 
+where nfw_color_id in (27,14) 
+group by nfw_product_id
+) as a
+where colorbunch = '27,14' )
+
+union
+
+(select nfw_product_id, colorbunch from(
+SELECT nfw_product_id, nfw_color_id, 
+(select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
+ FROM nfw_product_color as npc 
+where nfw_color_id in (7,27) 
+group by nfw_product_id
+) as a
+where colorbunch = '7,27' )
+
+
+-----------------------------------
+
+
+(select nfw_product_id, colorbunch from(
+SELECT nfw_product_id, nfw_color_id, 
+(select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
+ FROM nfw_product_color as npc 
+where nfw_color_id in (27,7, 14) 
+group by nfw_product_id
+) as a
+where colorbunch in ('27,7' , '27,14', '7,27', '7,14', '14,27','14,7') 
+order by FIELD(colorbunch, '27,7' , '27,14', '7,27', '7,14', '14,27','14,7')
+)
+
+
+'4,14,7,9',
+'4,14,9,7',
+'4,7,14,9',
+'4,7,9,14',
+'4,9,14,7',
+'4,9,7,14',
+'14,4,7,9',
+'14,4,9,7',
+'14,7,4,9',
+'14,7,9,4',
+'14,9,4,7',
+'14,9,7,4',
+'7,4,14,9',
+'7,4,9,14',
+'7,14,4,9',
+'7,14,9,4',
+'7,9,4,14',
+'7,9,14,4',
+'9,4,14,7',
+'9,4,7,14',
+'9,14,4,7',
+'9,14,7,4',
+'9,7,4,14',
+'9,7,14,4',
+'4,14,7',
+'4,14,9',
+'4,7,14',
+'4,7,9',
+'4,9,14',
+'4,9,7',
+'14,4,7',
+'14,4,9',
+'14,7,4','14,7,9','14,9,4','14,9,7','7,4,14','7,4,9','7,14,4','7,14,9','7,9,4','7,9,14','9,4,14','9,4,7','9,14,4','9,14,7','9,7,4','9,7,14','4,14','4,14','4,7','4,7','4,9','4,9','14,4','14,4','14,7','14,7','14,9','14,9','7,4','7,4','7,14','7,14','7,9','7,9','9,4','9,4','9,14','9,14','9,7','9,7'
+
+
+
+
+
+
+

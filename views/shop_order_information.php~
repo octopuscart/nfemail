@@ -1,0 +1,438 @@
+<?php
+include 'header.php';
+include '../producthandler/productHandler.php';
+//if(isset($_REQUEST['order_id'])){
+//    $orderId = $_REQUEST['order_id'];
+//    $customer_order_detail = $authobj->userOrderDetail($orderId,$_SESSION['user_id']);
+//};
+
+$customer_order_detail = $authobj->userOrderDetail($_REQUEST['order_id'],$_SESSION['user_id']);
+$productId = $authobj->findProductId($_SESSION['user_id'],$_REQUEST['order_id']);
+$allCartId = $authobj->allCartId($_SESSION['user_id'],$_REQUEST['order_id']);
+?>
+
+<!--page title-->
+<section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="padding: 8px">
+    <div class="container">
+        <h5 style="color: #1FB8C6 !important; font-weight: 200px">Order Information</h5>
+        <!--breadcrumbs-->
+        <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+            <li class="m_right_8 f_xs_none"><a href="index.html" class="color_default d_inline_m m_right_10">Home</a><i class="icon-angle-right d_inline_m color_default fs_small"></i></li>
+            <li class="m_right_8 f_xs_none"><a href="#" class="color_default d_inline_m m_right_10">Shop</a><i class="icon-angle-right d_inline_m color_default fs_small"></i></li>
+            <li><a class="color_default d_inline_m">Order Information</a></li>
+        </ul>
+    </div>
+</section>
+<!--content-->
+<div class="section_offset counter" style="margin-top: -51px;">
+    <div class="container">
+        <div class="row">
+            <!--            <aside class="col-lg-3 col-md-3 col-sm-3 m_bottom_70 m_xs_bottom_30"></aside>-->
+            <section class="col-lg-12 col-md-12 col-sm-12 m_bottom_70 m_xs_bottom_30">
+                <h5 class="fw_light color_dark m_bottom_23">Order Information</h5>
+                <div class="r_corners wrapper border_grey m_bottom_40 m_xs_bottom_30">
+                    <table class="table_type_7 responsive_table w_full t_align_l">
+                        <tbody>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Order Number
+                                </td>
+                                <td data-title="Order Number" class="fw_light">
+                                    <?php echo $customer_order_detail[0]['order_ids'] ?>
+                                </td>
+                            </tr>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Order Date
+                                </td>
+                                <td data-title="Order Date/Time" class="fw_light">
+                                    <?php echo $customer_order_detail[0]['op_date'] . "/" . $customer_order_detail[0]['op_time'] ?>
+                                </td>
+                            </tr>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Product Status
+                                </td>
+                                <td data-title="Order Status" class="fw_light">
+                                    Confirmed by user
+                                </td>
+                            </tr>
+
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Shipment
+                                </td>
+                                <td data-title="Shipment" class="fw_light">
+                                    - 
+                                </td>
+                            </tr>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Comment
+                                </td>
+                                <td data-title="Comment" class="fw_light">
+                                   Processing
+                                </td>
+                            </tr>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Payment
+                                </td>
+                                <td data-title="Payment" class="fw_light">
+                                    PayPal
+                                </td>
+                            </tr>
+                            <tr class="tr_delay">
+                                <td class="bg_light_2 color_dark d_xs_none">
+                                    Total
+                                </td>
+                                <td data-title="Total" class="fw_ex_bold color_pink">
+                                    <?php echo $customer_order_detail[0]['total_price'] ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_xs_bottom_30">
+                        <h5 class="fw_light color_dark m_bottom_23">Bill To</h5>
+                        <div class="r_corners wrapper border_grey wrap_sm">
+                            <table class="table_type_7 responsive_table w_full t_align_l">
+                                <tbody>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Email
+                                        </td>
+                                        <td data-title="Email" class="fw_light w_break">
+                                            <a href="#" class="color_dark tr_all">   <?php echo $customer_order_detail[0]['email_id'] ?></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Title
+                                        </td>
+                                        <td data-title="Title" class="fw_light">
+                                            Mr./Mrs.
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            First Name
+                                        </td>
+                                        <td data-title="First Name" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['first_name'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Last Name
+                                        </td>
+                                        <td data-title="Last Name" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['last_name'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Address 1
+                                        </td>
+                                        <td data-title="Address 1" class="fw_light w_break">
+                                            <?php echo $customer_order_detail[0]['address1'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Zip/Postal Code
+                                        </td>
+                                        <td data-title="Zip/Postal Code" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['zip'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            City
+                                        </td>
+                                        <td data-title="City" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['city'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Country
+                                        </td>
+                                        <td data-title="Country" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['country'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            State
+                                        </td>
+                                        <td data-title="State" class="fw_light">
+                                            -
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Phone
+                                        </td>
+                                        <td data-title="Phone" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['mobile_no'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_50 m_xs_bottom_30">
+                        <h5 class="fw_light color_dark m_bottom_23">Ship To</h5>
+                        <div class="r_corners wrapper border_grey wrap_xs">
+                            <table class="table_type_7 responsive_table w_full t_align_l">
+                                <tbody>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Email
+                                        </td>
+                                        <td data-title="Email" class="fw_light w_break">
+                                            <a href="#" class="color_dark tr_all">   <?php echo $customer_order_detail[0]['s_email_id'] ?></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Title
+                                        </td>
+                                        <td data-title="Title" class="fw_light">
+                                            Mr./Mrs.
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            First Name
+                                        </td>
+                                        <td data-title="First Name" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_first_name'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Last Name
+                                        </td>
+                                        <td data-title="Last Name" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_last_name'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Address 1
+                                        </td>
+                                        <td data-title="Address 1" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_address1'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Zip/Postal Code
+                                        </td>
+                                        <td data-title="Zip/Postal Code" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_zip'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            City
+                                        </td>
+                                        <td data-title="City" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_city'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr_delay">
+                                        <td class="bg_light_2 color_dark d_xs_none">
+                                            Country
+                                        </td>
+                                        <td data-title="Country" class="fw_light">
+                                            <?php echo $customer_order_detail[0]['s_country'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            State
+                                        </td>
+                                        <td data-title="State" class="fw_light">
+                                            -
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Phone
+                                        </td>
+                                        <td>
+                                            <?php echo $customer_order_detail[0]['s_mobile_no'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs">
+                    <!--tabs nav-->
+                    <ul class="tabs_nav hr_list d_inline_b d_xs_block m_bottom_30 m_xs_bottom_20">
+                        <li class="f_xs_none"><a href="#tab-1" class="color_dark d_block n_sc_hover tr_all_medium">Order Items</a></li>
+                        <li class="f_xs_none"><a href="#tab-2" class="color_dark d_block n_sc_hover tr_all_medium">Order History</a></li>
+                    </ul>
+                    <!--tabs content-->
+                    <div id="tab-1">
+                        <div class="r_corners wrapper border_grey wrap_md m_xs_bottom_30">
+                            <table class="table_type_8 responsive_table w_full t_align_l">
+                                <thead>
+                                    <tr>   
+                                       <th>SN</th>
+                                        <th>Product Name</th>
+                                        <th>SKU</th>
+                                        <th>Product Image</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Extra Price</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $cartprd = new CartHandler();
+                                    for ($i = 0; $i < count($productId); $i++) {
+                                        $cartID = $productId[$i]['id'];
+                                        $cartInfo = $cartprd->cartProductsInformation($cartID, $_SESSION['user_id']);
+                                        ?>      
+
+                                        <tr id="trId">
+                                            <td><?php echo $i+1?></td>
+                                            <td>
+                                                <h6 class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['title']; ?></a></h6>
+                                                <p class="fw_light"><?php echo substr($cartInfo['short_description'], 0, 25); ?></p>
+                                            </td>
+                                            <td><?php echo $cartInfo['sku']; ?></td>
+                                            <td>
+                                                <img src="<?php echo $cartInfo['image']; ?>" alt="" style="height: 50px;width: 50px;">
+                                            </td>
+                                              <td class="qu">
+                                                <?php echo $cartInfo['quantity']; ?>
+                                            </td>
+                                            <td class="p">
+                                                <?php echo '$' . $cartInfo['price']; ?>
+                                            </td>
+                                            <td class="ep"> 
+                                                <?php echo '$' . $cartInfo['extra_price'];?>
+                                            </td>
+                                          
+
+
+                                        </tr>
+
+                                    <?php     $totals = $totals + $cartInfo['price'] * $cartInfo['quantity'] + $cartInfo['extra_price'];
+                                    //echo $totals;
+                                     }
+                                 
+                                    ?>
+                                    <tr class="bg_light_2">
+                                        <td colspan="6" class="v_align_m t_align_r fw_ex_bold color_pink">
+                                            <div class="m_bottom_10 m_top_10">Total:</div>
+                                        </td>
+                                        <td colspan="2" class="fw_ex_bold color_pink v_align_m" id="totalprice">
+                                               <?php echo $totals; ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="tab-2">
+                        <div class="r_corners wrapper border_grey wrap_md m_xs_bottom_30">
+                            <table class="table_type_8 responsive_table w_full t_align_l">
+                                <thead>
+                                    <tr>
+                                        <th>Order No</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tb">
+                                    <?php
+                                    // print_r($allCartId);
+                                    for ($i = 0; $i < count($allCartId); $i++) {
+                                        $cartInfo = $allCartId[$i];
+                                        $stat = $authobj->orderStatus($cartInfo['id']);
+                                        //print_r($stat[0]['title']);
+                                        ?>      
+
+                                        <tr>
+                                            <td>
+                                                <?php echo $cartInfo['id']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $cartInfo['op_date']; ?>
+                                            </td>
+                                            <td>
+                                                <h6 class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['op_time']; ?></a></h6>
+
+                                            </td>
+                                            <td>
+                                                <?php echo $cartInfo['total_quantity']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $cartInfo['total_price']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $stat[0]['title']; ?>
+                                            </td>
+
+                                        </tr>
+
+                                    <?php }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+        <!--banners-->
+        <section class="row t_xs_align_c">
+            <div class="col-lg-4 col-md-4 col-sm-4 m_xs_bottom_30">
+                <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_1.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 m_xs_bottom_30">
+                <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_2.jpg" alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 m_xs_bottom_0">
+                <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_3.jpg" alt=""></a>
+            </div>
+        </section>
+    </div>
+</div>
+<?php
+include 'footer.php';
+?>
+<script>
+    $(function() {
+        $("#trId").each(function() {
+            var price = $(".p").text();
+            var pp = price.slice('$')
+            console.log(pp, 'ppp');
+            var extra = $(".ep").text();
+           // console.log(extra, 'ee');
+            var qun = $(".qu").text();
+           // console.log(qun, 'qq');
+            
+           // var res = parseFloat(price) * Number(qun) + parseFloat(extra);
+            //console.log(res);
+
+        });
+    });
+</script>

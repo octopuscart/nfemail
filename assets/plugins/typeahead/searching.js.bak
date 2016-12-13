@@ -1,0 +1,58 @@
+$(document).ready(function(){
+    //Customer name search
+    var customers = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: '/shricrm/jsonsApp/customerInformation.json',
+      remote: '/shricrm/jsonsApp/customerInformation.json'   
+    });
+ 
+    // Customer mobile no search 
+    var mobileNo = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('mobile1'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: '/shricrm/jsonsApp/customerMobileInformation',
+      remote:  '/shricrm/jsonsApp/customerMobileInformation.json',
+    });
+ 
+    
+    customers.initialize(); // customer name search init
+    mobileNo.initialize(); // customer mobile search init
+ 
+    
+    //// Search Customer type ahead //////////////////////////////////////////////////
+    $('#searchCustomer').typeahead( {
+                          highlight: true,
+                          onselect: function(obj) { console.log(obj) },
+                        },
+                        {
+                          name: 'customers',
+                          displayKey: 'name',
+                          source: customers.ttAdapter(),
+                          templates: {
+              header: '<b class="typeaheadgroup text-primary"><i class="fa fa-user"></i>&nbsp;Customers</b>',
+                             
+                                      },
+            
+                        },
+                        {
+                          mobile: 'mobileNo',
+                          displayKey: 'mobile1',
+                          source: mobileNo.ttAdapter(),
+                          templates: {
+      header: '<b class="typeaheadgroup text-primary" ><i class="fa fa-phone"></i>&nbsp;Mobile No.</b>',
+                                   
+                                      }
+                        }).bind('typeahead:selected', function(obj, datum) {
+                                                                         $("#instantCall").modal();
+                                                                         for(i in datum){$("#"+i).html(datum[i]);}  
+                                                                         $("input[name='customer_id']").val(datum['id']);
+                                                                         //window.location =  pathname+"/callEntry/00/"+datum.id;
+                                                                        });
+        $("#instantCall").on('hidden.bs.modal', function (e) { });
+       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+});

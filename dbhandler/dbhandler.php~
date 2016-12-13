@@ -1,0 +1,16 @@
+<?php
+session_start();
+mysql_connect("localhost","root","123");
+mysql_select_db("nitadb"); 
+
+function resultAssociate($query){
+    $resultSet = array();
+    $result = mysql_query($query);
+    while ($row = mysql_fetch_assoc($result))
+     {
+        array_push($resultSet,$row);
+     }    
+    return $resultSet;
+}
+?>
+

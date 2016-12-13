@@ -1,0 +1,241 @@
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/test.php on line 397
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/pantcustom.php on line 34
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/suitcustom.php on line 381
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/jacketcustom.php on line 53
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/shirtcustom.php on line 319
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/3piececustom.php on line 109
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/overcoatcustom.php on line 190
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: cartIdMap in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 16
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 16
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Notice:  Undefined variable: extra_price_check in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 43
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/tuxedopantcustom.php on line 33
+[18-Feb-2016 13:30:38 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/waistcoatcustom.php on line 40
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/customsummery.php on line 18
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/tuxedoshirtcustom.php on line 353
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/tuxedojacketcustom.php on line 176
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 34
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 46
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:30:39 Etc/GMT] PHP Fatal error:  Call to undefined function get_custom_data() in /home/costcointernatio/public_html/frontend/views/custom_form_view/tuxedosuitcustom.php on line 249
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 13:32:34 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 13:32:35 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 13:32:36 Etc/GMT] PHP Notice:  Undefined variable: cartIdMap in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 16
+[18-Feb-2016 13:32:36 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 16
+[18-Feb-2016 13:32:36 Etc/GMT] PHP Notice:  Undefined variable: extra_price_check in /home/costcointernatio/public_html/frontend/views/custom_form_view/customformsummary.php on line 43
+[18-Feb-2016 13:32:38 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/customsummery.php on line 18
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 34
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 46
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:33:20 Etc/GMT] PHP Notice:  Undefined offset: 1 in /home/costcointernatio/public_html/frontend/views/custom_form_view/sportsjacketcustom.php on line 481
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 13:33:31 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:43 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:44 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:45 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:46 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:47 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:48 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:49 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:51 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: postureArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 13
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: measurement_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 67
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: pre_measurement in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 142
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: posture_list in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 447
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: productArray in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Warning:  implode(): Invalid arguments passed in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 677
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 678
+[18-Feb-2016 14:14:52 Etc/GMT] PHP Notice:  Undefined variable: _SESSION in /home/costcointernatio/public_html/frontend/views/custom_form_view/measurement.php on line 716

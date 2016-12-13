@@ -1,0 +1,1 @@
+[06-Jun-2016 10:05:33 Etc/GMT] PHP Fatal error:  Cannot redeclare parents() (previously declared in /home/costcointernatio/public_html/frontend/dbhandler/childTest.php:3) in /home/costcointernatio/public_html/frontend/dbhandler/dbhandler.php on line 55

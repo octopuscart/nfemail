@@ -1,0 +1,25 @@
+<?php
+include '../dbhandler/dbhandler.php';
+include '../producthandler/productHandler.php';
+$prdobj = new CartHandler();
+if (isset($_REQUEST['checkCart'])) {
+    $productList = $prdobj->cartProducts(true);
+    echo json_encode($productList);
+}
+
+if(isset($_REQUEST['product_id'])){
+     $productId = $_POST['product_id'];
+     //echo $product_id,"ddskfhdkgh";
+     $prdobj->addProductToCart($productId,1);
+     //header('location:index.php' );
+     //echo "success";
+}
+
+if(isset($_REQUEST['productId'])){
+     
+     $productId = $_REQUEST['productId'];
+     $prdobj->deleteProductCart($productId);
+     
+}
+?>
+

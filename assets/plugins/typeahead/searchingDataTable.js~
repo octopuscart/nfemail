@@ -1,0 +1,38 @@
+$(document).ready(function(){
+    //Customer name search
+    var customers = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('first_name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: "../../views/searching/dataTableSearch.php?searchText=%QUERY",
+    });
+ 
+  
+    customers.initialize(); // customer mobile search init
+
+    
+    //// Search Customer type ahead //////////////////////////////////////////////////
+    $('#searchCustomer').typeahead( {
+                          highlight: true,
+                          onselect: function(obj) { console.log(obj) },
+                        },
+                        {
+                          name: 'customers',
+                          displayKey: 'first_name',
+                          source: customers.ttAdapter(),
+                          templates: {
+              header: '<b class="typeaheadgroup text-primary"><i class="fa fa-plus"></i>&nbsp;Customers</b>',
+                             
+                                      },
+            
+                        }).bind('typeahead:selected', function(obj, datum) {
+                                                                         
+                                                                       
+                                                                         
+                                                                         //window.location =  pathname+"/callEntry/00/"+datum.id;
+                                                                        });
+        $("#instantCall").on('hidden.bs.modal', function (e) { });
+       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+});
+    
+    
