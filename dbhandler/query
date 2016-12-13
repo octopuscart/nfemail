@@ -1,0 +1,4 @@
+update nfw_product set discount_tag = '12_150' where title like 'D%'
+update nfw_product set discount_tag = '12_141' where title like 'AM%'
+update nfw_product set discount_tag = '12_141' where title like 'WF%'
+update nfw_product set discount_tag = '12_141' where title like 'B%'
