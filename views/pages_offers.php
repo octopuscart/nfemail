@@ -26,8 +26,7 @@ include 'header.php';
         background-size: cover;
         color: #fff;
         padding: 33px;
-        height: 885px;
-        background-position: -30px -55px;
+            height: 961px;
 
     }
     .page_block h3{

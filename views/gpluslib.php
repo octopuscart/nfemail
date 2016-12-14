@@ -7,7 +7,12 @@ include_once("src/contrib/Google_Oauth2Service.php");
 ######### edit details ##########
 $clientId = '4996159243-gcgi66f496v9vneue2i84freehgn5fti.apps.googleusercontent.com'; //Google CLIENT ID
 $clientSecret = 'KX0Q0zEcoQUvXXz5d6D4lXuq'; //Google CLIENT SECRET
-$redirectUrl = 'http://v1.costcointernational.com/frontend/views/temp.php';
+
+$baselink = 'http://' . $_SERVER['SERVER_NAME'];
+$baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
+$baseurl = $baselinkmain . '/';
+
+$redirectUrl = $baseurl.'gplus.php';
 //$redirectUrl = 'http://nf.indoretourtravels.com/frontend/views/temp.php';  //return url (url to script)
 //$homeUrl = 'http://nf.indoretourtravels.com';  //return to home
 

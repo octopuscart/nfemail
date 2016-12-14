@@ -136,7 +136,10 @@ if (isset($accessToken)) {
     }
 
 } else {
+    $baselink = 'http://' . $_SERVER['SERVER_NAME'];
+$baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
+$baseurl = $baselinkmain . '/';
     // replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
-    $loginUrl = $helper->getLoginUrl('http://v1.costcointernational.com/frontend/views/findex.php', $permissions);
+    $loginUrl = $helper->getLoginUrl($baseurl.'findex.php', $permissions);
     header("location:$loginUrl");
 }

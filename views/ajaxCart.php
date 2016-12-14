@@ -160,7 +160,7 @@ if (isset($_SESSION['user_id'])) {
                     <span class="pull-left" style="color:navy;font-size:10px">Total <?php echo $data; ?> items waiting for checkout</span><br/>
                     <a href="./shippingCart.php" class="pull-left">
                         <span style="font-size: 13px;border-radius:3px;background-color: #F1F1F1; font-weight: 500;padding: 0px 10px;">
-                             Proceed to Checkout
+                            Proceed to Checkout
                         </span>
 
                     </a>
@@ -382,22 +382,22 @@ if (isset($_SESSION['user_id'])) {
                 margin-left: -15px;"><i class="icon-lock  tr_inherit"></i> &nbsp; User Login</h5>
             <form action="#" class="login_form m_bottom_20" method="post" action="#">
                 <ul>
-                    <!--                                <li class="m_bottom_10 relative hr_list social_icons tooltip_container">
-                    
-                                                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
-                                                                <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>
-                                                            <i class="icon-facebook fs_small"></i>
-                                                        </a>
-                    
-                                                        <a href="temp.php" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2 fs_small" style="margin-left: 50px;
-                                                           margin-top: -40px;">
-                                                                                   <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>
-                    
-                                                            <i class="icon-gplus-1 fs_small"></i>
-                                                        </a>
-                    
-                    
-                                                    </li>   -->
+                    <li class="m_bottom_10 relative hr_list social_icons tooltip_container">
+
+                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
+                            <!--<span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>-->
+                            <i class="icon-facebook fs_small"></i>
+                        </a>
+
+                        <a href="gplus.php" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2 fs_small" style="margin-left: 50px;
+                           margin-top: -40px;">
+                            <!--<span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>-->
+
+                            <i class="icon-gplus-1 fs_small"></i>
+                        </a>
+
+
+                    </li>   
 
                     <li class="m_bottom_10 relative">
                         <i class="icon-user login_icon fs_medium color_grey_light_2"></i>
@@ -924,13 +924,13 @@ if (isset($_SESSION['user_id'])) {
                 });
             });
 <?php } ?>
-    }); 
+    });
 
     function pageChange(id, link) {
-       
+
         $.ajax({
             url: 'ajaxController.php',
-            data: {'notification':id},
+            data: {'notification': id},
             success: function (data) {
                 window.location = link;
             }

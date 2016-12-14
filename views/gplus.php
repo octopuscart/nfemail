@@ -1,5 +1,5 @@
 <?php 
-include_once("temp2.php");
+include_once("gpluslib.php");
 
 if(isset($_REQUEST['code'])){
 	$gClient->authenticate();
