@@ -384,17 +384,17 @@ if (isset($_SESSION['user_id'])) {
                 <ul>
                     <li class="m_bottom_10 relative hr_list social_icons tooltip_container">
 
-                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
-                            <!--<span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>-->
+<!--                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
+                            <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>
                             <i class="icon-facebook fs_small"></i>
                         </a>
 
                         <a href="gplus.php" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2 fs_small" style="margin-left: 50px;
                            margin-top: -40px;">
-                            <!--<span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>-->
+                            <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>
 
                             <i class="icon-gplus-1 fs_small"></i>
-                        </a>
+                        </a>-->
 
 
                     </li>   
