@@ -231,7 +231,7 @@ if ($_SESSION['user_id'] == '') {
             <a href="pages_faq.php" class="menu-link  color_dark relative main-menu-link">FAQ's</a>  |                             
             <a href="pages_t&amp;c.php" class="menu-link  color_dark relative main-menu-link">Terms of Service</a>  |                          
             <a href="pages_policy.php" class="menu-link  color_dark relative main-menu-link">Privacy Policy</a>     
-            <a href="https://twitter.com/?lang=en" class="menu-link twitter icon_wrap_size_1 circle " style="
+            <a href="https://twitter.com/nitafashions" class="menu-link twitter icon_wrap_size_1 circle " style="
                width: 26px;
                height: 26px;float: right;    font-size: 18px;
                color: #fff;    background: #40bff5;
@@ -240,7 +240,7 @@ if ($_SESSION['user_id'] == '') {
                ">
                 <i class="icon-twitter fs_small"></i>
             </a>
-            <a href="https://www.facebook.com/" class="menu-link facebook active icon_wrap_size_1  circle " style="  
+            <a href="https://www.facebook.com/Nita-Fashions-224017321015214/" class="menu-link facebook active icon_wrap_size_1  circle " style="  
                width: 26px;
                height: 26px;float: right;    font-size: 18px;
                color: #fff;    background: #39599f;
