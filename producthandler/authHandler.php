@@ -471,7 +471,7 @@ class AuthHandler {
     function countProducts($order_id) {
         //   echo $order_id;
         // echo  "SELECT customize_table,count(id) as total FROM `nfw_product_cart` where order_id = $order_id group by customize_table";
-        $query = "SELECT tag_id,count(tag_id) as total FROM `nfw_product_cart` where order_id = $order_id group by tag_id";
+        $query = "SELECT tag_id,sum(quantity) as total FROM `nfw_product_cart` where order_id = $order_id group by tag_id";
         $result = resultAssociate($query);
         return $result;
     }
