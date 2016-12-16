@@ -443,8 +443,8 @@ if ($_SESSION['user_id'] == '') {
                                             <input type="hidden"   value="<?php echo $cartInfo['cart_product_id']; ?>" name="cart_product_id">
 
                                             <input type="submit" style="    width: 100px;
-                                                   border-top-left-radius: 0px;
-                                                   border-top-right-radius: 0px;" name="submit" class="btn btn-default btn-xs" value="Edit">
+                                                   border-top-left-radius: 0px;    background: red;
+                                                   border-top-right-radius: 0px;" name="submit" class="btn btn-danger btn-xs" value="Edit">
 
                                         </td>
 
