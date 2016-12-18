@@ -992,7 +992,7 @@ if (isset($_REQUEST['mail_set'])) {
             header('location:' . $_SERVER['HTTP_REFERER'] . '?mailsend=' . $mailtype);
             break;
         case '2':
-            header('location:userProfile.php');
+            header('location:registration.php?mailsendr=2');
             break;
         case '3':
             header('location:' . $_SERVER['HTTP_REFERER'] . '?mailsend=' . $mailtype);

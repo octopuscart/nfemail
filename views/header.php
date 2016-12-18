@@ -332,12 +332,12 @@ $imageserver = $conf['image_server'];
         </script>
         <script>
             $(function () {
-<?php if ($_REQUEST['mailsend'] == '2') { ?>
+<?php if ($_REQUEST['mailsendr'] == '2') { ?>
 
-                    swal({title: "Welcome!",
-                        text: "You are Registred at Nita Fashions !",
+                    swal({title: "Mail Sent!",
+                        text: "Verification Mail Sent, Check Your Inbox",
                         type: "success",
-                        timer: 2000,
+                        timer: 3000,
                     }, function () {
                         window.location = 'index.php'
                     });
