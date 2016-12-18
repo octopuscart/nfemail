@@ -5,8 +5,8 @@ $id = $_GET['access'];
 $query1 = "select * from auth_user where user_img = '$token' and id = $id";
 $data = resultAssociate($query1);
 if (count($data)) {
-    //$query = "update auth_user set status = '1', user_img = '' where user_img = '$token' and id = $id";
-    //resultAssociate($query);
+    $query = "update auth_user set status = '1', user_img = '' where user_img = '$token' and id = $id";
+    resultAssociate($query);
     $remail = end($data)['email'];
     
 }
