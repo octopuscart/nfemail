@@ -700,7 +700,7 @@ Country</td><td>:';
 
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
 <br/>Your username is <strong>' . $email[0] . '</strong>
-    <br/><strong><a style="font-size: 20.8000001907349px;margin-left:10px;" href="' . $confirmlink . '" target="_blank">Click Here To Confirm Your Registration</a></strong>
+    <br/><strong><a style="font-size: 20.8000001907349px;margin:10px 0px;" href="' . $confirmlink . '" target="_blank">Click Here To Confirm Your Registration</a></strong>
 </span></div>
 <hr/>
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: left; background-color: rgb(255, 255, 255);">
