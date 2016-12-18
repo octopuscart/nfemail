@@ -87,8 +87,9 @@ $imageserver = $conf['image_server'];
                 <?php
             }
         } else {
-
-            $reg = $authobj->user_registration($_POST, 'auth_user');
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $reg = $authobj->user_registration($_POST, 'auth_user');
+            }
         }
     }
     if (isset($_POST['login'])) {
