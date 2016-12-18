@@ -10,8 +10,8 @@ if (count($data)) {
 }
 ?>
 <!--header image-->
-<section class="image_bg_8 darkness type_4 relative"> 
-    <div class="container" style="    background: rgba(0, 0, 0, 0.44);
+<section class="image_bg_8 darkness type_4 relative" style="    background-position: 0px 90px;  ;height: 500px;"> 
+    <div class="container" style="    background: rgba(0, 0, 0, 0.44);    margin-top: 100px;
          padding: 17px;">
         <div class="" style="text-align: center">
             <?php
