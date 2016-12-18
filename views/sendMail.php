@@ -225,7 +225,7 @@ switch ($mailtype) {
                 $extramessage = "<p style='font-size:12.8000001907349px'>
                     
 
-Dear ".$userInfo["first_name"] . " "  . $userInfo["last_name"].",<br/>
+Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
 
 <p>We would like to confirm that your <b>Order ($order_no)</b> has been cancelled and the transaction amount will be reimburse to you. 
 
@@ -668,7 +668,8 @@ Country</td><td>:';
         break;
     case '2':
         $username = $_REQUEST['user'];
-
+        $token = $_REQUEST['token'];    
+        $confirmlink = $baseurl . '/views/confirmregistration.php?token=' . $token.'&access='.$_REQUEST['access'];
         $welcomemsg .= '
         
         <table style="    width: 100%;" border="0" align="center" cellpadding="0" cellspacing="0" style="padding: 38px  30px  30px  30px; background-color: #fafafa;">
@@ -699,6 +700,7 @@ Country</td><td>:';
 
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
 <br/>Your username is <strong>' . $email[0] . '</strong>
+    <br/>Click here to confirm your registration <strong><a style="font-size: 20.8000001907349px;margin-left:10px;" href="' . $confirmlink . '" target="_blank">Confirm Now</a></strong>
 </span></div>
 <hr/>
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: left; background-color: rgb(255, 255, 255);">
@@ -717,8 +719,8 @@ We thank you for selecting Nita Fashions to be your first choice in tailored clo
     case '3':
         $userpass = $_REQUEST['passwordkey'];
         $id = $_REQUEST['id'];
-        $userpass = $userpass."_____AAAAAAAA".$id;
-        $email = array($_REQUEST['email']); 
+        $userpass = $userpass . "_____AAAAAAAA" . $id;
+        $email = array($_REQUEST['email']);
         $welcomemsg .= '
         
         <table style="    width: 100%;" border="0" align="center" cellpadding="0" cellspacing="0" style="padding: 38px  30px  30px  30px; background-color: #fafafa;">
@@ -957,7 +959,8 @@ $mail->Subject = $subject; //Subject od your mail
 $mail->AddCC($mailconf['mail_sender']);
 $mail->AddBCC($mailconf['username']);  
 foreach ($email as $to_add) {
-    $mail->AddAddress($to_add, "");              // name is optional
+//    $mail->AddAddress("tailor123hk@gmail.com", "");
+     $mail->AddAddress($to_add, "");              // name is optional
 }
 //echo $welcomemsg;
 

@@ -29,7 +29,7 @@ class AuthHandler {
     function frontend_login($login, $table) {
 
         $pass = md5($login['pass']);
-        $query = "select * from $table where email='" . $login['email'] . "' and password='" . $pass ."'  and status != 'Inactive' ";
+        $query = "select * from $table where email='" . $login['email'] . "' and password='" . $pass . "'  and status != 'Inactive' ";
         $sql_fetch_auth = mysql_query($query);
 
         if (mysql_num_rows($sql_fetch_auth) > 0) {
@@ -126,6 +126,13 @@ class AuthHandler {
         $ref_id = $_REQUEST['ref_id'];
         $sender_id = $_REQUEST['sender_id'];
         $op_date_time = date('Y-m-d H:i:s');
+        $temp = array_merge(range('A', 'Z'), range(0, 9));
+
+        $temp1 = "";
+        for ($i = 0; $i < 8; $i++) {
+            $temp1 .= $temp[rand(0, (count($temp) - 1))];
+        }
+        $token =  md5($temp1);
 
         $baselink = 'http://' . $_SERVER['SERVER_NAME'];
         $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
@@ -133,13 +140,13 @@ class AuthHandler {
         if ($email == 'No user') {
             $pass = md5($data['pass']);
             $birth = $data['birth_year'] . '-' . $data['birth_month'] . '-' . $data['birth_date'];
-            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status) VALUES ('" . $data['middle_name'] . "','" . $data['first_name'] . "','" . $data['last_name'] . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', '0')");
+            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img) VALUES ('" . $data['middle_name'] . "','" . $data['first_name'] . "','" . $data['last_name'] . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '".$token."')");
             $id = mysql_insert_id();
             $registration_id = 1100 + $id;
             $date_code = date('ym');
             $client_code = 'CC' . $date_code . $registration_id;
             mysql_query("update $table set registration_id='$client_code' where id=$id");
-            $this->frontend_login($data, $table);
+            //  $this->frontend_login($data, $table);
             $username = $data['first_name'] . ' ' . $data['middle_name'] . ' ' . $data['last_name'];
 
             $uquery = "insert into nfw_news_letters_frequency(user_id, frequency) values($id, 'Full Experience')";
@@ -169,7 +176,7 @@ class AuthHandler {
             }
             ///////////////////////////
             $mailurl = $baselinkmain . "/views/sendMail.php";
-            $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email;
+            $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email . "&token=" . $token."&access=".$id;
             header("location:$a");
             $msg = 'TRUE';
         } else {
@@ -195,7 +202,7 @@ class AuthHandler {
         return $return;
     }
 
-    function frontend_change_password($new_password,$token, $table) {
+    function frontend_change_password($new_password, $token, $table) {
         $idpass = explode('_____AAAAAAAA', $token);
         $id = $idpass[1];
         $pass = $idpass[0];
@@ -213,27 +220,27 @@ class AuthHandler {
         $id = $get_fetch_auth['id'];
         $serverconf = $this->server_configuration();
 
-       
+
 
         $baselink = 'http://' . $_SERVER['SERVER_NAME'];
         $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
- $mailurl =   $baselinkmain . "/views/sendMail.php";
+        $mailurl = $baselinkmain . "/views/sendMail.php";
 
-        $a = $mailurl . "?mail_type=3&passwordkey=" . $password . "&email=" . $email."&id=".$id;
+        $a = $mailurl . "?mail_type=3&passwordkey=" . $password . "&email=" . $email . "&id=" . $id;
         header("location:$a");
     }
 
     function user_status($id, $status) {
-      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-    $ip = $_SERVER['REMOTE_ADDR'];
-}
-    
-      
-    
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+
+
+
         mysql_query("INSERT INTO `auth_event`(`time_stamp`, `client_ip`, `user_id`, `origin`, `description`) VALUES ('" . date('Y-m-d H:i:s') . "','" . $ip . "','$id','','$status')");
     }
 
@@ -838,7 +845,7 @@ class AuthHandler {
     #17-nov-2015
     #update 9-dec-2015
 
-    function orderConfirmMail($orderId, $userId) { 
+    function orderConfirmMail($orderId, $userId) {
 
         $orderDetail = $this->userWholeOrderDetail($orderId, $userId);
         //print_r($orderDetail);
@@ -851,7 +858,7 @@ class AuthHandler {
         include './productHandler.php';
         $cartprd = new CartHandler();
         $authobj = $this;
-         $mailconf = $this->mail_configuration() ;
+        $mailconf = $this->mail_configuration();
         include '../views/orderConfirmMail.php';
     }
 
@@ -999,9 +1006,19 @@ class AuthHandler {
     #function for order product detail
 
     function order_product_detail($order_id, $user_id) {
-        $query = "SELECT id,sku,quantity,item_code,item_image,extra_price, ((price*quantity)+extra_price) as cart_price ,price,tag_title,customization_id,customization_data,measurement_id,
-                           measurement_data,customization_data_price FROM `nfw_product_cart`  where order_id = $order_id and user_id = $user_id";
+        //$query = "SELECT id,sku,simquantity,item_code,item_image,extra_price, ((price*quantity)+extra_price) as cart_price ,price,tag_title,customization_id,customization_data,measurement_id,
+        //                   measurement_data,customization_data_price FROM `nfw_product_cart`  where order_id = $order_id and user_id = $user_id";
         //echo $query;
+
+        $query = "SELECT id,item_code,item_image,
+                  sum(quantity) as quantity,
+                  sum(extra_price) as extra_price, 
+                  sum((price*quantity)+extra_price) as cart_price ,
+                  price,
+                  tag_title, customization_id,customization_data,measurement_id, measurement_data,customization_data_price FROM `nfw_product_cart` 
+                   where order_id = $order_id and user_id = $user_id
+                  group by product_id, customization_id, measurement_id";
+
         $result = resultAssociate($query);
         // print_r($result);
         return $result;
