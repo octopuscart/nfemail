@@ -7,7 +7,10 @@ $data = resultAssociate($query1);
 if (count($data)) {
     //$query = "update auth_user set status = '1', user_img = '' where user_img = '$token' and id = $id";
     //resultAssociate($query);
+    $remail = end($data)['email'];
+    
 }
+
 ?>
 <!--header image-->
 <section class="image_bg_8 darkness type_4 relative" style="    background-position: 0px 90px;  ;height: 500px;"> 
@@ -24,7 +27,7 @@ if (count($data)) {
                     <ul>
                         <li class="m_bottom_10 relative">
                             <i class="icon-user login_icon fs_medium color_grey_light_2"></i>
-                            <input type="text" name="email" placeholder="Email" class="r_corners color_grey w_full fw_light">
+                            <input type="text" name="email" placeholder="Email" class="r_corners color_grey w_full fw_light" value="<?php echo $remail;?>" readonly="">
                         </li>
                         <li class="m_bottom_10 relative">
                             <i class="icon-lock login_icon fs_medium color_grey_light_2"></i>
