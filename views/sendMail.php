@@ -700,8 +700,21 @@ Country</td><td>:';
 
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
 <br/>Your username is <strong>' . $email[0] . '</strong>
-    <br/><br/><strong><a style="font-size: 20.8000001907349px;margin:15px 0px;" href="' . $confirmlink . '" target="_blank">Click Here To Confirm Your Registration</a></strong><br/>
-</span></div>
+    <br/> 
+    <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;
+    background: #ececec;">
+       <span style="    font-size: 15px;">Please click the button below to confirm that this email address will be associated with your Nita Fashions user account:</span> <br/>
+        <div style="    margin-top: 10px;"><a style="    font-size: 18px;
+    margin: 15px 0px;
+    padding: 5px;
+    background: #000;
+    text-decoration: none;
+    background: red;
+    color: white;
+    border-radius: 15px;" href="' . $confirmlink . '" target="_blank">Confirm Email Address</a></div>
+       </span>
+     </div>
+
 <hr/>
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: left; background-color: rgb(255, 255, 255);">
 Nita Fashions is one of the most respected Bespoke Tailors in Hong Kong. Their quality, workmanship and service are of the highest standards. The chief tailor and proprietor, Mr. Peter Daswani has over 30 years of cutting and tailoring experience; he and his team work around the clock to craft your clothing. <br/>
