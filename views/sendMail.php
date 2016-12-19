@@ -704,15 +704,20 @@ Country</td><td>:';
     <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;
     background: #ececec;">
        <span style="    font-size: 15px;">Please click the button below to confirm that this email address will be associated with your Nita Fashions user account:</span> <br/>
-        <div style="    margin-top: 10px;"><a style="    font-size: 18px;
-    margin: 15px 0px;
-    padding: 5px;
-    background: #000;
-    text-decoration: none;
-    background: red;
-    color: white;
-    border-radius: 15px;" href="' . $confirmlink . '" target="_blank">Confirm Email Address</a></div>
+        <div style="    margin-top: 10px;">
+           <a style="font-size: 18px;
+                     margin: 15px 0px;
+                     padding: 5px;
+                     background: #000;
+                     text-decoration: none;
+                     background: red;
+                     color: white;
+                     border-radius: 15px;" href="' . $confirmlink . '" target="_blank">
+                         Confirm Email Address
+            </a>
+        </div>
        </span>
+     </div>
      </div>
 
 <hr/>
