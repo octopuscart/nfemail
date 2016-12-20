@@ -132,7 +132,7 @@ class AuthHandler {
         for ($i = 0; $i < 8; $i++) {
             $temp1 .= $temp[rand(0, (count($temp) - 1))];
         }
-        $token =  md5($temp1);
+        $token = md5($temp1);
 
         $baselink = 'http://' . $_SERVER['SERVER_NAME'];
         $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
@@ -140,49 +140,56 @@ class AuthHandler {
         if ($email == 'No user') {
             $pass = md5($data['pass']);
             $birth = $data['birth_year'] . '-' . $data['birth_month'] . '-' . $data['birth_date'];
-            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img) VALUES ('" . $data['middle_name'] . "','" . $data['first_name'] . "','" . $data['last_name'] . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '".$token."')");
+
+            $middlename = mysql_real_escape_string($data['middle_name']);
+            $fname = mysql_real_escape_string($data['first_name']);
+            $lname = mysql_real_escape_string($data['last_name']);
+
+            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img) VALUES ('" . $middlename . "','" . $fname . "','" . $lname . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '" . $token . "')");
             $id = mysql_insert_id();
-            $registration_id = 1100 + $id;
-            $date_code = date('ym');
-            $client_code = 'CC' . $date_code . $registration_id;
-            mysql_query("update $table set registration_id='$client_code' where id=$id");
-            //  $this->frontend_login($data, $table);
-            $username = $data['first_name'] . ' ' . $data['middle_name'] . ' ' . $data['last_name'];
+            if ($id) {
+                $registration_id = 1100 + $id;
+                $date_code = date('ym');
+                $client_code = 'CC' . $date_code . $registration_id;
+                mysql_query("update $table set registration_id='$client_code' where id=$id");
+                //  $this->frontend_login($data, $table);
+                $username = $data['first_name'] . ' ' . $data['middle_name'] . ' ' . $data['last_name'];
 
-            $uquery = "insert into nfw_news_letters_frequency(user_id, frequency) values($id, 'Full Experience')";
-            resultAssociate($uquery);
-            $email = $data['email'];
+                $uquery = "insert into nfw_news_letters_frequency(user_id, frequency) values($id, 'Full Experience')";
+                resultAssociate($uquery);
+                $email = $data['email'];
 
-            /////////// For update coupon refernce id
-            if ($sender_id) {
-                mysql_query("update nfw_site_reference set receiver_id = $id where id = $ref_id and sender_id = $sender_id");
-            }
-            /////////// For check ur customer for coupon///////
-            $email1 = $data['email'];
-            $coupon = resultAssociate("SELECT np.coupon_id FROM `nfw_coupon_purchase` as np
+                /////////// For update coupon refernce id
+                if ($sender_id) {
+                    mysql_query("update nfw_site_reference set receiver_id = $id where id = $ref_id and sender_id = $sender_id");
+                }
+                /////////// For check ur customer for coupon///////
+                $email1 = $data['email'];
+                $coupon = resultAssociate("SELECT np.coupon_id FROM `nfw_coupon_purchase` as np
                                               join nfw_coupon_sendgift as ng
                                               on np.id = ng.nfw_purchase_id where ng.user_email = '$email1' and ng.user_status = 'ur'");
-            if ($coupon) {
-                ///// notification 
-                $message = "Congratulations!!! You have received gift<br/>Start Shoping now";
+                if ($coupon) {
+                    ///// notification 
+                    $message = "Congratulations!!! You have received gift<br/>Start Shoping now";
 
-                $page_link = $baselinkmain . '/views/storCredit.php';
-                $query = "insert into nfw_notification_user (title,message,user_id,status,page_link) values('Gift Received','$message','$id','0','$page_link')";
-                mysql_query($query);
-                $coupon_id1 = $coupon[0]['coupon_id'];
-                //echo $coupon_id1;
-                mysql_query("update nfw_coupon_sendgift set user_status = 'r' where user_email = '$email1'");
-                mysql_query("insert into nfw_coupon_sending_info (user_id,coupon_id,mail,subject,content,op_date_time) values('$id','$coupon_id1','$email1','Coupon Information','','$op_date_time')");
+                    $page_link = $baselinkmain . '/views/storCredit.php';
+                    $query = "insert into nfw_notification_user (title,message,user_id,status,page_link) values('Gift Received','$message','$id','0','$page_link')";
+                    mysql_query($query);
+                    $coupon_id1 = $coupon[0]['coupon_id'];
+                    //echo $coupon_id1;
+                    mysql_query("update nfw_coupon_sendgift set user_status = 'r' where user_email = '$email1'");
+                    mysql_query("insert into nfw_coupon_sending_info (user_id,coupon_id,mail,subject,content,op_date_time) values('$id','$coupon_id1','$email1','Coupon Information','','$op_date_time')");
+                }
+                ///////////////////////////
+                $mailurl = $baselinkmain . "/views/sendMail.php";
+                $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email . "&token=" . $token . "&access=" . $id;
+                header("location:$a");
+                $msg = 'TRUE';
+            } else {
+                $msg = "FALSE";
             }
-            ///////////////////////////
-            $mailurl = $baselinkmain . "/views/sendMail.php";
-            $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email . "&token=" . $token."&access=".$id;
-            header("location:$a");
-            $msg = 'TRUE';
-        } else {
-            $msg = "FALSE";
+            return $msg;
         }
-        return $msg;
     }
 
     # 26-sep-2015 create function for send mail
@@ -248,7 +255,10 @@ class AuthHandler {
 
     function updateUserDetail($middlename, $fname, $lname, $email, $gender, $contact, $user_id, $fax_no, $telephone_no) {
         $pas = md5($pass);
-        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname', email = '$email',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no' where id = $user_id");
+        $middlename = mysql_real_escape_string($middlename);
+        $fname = mysql_real_escape_string($fname);
+        $lname = mysql_real_escape_string($lname);
+        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname', gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no' where id = $user_id");
         $this->userProfile($user_id);
     }
 
@@ -1136,7 +1146,7 @@ function sweet_alert($val, $condition, $title, $text, $type) {
     <script>
         $(function () {
     <?php if ($val == $condition) { ?>
-                swal({title: "<?php echo $title; ?>", text: "<?php echo $text; ?>", type: "<?php echo $type; ?>"});
+                    swal({title: "<?php echo $title; ?>", text: "<?php echo $text; ?>", type: "<?php echo $type; ?>"});
     <?php } ?>
         });
     </script>
