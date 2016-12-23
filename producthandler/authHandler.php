@@ -257,7 +257,7 @@ class AuthHandler {
         $middlename=mysql_real_escape_string($middlename);
         $fname=mysql_real_escape_string($fname);
         $lname=mysql_real_escape_string($lname);
-        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname', email = '$email',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no' where id = $user_id");
+        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no' where id = $user_id");
         $this->userProfile($user_id);
     }
 
