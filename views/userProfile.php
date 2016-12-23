@@ -111,8 +111,8 @@ if ($_SESSION['user_id'] == '') {
                                                 </td>
                                                 <td>
                                                     <select name="gender" class="form-control"  style="height: 30px;"  disabled>
-                                                        <option value="Male" <?php if ($userInfo[0]['gender'] == 'Male') { ?> Selected =' selected' <?php } ?> >Male</option>
-                                                        <option value="Female" <?php if ($userInfo[0]['gender'] == 'Female') { ?> Selected =' selected' <?php } ?> >Female</option>
+                                                        <option value="Male" <?php if ($userInfo[0]['gender'] == 'male') { ?> Selected =' selected' <?php } ?> >Male</option>
+                                                        <option value="Female" <?php if ($userInfo[0]['gender'] == 'female') { ?> Selected =' selected' <?php } ?> >Female</option>
                                                     </select>
                                                 </td>
                                             </tr>
