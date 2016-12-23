@@ -771,8 +771,19 @@ We thank you for selecting Nita Fashions to be your first choice in tailored clo
 <p><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">Hi there,</span><br></p>
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">We have received a request to reset your Nita Fashions Login Password <b>(Username: ' . $_REQUEST['email'] . ')</b>.  
 If you made this request, please follow the instructions below.  Rest assured your customer account is safe.</p>
-<p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">Click on the link below to reset your Login Password.</p>
-<p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 20.8000001907349px; line-height: normal;"><a href="' . $baseurl . '/views/forgetpass.php?admin=' . $userpass . '" >Reset Now</a></p>
+
+  <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;
+    background: #ececec;">
+<p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 15px; line-height: normal;">Click on the link below to reset your Login Password.</p>
+<p>    
+<a style="font-size: 18px;
+                     margin: 15px 0px;
+                     padding: 5px;
+                     background: #000;
+                     text-decoration: none;
+                     background: red;
+                     color: white;
+                     border-radius: 15px;" href="' . $baseurl . '/views/forgetpass.php?admin=' . $userpass . '" >Reset Now</a></p></div>
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">Note: If you did not request to have your login password reset, please ignore this email.<br>
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">If you have any queries, please feel free to email us at <b>sales@nitafashions.com</b>, and we will be happy to assist you.<br>
 ' . mail_template("General", "footer") . '
