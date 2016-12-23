@@ -78,6 +78,7 @@ if ($_SESSION['user_id'] == '') {
             padding: 6px;
         }
 
+
     </style>
     <style>
         .addr tr{
@@ -269,6 +270,7 @@ if ($_SESSION['user_id'] == '') {
                             }
                             .orderstatustable td{
                                 border: none;
+
                             }
                             .orderstatustable tr{
                                 border-bottom: 1px solid #D8D8D8;;
@@ -315,7 +317,7 @@ if ($_SESSION['user_id'] == '') {
                                             <th style="width:18%;text-align: center"><b>Item Code</b></th>
                                             <th style="width:18%;text-align: center"><b>Item Image</b></th>
                                             <th style="width:17%;text-align: center"><b>Item Name</b></th>
-                                            <th style="width:17%;text-align: center"><b>Style Id / Measurement Profile</b></th>
+                                            <th style="width:40%;text-align: center"><b>Style Id / Measurement Profile</b></th>
                                             <th style="width:3%;text-align: center"><b>Qty.</b></th> 
                                             <th style="width:6%;text-align: center"><b>Price</b></th>
                                             <th style="width:13%;text-align: center"><b>Extra Price</b></th>
@@ -347,16 +349,22 @@ if ($_SESSION['user_id'] == '') {
                                                     <p><?php echo $cartInfo['tag_title']; ?></p>
                                                 </td>
                                                 <td style="font-size: 11px;text-align: center">  
-                                                    <table class="addr">
+                                                    <style>
+                                                        .measurement_style{
+                                                            padding: 0px!important;
+                                                            text-align: left;
+                                                        }
+                                                    </style>
+                                                    <table class="addr measurement_style">
                                                         <tr style="font-size: 11px">
-                                                            <td>Style Id</td>
-                                                            <td>:</td>
-                                                            <td><?php echo $cartInfo['customization_id']; ?></td>
+                                                            <td class="measurement_style">Style Id</td>
+                                                            <td class="measurement_style">:</td>
+                                                            <td class="measurement_style"><?php echo $cartInfo['customization_id']; ?></td>
                                                         </tr>
                                                         <tr style="font-size: 12px">
-                                                            <td>Measurement Profile</td>
-                                                            <td>:</td>
-                                                            <td><?php echo $cartInfo['measurement_id']; ?></td>
+                                                            <td class="measurement_style">Measurement Profile</td>
+                                                            <td class="measurement_style">:</td>
+                                                            <td class="measurement_style"><?php echo $cartInfo['measurement_id']; ?></td>
                                                         </tr>
                                                     </table>
                                                 </td>
