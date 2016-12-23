@@ -336,7 +336,7 @@ if ($_SESSION['user_id'] == '') {
                                             <tr id="trId" style="font-size:13px">
                                                 <td><?php echo $i + 1 ?></td>
                                                 <td>
-                                                    <p class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['sku']; ?></a></p>
+                                                    <p class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['item_code']; ?></a></p>
 
                                                 </td>
                                                 <td><?php echo $cartInfo['item_code']; ?></td>
