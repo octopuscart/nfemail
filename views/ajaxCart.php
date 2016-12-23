@@ -157,26 +157,26 @@ if (isset($_SESSION['user_id'])) {
                 if ($customizedData) {
                     $data = count($customizedData);
                     ?>
-                    <span class="pull-left" style="color:navy;font-size:10px">Total <?php echo $data; ?> items waiting for checkout</span><br/>
-                    <a href="./shippingCart.php" class="pull-left">
-                        <span style="font-size: 13px;border-radius:3px;background-color: #F1F1F1; font-weight: 500;padding: 0px 10px;">
-                            Proceed to Checkout
-                        </span>
+                    <div class="col-md-6" style="padding: 0px">
+                        <span class="pull-left" style="color:navy;font-size:10px">Total <?php echo $data; ?> items waiting for checkout</span><br/>
+                        <a href="./shippingCart.php" class="pull-left">
+                            <span style="font-size: 13px;border-radius:3px;background-color: #F1F1F1; font-weight: 500;padding: 0px 10px;">
+                                Proceed to Checkout
+                            </span>
 
-                    </a>
+                        </a>
+                    </div>
                     <?php
                 } else {
-                    ?> 
-                    <span class="pull-left" style="color:navy;font-size:10px"></span><br/>
-                    <a href="./shippingCart.php" class="pull-left">
-                        <span style="font-size: 13px;border-radius:3px;; font-weight: 500;padding: 0px 10px;">
-
-                        </span>
-
-                    </a>
+                    ?>
+                    <div class="col-md-6" style="padding: 0px"></div>
+                    <?php
+                }
+                ?> 
+                <span class="pull-left" style="color:navy;font-size:10px"></span><br/>
 
 
-
+                <div class="col-md-6 pull-right" style="padding: 0px">
                     <div ng-if="cart_data.length">
                         <span ng-if="cart_data.length" class="pull-right" style="color:navy;font-size:10px;margin-top: -24px">Recently added item(s)</span><br/>
                         <a href="./shopAllCart.php" class="pull-right" style="margin-top: -24px" ng-if="cart_data.length">
@@ -187,8 +187,8 @@ if (isset($_SESSION['user_id'])) {
                         </a>
                         <hr style="height: 0px;margin-top: 6px;margin-bottom: 0px;">
                     </div>
-                    <?php
-                }
+                </div>
+                <?php
             }
             ?>
             <ul class="added_items_list productCartinfo11" style="max-height: 500px;
@@ -384,17 +384,17 @@ if (isset($_SESSION['user_id'])) {
                 <ul>
                     <li class="m_bottom_10 relative hr_list social_icons tooltip_container">
 
-<!--                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
-                            <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>
-                            <i class="icon-facebook fs_small"></i>
-                        </a>
-
-                        <a href="gplus.php" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2 fs_small" style="margin-left: 50px;
-                           margin-top: -40px;">
-                            <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>
-
-                            <i class="icon-gplus-1 fs_small"></i>
-                        </a>-->
+                        <!--                        <a href="findex.php" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2 fs_small" >
+                                                    <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Follow</span>
+                                                    <i class="icon-facebook fs_small"></i>
+                                                </a>
+                        
+                                                <a href="gplus.php" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2 fs_small" style="margin-left: 50px;
+                                                   margin-top: -40px;">
+                                                    <span class="d_block r_corners color_default tooltip fs_small tr_all" style="">Google Plus</span>
+                        
+                                                    <i class="icon-gplus-1 fs_small"></i>
+                                                </a>-->
 
 
                     </li>   
@@ -539,6 +539,7 @@ if (isset($_SESSION['user_id'])) {
         $scope.getCartData();
 
         $scope.removeCartData = function (obj) {
+            console.log(obj)
             obj.animate = 'flipOutX';
             var product_id = obj.id;
             var tag_id = obj.tag_id;
