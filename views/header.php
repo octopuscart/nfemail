@@ -19,7 +19,7 @@ $imageserver = $conf['image_server'];
     <title>Nita Fashions</title>
     <!--meta info-->
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=1307, initial-scale=1, maximum-scale=1">
+    <!--<meta name="viewport" content="width=1307, initial-scale=1, maximum-scale=1">-->
     <meta name="author" content=""/>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
@@ -212,7 +212,7 @@ $imageserver = $conf['image_server'];
 
 </div>            
 
-<body ng-app="NitaFashions">
+<body ng-app="NitaFashions"  style="min-width:  1307px;">
     <script>
         var nitaFasions = angular.module('NitaFashions', ['ngSanitize']);
         nitaFasions.config(['$httpProvider', function ($httpProvider) {
@@ -224,7 +224,7 @@ $imageserver = $conf['image_server'];
 
     <!--side menu-->
     <!--layout-->
-    <div class="wide_layout bg_light">
+    <div class="wide_layout bg_light" style="width: 100%;">
         <!--header markup-->
         <header role="banner" class="relative type_2" style="background-color: #fff;">
             <span class="gradient_line"></span>
