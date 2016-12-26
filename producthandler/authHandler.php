@@ -1005,7 +1005,7 @@ class AuthHandler {
     //function find customized product(imp)
 
     function idCustomizationwithValue($user_id) {
-        $query = " SELECT id,op_date,op_time,product_id FROM `nfw_product_cart` where user_id = $user_id and customization_id > 0 and (order_id IS NULL or order_id ='') order by product_id";
+        $query = " SELECT id,op_date,op_time,product_id FROM `nfw_product_cart` where user_id = $user_id and customization_id != '' and (ISNULL(order_id) or order_id ='') order by product_id";
         $result = resultAssociate($query);
         // print_r($result);
         return $result;
