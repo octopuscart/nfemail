@@ -8,9 +8,11 @@ $tag_id = $_REQUEST['item_type'];
 if ($tag_id == '') {
     $query = "SELECT * FROM nfw_product_tag_connection where product_id = '$id'";
     $tagdata = resultAssociate($query);
-    $tag_id = end($tagdata)['tag_id'];
-    $tag_idg = $tag_id;
-    header("location:shop_product.php?product_id=$id&item_type=" . $tag_idg);
+    if (count($tagdata)) {
+        $tag_id = $tagdata[0]['tag_id'];
+        $tag_idg = $tag_id;
+        header("location:shop_product.php?product_id=$id&item_type=" . $tag_idg);
+    }
 }
 
 
