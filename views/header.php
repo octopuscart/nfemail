@@ -211,8 +211,17 @@ $imageserver = $conf['image_server'];
     </div>
 
 </div>            
-
-<body ng-app="NitaFashions"  style="min-width:  1307px;">
+<?php
+$urlcheck = $_SERVER['REQUEST_URI'];
+$stylewidth = "";
+if (strpos($urlcheck, 'product_list.php')){
+    $stylewidth = "min-width:  1307px;";
+}
+else{
+    
+}
+?>
+<body ng-app="NitaFashions"  style="<?php echo $stylewidth;?>">
     <script>
         var nitaFasions = angular.module('NitaFashions', ['ngSanitize']);
         nitaFasions.config(['$httpProvider', function ($httpProvider) {
