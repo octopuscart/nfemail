@@ -802,7 +802,7 @@ echo $query;
 
 // function for delete data by id
     function deleteFromCart($ids) {
-        $query = "delete from nfw_product_cart where id = $ids ";
+        $query = "delete from nfw_product_cart where id = $ids and order_id not in (select id from nfw_product_order)";
         mysql_query($query);
     }
 
@@ -968,7 +968,7 @@ echo $query;
 
 // old function with customization id 
     function findCustomizationId($user_id) {
-        $query = "SELECT distinct(customization_id) FROM `nfw_product_cart` where user_id = $user_id and order_id IS NULL order by customization_id asc";
+        $query = "SELECT distinct(customization_id) FROM `nfw_product_cart` where user_id = $user_id and order_id IS NULL and customization_id = '' order by customization_id asc";
         $result = resultAssociate($query);
         return $result;
     }
