@@ -1019,7 +1019,7 @@ class AuthHandler {
         //                   measurement_data,customization_data_price FROM `nfw_product_cart`  where order_id = $order_id and user_id = $user_id";
         //echo $query;
 
-        $query = "SELECT id,item_code,item_image,
+        $query = "SELECT id,sku, item_code,item_image,
                   sum(quantity) as quantity,
                   sum(extra_price) as extra_price, 
                   sum((price*quantity)+extra_price) as cart_price ,
