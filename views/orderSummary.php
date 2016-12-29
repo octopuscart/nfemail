@@ -94,7 +94,7 @@ if ($_SESSION['user_id'] == '') {
                                             <td>
                                                 <?php
                                                 $datas = $authobj->countProducts($orderData['id']);
-                                                //print_r($datas);
+                                           
                                                 $temp = array();
                                                 for ($s = 0; $s < count($datas); $s++) {
                                                     $tag_id = $datas[$s];
