@@ -252,12 +252,12 @@ class AuthHandler {
 
     ## For Update user detail
 
-    function updateUserDetail($middlename, $fname, $lname, $email, $gender, $contact, $user_id, $fax_no, $telephone_no) {
+    function updateUserDetail($middlename, $fname, $lname, $email, $gender, $contact, $user_id, $fax_no, $telephone_no, $birthdate) {
         $pas = md5($pass);
         $middlename=mysql_real_escape_string($middlename);
         $fname=mysql_real_escape_string($fname);
         $lname=mysql_real_escape_string($lname);
-        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no' where id = $user_id");
+        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no', birth_date='$birthdate' where id = $user_id");
         $this->userProfile($user_id);
     }
 

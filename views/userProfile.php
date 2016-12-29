@@ -18,7 +18,7 @@ if ($_SESSION['user_id'] == '') {
     }
 
     if (isset($_REQUEST['updateData'])) {
-        $authobj->updateUserDetail($_REQUEST['middle_name'], $_REQUEST['first_name'], $_REQUEST['last_name'], $_REQUEST['email'], $_REQUEST['gender'], $_REQUEST['contact_no'], $_SESSION['user_id'], $_REQUEST['fax_no'], $_REQUEST['telephone_no']);
+        $authobj->updateUserDetail($_REQUEST['middle_name'], $_REQUEST['first_name'], $_REQUEST['last_name'], $_REQUEST['email'], $_REQUEST['gender'], $_REQUEST['contact_no'], $_SESSION['user_id'], $_REQUEST['fax_no'], $_REQUEST['telephone_no'], $_REQUEST['birth_date']);
         header('location:userProfile.php');
     }
     ?>
@@ -95,6 +95,14 @@ if ($_SESSION['user_id'] == '') {
                                                 </td>
                                                 <td>
                                                     <input type="text" name="middle_name" class="form-control" value="<?php echo $userInfo[0]['middle_name']; ?>"  style="height: 30px;"  disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span for="name" class="control-label" style="">Birth Date</span>
+                                                </td>
+                                                <td>
+                                                    <input type="date" name="birth_date" class="form-control" value="<?php echo $userInfo[0]['birth_date']; ?>"  style="height: 30px;"  disabled>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -271,6 +279,7 @@ include 'footer.php';
             $("input[name='email']").removeAttr("disabled");
             $("input[name='fax_no']").removeAttr("disabled");
             $("input[name='telephone_no']").removeAttr("disabled");
+            $("input[name='birth_date']").removeAttr("disabled");
             $(".submit").show();
             $(".edit").hide();
 
