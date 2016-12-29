@@ -75,12 +75,11 @@ for ($i = 0; $i < count($invoiceData); $i++) {
     $orderDatas = $this->authobj->order_product_detail($invoice['order_id'], $this->user_id);
     $temp1 = array();
     for ($j = 0; $j < count($orderDatas); $j++) {
-        //$cart_id = $data[$j];
-        $cartInfo = $orderDatas[$i];
-        $string = $cartInfo['sku'];
-        array_push($temp1, $string);
+        $all_data = $orderDatas[$j];
+         array_push($temp1, $all_data['item_code']);
+    
     }
-    $html.= implode(', ', $temp1);
+    $html.=  implode(', ', $temp1);
     $html.='</td>
             <td style="font-size: 11px;border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:left">';
     $datas = $this->authobj->countProducts($invoice['order_id']);
