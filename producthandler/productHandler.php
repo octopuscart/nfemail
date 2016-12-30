@@ -802,7 +802,7 @@ echo $query;
 
 // function for delete data by id
     function deleteFromCart($ids) {
-       echo  $query = "delete from nfw_product_cart where id = $ids and ((order_id not in (select id from nfw_product_order)) or  (order_id is null))";
+         $query = "delete from nfw_product_cart where id = $ids and ((order_id not in (select id from nfw_product_order)) or  (order_id is null))";
         mysql_query($query);
     }
 
