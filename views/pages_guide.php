@@ -9,7 +9,7 @@ $faq = array(
     "How to customize <b>Shirt</b>?"
     =>
     "
-     <a target='_blank' href='https://youtu.be/-klcHiGz0O0'  style='font-size: 18px;
+     <a target='_blank' href='https://youtu.be/-klcHiGz0O0'  style='font-size: 16px;
                      margin: 15px 0px;
                          padding: 5px 10px;
                      background: #000;
