@@ -5,7 +5,18 @@ include 'header.php';
 $faq = array(
     "How to create <b>Account</b>?"
     =>
-    " ",
+    " 
+ <a target='_blank' href='https://youtu.be/AxfvAP72A0g'  style='font-size: 16px;
+                     margin: 15px 0px;
+                        padding: 5px 10px 8px;
+                     background: #000;
+                     text-decoration: none;
+                     background: red;
+                     color: white;
+                     border-radius: 15px;'>
+    <i class='icon ion-play' ></i> Video Tutorial
+      </a>   
+",
     "How to customize <b>Shirt</b>?"
     =>
     "
@@ -75,9 +86,9 @@ $faq = array(
 
             </section>
             <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30" style='  padding:0 125px;'>
-<?php
-foreach ($faq as $key => $value) {
-    ?>
+                <?php
+                foreach ($faq as $key => $value) {
+                    ?>
                     <div class="accordion toggle">
                         <dl class="accordion_item r_corners wrapper m_bottom_5 tr_all">
                             <dt class="accordion_link relative tr_all color_dark"><?php echo $key; ?>
@@ -89,14 +100,14 @@ foreach ($faq as $key => $value) {
                             </span>
                             </dt>
                             <dd class="fw_light color_dark" style="display: none;">
-    <?php echo $value; ?>
+                                <?php echo $value; ?>
                             </dd>
                         </dl>
 
                     </div>
-    <?php
-}
-?>
+                    <?php
+                }
+                ?>
             </div>
 
         </div>
