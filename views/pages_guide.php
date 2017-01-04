@@ -8,11 +8,16 @@ $faq = array(
     " ",
     "How to customize <b>Shirt</b>?"
     =>
-    "Click on the  <a target='_blank' href='https://youtu.be/-klcHiGz0O0'>
-     <b>video link</b>
-      </a> of shirt customization
-     <a target='_blank' href='https://youtu.be/-klcHiGz0O0'>
-     <b>Video Tutorial</b>.
+    "
+     <a target='_blank' href='https://youtu.be/-klcHiGz0O0'  style='font-size: 18px;
+                     margin: 15px 0px;
+                         padding: 5px 10px;
+                     background: #000;
+                     text-decoration: none;
+                     background: red;
+                     color: white;
+                     border-radius: 15px;'>
+    <i class='icon ion-play' ></i> Video Tutorial
       </a>
      ",
     "How to customize <b>Pant</b>?"
