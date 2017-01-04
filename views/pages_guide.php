@@ -8,7 +8,13 @@ $faq = array(
     " ",
     "How to customize <b>Shirt</b>?"
     =>
-    " ",
+    "Click on the  <a target='_blank' href='https://youtu.be/-klcHiGz0O0'>
+     <b>video link</b>
+      </a> of shirt customization
+     <a target='_blank' href='https://youtu.be/-klcHiGz0O0'>
+     <b>Video Tutorial</b>.
+      </a>
+     ",
     "How to customize <b>Pant</b>?"
     =>
     " ",
@@ -18,8 +24,6 @@ $faq = array(
     "How to customize <b>Waistcoat</b>?"
     =>
     " ",
-    
-
 );
 ?>
 <!--page title-->
@@ -66,9 +70,9 @@ $faq = array(
 
             </section>
             <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30" style='  padding:0 125px;'>
-                <?php
-                foreach ($faq as $key => $value) {
-                    ?>
+<?php
+foreach ($faq as $key => $value) {
+    ?>
                     <div class="accordion toggle">
                         <dl class="accordion_item r_corners wrapper m_bottom_5 tr_all">
                             <dt class="accordion_link relative tr_all color_dark"><?php echo $key; ?>
@@ -80,14 +84,14 @@ $faq = array(
                             </span>
                             </dt>
                             <dd class="fw_light color_dark" style="display: none;">
-                                <?php echo $value; ?>
+    <?php echo $value; ?>
                             </dd>
                         </dl>
 
                     </div>
-                    <?php
-                }
-                ?>
+    <?php
+}
+?>
             </div>
 
         </div>
