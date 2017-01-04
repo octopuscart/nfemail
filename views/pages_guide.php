@@ -11,7 +11,7 @@ $faq = array(
     "
      <a target='_blank' href='https://youtu.be/-klcHiGz0O0'  style='font-size: 16px;
                      margin: 15px 0px;
-                         padding: 5px 10px;
+                        padding: 5px 10px 8px;
                      background: #000;
                      text-decoration: none;
                      background: red;
