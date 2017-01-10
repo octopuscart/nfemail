@@ -450,9 +450,9 @@ if (isset($_REQUEST['category'])) {
                                         <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
                                             <!--images container-->
                                             <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type;?>" class='redirecturl'>
-                                                <div class="fp_images relative ">
-                                                    <img src="<?php echo $defaultProduct; ?>" alt="" class=" tr_all img1 lazy" data-original="{{product.image1}}" style="height:250px; width:250px;" >
-                                                    <img src="<?php echo $defaultProduct; ?>"  alt="" class=" tr_all img2 lazy" data-original="{{product.image2}}" style="height:250px; width:250px;display: none" >
+                                                 <div class="fp_images relative ">
+                                                    <img src="{{product.image1}}" alt="" class=" tr_all img1 lazy" data-original="{{product.image1}}" style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
+                                                    <img src="{{product.image2}}"  alt="" class=" tr_all img2 lazy" data-original="{{product.image2}}" style="height:250px; width:250px;display: none;background: url(<?php echo $defaultProduct; ?>);" >
                                                 </div>
                                                 <div class="fabric_color" style="">
 
@@ -672,7 +672,7 @@ if (isset($_REQUEST['category'])) {
                     $timeout(function () {
                         $("img.lazy").lazyload({
                           
-                            placeholder: "<?php echo $defaultProduct; ?>"
+//                            placeholder: "<?php echo $defaultProduct; ?>"
                         });
 
                     }, 500)
