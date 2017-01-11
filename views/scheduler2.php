@@ -12,8 +12,8 @@ $data = resultAssociate("
 
 if (isset($_REQUEST['submit'])) {
     $v1 = $_REQUEST['select_time'];
-    $v2 = $_REQUEST['first_name'];
-    $v3 = $_REQUEST['last_name'];
+    $v2 = mysql_real_escape_string($_REQUEST['first_name']);
+    $v3 = mysql_real_escape_string($_REQUEST['last_name']);
     $v4 = $_REQUEST['email'];
     $v5 = $_REQUEST['telephone'];
     $v6 = $_REQUEST['address'];
@@ -242,7 +242,7 @@ $shedulearray = array();
 
     <div class = "modal-dialog ">
         <div class = "modal-content">
-            <form method="post">
+            <form method="post" action="#">
                 <div class = "modal-header" style=" color: #fff;background: #000 ">
                     <button type = "button" style="    background-color: #000;
     border: 1px solid #000;" class = " btn btn-danger btn-xm pull-right" data-dismiss = "modal" aria-hidden = "true">
