@@ -272,7 +272,7 @@ $shedulearray = array();
                             <div class="form-group" style="font-color:black">
 
                                 <label for="select_date">Available Date</label> 
-                                <select class="form-control" name="select_date"  style="height:34px;" required /></select>
+                                <select class="form-control" name="select_date" id="select_date"  style="height:34px;" required /></select>
 
                             </div>
                         </div>
@@ -281,7 +281,7 @@ $shedulearray = array();
                             <div class="form-group" style="font-color:black">
 
                                 <label for="select_time">Available Time</label> 
-                                <select class="form-control" name="select_time"  style="height:34px;" required /></select>
+                                <select class="form-control" name="select_time" id="select_time" style="height:34px;" required /></select>
 
                             </div>
                         </div>
@@ -393,7 +393,7 @@ $shedulearray = array();
                                     var temp_val = datearray[d]['schedule_start_time'] ;
                                     tempt += "<option value='" + temp_id + "'>" + temp_val + "</option>";
                                 }
-                                $("select[name='select_time'").html(tempt);
+                                $("#select_time").html(tempt);
                             }
 
                             function setAddress(id) {
@@ -407,7 +407,7 @@ $shedulearray = array();
                                     var temp_val = datearray[d]['schedule_date'];
                                     tempt += "<option value='" + temp_id + "'>" + temp_val + "</option>";
                                 }
-                                $("select[name='select_date'").html(tempt);
+                                $("#select_date").html(tempt);
 
                                 selectdate = alltime;
                                 var ids = Number(datearray[0]['id']);
