@@ -107,7 +107,7 @@ if (isset($_REQUEST['submit'])) {
         text-transform: capitalize;
     }
     sup{
-            line-height: 19px;
+        line-height: 19px;
     }
 
 </style>
@@ -188,24 +188,28 @@ $shedulearray = array();
                                 $date1 = date_create($value['start_date']);
                                 echo date_format($date1, "j<\s\u\p>S</\s\u\p>   F");
                                 ?></b> <span style="
-                                          font-size: 12px;
-    line-height: 24px;
-    margin: 0px 10px;"> Until</span>  <b><?php
-                                $date2 = date_create($value['end_date']);
-                                echo date_format($date2, "j<\s\u\p>S</\s\u\p> F Y");
-                                
-                                 $days =  $date2->diff($date1)->format("%a");
-                                 echo "<br/> <center> (".($days+1)." Days)</center> ";
-                                ?></b>
+                                font-size: 12px;
+                                line-height: 24px;
+                                           margin: 0px 10px;"> Until</span>  <b><?php
+                                           $date2 = date_create($value['end_date']);
+                                           echo date_format($date2, "j<\s\u\p>S</\s\u\p> F Y");
+                                             if($value['total_days'] == ""){
+                                           $days = $date2->diff($date1)->format("%a");
+                                           echo "<br/> <center> (" . ($days + 1) . " Days)</center> ";
+                                             }
+                                             else{
+                                                  echo "<br/> <center> (" . ($value['total_days']) . " Days)</center> ";
+                                             }
+                                           ?></b>
                             <br/>
-                 
+
                             <?php
                             $date_ids = $value['main_id'];
 
                             $temp = resultAssociate("SELECT id,schedule_date FROM nfw_app_time_schedule where nfw_app_start_end_date_id = $date_ids group by schedule_date");
                             // $shedulearray['main_id'] = $temp;
                             $temp2 = array('timing' => array(), 'schedule_date' => $temp, 'location' => $value['location'], 'address' => $value['address']);
-                          
+
                             for ($j = 0; $j < count($temp); $j++) {
                                 $tp = $temp[$j];
                                 $app_date = $tp['schedule_date'];
@@ -217,7 +221,7 @@ $shedulearray = array();
                             $shedulearray[$date_ids] = $temp2;
                             ?>
                             <br/>
-                            
+
                             <button class="btn btn-danger" style="background: black" data-toggle="modal" data-target="#schedule_modal" onclick="setAddress(<?php echo $date_ids; ?>)">
                                 Book Now
                             </button>
@@ -254,10 +258,10 @@ $shedulearray = array();
             <form method="post" action="#">
                 <div class = "modal-header" style=" color: #fff;background: #000 ">
                     <button type = "button" style="    background-color: #000;
-    border: 1px solid #000;" class = " btn btn-danger btn-xm pull-right" data-dismiss = "modal" aria-hidden = "true">
-               
-                            <i class="fa fa-close"></i>
-             
+                            border: 1px solid #000;" class = " btn btn-danger btn-xm pull-right" data-dismiss = "modal" aria-hidden = "true">
+
+                        <i class="fa fa-close"></i>
+
                     </button>
 
                     <div class = "modal-title row" id = "myModalLabel">
@@ -305,7 +309,7 @@ $shedulearray = array();
 
                             </div>
                         </div>
-                       
+
                         <div class="col-md-4" >
                             <div class="form-group" style="font-color:black">
 
@@ -314,7 +318,7 @@ $shedulearray = array();
 
                             </div>
                         </div>
-                         <div class="col-md-4" >
+                        <div class="col-md-4" >
                             <div class="form-group" style="font-color:black">
                                 <label for="first_name">No. Of Persons</label> 
                                 <input  class="time start form-control" type="number"  name="no_of_person"  style="height:34px;" min="1" value="1" />
@@ -343,12 +347,12 @@ $shedulearray = array();
                         </div>
                     </div>
 
-<!--                    <div class="row" style="    border-bottom: 1px solid #E5E5E5;">
-                        <div class="col-md-12" >
-                            <label for="first_name">Address</label> <br>
-                            <textarea name="address" class="form-control"  rows="1" cols="27" style="height: 94px !important;"></textarea>
-                        </div>
-                    </div>-->
+                    <!--                    <div class="row" style="    border-bottom: 1px solid #E5E5E5;">
+                                            <div class="col-md-12" >
+                                                <label for="first_name">Address</label> <br>
+                                                <textarea name="address" class="form-control"  rows="1" cols="27" style="height: 94px !important;"></textarea>
+                                            </div>
+                                        </div>-->
 
 
 
@@ -399,7 +403,7 @@ $shedulearray = array();
                                 var tempt = '';
                                 for (d in datearray) {
                                     var temp_id = datearray[d]['id'];
-                                    var temp_val = datearray[d]['schedule_start_time'] ;
+                                    var temp_val = datearray[d]['schedule_start_time'];
                                     tempt += "<option value='" + temp_id + "'>" + temp_val + "</option>";
                                 }
                                 $("#select_time").html(tempt);
