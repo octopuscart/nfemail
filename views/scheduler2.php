@@ -192,7 +192,7 @@ $shedulearray = array();
     line-height: 24px;
     margin: 0px 10px;"> Until</span>  <b><?php
                                 $date2 = date_create($value['end_date']);
-                                echo date_format($date2, "j<\s\u\p>S</\s\u\p> F-Y");
+                                echo date_format($date2, "j<\s\u\p>S</\s\u\p> F Y");
                                 
                                  $days =  $date2->diff($date1)->format("%a");
                                  echo "<br/> <center> (".($days+1)." Days)</center> ";
