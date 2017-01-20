@@ -151,11 +151,11 @@ $shedulearray = array();
             <table class="table table-borderd">
                 <tr style="    background-color: #000;
                     color: #fff;">
-                    <th style="width: 150px">Country</th>
+                    <th style="width: 100px">Country</th>
                     <th style="width: 150px">City/State</th>
                     <th style="">Hotel Name & Address</th>
 
-                    <th style="width: 300px">From Date - To Date</th>
+                    <th style="width: 350px">From Date - To Date</th>
                     <th style="width: 200px"></th>
 
                 </tr>
@@ -187,12 +187,15 @@ $shedulearray = array();
                             <b><?php
                                 $date1 = date_create($value['start_date']);
                                 echo date_format($date1, "j<\s\u\p>S</\s\u\p>   F");
-                                ?></b>  Until  <b><?php
+                                ?></b> <span style="
+                                          font-size: 12px;
+    line-height: 24px;
+    margin: 0px 10px;"> Until</span>  <b><?php
                                 $date2 = date_create($value['end_date']);
                                 echo date_format($date2, "j<\s\u\p>S</\s\u\p> F-Y");
                                 
                                  $days =  $date2->diff($date1)->format("%a");
-                                 echo "  (".($days+1)." Days) ";
+                                 echo "<br/> <center> (".($days+1)." Days)</center> ";
                                 ?></b>
                             <br/>
                  
