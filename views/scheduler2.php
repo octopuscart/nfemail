@@ -106,6 +106,9 @@ if (isset($_REQUEST['submit'])) {
 
         text-transform: capitalize;
     }
+    sup{
+            line-height: 19px;
+    }
 
 </style>
 
@@ -182,11 +185,14 @@ $shedulearray = array();
                         <td>
                             <i class="fa fa-calendar"></i>
                             <b><?php
-                                $date = date_create($value['start_date']);
-                                echo date_format($date, "d F");
-                                ?></b> - <b><?php
-                                $date = date_create($value['end_date']);
-                                echo date_format($date, "d F-Y");
+                                $date1 = date_create($value['start_date']);
+                                echo date_format($date1, "j<\s\u\p>S</\s\u\p>   F");
+                                ?></b>  Until  <b><?php
+                                $date2 = date_create($value['end_date']);
+                                echo date_format($date2, "j<\s\u\p>S</\s\u\p> F-Y");
+                                
+                                 $days =  $date2->diff($date1)->format("%a");
+                                 echo "  (".($days+1)." Days) ";
                                 ?></b>
                             <br/>
                  
