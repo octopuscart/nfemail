@@ -400,6 +400,7 @@ $shedulearray = array();
 
                             function setTime(id) {
                                 var datearray = selectdate[id];
+                                console.log(datearray);
                                 var tempt = '';
                                 for (d in datearray) {
                                     var temp_id = datearray[d]['id'];
@@ -433,7 +434,7 @@ $shedulearray = array();
 
 
                             $(function () {
-                                $("select[name='select_date'").change(function () {
+                                $("#select_date").change(function () {
                                     setTime($(this).val());
                                 })
                             })
