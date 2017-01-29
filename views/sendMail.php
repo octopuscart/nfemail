@@ -825,7 +825,7 @@ If you made this request, please follow the instructions below.  Rest assured yo
 <p><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">Dear ' . strtoupper($name) . ',</span><br></p>
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">We have booked your appointment to see our Chief Tailor, Mr. Peter Daswani in <b>' . $city . '</b> on <b>' . $opdateapp . ', ' . strtoupper($time1) . '</b> at the
  
-                <span><b>' . $location . '</b></span>.<br>
+                <span><b>' . trim($location) . '.</b></span><br>
               
                 </p>
                 
