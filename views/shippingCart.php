@@ -500,12 +500,12 @@ if ($_SESSION['user_id'] == '') {
                                 $discountdata = resultAssociate($discount_query);
                               
 
-                                foreach ($discountdata as $key => $value) {
-                                    if ($value['quantity'] >= 12) {
-
-                                        $temp_discount_price += floor($value['quantity'] / 12) * $value['discount_tag'];
-                                    }
-                                }
+//                                foreach ($discountdata as $key => $value) {
+//                                    if ($value['quantity'] >= 12) {
+//
+//                                        $temp_discount_price += floor($value['quantity'] / 12) * $value['discount_tag'];
+//                                    }
+//                                }
 
                                 $tempcoupon['value_code'] = $temp_discount_price;
                                 ?>
