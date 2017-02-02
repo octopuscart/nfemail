@@ -53,7 +53,8 @@ include 'header.php';
             <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 " style='  padding:0 125px;'>
                 <div class="page_block">
                     <center>
-                        <img src="../assets/images/page_offers.jpg" style="width: 800px;">
+                        <img src="../assets/images/page_offers.jpg" style="    margin-bottom: 10px;
+    float: left;">
                     </center>
                 </div>
 
