@@ -21,7 +21,7 @@ include 'header.php';
         font-weight: 500;
     }
     .page_block{
-        background-image: url(../assets/images/page_offers.jpg);
+
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
@@ -51,7 +51,9 @@ include 'header.php';
             </section>
 
             <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 " style='  padding:0 125px;'>
-                <div class="page_block"></div>
+                <div class="page_block">
+                    <img src="../assets/images/page_offers.jpg" style="width: 100%">
+                </div>
 
             </div>
         </div>
