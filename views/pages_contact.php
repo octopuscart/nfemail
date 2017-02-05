@@ -164,14 +164,14 @@ if (isset($_POST['submitEnquiry'])) {
                     <li class="m_right_15 m_bottom_15 tooltip_container">
                         <!--tooltip-->
                         <span class="d_block r_corners color_default tooltip fs_small tr_all">Follow Us on Facebook</span>
-                        <a href="#" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2">
+                        <a href="https://twitter.com/nitafashions" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2">
                             <i class="icon-facebook fs_small"></i>
                         </a>
                     </li>
                     <li class="m_right_15 m_bottom_15 tooltip_container">
                         <!--tooltip-->
                         <span class="d_block r_corners color_default tooltip fs_small tr_all">Follow Us on Twitter</span>
-                        <a href="#" class="d_block twitter icon_wrap_size_2 circle color_grey_light_2">
+                        <a href="https://www.facebook.com/Nita-Fashions-224017321015214/" class="d_block twitter icon_wrap_size_2 circle color_grey_light_2">
                             <i class="icon-twitter fs_small"></i>
                         </a>
                     </li>
@@ -186,7 +186,7 @@ if (isset($_POST['submitEnquiry'])) {
                     <li class="m_right_15 m_bottom_15 tooltip_container">
                         <!--tooltip-->
                         <span class="d_block r_corners color_default tooltip fs_small tr_all">Youtube</span>
-                        <a href="#" class="d_block youtube icon_wrap_size_2 circle color_grey_light_2">
+                        <a href="https://www.youtube.com/channel/UC5inme9JgQVjEBJJj_7VfHA" class="d_block youtube icon_wrap_size_2 circle color_grey_light_2">
                             <i class="icon-youtube-play fs_small"></i>
                         </a>
                     </li>
