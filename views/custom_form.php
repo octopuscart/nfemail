@@ -90,7 +90,7 @@ if ($_SESSION['user_id'] == '') {
     <!--custom form support css and js-->
     <link href="./custom_form_view/static/custmo_js_css/customform.css" rel="stylesheet">
     <!--<script src="./custom_form_view/static/angular.min.js"></script>-->
-    
+
     <script>
         var cartIdMap = <?php echo json_encode($cartIdMap); ?>;
         var custom_form = "<?php echo $tag_id; ?>";
@@ -121,7 +121,7 @@ if ($_SESSION['user_id'] == '') {
         $tempproduct['custom_data'] = $styleElement;
         $tempproduct['style_select'] = FALSE;
         $tempproduct['custom_data_price'] = $styleElement;
-        $tempproduct['total_price'] =0;
+        $tempproduct['total_price'] = 0;
 //        $productCustom[$product['cart_product_id']] = $tempproduct;
         array_push($productCustom, $tempproduct);
     }
@@ -332,7 +332,7 @@ if ($_SESSION['user_id'] == '') {
         .small_remark{
             font-size: 10px!important;
         }
-.waves-effect {display: block}
+        .waves-effect {display: block}
 
 
 
@@ -473,6 +473,29 @@ if ($_SESSION['user_id'] == '') {
                             <button class="btn btn-danger button_wave" id='start_customization' style="background:red;border-color: red;color:white" 
                                     >Customize &rarr;
                             </button>
+<br/>
+<br/>
+                            <span  style="    font-size: 26px;
+    font-weight: 300;">
+                                How to customize Shirt? &rarr; 
+                                <?php
+                                if ($custom_form == 'shirtcustom') {
+                                    ?>
+                                    <button data-toggle="modal" data-target="#tutorial"style = "font-size: 16px;
+                     margin: -5px 0px;
+                        padding: 5px 10px 8px;
+                     background: #000;
+                     text-decoration: none;
+                     background: red;
+                     color: white;
+                     border-radius: 15px;">
+                                    <i class = "icon ion-play"></i> Video Tutorial
+                                    </button>
+                                <?php
+                                }
+                                
+                                ?>
+                            </span>
 
                         </center>
 
@@ -708,34 +731,7 @@ if ($_SESSION['user_id'] == '') {
                         </div>
 
                     </div>
-                    <div class="modal fade" id="tutorial" tabindex="-1" role="dialog" aria-labelledby="tutorial">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Brief Tutorial</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube"> <div class="embed-responsive embed-responsive-16by9"> <iframe id="tutorial_video" class="embed-responsive-item" src=""></iframe> </div> </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        $(function () {
-                            $('#tutorial').on('show.bs.modal', function (event) {
-                                $("#tutorial_video").attr("src", "https://www.youtube.com/embed/3Cbza8uTgyc?autoplay=1&rel=0");
-                            })
-                            $('#tutorial').on('hide.bs.modal', function (event) {
-                                $("#tutorial_video").attr("src", "");
-                            })
-                        })
-                    </script>
+                    
 
 
                     <div class="com-md-12 create_new_style animated"  style="padding: 0px;display: none;">
@@ -802,23 +798,23 @@ if ($_SESSION['user_id'] == '') {
                                                 <div class="fabrics" style="padding: 5px;  width: 88px;">
                                                     <label class="cartTitle"></label>
                                                 </div>
-                                                    <span class="icon_wrap_size_1 circle d_block show expand_button">
+                                                <span class="icon_wrap_size_1 circle d_block show expand_button">
                                                     <i class="icon-plus"></i>
                                                 </span>
                                                 <span class="icon_wrap_size_1 circle d_block show expand_button">
                                                     <i class="icon-minus"></i>
                                                 </span>
-                                            
+
                                                 <small data-title='SKU' style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 85px;color: #000;">
                                                     {{product.title}}
-                                                   
+
                                                 </small>
-                                              
+
                                                 <small  style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 60px;text-align: right;color: #000;">
                                                     {{product.style_id}}
-                                                   
+
                                                 </small>
-                                                
+
                                                 <div class="" style="width: 208px;height: 58px;position: absolute;margin-top: -62px;font-size: 17px;margin-left: 85px;color: #000;border-top: 1px solid rgba(0, 0, 0, 0.22);">
                                                     {{product.custom_data[selected_parent_ng]}}
                                                 </div> 
@@ -948,6 +944,35 @@ if ($_SESSION['user_id'] == '') {
     </div>
 
 
+    <div class="modal fade" id="tutorial" tabindex="-1" role="dialog" aria-labelledby="tutorial">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Brief Tutorial</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube"> <div class="embed-responsive embed-responsive-16by9"> <iframe id="tutorial_video" class="embed-responsive-item" src=""></iframe> </div> </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(function () {
+                            $('#tutorial').on('show.bs.modal', function (event) {
+                                $("#tutorial_video").attr("src", "https://www.youtube.com/embed/-klcHiGz0O0");
+                            })
+                            $('#tutorial').on('hide.bs.modal', function (event) {
+                                $("#tutorial_video").attr("src", "");
+                            })
+                        })
+                    </script>
+    
     <!-- Modal -->
     <div class="modal fade" id="zoom_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -1111,7 +1136,7 @@ if ($_SESSION['user_id'] == '') {
                         }
                         else {
                             swal("Review Again", "You can review your style.", "error");
-                            $("#submit_order_button").text(" Submit Order "); 
+                            $("#submit_order_button").text(" Submit Order ");
                         }
                     });
 
@@ -1228,8 +1253,8 @@ include 'footer.php'
                 var obj = $(this).parents("[role='tabpanel']").prev().attr("id");
                 $("a[aria-controls='" + obj + "']").tab("show");
             }
-            if($('[aria-controls="confirm_order"]').parent("li").hasClass("active")){
-                 var obj = $(this).parents("[role='tabpanel']").prev().attr("id");
+            if ($('[aria-controls="confirm_order"]').parent("li").hasClass("active")) {
+                var obj = $(this).parents("[role='tabpanel']").prev().attr("id");
                 $("a[aria-controls='" + obj + "']").tab("show");
             }
         })
