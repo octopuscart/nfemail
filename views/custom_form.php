@@ -479,9 +479,10 @@ if ($_SESSION['user_id'] == '') {
     font-weight: 300;">
                               
                                 <?php
-                                  How to customize Shirt? &rarr; 
+                                  
                                 if ($custom_form == 'shirtcustom') {
                                     ?>
+                                How to customize Shirt? &rarr; 
                                     <button data-toggle="modal" data-target="#tutorial"style = "font-size: 16px;
                      margin: -5px 0px;
                         padding: 5px 10px 8px;
