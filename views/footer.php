@@ -180,7 +180,7 @@ if ($_SESSION['user_id'] == '') {
                         <li class="m_right_15 m_bottom_15 tooltip_container">
                             tooltip
                             <span class="d_block r_corners color_default tooltip fs_small tr_all">Follow</span>
-                            <a href="https://www.facebook.com/" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2">
+                            <a href="https://www.facebook.com" class="d_block facebook icon_wrap_size_2 circle color_grey_light_2">
                                 <i class="icon-facebook fs_small"></i>
                             </a>
                         </li>
