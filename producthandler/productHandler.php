@@ -681,10 +681,7 @@ order by count(nfw_color_id) asc, colorbunch";
                 $categoryString = implode(',', $dataId);
 
 //                sub category checking string
-                $subcategorycheck = "SELECT group_concat( nfw_product_subcategory.product_id) FROM nfw_product_subcategory
-     join nfw_product_tag_connection on nfw_product_tag_connection.product_id = nfw_product_subcategory.product_id
-     where nfw_product_tag_connection.tag_id = '$item_type' and nfw_product_subcategory.category_id in ($categoryString )";
-
+            
 
                 $category = "where (np.product_category in (" . $categoryString . ") )  and ntc.tag_id = $item_type";
 
@@ -802,7 +799,7 @@ order by count(nfw_color_id) asc, colorbunch";
             $checkcolorsort = ", color ";
         }
         $query = " select id,  sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
-                            group by id order by  $pricesort  $checkcolorsort  $limitquery";
+                            group by id order by  $pricesort  $checkcolorsort ";
 
         //echo $query;
         $result = resultAssociate($query);
@@ -940,7 +937,7 @@ order by count(nfw_color_id) asc, colorbunch";
                 $pg = $_REQUEST['paginate'];
                 $pg1 = $pg[0] - 1;
                 $pg2 = $_REQUEST['perpage'];
-                return array_slice($resultf, $pg1, $pg2);
+                return $resultf;
             } else {
                 return ($resultf);
             }
