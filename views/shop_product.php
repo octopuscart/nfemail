@@ -58,91 +58,91 @@ $productList = $relatedProduct;
         padding-right: 10px;
     }
 </style>
- <style>
-        .page_navigation{float: right;}
-        .page_navigation a {
-            height: 10px;
-            padding: 6px;
-            margin: 1px;
-            border: 1px solid #CFCFCF;
-        }
-        .active_page{
-            background: #000000;
-            color: #fff; 
-        }
-        .fabric_color_list{
-            width: 22px;
-            margin-top: -33px;
-            z-index: 9999999999;
-            /* margin-left: 3px; */
-            position: absolute;
-            margin-top: -12px;
-            padding: 0px;
-            border: 1px solid #B3B3B3;
-        }
-        .fabric_color_list_button{
-            margin-top: 0px !important;;
-            float: left;
-            margin-left: 4px;
-            height: 10px;
-            width: 20px;
-            margin-bottom: 0px;
-        }
-        .color_button {
-            border: 1px solid #000;
-        }
+<style>
+    .page_navigation{float: right;}
+    .page_navigation a {
+        height: 10px;
+        padding: 6px;
+        margin: 1px;
+        border: 1px solid #CFCFCF;
+    }
+    .active_page{
+        background: #000000;
+        color: #fff; 
+    }
+    .fabric_color_list{
+        width: 22px;
+        margin-top: -33px;
+        z-index: 9999999999;
+        /* margin-left: 3px; */
+        position: absolute;
+        margin-top: -12px;
+        padding: 0px;
+        border: 1px solid #B3B3B3;
+    }
+    .fabric_color_list_button{
+        margin-top: 0px !important;;
+        float: left;
+        margin-left: 4px;
+        height: 10px;
+        width: 20px;
+        margin-bottom: 0px;
+    }
+    .color_button {
+        border: 1px solid #000;
+    }
 
-        .color_button_check {
-            border: 1px solid #000;
-            height: 26px;
-            margin-bottom: 4px;
-            float: left;
-            width: 35px!important;
-            padding-left: 0px;
-        }
-        input[type="checkbox"] + label:before {
-            content: '';
-            font-family: "fontello";
-            display: block;
-            position: absolute;
-            background: rgba(0, 0, 0, 0);
-            top: 0;
-            left: 5px;
-            width: 22px;
-            height: 23px;
-            border: 0px solid #cc0000;
-            -webkit-border-radius: 0%; 
-            -moz-border-radius: 0%;
-            border-radius:0%; 
-        }
-        input[type="checkbox"] + label:after {
-            content: '\e914';
-            font-family: "fontello";
-            position: absolute;
-            left: 6px;
-            top: -1px;
-            display: none;
-            color: #797474;
-        }
+    .color_button_check {
+        border: 1px solid #000;
+        height: 26px;
+        margin-bottom: 4px;
+        float: left;
+        width: 35px!important;
+        padding-left: 0px;
+    }
+    input[type="checkbox"] + label:before {
+        content: '';
+        font-family: "fontello";
+        display: block;
+        position: absolute;
+        background: rgba(0, 0, 0, 0);
+        top: 0;
+        left: 5px;
+        width: 22px;
+        height: 23px;
+        border: 0px solid #cc0000;
+        -webkit-border-radius: 0%; 
+        -moz-border-radius: 0%;
+        border-radius:0%; 
+    }
+    input[type="checkbox"] + label:after {
+        content: '\e914';
+        font-family: "fontello";
+        position: absolute;
+        left: 6px;
+        top: -1px;
+        display: none;
+        color: #797474;
+    }
 
-        .color_list input[type="checkbox"] + label {
-            width: auto !important;
-            position: relative;
-            padding-left: 18px;
-            cursor: pointer;
-            /* padding-bottom: 10px; */
-        }
+    .color_list input[type="checkbox"] + label {
+        width: auto !important;
+        position: relative;
+        padding-left: 18px;
+        cursor: pointer;
+        /* padding-bottom: 10px; */
+    }
 
-        span.sale_price {
-            margin-left: 15px;
-        }
-        span.cut_price {
-            text-decoration: line-through;
-            color:#A5A1A1;
-        }
+    span.sale_price {
+        margin-left: 15px;
+    }
+    span.cut_price {
+        text-decoration: line-through;
+        color:#A5A1A1;
+    }
 
 
-    </style>
+</style>
 <?php
 $largeImage = $productDualImage[0]['image'];
 $largeImage = str_replace("small", "large", $largeImage);
@@ -368,15 +368,17 @@ $largeImage = str_replace("small", "large", $largeImage);
                                         ?>
                                         <!--product-->
                                         <figure class="fp_item t_align_c d_xs_inline_b">
-                                            <a href="shop_product.php?product_id=<?php echo $productInfo3['product_id']; ?>&item_type=<?php echo $res['tag_id']; ?>" class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23">
+                                            <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23">
                                                 <!--images container-->
                                                 <div class="fp_images relative" style="height:200px">
-                                                    <img src="<?php echo $productDualImage[0]['image']; ?>" alt="" class="tr_all" style ="height:270px; width: 270px">
-                                                    <img src="<?php echo $productDualImage[1]['image']; ?>" alt="" class="tr_all"style ="height:270px; width: 270px">
+                                                    <a href="shop_product.php?product_id=<?php echo $productInfo3['product_id']; ?>&item_type=<?php echo $result[$k]['tag_id']; ?>">
+                                                        <img src="<?php echo $productDualImage[0]['image']; ?>" alt="" class="tr_all" style ="height:270px; width: 270px">
+                                                        <img src="<?php echo $productDualImage[1]['image']; ?>" alt="" class="tr_all"style ="height:270px; width: 270px">
+                                                    </a>
                                                 </div>
                                                 <!--labels-->
 
-                                            </a>
+                                            </div>
                                             <figcaption>
                                                 <h6 class=""><a href="#" class="color_dark"><?php echo $productInfo3['title']; ?> </a></h6>
                                                 <i><?php echo $productInfo3['product_speciality']; ?></i>                       
