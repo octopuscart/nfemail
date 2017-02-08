@@ -380,7 +380,7 @@ $largeImage = str_replace("small", "large", $largeImage);
 
                                             </div>
                                             <figcaption>
-                                                <h6 class=""><a href="#" class="color_dark"><?php echo $productInfo3['title']; ?> </a></h6>
+                                                <h6 class=""><a href="shop_product.php?product_id=<?php echo $result[$k]['product_id']; ?>&item_type=<?php echo $result[$k]['tag_id']; ?>" class="color_dark"><?php echo $productInfo3['title']; ?> </a></h6>
                                                 <i><?php echo $productInfo3['product_speciality']; ?></i>                       
                                                 <div class="">
                                                     <p>
