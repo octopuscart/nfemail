@@ -371,7 +371,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                                             <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23">
                                                 <!--images container-->
                                                 <div class="fp_images relative" style="height:200px">
-                                                    <a href="shop_product.php?product_id=<?php echo $productInfo3['product_id']; ?>&item_type=<?php echo $result[$k]['tag_id']; ?>">
+                                                    <a href="shop_product.php?product_id=<?php echo $result[$k]['product_id']; ?>&item_type=<?php echo $result[$k]['tag_id']; ?>">
                                                         <img src="<?php echo $productDualImage[0]['image']; ?>" alt="" class="tr_all" style ="height:270px; width: 270px">
                                                         <img src="<?php echo $productDualImage[1]['image']; ?>" alt="" class="tr_all"style ="height:270px; width: 270px">
                                                     </a>
