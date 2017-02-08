@@ -368,7 +368,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                                         ?>
                                         <!--product-->
                                         <figure class="fp_item t_align_c d_xs_inline_b">
-                                            <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23">
+                                            <a href="shop_product.php?product_id=<?php echo $productInfo3['product_id']; ?>&item_type=<?php echo $res['tag_id']; ?>" class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23">
                                                 <!--images container-->
                                                 <div class="fp_images relative" style="height:200px">
                                                     <img src="<?php echo $productDualImage[0]['image']; ?>" alt="" class="tr_all" style ="height:270px; width: 270px">
@@ -376,7 +376,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                                                 </div>
                                                 <!--labels-->
 
-                                            </div>
+                                            </a>
                                             <figcaption>
                                                 <h6 class=""><a href="#" class="color_dark"><?php echo $productInfo3['title']; ?> </a></h6>
                                                 <i><?php echo $productInfo3['product_speciality']; ?></i>                       
