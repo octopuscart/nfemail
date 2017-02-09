@@ -379,7 +379,7 @@ if (isset($_REQUEST['category'])) {
                             ?>
                             <!--products-->
 
-                            <div class="" >
+                            <div class="" ng-if="loader == 0">
 
 
 
@@ -391,8 +391,8 @@ if (isset($_REQUEST['category'])) {
                                                 <!--images container-->
                                                 <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type; ?>" class='redirecturl'>
                                                     <div class="fp_images relative ">
-                                                        <img src="<?php echo "$imageserver/small/"?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/"?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
-                                                        <img src="<?php echo "$imageserver/small/"?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/"?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
 
                                                     </div>
                                                     <div class="fabric_color" style="">
@@ -521,22 +521,30 @@ if (isset($_REQUEST['category'])) {
 
                                 </div>
 
+
+                                <div ng-if="productList.length == 0" class="loader_container" >
+
+                                    <h1 style="    text-align: center;
+                                        margin-top: 9%;
+                                        font-weight: 200;
+                                        color: #000;">No Product Found.</h1>
+                                </div>
+<div class="page_navigation" style="margin-right: 37%;"></div>
                             </div>
-                            <div ng-if="productList.length == 0" class="loader_container" >
-                                <div class='loader_image' style="    padding-top: 15%;    padding-bottom: 14%;" >
-                                    <center>
-                                        <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
-                                    </center>
-                                    <h3 style="    text-align: center;
-                                        padding-top: 30px;
-                                        font-weight: 300;">
-                                        Loading...
-                                    </h3>
-                                </div> 
-                            </div>
+                            <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
+                                <center>
+                                    <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
+                                </center>
+                                <h3 style="    text-align: center;
+                                    padding-top: 30px;
+                                    font-weight: 300;">
+                                    Loading...
+                                </h3>
+                            </div> 
 
 
-                            <div class="page_navigation" style="margin-right: 37%;"></div>
+
+                            
                             <?php
                             for ($i = 0; $i < count($productList); $i++) {
                                 $product_id = $productList[$i]['id'];
@@ -568,11 +576,11 @@ if (isset($_REQUEST['category'])) {
     <script>
 
 
-                            $(function () {
+                                $(function () {
 
 
 
-                            });
+                                });
     </script>
 
 
@@ -586,7 +594,7 @@ if (isset($_REQUEST['category'])) {
 
         nitaFasions.controller('ProductListController', function ($scope, $http, $filter, $timeout) {
             var requestobj = JSON.parse('<?php echo json_encode($_REQUEST) ?>');
-
+            $scope.loader = 1;
             $scope.getProductData = function () {
 
                 var countdata = $(".info_text").text().split(" ")[1];
@@ -602,8 +610,10 @@ if (isset($_REQUEST['category'])) {
                 var url = 'ajaxController.php' + "?" + $.param(requestobj);
                 $scope.productList = [];
                 $http.get(url).then(function (rdata) {
+                    $scope.loader = 0;
                     $scope.productList = rdata.data;
                     $timeout(function () {
+                         
                         $("img.lazy").lazyload({
     //                            placeholder: "<?php echo $defaultProduct; ?>"
                         });
@@ -620,6 +630,7 @@ if (isset($_REQUEST['category'])) {
                                 "scrollTop": 100
                             })
                         });
+                       
                     }, 500)
                 });
 
