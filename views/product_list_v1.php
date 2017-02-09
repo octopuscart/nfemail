@@ -519,8 +519,10 @@ if (isset($_REQUEST['category'])) {
                                                                         </h3>
                                                                     </div> -->
 
-                                </div>
+                                  
 
+                                </div>
+  <div class="page_navigation" ng-if="productList.length >0"  style="margin-right: 37%;"></div>
 
                                 <div ng-if="productList.length == 0" class="loader_container" >
 
@@ -529,7 +531,6 @@ if (isset($_REQUEST['category'])) {
                                         font-weight: 200;
                                         color: #000;">No Product Found.</h1>
                                 </div>
-<div class="page_navigation" style="margin-right: 37%;"></div>
                             </div>
                             <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
                                 <center>
@@ -544,7 +545,7 @@ if (isset($_REQUEST['category'])) {
 
 
 
-                            
+
                             <?php
                             for ($i = 0; $i < count($productList); $i++) {
                                 $product_id = $productList[$i]['id'];
@@ -576,11 +577,11 @@ if (isset($_REQUEST['category'])) {
     <script>
 
 
-                                $(function () {
+                            $(function () {
 
 
 
-                                });
+                            });
     </script>
 
 
@@ -613,7 +614,7 @@ if (isset($_REQUEST['category'])) {
                     $scope.loader = 0;
                     $scope.productList = rdata.data;
                     $timeout(function () {
-                         
+
                         $("img.lazy").lazyload({
     //                            placeholder: "<?php echo $defaultProduct; ?>"
                         });
@@ -630,7 +631,7 @@ if (isset($_REQUEST['category'])) {
                                 "scrollTop": 100
                             })
                         });
-                       
+
                     }, 500)
                 });
 
