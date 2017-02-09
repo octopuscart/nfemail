@@ -274,7 +274,7 @@ class CategoryHandler {
         }
     }
 
-    function productList() {
+  function productList() {
 
         $conf = resultAssociate("select * from server_conf");
         $conf = end($conf);
@@ -692,7 +692,7 @@ order by count(nfw_color_id) asc, colorbunch";
      where nfw_product_tag_connection.tag_id = '$item_type' and nfw_product_subcategory.category_id in ($categoryString )";
 
 
-                $category = "where np.product_category >= $category_id  and ntc.tag_id = $item_type";
+                $category = "where np.product_category in (" . $categoryString . ")   and ntc.tag_id = $item_type";
                 if ($searchtag != "") {
                     $category .= " and nptcs.tag_id  = '$searchtag' ";
                 }
@@ -808,7 +808,7 @@ order by count(nfw_color_id) asc, colorbunch";
         }
         $query = " select id, color, title, product_speciality, price, price_r, sale_price,  image, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
                             group by id order by  $pricesort  $checkcolorsort  ";
-        echo $query;
+      //  echo $query;
 
         $result = resultAssociate($query);
 
