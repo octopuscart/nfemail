@@ -1,4 +1,5 @@
 <?php
+include 'header.php';
 include './defaultproductimage.php';
 $item_type = $_REQUEST['item_type'];
 if (isset($_REQUEST['category'])) {
@@ -7,8 +8,6 @@ if (isset($_REQUEST['category'])) {
     $item_type = $_REQUEST['item_type'];
     header("location:product_list.php?category=0&item_type=" . $item_type);
 }
-include 'header.php';
-
 if (isset($_REQUEST['colors'])) {
     $colorsession = $_REQUEST['colors'];
 
