@@ -626,22 +626,28 @@ order by count(nfw_color_id) asc, colorbunch";
         $conf = resultAssociate("select * from server_conf");
         $conf = end($conf);
         $imageserver = $conf['image_server'];
-        $colorjoin = "  
-             join nfw_product_color as npc on np.id = npc.nfw_product_id join nfw_color as nc on npc.nfw_color_id = nc.id 
+        $colorjoin = "   join nfw_product_color as npc on np.id =  npc.nfw_product_id
+                        join nfw_color as nc on npc.nfw_color_id = nc.id
+                         
                         left join nfw_product_subcategory as sbnptcs on sbnptcs.category_id = np.product_category
 
                         left join nfw_product_search_tag_connection as nptcs on nptcs.product_id = np.id
                         
+                       left join nfw_product_images as nfimg on nfimg.nfw_product_id = np.id   
 
                         left join nfw_fabric as nf on nf.id = np.fabric_title
                         join nfw_product_tag_connection as ntc on ntc.product_id = np.id";
         $query = "";
 
-     
+
 
         $preselectq = "SELECT distinct np.id as id, 
-    publishing
-    ";
+                       ( 
+                       SELECT group_concat(snc.id, snc.color_code) FROM nfw_color as snc  
+         left join nfw_product_color as snpc on snpc.nfw_color_id = snc.id
+         where snpc.nfw_product_id = np.id order by snc.id asc
+                       ) as color, npc.id as colorid,
+                       np.title as title, np.product_speciality as product_speciality, publishing, ntc.price as price, ntc.sale_price, if(ntc.sale_price, ntc.sale_price, ntc.price) as price_r,    nfimg.image as image";
 
         $category_id = $_REQUEST['category'];
         $sorting = $_REQUEST['sorting'];
@@ -681,10 +687,12 @@ order by count(nfw_color_id) asc, colorbunch";
                 $categoryString = implode(',', $dataId);
 
 //                sub category checking string
-            
+                $subcategorycheck = "SELECT group_concat( nfw_product_subcategory.product_id) FROM nfw_product_subcategory
+     join nfw_product_tag_connection on nfw_product_tag_connection.product_id = nfw_product_subcategory.product_id
+     where nfw_product_tag_connection.tag_id = '$item_type' and nfw_product_subcategory.category_id in ($categoryString )";
 
-                $category = "where (np.product_category in (" . $categoryString . ") )  and ntc.tag_id = $item_type";
 
+                $category = "where np.product_category >= $category_id  and ntc.tag_id = $item_type";
                 if ($searchtag != "") {
                     $category .= " and nptcs.tag_id  = '$searchtag' ";
                 }
@@ -798,10 +806,10 @@ order by count(nfw_color_id) asc, colorbunch";
         if (count($colorlist)) {
             $checkcolorsort = ", color ";
         }
-        $query = " select id,  sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
-                            group by id order by  $pricesort  $checkcolorsort ";
+        $query = " select id, color, title, product_speciality, price, price_r, sale_price,  image, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
+                            group by id order by  $pricesort  $checkcolorsort  ";
+        echo $query;
 
-        //echo $query;
         $result = resultAssociate($query);
 
 
