@@ -1,13 +1,13 @@
 <?php
+include 'header.php';
 include './defaultproductimage.php';
 $item_type = $_REQUEST['item_type'];
 if (isset($_REQUEST['category'])) {
     $defaultProduct = $defaultProductImage;
 } else {
     $item_type = $_REQUEST['item_type'];
-    header("location:product_list_v1.php?category=0&item_type=" . $item_type);
+    header("location:product_list.php?category=0&item_type=" . $item_type);
 }
-include 'header.php';
 
 if (isset($_REQUEST['colors'])) {
     $colorsession = $_REQUEST['colors'];
