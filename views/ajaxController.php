@@ -370,22 +370,44 @@ if (isset($_REQUEST['keys'])) {
 }
 
 if (isset($_REQUEST['getproductlistpage'])) {
-    //error_reporting(E_ALL); ini_set('display_errors', 1);
+//    error_reporting(E_ALL & ~E_NOTICE );
+//     ini_set('display_errors', 1);
     $catobj = new CategoryHandler();
     $productList = $catobj->productList();
-
     echo json_encode($productList);
 }
 
 
 if (isset($_REQUEST['getproductlistpage_v1'])) {
-    //error_reporting(E_ALL); ini_set('display_errors', 1);
+//   error_reporting(E_ALL); ini_set('display_errors', 1); 
     $catobj = new CategoryHandler();
-    $productList = $catobj->productListV1();
-    
-
-    echo json_encode($productList);
+    $productList = $catobj->productListV2();
+    $productFinal = array();
+   echo $productjson =  json_encode($productList); 
 }
+//    echo json_encode($productList);
+//    $categoryList = array();
+//
+//    foreach ($productList as $key => $value) {
+//        //print_r($value['category_id']);
+//        if (isset($categoryList[$value['category_id']])) {
+//            
+//        } else {
+//            $categoryList[$value['category_id']] = $value['category_id'];
+//        }
+//    }
+//// 
+//
+//    foreach ($categoryList as $key => $value) {
+//        //echo '<br/>', $value, '----';
+//      //  $categorylist = array(); 
+//        
+////       echo $parents = get_parent($value);
+//       
+//      //  echo "<br/>===";
+//        //print_r($parents);
+//    }
+//}
 
 if (isset($_REQUEST['search_text'])) {
     echo $search_text = $_REQUEST['search_text'];
