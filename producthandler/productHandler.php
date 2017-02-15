@@ -654,12 +654,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
         $query = "SELECT 
                    np.id as id,
-                   ( 
-                       SELECT group_concat(snc.id, snc.color_code) FROM nfw_color as snc  
-         left join nfw_product_color as snpc on snpc.nfw_color_id = snc.id
-         where snpc.nfw_product_id = np.id order by snc.id asc
-                       ) as color,
-                   nc.id as colorid,
+                
                    np.product_category as category_id,
                    np.title as title,
                    np.product_speciality as product_speciality,
