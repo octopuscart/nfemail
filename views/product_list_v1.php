@@ -540,7 +540,7 @@ if (isset($_REQUEST['category'])) {
                                         color: #000;">No Product Found.</h1>
                                 </div>
                             </div>
-                             <div class="page_navigation"  style="margin-right: 37%;"></div>
+                            
                             <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
                                 <center>
                                     <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
@@ -551,6 +551,7 @@ if (isset($_REQUEST['category'])) {
                                     Loading...
                                 </h3>
                             </div> 
+                             <div class="page_navigation"  style="margin-right: 37%;"></div>
 
 
 
