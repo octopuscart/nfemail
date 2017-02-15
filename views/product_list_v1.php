@@ -6,8 +6,10 @@ if (isset($_REQUEST['category'])) {
     $defaultProduct = $defaultProductImage;
 } else {
     $item_type = $_REQUEST['item_type'];
-    header("location:product_list.php?category=0&item_type=" . $item_type);
+    header("location:product_list_v1.php?category=0&item_type=" . $item_type);
 }
+
+
 
 if (isset($_REQUEST['colors'])) {
     $colorsession = $_REQUEST['colors'];
@@ -181,7 +183,6 @@ if (isset($_REQUEST['category'])) {
                         </a>
                     </li>
                     <?php
-                    $parents = $catobj->get_parent($_REQUEST['category']);
                     $parentArray = explode(',', $parents);
                     for ($i = 0; $i < count($parentArray); $i++) {
                         $res = mysql_query("select name from nfw_category where id = $parentArray[$i] ");
@@ -209,14 +210,13 @@ if (isset($_REQUEST['category'])) {
             <div class="container" style="    width: 1200px;">
                 <div class="row">
 
-                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%">
+                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%" >
 
-                        <div class="m_bottom_45 m_xs_bottom_30">
+                        <div class="m_bottom_45 m_xs_bottom_30" >
 
                             <div class="m_bottom_40 m_xs_bottom_30">
                                 <?php
                                 $res = $catobj->productSubCategory($_REQUEST['category'], $_REQUEST['item_type']);
-
                                 if ($res) {
                                     ?> 
                                     <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
@@ -264,6 +264,7 @@ if (isset($_REQUEST['category'])) {
                                 <?php } else { ?>
             <!--                                <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>-->
                                 <?php } ?>
+
                             </div>
 
                             <form id="filterform">
@@ -380,19 +381,26 @@ if (isset($_REQUEST['category'])) {
                             <!--products-->
 
                             <div class="" ng-if="loader == 0">
+                                <div class="page_container" style='display: none'>
+
+                                    <div class='page' ng-repeat="pg in pageList"></div>
 
 
 
-                                <div ng-if="productList.length > 0" class="page_container shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
+                                </div>
 
-                                    <div class="page shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
+
+
+                                <div ng-if="productList.length > 0" class=" shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
+
+                                    <div class=" shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
                                         <figure class="fp_item t_align_c d_xs_inline_b ">
                                             <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
                                                 <!--images container-->
                                                 <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type; ?>" class='redirecturl'>
                                                     <div class="fp_images relative ">
-                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
-                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
 
                                                     </div>
                                                     <div class="fabric_color" style="">
@@ -519,10 +527,10 @@ if (isset($_REQUEST['category'])) {
                                                                         </h3>
                                                                     </div> -->
 
-                                  
+
 
                                 </div>
-  <div class="page_navigation" ng-if="productList.length >0"  style="margin-right: 37%;"></div>
+                               
 
                                 <div ng-if="productList.length == 0" class="loader_container" >
 
@@ -532,6 +540,7 @@ if (isset($_REQUEST['category'])) {
                                         color: #000;">No Product Found.</h1>
                                 </div>
                             </div>
+                             <div class="page_navigation"  style="margin-right: 37%;"></div>
                             <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
                                 <center>
                                     <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
@@ -596,8 +605,8 @@ if (isset($_REQUEST['category'])) {
         nitaFasions.controller('ProductListController', function ($scope, $http, $filter, $timeout) {
             var requestobj = JSON.parse('<?php echo json_encode($_REQUEST) ?>');
             $scope.loader = 1;
-            $scope.getProductData = function () {
-
+            $scope.getProductData = function (timecheck) {
+                $scope.loader = 1;
                 var countdata = $(".info_text").text().split(" ")[1];
                 if (countdata) {
                     countdata = countdata.split("-");
@@ -610,37 +619,61 @@ if (isset($_REQUEST['category'])) {
                 requestobj['getproductlistpage_v1'] = 'searching';
                 var url = 'ajaxController.php' + "?" + $.param(requestobj);
                 $scope.productList = [];
+                $scope.pageList = [];
                 $http.get(url).then(function (rdata) {
                     $scope.loader = 0;
-                    $scope.productList = rdata.data;
+                    $scope.productList = rdata.data.productdata;
+                    var count = rdata.data.count;
+                    if (timecheck) {
+                        for (i = 0; i < count; i++) {
+                            $scope.pageList.push(i);
+                        }
+                    }
                     $timeout(function () {
 
                         $("img.lazy").lazyload({
-    //                            placeholder: "<?php echo $defaultProduct; ?>"
+                            //                            placeholder: "<?php echo $defaultProduct; ?>"
                         });
-                        var page_data = $('.section_offset').pajinate({
-                            items_per_page: 16,
-                            item_container_id: '.page_container',
-                            nav_panel_id: '.page_navigation',
-                            num_page_links_to_display: 10,
-                            nav_label_info: 'Showing {0}-{1} of {2} results',
-                            nav_info_id: '.info_text'
-                        });
-                        $(".page_navigation a").click(function () {
-                            $("body").animate({
-                                "scrollTop": 100
-                            })
-                        });
+                        if (timecheck) {
+                            var page_data = $('.section_offset').pajinate({
+                                items_per_page: 16,
+                                item_container_id: '.page_container',
+                                nav_panel_id: '.page_navigation',
+                                num_page_links_to_display: 10,
+                                nav_label_info: 'Showing {0}-{1} of {2} results',
+                                nav_info_id: '.info_text'
+                            });
+                            $(".page_navigation a").click(function () {
+                                $("body").animate({
+                                    "scrollTop": 100
+                                });
+                                $scope.getProductData(0);
+                            });
+                        }
+                          Waves.attach('.button_wave', ['waves-button', 'waves-float']);
+                    Waves.attach('.waves-image1');
+                    Waves.init();
 
                     }, 500)
                 });
 
             }
-            $scope.getProductData();
+            $scope.getProductData(1);
 
         })
 
         /////////////////
+        $("document").on(".page_navigation a", "click", function () {
+            angular.element(document.getElementById("ProductListControllerId")).scope().getProductData(0);
+
+            $(".shop_isotope_item").each(function (i) {
+                var obj = this;
+            });
+            $("body").animate({
+                "scrollTop": 100
+            }, function () {
+            })
+        });
 
 
     </script>

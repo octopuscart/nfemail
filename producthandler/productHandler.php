@@ -202,12 +202,14 @@ class CategoryHandler {
     function parents($parentId) {
         $query = "select id from nfw_category where parent = $parentId";
         $res = resultAssociate($query);
+
         for ($i = 0; $i < count($res); $i++) {
             $id = $res[$i]['id'];
             global $arrayChild;
             array_push($arrayChild, $id);
             parents($res[$i]['id']);
         }
+
         return $arrayChild;
     }
 
@@ -274,7 +276,7 @@ class CategoryHandler {
         }
     }
 
-  function productList() {
+    function productList() {
 
         $conf = resultAssociate("select * from server_conf");
         $conf = end($conf);
@@ -621,6 +623,177 @@ order by count(nfw_color_id) asc, colorbunch";
         }
     }
 
+    function productListV2() {
+        $category = "";
+        $category_id = $_REQUEST['category'];
+        if (isset($_REQUEST['category']) & $_REQUEST['category'] != 0) {
+
+            $dataId = $this->parents($category_id);
+            $dataId[] = $category_id;
+            $query_data = array();
+            $categoryString = implode(',', $dataId);
+            $category = " and np.product_category in (" . $categoryString . ") ";
+        }
+
+        $item_type = $_REQUEST['item_type'];
+
+        $colorlistf = $_REQUEST['colors'];
+
+        $color_id = implode(",", $colorlistf);
+        $colorlist = explode(",", $color_id);
+        $colorcount = count($colorlist);
+        
+        $colorquerycc = "";
+         $colorquery = implode(",", $colorlist);
+        if($colorcount>1){
+            $colorquerycc = " and nc.id in ($colorquery)";
+        }
+
+
+       
+
+        $query = "SELECT 
+                   np.id as id,
+                   ( 
+                       SELECT group_concat(snc.id, snc.color_code) FROM nfw_color as snc  
+         left join nfw_product_color as snpc on snpc.nfw_color_id = snc.id
+         where snpc.nfw_product_id = np.id order by snc.id asc
+                       ) as color,
+                   nc.id as colorid,
+                   np.product_category as category_id,
+                   np.title as title,
+                   np.product_speciality as product_speciality,
+                   publishing, 
+                   ntc.price as price,
+          
+                   nfimg.image as image, 
+                   '' as sort_type 
+                   FROM nfw_product as np 
+                   left join nfw_product_images as nfimg on nfimg.nfw_product_id = np.id 
+                   join nfw_product_tag_connection as ntc on ntc.product_id = np.id 
+                   join nfw_product_color as npc on np.id =  npc.nfw_product_id
+                   join nfw_color as nc on npc.nfw_color_id = nc.id
+                    where ntc.tag_id = $item_type and publishing = 1 $colorquerycc $category group by np.id order by np.id ";
+
+        $result = resultAssociate($query);
+                    
+        $finalResult = array();
+        $count = count($result);
+        if (count($result)) {
+
+            $fresult = [];
+            $fresultindex = [];
+
+            $productliststr = array();
+            foreach ($result as $ry => $rv) {
+                $productliststr[$rv['id']] = $rv;
+            }
+            $productkey = array_keys($productliststr);
+            $productquery = implode(",", $productkey);
+
+//echo "----------";
+
+            function intersectdata($dataarray) {
+                $temp = [];
+                $count = count($dataarray);
+                for ($i = 0; $i < ($count - 1); $i++) {
+                    print_r($dataarray[$i]);
+                    print_r($dataarray[$i + 1]);
+                    $temp2 = array_intersect($dataarray[$i], $dataarray[$i + 1]);
+
+                    array_push($temp, $temp2);
+                }
+                return $temp;
+            }
+
+            $checkcolorsort = "";
+            if (count($colorlist)) {
+                $checkcolorsort = ", color ";
+            }
+            $colorproductmainlist = [];
+
+
+
+
+
+            if ($colorcount > 1) {
+                if ($colorcount > 1) {
+
+                    $temp41a = array();
+                    $colortemparray = array_values($colorlist);
+                    $colorsorting = get_permutations($colortemparray, $colorcount);
+//                    print_r($colorsorting);
+                    $queryc1a = "(select nfw_product_id, colorbunch from(
+SELECT nfw_product_id, nfw_color_id, 
+(select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
+ FROM nfw_product_color as npc 
+where nfw_color_id in ($colorquery) and nfw_product_id in  (" . $productquery . ") 
+group by nfw_product_id
+) as a
+where colorbunch in ($colorsorting) 
+order by FIELD(colorbunch, $colorsorting) )";
+
+                    $temps1 = [];
+                    $clllist = resultAssociate($queryc1a);
+
+                    foreach ($clllist as $key11 => $value11) {
+                        array_push($temps1, $value11['nfw_product_id']);
+                    }
+                    $temp41a = array_merge($temps1, $temp41a);
+
+                    $temp41a = ($temp41a);
+                    $temp41 = $temp41a;
+                } else {
+                    $queryc1 = "SELECT (select title from nfw_product where id = nfw_product_id) as title, nfw_product_id, nfw_color_id, (select group_concat(nfw_color_id) from nfw_product_color  as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id) as colorbunch FROM nfw_product_color as npc where nfw_product_id in  (" . $productquery . ") 
+    group by nfw_product_id 
+    having  nfw_color_id in (" . $colorquery . ") 
+order by count(nfw_color_id) asc, colorbunch";
+
+                    $colorproductmainlist1 = resultAssociate($queryc1);
+                    $temp41 = [];
+                    foreach ($colorproductmainlist1 as $key11 => $value11) {
+                        array_push($temp41, $value11['nfw_product_id']);
+                    }
+                }
+
+                $temp6 = array_values($temp4);
+                $temp7 = array_unique(array_merge($temp41, $productkey));
+                $resultf = [];
+                foreach ($temp7 as $key1 => $value1) {
+                    foreach ($result as $key2 => $value2) {
+                        if ($value2['id'] == $value1) {
+// echo $value2['id'], '-';
+                            if ($value1 != '') {
+                                $resultf[$key1] = $value2;
+                            }
+                        }
+                    }
+                }
+            } else {
+                $resultf = $result;
+            }
+            if (isset($_REQUEST['paginate'])) {
+                $pg = $_REQUEST['paginate'];
+                $pg1 = $pg[0] - 1;
+                $pg2 = $_REQUEST['perpage'];
+
+                $finalResult = array_slice($resultf, $pg1, $pg2);
+            } else {
+                $finalResult = $resultf;
+            }
+        } else {
+
+            $finalResult = array_slice($result, 0, 16);
+        }
+        
+        
+//        $pg = $_REQUEST['paginate'];
+//                $pg1 = $pg[0] - 1;
+//                $pg2 = $_REQUEST['perpage'];
+//                $finalResult =  array_slice($result, $pg1, $pg2);
+        return array('count' => $count, 'productdata' => $finalResult);
+    }
+
     function productListV1() {
 
         $conf = resultAssociate("select * from server_conf");
@@ -633,13 +806,26 @@ order by count(nfw_color_id) asc, colorbunch";
 
                         left join nfw_product_search_tag_connection as nptcs on nptcs.product_id = np.id
                         
-                       left join nfw_product_images as nfimg on nfimg.nfw_product_id = np.id   
 
                         left join nfw_fabric as nf on nf.id = np.fabric_title
                         join nfw_product_tag_connection as ntc on ntc.product_id = np.id";
         $query = "";
 
-
+        $imageq = " IFNULL(
+            (select concat('$imageserver/small/', image) as image 
+                  from nfw_product_images 
+                  where nfw_product_id = np.id order by display_priority desc limit 0, 1),
+                   '../assets/images/img2.png'
+              )    
+              as image1, 
+                  
+                 IFNULL(
+                 (select concat('$imageserver/small/', image) as image 
+                  from nfw_product_images 
+                  where nfw_product_id = np.id order by display_priority desc limit 1, 1),
+                  '../assets/images/img2.png'
+                       ) as image2
+                ";
 
         $preselectq = "SELECT distinct np.id as id, 
                        ( 
@@ -647,7 +833,7 @@ order by count(nfw_color_id) asc, colorbunch";
          left join nfw_product_color as snpc on snpc.nfw_color_id = snc.id
          where snpc.nfw_product_id = np.id order by snc.id asc
                        ) as color, npc.id as colorid,
-                       np.title as title, np.product_speciality as product_speciality, publishing, ntc.price as price, ntc.sale_price, if(ntc.sale_price, ntc.sale_price, ntc.price) as price_r,    nfimg.image as image";
+                       np.title as title, np.product_speciality as product_speciality, publishing, ntc.price as price, ntc.sale_price, if(ntc.sale_price, ntc.sale_price, ntc.price) as price_r,  $imageq ";
 
         $category_id = $_REQUEST['category'];
         $sorting = $_REQUEST['sorting'];
@@ -692,7 +878,8 @@ order by count(nfw_color_id) asc, colorbunch";
      where nfw_product_tag_connection.tag_id = '$item_type' and nfw_product_subcategory.category_id in ($categoryString )";
 
 
-                $category = "where np.product_category in (" . $categoryString . ")   and ntc.tag_id = $item_type";
+                $category = "where (np.product_category in (" . $categoryString . ") or np.id in ($subcategorycheck))  and ntc.tag_id = $item_type";
+
                 if ($searchtag != "") {
                     $category .= " and nptcs.tag_id  = '$searchtag' ";
                 }
@@ -739,7 +926,7 @@ order by count(nfw_color_id) asc, colorbunch";
                 $pg = $_REQUEST['paginate'];
                 $pg1 = $pg[0] - 1;
                 $pg2 = $_REQUEST['perpage'];
-                $limitquery = " ";
+                $limitquery = " limit $pg1, $pg2";
             }
 
 
@@ -806,13 +993,12 @@ order by count(nfw_color_id) asc, colorbunch";
         if (count($colorlist)) {
             $checkcolorsort = ", color ";
         }
-        $query = " select id, color, title, product_speciality, price, price_r, sale_price,  image, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
-                            group by id order by  $pricesort  $checkcolorsort  ";
-      //  echo $query;
+        $query = " select id, color, title, product_speciality, price, price_r, sale_price, image1, image2, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
+                            group by id order by  $pricesort  $checkcolorsort  $limitquery";
+
 
         $result = resultAssociate($query);
-
-
+        return $result;
         if (count($result)) {
 
             $fresult = [];
@@ -945,6 +1131,7 @@ order by count(nfw_color_id) asc, colorbunch";
                 $pg = $_REQUEST['paginate'];
                 $pg1 = $pg[0] - 1;
                 $pg2 = $_REQUEST['perpage'];
+//                return array_slice($resultf, $pg1, $pg2);
                 return $resultf;
             } else {
                 return ($resultf);
