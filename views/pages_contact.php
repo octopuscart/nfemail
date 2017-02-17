@@ -32,7 +32,7 @@ if (isset($_POST['submitEnquiry'])) {
                             <tbody>
                                 <tr style="background-color: #FFF;">
                                     <td style="width:100%;    padding: 10px;">
-                                    <center><img src="http://costcointernational.com/frontend/assets/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
+                                    <center><img src="http://nitafashions.com/frontend/assets/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
                                     </td>
                                     
                                 </tr>
@@ -129,7 +129,7 @@ if (isset($_POST['submitEnquiry'])) {
                 <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Contact Information</h3>
 
                 <p class="fw_light m_bottom_23">
-                    World’s finest fabrics are careful selected to live up to name of Nita Fashions. We carry over 11,000 fabrics: English flannels and worsted, Scottish tweeds and cashmere, French Gabardines and Italian and silk Mohairs.
+                    World’s finest fabrics are carefully selected to live up to name of Nita Fashions. We carry over 11,000 fabrics: English flannels and worsted, Scottish tweeds and cashmere, French Gabardines and Italian and silk Mohairs.
                 </p>
                 <div class="row">
                     <ul class="col-lg-6 col-md-6 col-sm-6 fw_light w_break m_bottom_45 m_xs_bottom_30">

@@ -8,6 +8,9 @@ if (isset($_REQUEST['category'])) {
     $item_type = $_REQUEST['item_type'];
     header("location:product_list.php?category=0&item_type=" . $item_type);
 }
+
+
+
 if (isset($_REQUEST['colors'])) {
     $colorsession = $_REQUEST['colors'];
 
@@ -208,14 +211,13 @@ if (isset($_REQUEST['category'])) {
             <div class="container" style="    width: 1200px;">
                 <div class="row">
 
-                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%">
+                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%" >
 
-                        <div class="m_bottom_45 m_xs_bottom_30">
+                        <div class="m_bottom_45 m_xs_bottom_30" >
 
                             <div class="m_bottom_40 m_xs_bottom_30">
                                 <?php
                                 $res = $catobj->productSubCategory($_REQUEST['category'], $_REQUEST['item_type']);
-
                                 if ($res) {
                                     ?> 
                                     <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
@@ -263,13 +265,14 @@ if (isset($_REQUEST['category'])) {
                                 <?php } else { ?>
             <!--                                <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>-->
                                 <?php } ?>
+
                             </div>
 
                             <form id="filterform">
                                 <!--price-->
                                 <div class="m_bottom_12" style="margin-top:-17%">
                                     <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
-                                    <div id="price"><div id="price_loader">Loading...</div></div>
+                                    <div id="pricerange"><div id="price_loader">Loading...</div></div>
                                     <div class="clearfix" style="font-size:12px;color:black;">
 
                                         <input type="text" value=""  id="from_price" name="from_price"  class="f_left half_column first_limit color_dark fw_light d_done" style="color:black;font-size: 12px;
@@ -286,67 +289,18 @@ if (isset($_REQUEST['category'])) {
                                     <input type="hidden" name="category"  value="<?php echo $_REQUEST['category']; ?>">
                                     <input type="hidden" name="item_type"  value="<?php echo $_REQUEST['item_type']; ?>">
                                     <input type="hidden" name="searchtag"  value="<?php echo $_REQUEST['searchtag']; ?>">
-                                    <?php
-                                    $tag_id = $_REQUEST['item_type'];
-                                    $colorArray = array();
-                                    $productList = $catobj->productList();
-                                    $productidstr = "";
 
-                                    $productIDS = array();
-                                    for ($i = 0; $i < count($productList); $i++) {
-                                        if ($productList[$i]['id']) {
-                                            array_push($productIDS, $productList[$i]['id']);
+                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Colors</p>
+                                    <ul class="hr_list color_list">
+                                        <li class=" m_sm_bottom_5"  data-toggle="tooltip" data-placement="left" title="{{color.title}}" ng-repeat="color in colorList"> 
+                                            <input type="checkbox" id="shop_style{{color.id}}" class="shop_style d_none selected_colors" colorname="{{color.title}}" colorcode="{{color.color_code}}" name="colors[]" value="{{color.id}}">
+                                            <label    for="shop_style{{color.id}}" class="d_inline_m m_right_2 color_button color_button_check tr_delay  bg_color_dark " style="font-size: 22px;background:{{color.color_code}};"></label>
+                                        </li>
+                                    </ul>
 
-                                            $productidstr .= $productList[$i]['id'] . ", ";
-                                            array_push($pricelist, $productList[$i]['price_r']);
-                                        }
-                                    }
-                                    $productidstr = implode(",", $productIDS);
-                                    $color_list4 = implode(",", $productIDS);
-                                    $wherequery = "";
-                                    if ($productidstr) {
-                                        $wherequery = "where npc.nfw_product_id in ($productidstr)";
-                                    }
-                                    if (1) {
-                                        $query = "
-                                        SELECT nc.id,nc.color_code, nc.title FROM nfw_color as nc
-                                          join nfw_product_color as npc on npc.nfw_color_id = nc.id
-                                          $wherequery
-                                         group by nc.id order by nc.display_index asc
-                                            ";
-                                        //  echo $query;
-                                        $colorArray = resultAssociate($query);
-                                    } else {
-                                        $colorArray = array();
-                                    }
-                                    // print_r($result);
-                                    ?>
-                                    <?php
-                                    if (count($colorArray)) {
-                                        ?>
-                                        <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Colors</p>
-                                        <ul class="hr_list color_list">
-                                            <?php
-                                            foreach ($colorArray as $key => $value) {
-                                                ?>
-                                                <li class=" m_sm_bottom_5"  data-toggle="tooltip" data-placement="left" title="<?php echo $value['title']; ?>">
-
-                                                    <input type="checkbox" id="shop_style<?php echo $value['id']; ?>"" class="shop_style d_none selected_colors" colorname="<?php echo $value['title']; ?>" colorcode="<?php echo $value['color_code']; ?>" name="colors[]" value="<?php echo $value['id']; ?>">
-                                                    <label 
-                                                        for="shop_style<?php echo $value['id']; ?>"" class="d_inline_m m_right_2 color_button color_button_check tr_delay  bg_color_dark " style="font-size: 22px;background:<?php echo $value['color_code']; ?>;"></label>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <!--<button class="color_button tr_delay  bg_color_dark circle radio m_bottom_5" value="<?php echo $value['id']; ?>" style="background:<?php echo $value['color_code']; ?>;margin-top:auto"></button>-->
-
-
-                                                </li>
-                                            <?php } ?>
-                                        </ul>
-                                        <?php
-                                    }
-                                    ?>
 
                                     <br>
-                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
+<!--                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
                                     <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_xs_bottom_10" style="margin:1px 30px 10px 0px;">
                                         <div class="select_title r_corners color_grey fs_medium"><?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'All Type'; ?> </div>
                                         <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
@@ -366,7 +320,7 @@ if (isset($_REQUEST['category'])) {
 
                                         </select>
                                     </div>
-                                    <br>
+                                    <br>-->
 
 
                                 </div>
@@ -410,12 +364,8 @@ if (isset($_REQUEST['category'])) {
                                 <div class="pull-left" style="margin-top: -13px; margin-left: 30px;">
 
                                     <span class="pull-left" style="    margin-top: -3px;">Color: </span>
-                                    <?php
-                                    foreach ($_SESSION['colorlist'] as $key => $value) {
-                                        echo "<span class='filtercolor' colorfiltercode='" . $value . "'><i class='fa  removecolor'></i></span>";
-                                    }
-                                    ?>
 
+                                    <span class='filtercolor' colorfiltercode='{{scl.id}}'  ng-repeat="scl in selectedColorList" style="background: {{scl.color_code}}"><i class='fa  removecolor'></i></span>
                                 </div>
                                 <?php
                             }
@@ -430,172 +380,186 @@ if (isset($_REQUEST['category'])) {
                         //print_r($productList);
 
 
-                        if (count($productList)) {
+                        if (1) {
                             ?>
                             <!--products-->
 
-                            <div class="page_container" style='display: none'>
-                                <?php
-                                for ($i = 0; $i < count($productList); $i++) {
-                                    echo " <div class='page'></div>";
-                                }
-                                ?>
+                            <div class="" ng-if="loader == 0">
+                                <div class="page_container" style='display: none'>
 
-                            </div>
+                                    <div class='page' ng-repeat="pg in pageList"></div>
 
-                            <div ng-if="productList.length > 0" class="shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
 
-                                <div class="shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
-                                    <figure class="fp_item t_align_c d_xs_inline_b ">
-                                        <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
-                                            <!--images container-->
-                                            <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type;?>" class='redirecturl'>
-                                                 <div class="fp_images relative ">
-                                                    <img src="{{product.image1}}" alt="" class=" tr_all img1 lazy" data-original="{{product.image1}}" style="height:250px; width:250px;background: url(<?php echo $defaultProduct; ?>)" >
-                                                    <img src="{{product.image2}}"  alt="" class=" tr_all img2 lazy" data-original="{{product.image2}}" style="height:250px; width:250px;display: none;background: url(<?php echo $defaultProduct; ?>);" >
-                                                </div>
-                                                <div class="fabric_color" style="">
 
-                                                    <center class="fabric_color_list">
-                                                        <button ng-repeat="color in product.color.split(',')" 
-                                                                class=" tr_delay  bg_color_dark  radio m_bottom_5 
-                                                                fabric_color_list_button" 
-                                                                value="4" 
-                                                                style="background:#{{color.split('#')[1]}};
-                                                                margin-left:0px;
-                                                                height:{{10 / (product.color.split(',').length)}}px"></button>
-                                                    </center>
-                                                </div>
-                                            </a>
-                                            <!--labels-->
-                                            <div class="labels_container" ng-switch="product.sort_type">
-                                                <a href="#" class="d_block label color_scheme 
-                                                   tt_uppercase fs_ex_small circle
-                                                   m_bottom_5 vc_child t_align_c product_sort_type1" 
-                                                   ng-if="product.sale_price != 0">
-                                                    <span class="d_inline_m " >Sale</span>
-                                                </a>
-                                                <a href="#" class="d_block label color_scheme
-                                                   tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
-                                                   product_sort_type" ng-switch-when="MP">
-                                                    <span class="d_inline_m " >MP</span>
-                                                </a>
-                                                <a href="#" class="d_block label color_scheme
-                                                   tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
-                                                   product_sort_type" ng-switch-when="New">
-                                                    <span class="d_inline_m " >NEW</span>
-                                                </a>
-                                                <div ng-switch-when="MP_SALE">
-                                                    <a href="#" class="d_block label color_scheme
-                                                       tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
-                                                       product_sort_type" >
-                                                        <span class="d_inline_m " >MP</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <figcaption>
-                                            <h6 class="m_bottom_5">
-                                                <a href="#" class="color_dark titles" style="font-size: 14px;" id="">
-                                                    {{product.title}}
-                                                </a>
-                                            </h6>
-
-                                            <a href="#" class="fs_medium color_grey d_inline_b m_bottom_3"> 
-                                                <i class="product_speciality" data-toggle="tooltip" data-placement="center" title="{{product.product_speciality}}">
-                                                    {{product.product_speciality|limitTo:25}} {{product.product_speciality.length>25?'...':''}}
-                                                </i>
-                                            </a>
-                                            <div class="price_pd im_half_container m_bottom_10">
-                                                <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>US$ {{product.price_r}}
-                                                <!--                                                <div class="half_column d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_sm_align_c t_xs_align_r d_inline_m t_align_r tr_all animate_fctr with_ie">
-                                                                                                    <ul class="rating_list d_inline_m hr_list tr_all">
-                                                                                                        <li class="relative active lh_ex_small">
-                                                                                                            <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
-                                                                                                            <i class="icon-star-1 color_yellow tr_all"></i>
-                                                                                                        </li>
-                                                                                                        <li class="relative active lh_ex_small">
-                                                                                                            <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
-                                                                                                            <i class="icon-star-1 color_yellow tr_all"></i>
-                                                                                                        </li>
-                                                                                                        <li class="relative active lh_ex_small">
-                                                                                                            <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
-                                                                                                            <i class="icon-star-1 color_yellow tr_all"></i>
-                                                                                                        </li>
-                                                                                                        <li class="relative active lh_ex_small">
-                                                                                                            <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
-                                                                                                            <i class="icon-star-1 color_yellow tr_all"></i>
-                                                                                                        </li>
-                                                                                                        <li class="relative lh_ex_small">
-                                                                                                            <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
-                                                                                                            <i class="icon-star-1 color_yellow tr_all"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <a href="#" class="d_none reviews fs_medium color_dark m_left_5 tr_all">2 Review(s)</a>
-                                                                                                </div>-->
-                                            </div>
-
-                                            <div class="clearfix fp_buttons">
-                                                <div class="half_column w_md_full m_md_bottom_10 animate_fctl tr_all f_left f_md_none with_ie">
-                                                    <button class="button_wave btn btn-default add_to_cart_button" price="150" item_type="<?php echo $_REQUEST['item_type']; ?>" cartaddid="{{product.id}}" style="font-size: 12px;
-                                                            height: 26px;    color: #000;
-                                                            padding: 0px 6px;
-                                                            width: 118px;">
-                                                        <span class="d_inline_m clerarfix">
-                                                            <i class="icon-basket f_left m_right_10 fs_large" style="line-height: 18px;"></i>
-                                                            <span class="fs_medium" style="line-height:19px">
-                                                                Add to Cart</span></span></button>
-                                                </div>
-                                                <?php
-                                                if (isset($_SESSION['user_id'])) {
-                                                    ?>
-                                                    <div class="half_column w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie">
-                                                        <button class="button_wave button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button" wishlistaddid="{{product.id}}" style="font-size: 12px;
-                                                                height: 26px;
-                                                                padding: 0px 6px;
-                                                                width: 40px;"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span>
-                                                        </button>
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
                                 </div>
 
 
 
+                                <div ng-if="productList.length > 0" class=" shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
 
-                                <!--                                <div class="loader_image" style="    padding-top: 15%;    padding-bottom: 14%;">
-                                                                    <center>
-                                                                        <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
-                                                                    </center>
-                                                                    <h3 style="    text-align: center;
-                                                                        padding-top: 30px;
-                                                                        font-weight: 300;">
-                                                                        Loading...
-                                                                    </h3>
-                                                                </div> -->
+                                    <div class=" shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
+                                        <figure class="fp_item t_align_c d_xs_inline_b ">
+                                            <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
+                                                <!--images container-->
+                                                <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type; ?>" class='redirecturl'>
+                                                    <div class="fp_images relative ">
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
 
+                                                    </div>
+                                                    <div class="fabric_color" style="">
+
+                                                        <center class="fabric_color_list">
+                                                            <button ng-repeat="color in product.color.split(',')" 
+                                                                    class=" tr_delay  bg_color_dark  radio m_bottom_5 
+                                                                    fabric_color_list_button" 
+                                                                    value="4" 
+                                                                    style="background:#{{color.split('#')[1]}};
+                                                                    margin-left:0px;
+                                                                    height:{{10 / (product.color.split(',').length)}}px"></button>
+                                                        </center>
+                                                    </div>
+                                                </a>
+                                                <!--labels-->
+                                                <div class="labels_container" ng-switch="product.sort_type">
+                                                    <a href="#" class="d_block label color_scheme 
+                                                       tt_uppercase fs_ex_small circle
+                                                       m_bottom_5 vc_child t_align_c product_sort_type1" 
+                                                       ng-if="product.sale_price != 0">
+                                                        <span class="d_inline_m " >Sale</span>
+                                                    </a>
+                                                    <a href="#" class="d_block label color_scheme
+                                                       tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
+                                                       product_sort_type" ng-switch-when="MP">
+                                                        <span class="d_inline_m " >MP</span>
+                                                    </a>
+                                                    <a href="#" class="d_block label color_scheme
+                                                       tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
+                                                       product_sort_type" ng-switch-when="New">
+                                                        <span class="d_inline_m " >NEW</span>
+                                                    </a>
+                                                    <div ng-switch-when="MP_SALE">
+                                                        <a href="#" class="d_block label color_scheme
+                                                           tt_uppercase fs_ex_small circle m_bottom_5 vc_child t_align_c 
+                                                           product_sort_type" >
+                                                            <span class="d_inline_m " >MP</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <figcaption>
+                                                <h6 class="m_bottom_5">
+                                                    <a href="#" class="color_dark titles" style="font-size: 14px;" id="">
+                                                        {{product.title}}
+                                                    </a>
+                                                </h6>
+
+                                                <a href="#" class="fs_medium color_grey d_inline_b m_bottom_3"> 
+                                                    <i class="product_speciality" data-toggle="tooltip" data-placement="center" title="{{product.product_speciality}}">
+                                                        {{product.product_speciality|limitTo:25}} {{product.product_speciality.length>25?'...':''}}
+                                                    </i>
+                                                </a>
+                                                <div class="price_pd im_half_container m_bottom_10">
+                                                    <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>US$ {{product.price_r}}
+                                                    <!--                                                <div class="half_column d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_sm_align_c t_xs_align_r d_inline_m t_align_r tr_all animate_fctr with_ie">
+                                                                                                        <ul class="rating_list d_inline_m hr_list tr_all">
+                                                                                                            <li class="relative active lh_ex_small">
+                                                                                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                                                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                                                                                            </li>
+                                                                                                            <li class="relative active lh_ex_small">
+                                                                                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                                                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                                                                                            </li>
+                                                                                                            <li class="relative active lh_ex_small">
+                                                                                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                                                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                                                                                            </li>
+                                                                                                            <li class="relative active lh_ex_small">
+                                                                                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                                                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                                                                                            </li>
+                                                                                                            <li class="relative lh_ex_small">
+                                                                                                                <i class="icon-star-empty-1 color_grey_light_2 tr_all"></i>
+                                                                                                                <i class="icon-star-1 color_yellow tr_all"></i>
+                                                                                                            </li>
+                                                                                                        </ul>
+                                                                                                        <a href="#" class="d_none reviews fs_medium color_dark m_left_5 tr_all">2 Review(s)</a>
+                                                                                                    </div>-->
+                                                </div>
+
+                                                <div class="clearfix fp_buttons">
+                                                    <div class="half_column w_md_full m_md_bottom_10 animate_fctl tr_all f_left f_md_none with_ie">
+                                                        <button class="button_wave btn btn-default add_to_cart_button" price="150" item_type="<?php echo $_REQUEST['item_type']; ?>" cartaddid="{{product.id}}" style="font-size: 12px;
+                                                                height: 26px;    color: #000;
+                                                                padding: 0px 6px;
+                                                                width: 118px;">
+                                                            <span class="d_inline_m clerarfix">
+                                                                <i class="icon-basket f_left m_right_10 fs_large" style="line-height: 18px;"></i>
+                                                                <span class="fs_medium" style="line-height:19px">
+                                                                    Add to Cart</span></span></button>
+                                                    </div>
+                                                    <?php
+                                                    if (isset($_SESSION['user_id'])) {
+                                                        ?>
+                                                        <div class="half_column w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie">
+                                                            <button class="button_wave button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button" wishlistaddid="{{product.id}}" style="font-size: 12px;
+                                                                    height: 26px;
+                                                                    padding: 0px 6px;
+                                                                    width: 40px;"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span>
+                                                            </button>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+
+
+
+
+                                    <!--                                <div class="loader_image" style="    padding-top: 15%;    padding-bottom: 14%;">
+                                                                        <center>
+                                                                            <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
+                                                                        </center>
+                                                                        <h3 style="    text-align: center;
+                                                                            padding-top: 30px;
+                                                                            font-weight: 300;">
+                                                                            Loading...
+                                                                        </h3>
+                                                                    </div> -->
+
+
+
+                                </div>
+
+
+                                <div ng-if="productList.length == 0" class="loader_container" >
+
+                                    <h1 style="    text-align: center;
+                                        margin-top: 9%;
+                                        font-weight: 200;
+                                        color: #000;">No Product Found.</h1>
+                                </div>
                             </div>
 
-
-                            <div ng-if="productList.length==0" class="loader_container" >
-                                <div class='loader_image' style="    padding-top: 15%;    padding-bottom: 14%;" >
-                                    <center>
-                                        <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
-                                    </center>
-                                    <h3 style="    text-align: center;
-                                        padding-top: 30px;
-                                        font-weight: 300;">
-                                        Loading...
-                                    </h3>
-                                </div> 
-                            </div>
+                            <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
+                                <center>
+                                    <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
+                                </center>
+                                <h3 style="    text-align: center;
+                                    padding-top: 30px;
+                                    font-weight: 300;">
+                                    Loading...
+                                </h3>
+                            </div> 
+                            <div class="page_navigation"  style="margin-right: 37%;"></div>
 
 
-                            <div class="page_navigation" style="margin-right: 37%;"></div>
+
+
                             <?php
                             for ($i = 0; $i < count($productList); $i++) {
                                 $product_id = $productList[$i]['id'];
@@ -627,18 +591,11 @@ if (isset($_REQUEST['category'])) {
     <script>
 
 
-                                                            $(function () {
-                                                                var page_data = $('.section_offset').pajinate({
-                                                                    items_per_page: 16,
-                                                                    item_container_id: '.page_container',
-                                                                    nav_panel_id: '.page_navigation',
-                                                                    num_page_links_to_display: 5,
-                                                                    nav_label_info: 'Showing {0}-{1} of {2} results',
-                                                                    nav_info_id: '.info_text'
-                                                                });
+                            $(function () {
 
 
-                                                            });
+
+                            });
     </script>
 
 
@@ -652,9 +609,9 @@ if (isset($_REQUEST['category'])) {
 
         nitaFasions.controller('ProductListController', function ($scope, $http, $filter, $timeout) {
             var requestobj = JSON.parse('<?php echo json_encode($_REQUEST) ?>');
-
-            $scope.getProductData = function () {
-
+            $scope.loader = 1;
+            $scope.getProductData = function (timecheck) {
+                $scope.loader = 1;
                 var countdata = $(".info_text").text().split(" ")[1];
                 if (countdata) {
                     countdata = countdata.split("-");
@@ -664,107 +621,131 @@ if (isset($_REQUEST['category'])) {
                 }
                 requestobj['paginate'] = countdata;
                 requestobj['perpage'] = '16';
-                requestobj['getproductlistpage'] = 'searching';
+                requestobj['getproductlistpage_v1'] = 'searching';
                 var url = 'ajaxController.php' + "?" + $.param(requestobj);
                 $scope.productList = [];
+                $scope.pageList = [];
                 $http.get(url).then(function (rdata) {
-                    $scope.productList = rdata.data;
+                    $scope.loader = 0;
+                    $scope.productList = rdata.data.productdata;
+                    var count = rdata.data.count;
+                    if (timecheck) {
+                        for (i = 0; i < count; i++) {
+                            $scope.pageList.push(i);
+                        }
+                    }
+                    if (timecheck) {
+                        $scope.colorList = rdata.data.colors;
+                        $scope.selectedColorList = rdata.data.selected_colors;
+                        $scope.priceList = rdata.data.pricelist;
+
+                        var from_price = $scope.priceList[0];
+                        var to_price = $scope.priceList[ $scope.priceList.length - 1];
+                         $("#from_price").val(from_price);
+                            $("#to_price").val(to_price);
+
+    <?php
+    if (isset($_REQUEST['from_price'])) {
+        ?>
+                            $("#from_price").val('<?php echo $_REQUEST['from_price'];?>');
+                            $("#to_price").val('<?php echo $_REQUEST['to_price'];?>');
+
+        <?php
+    }
+    ?>
+
+
+                        $("#price_loader").remove();
+                        $("#pricerange").slider(
+                                {
+                                    min: 0,
+                                    max: 2000,
+                                    values: ['<?php echo $_REQUEST['from_price'];?>', '<?php echo $_REQUEST['to_price'];?>'],
+                                    slide : function(event ,ui){
+							$(this).next().find('.first_limit').val(ui.values[0]);
+							$(this).next().find('.last_limit').val( ui.values[1]);
+						},
+                                    change: function () {
+                                        var fp = $("#from_price").val();
+                                        var tp = $("#to_price").val();
+
+                                        setTimeout(function () {
+                                            $("#filterform").submit()
+                                        }, 500);
+                                        //$("#filterform").submit();
+                                    },
+                                }
+                        );
+
+
+                    }
                     $timeout(function () {
-                        $("img.lazy").lazyload({
-                          
-//                            placeholder: "<?php echo $defaultProduct; ?>"
+
+                        for (i in $scope.selectedColorList) {
+                            var scl = $scope.selectedColorList[i];
+                            $("#shop_style" + scl.id)[0].checked = true;
+                        }
+
+                        $(document).on("click", ".selected_colors", function () {
+                            $("#filterform").submit();
                         });
+
+
+                        $("img.lazy").lazyload({
+                            //                            placeholder: "<?php echo $defaultProduct; ?>"
+                        });
+                        if (timecheck) {
+                            var page_data = $('.section_offset').pajinate({
+                                items_per_page: 16,
+                                item_container_id: '.page_container',
+                                nav_panel_id: '.page_navigation',
+                                num_page_links_to_display: 10,
+                                nav_label_info: 'Showing {0}-{1} of {2} results',
+                                nav_info_id: '.info_text'
+                            });
+                            $(".page_navigation a").click(function () {
+                                $("body").animate({
+                                    "scrollTop": 100
+                                });
+                                $scope.getProductData(0);
+                            });
+                        }
+                        Waves.attach('.button_wave', ['waves-button', 'waves-float']);
+                        Waves.attach('.waves-image1');
+                        Waves.init();
 
                     }, 500)
                 });
 
             }
-            $scope.getProductData();
+            $scope.getProductData(1);
 
         })
 
         /////////////////
+        $("document").on(".page_navigation a", "click", function () {
+            angular.element(document.getElementById("ProductListControllerId")).scope().getProductData(0);
 
-        $(function () {
-
-
-
-            $(".page_navigation a").click(function () {
-                angular.element(document.getElementById("ProductListControllerId")).scope().getProductData();
-
-                $(".shop_isotope_item").each(function (i) {
-                    var obj = this;
-                });
-                $("body").animate({
-                    "scrollTop": 100
-                }, function () {
-                })
+            $(".shop_isotope_item").each(function (i) {
+                var obj = this;
             });
-            $("document").on("change", ".select_title li", function () {
-                alert("Handler for");
-            });
+            $("body").animate({
+                "scrollTop": 100
+            }, function () {
+            })
         });
+
+
     </script>
     <script>
         $(function () {
 
-    <?php
-    $minp = 0;
-    $maxp = 0;
-    $prc = array_values($pricelist);
-
-//print_r($pricelist);
-    sort($pricelist);
-
-
-    if ($prc) {
-        $minp = $pricelist[0];
-        $maxp = end($pricelist);
-    }
-
-
-    if (isset($_REQUEST['from_price'])) {
-        $fromprice = $_REQUEST['from_price'];
-    } else {
-        $fromprice = "$" . $minp;
-    };
-
-
-    $aa = explode('$', $fromprice);
-
-
-    if (isset($_REQUEST['to_price'])) {
-        $toprice = $_REQUEST['to_price'];
-    } else {
-        $toprice = "$" . $maxp;
-    };
-    $bb = explode('$', $toprice);
-    ?>
-            $("#price_loader").remove();
-            $("#price").slider(
-                    {
-                        min: 0,
-                        max: <?php echo $bb[1]; ?>,
-                        values: ['<?php echo $aa[1]; ?>', '<?php echo $bb[1]; ?>'],
-                        change: function () {
-                            var fp = $("#from_price").val();
-                            var tp = $("#to_price").val();
-
-                            $("select[name='Fabric_Category']").val("<?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'Fabric Category'; ?>");
-
-
-                            setTimeout(function () {
-                                $("#filterform").submit()
-                            }, 500);
-                            //$("#filterform").submit();
-                        },
-                    }
-            );
+    
+ 
     <?php
     if (1) {
         ?>
-                $("#from_price").val("<?php echo '$' . $aa[1]; ?>");
-                $("#to_price").val("<?php echo '$' . $bb[1]; ?>");
+
                 $("select[name='sorting']").val("<?php echo isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : "" ?>");
                 $(".sortby").text("<?php echo isset($_REQUEST['sorting']) ? $_REQUEST['sorting'] : "Sort By" ?>")
 
@@ -786,16 +767,7 @@ if (isset($_REQUEST['category'])) {
                 $('input[name="page_no"]').val(page_id[1]);
                 $("#filterform").submit();
             });
-            $(".selected_colors").click(function () {
-                var colors = [];
-                //                $(".selected_colors").each(function () {
-                //                    if (this.checked) {
-                //                        colors.push(this.value);
-                //                    }
-                //                })
-                //                $("input[name=color]").val(colors.join(","));
-                $("#filterform").submit();
-            });
+
 
         });
     </script>
@@ -820,20 +792,21 @@ if (isset($_REQUEST['category'])) {
         $(function () {
 
             $(".paginations li:contains(<?php echo $pageNoCrt; ?>)").addClass("active");
-            $(".filtercolor").mouseenter(function () {
+            $(document).on("mouseenter", ".filtercolor", function () {
                 $(".removecolor").removeClass("fa-times");
                 //  console.log(this);
                 $(this).find(".removecolor").addClass("fa-times");
 
             });
 
-            $(".filtercolor").mouseleave(function () {
+            $(document).on("mouseleave", ".filtercolor", function () {
                 $(".removecolor").removeClass("fa-times");
 
 
             })
 
-            $(".removecolor").click(function () {
+
+            $(document).on("click", ".removecolor", function () {
                 var colorid = $(this).parent(".filtercolor").first().attr("colorfiltercode");
                 console.log(colorid)
                 $("input[value='" + colorid + "']").click();
@@ -878,3 +851,4 @@ if (isset($_REQUEST['category'])) {
     ?>
 
 <?php }
+?>
