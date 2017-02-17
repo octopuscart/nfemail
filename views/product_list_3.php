@@ -289,36 +289,36 @@ if (isset($_REQUEST['category'])) {
                                     <?php
                                     $tag_id = $_REQUEST['item_type'];
                                     $colorArray = array();
-                                    $productList = $catobj->productList();
-                                    $productidstr = "";
-
-                                    $productIDS = array();
-                                    for ($i = 0; $i < count($productList); $i++) {
-                                        if ($productList[$i]['id']) {
-                                            array_push($productIDS, $productList[$i]['id']);
-
-                                            $productidstr .= $productList[$i]['id'] . ", ";
-                                            array_push($pricelist, $productList[$i]['price_r']);
-                                        }
-                                    }
-                                    $productidstr = implode(",", $productIDS);
-                                    $color_list4 = implode(",", $productIDS);
-                                    $wherequery = "";
-                                    if ($productidstr) {
-                                        $wherequery = "where npc.nfw_product_id in ($productidstr)";
-                                    }
-                                    if (1) {
-                                        $query = "
-                                        SELECT nc.id,nc.color_code, nc.title FROM nfw_color as nc
-                                          join nfw_product_color as npc on npc.nfw_color_id = nc.id
-                                          $wherequery
-                                         group by nc.id order by nc.display_index asc
-                                            ";
-                                        //  echo $query;
-                                        $colorArray = resultAssociate($query);
-                                    } else {
-                                        $colorArray = array();
-                                    }
+//                                    $productList = $catobj->productList();
+//                                    $productidstr = "";
+//
+//                                    $productIDS = array();
+//                                    for ($i = 0; $i < count($productList); $i++) {
+//                                        if ($productList[$i]['id']) {
+//                                            array_push($productIDS, $productList[$i]['id']);
+//
+//                                            $productidstr .= $productList[$i]['id'] . ", ";
+//                                            array_push($pricelist, $productList[$i]['price_r']);
+//                                        }
+//                                    }
+//                                    $productidstr = implode(",", $productIDS);
+//                                    $color_list4 = implode(",", $productIDS);
+//                                    $wherequery = "";
+//                                    if ($productidstr) {
+//                                        $wherequery = "where npc.nfw_product_id in ($productidstr)";
+//                                    }
+//                                    if (1) {
+//                                        $query = "
+//                                        SELECT nc.id,nc.color_code, nc.title FROM nfw_color as nc
+//                                          join nfw_product_color as npc on npc.nfw_color_id = nc.id
+//                                          $wherequery
+//                                         group by nc.id order by nc.display_index asc
+//                                            ";
+//                                        //  echo $query;
+//                                        $colorArray = resultAssociate($query);
+//                                    } else {
+//                                        $colorArray = array();
+//                                    }
                                     // print_r($result);
                                     ?>
                                     <?php
@@ -430,22 +430,15 @@ if (isset($_REQUEST['category'])) {
                         //print_r($productList);
 
 
-                        if (count($productList)) {
+                        if (1) {
                             ?>
                             <!--products-->
 
-                            <div class="page_container" style='display: none'>
-                                <?php
-                                for ($i = 0; $i < count($productList); $i++) {
-                                    echo " <div class='page'></div>";
-                                }
-                                ?>
+                           
 
-                            </div>
+                            <div  class="page_container shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
 
-                            <div ng-if="productList.length > 0" class="shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
-
-                                <div class="shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
+                                <div class="page shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
                                     <figure class="fp_item t_align_c d_xs_inline_b ">
                                         <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
                                             <!--images container-->

@@ -664,7 +664,7 @@ if (isset($_REQUEST['category'])) {
                 }
                 requestobj['paginate'] = countdata;
                 requestobj['perpage'] = '16';
-                requestobj['getproductlistpage_v1'] = 'searching';
+                requestobj['getproductlistpage'] = 'searching';
                 var url = 'ajaxController.php' + "?" + $.param(requestobj);
                 $scope.productList = [];
                 $http.get(url).then(function (rdata) {

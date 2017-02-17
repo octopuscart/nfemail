@@ -1,0 +1,59 @@
+[1mdiff --git a/views/orderDetail.php b/views/orderDetail.php[m
+[1mindex 6ea22b3..28fd4f6 100755[m
+[1m--- a/views/orderDetail.php[m
+[1m+++ b/views/orderDetail.php[m
+[36m@@ -78,6 +78,7 @@[m [mif ($_SESSION['user_id'] == '') {[m
+             padding: 6px;[m
+         }[m
+ [m
+[32m+[m
+     </style>[m
+     <style>[m
+         .addr tr{[m
+[36m@@ -269,6 +270,7 @@[m [mif ($_SESSION['user_id'] == '') {[m
+                             }[m
+                             .orderstatustable td{[m
+                                 border: none;[m
+[32m+[m
+                             }[m
+                             .orderstatustable tr{[m
+                                 border-bottom: 1px solid #D8D8D8;;[m
+[36m@@ -315,7 +317,7 @@[m [mif ($_SESSION['user_id'] == '') {[m
+                                             <th style="width:18%;text-align: center"><b>Item Code</b></th>[m
+                                             <th style="width:18%;text-align: center"><b>Item Image</b></th>[m
+                                             <th style="width:17%;text-align: center"><b>Item Name</b></th>[m
+[31m-                                            <th style="width:17%;text-align: center"><b>Style Id / Measurement Profile</b></th>[m
+[32m+[m[32m                                            <th style="width:40%;text-align: center"><b>Style Id / Measurement Profile</b></th>[m
+                                             <th style="width:3%;text-align: center"><b>Qty.</b></th> [m
+                                             <th style="width:6%;text-align: center"><b>Price</b></th>[m
+                                             <th style="width:13%;text-align: center"><b>Extra Price</b></th>[m
+[36m@@ -347,16 +349,22 @@[m [mif ($_SESSION['user_id'] == '') {[m
+                                                     <p><?php echo $cartInfo['tag_title']; ?></p>[m
+                                                 </td>[m
+                                                 <td style="font-size: 11px;text-align: center">  [m
+[31m-                                                    <table class="addr">[m
+[32m+[m[32m                                                    <style>[m
+[32m+[m[32m                                                        .measurement_style{[m
+[32m+[m[32m                                                            padding: 0px!important;[m
+[32m+[m[32m                                                            text-align: left;[m
+[32m+[m[32m                                                        }[m
+[32m+[m[32m                                                    </style>[m
+[32m+[m[32m                                                    <table class="addr measurement_style">[m
+                                                         <tr style="font-size: 11px">[m
+[31m-                                                            <td>Style Id</td>[m
+[31m-                                                            <td>:</td>[m
+[31m-                                                            <td><?php echo $cartInfo['customization_id']; ?></td>[m
+[32m+[m[32m                                                            <td class="measurement_style">Style Id</td>[m
+[32m+[m[32m                                                            <td class="measurement_style">:</td>[m
+[32m+[m[32m                                                            <td class="measurement_style"><?php echo $cartInfo['customization_id']; ?></td>[m
+                                                         </tr>[m
+                                                         <tr style="font-size: 12px">[m
+[31m-                                                            <td>Measurement Profile</td>[m
+[31m-                                                            <td>:</td>[m
+[31m-                                                            <td><?php echo $cartInfo['measurement_id']; ?></td>[m
+[32m+[m[32m                                                            <td class="measurement_style">Measurement Profile</td>[m
+[32m+[m[32m                                                            <td class="measurement_style">:</td>[m
+[32m+[m[32m                                                            <td class="measurement_style"><?php echo $cartInfo['measurement_id']; ?></td>[m
+                                                         </tr>[m
+                                                     </table>[m
+                                                 </td>[m

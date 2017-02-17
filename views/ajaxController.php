@@ -378,6 +378,14 @@ if (isset($_REQUEST['getproductlistpage'])) {
 }
 
 
+if (isset($_REQUEST['getproductlistpage_v2'])) {
+//    error_reporting(E_ALL & ~E_NOTICE );
+//     ini_set('display_errors', 1);
+    $catobj = new CategoryHandler();
+    $productList = $catobj->productListV3();
+    echo json_encode($productList);
+}
+
 if (isset($_REQUEST['getproductlistpage_v1'])) {
 //   error_reporting(E_ALL); ini_set('display_errors', 1); 
     $catobj = new CategoryHandler();

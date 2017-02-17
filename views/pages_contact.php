@@ -32,7 +32,7 @@ if (isset($_POST['submitEnquiry'])) {
                             <tbody>
                                 <tr style="background-color: #FFF;">
                                     <td style="width:100%;    padding: 10px;">
-                                    <center><img src="http://costcointernational.com/frontend/assets/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
+                                    <center><img src="http://nitafashions.com/frontend/assets/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
                                     </td>
                                     
                                 </tr>
