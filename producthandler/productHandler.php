@@ -642,6 +642,8 @@ order by count(nfw_color_id) asc, colorbunch";
 
         $color_id = implode(",", $colorlistf);
         $colorlist = explode(",", $color_id);
+        
+//        print_r($colorlist);
 
         $colorcount = count($colorlistf);
 
@@ -912,6 +914,7 @@ order by count(nfw_color_id) asc, colorbunch";
 //            print_r($value);
             array_push($productlists, $value);
         }
+        $selectedColors = array_reverse($selectedColors); 
         return array('count' => $count, 'productdata' => $productlists, 'colors' => $colorArray, 'selected_colors' => $selectedColors, 'pricelist' => $pricelist);
     }
 
