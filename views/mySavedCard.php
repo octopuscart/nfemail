@@ -215,7 +215,7 @@ if ($_SESSION['user_id'] == '') {
                                             <!--<td><?php echo $data[$i]['address'] ?></td>-->
                                             <td>***</td>
                                             <td>
-                                                <span class="data-toggle" data-placement="top" title="Edit Address">
+                                                <span class="data-toggle" data-placement="top" title="Edit">
                                                     <a href=""  data-toggle="modal" data-target="#addressEdit" id="<?php echo $data[$i]['id']; ?>"  onclick="edit_card(this)">
                                                         <i class="icon-edit"></i>
                                                     </a>
