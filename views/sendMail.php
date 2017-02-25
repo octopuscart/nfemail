@@ -249,6 +249,7 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 $trkid = $shipobj['tracking_no'];
                 $trklink = $shipobj['tracking_link'];
                 $trkcomp = $shipobj['shipping_company'];
+                $trktelno= $shipobj['shipping_tel_no'];
                 $subjectmsg = $subject . "." . "You can track from $trkcomp, Tracking No.:$trkid";
                 $title = "YOUR ORDER HAS BEEN SHIPPED";
                 $titlemsg = $title;
@@ -271,6 +272,10 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                     <tr>
                       <td>Shipping Company : </td>
                       <td style='text-align:left;'>$trkcomp</td>
+                    </tr>
+                    <tr>
+                      <td>Shipping Tel No. : </td>
+                      <td style='text-align:left;'>$trktelno</td>
                     </tr>
                 </table></center>
                 </small>";
