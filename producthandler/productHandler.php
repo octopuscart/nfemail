@@ -643,7 +643,7 @@ order by count(nfw_color_id) asc, colorbunch";
         $color_id = implode(",", $colorlistf);
         $colorlist = explode(",", $color_id);
         
-//        print_r($colorlist);
+
 
         $colorcount = count($colorlistf);
 
