@@ -221,14 +221,14 @@ if ($_SESSION['user_id'] == '') {
 
 
                         <table class="profile" align="center" style="color:black">
-                            <tr>
+<!--                            <tr>
                                 <td>
                                     <span for="name" class="control-label"><b>Enter Old Password</b></span>
                                 </td>
                                 <td>
                                     <input type="password" name="old_pwd" class="form-control"  style="height:28px;">
                                 </td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td>
                                     <span for="name" class="control-label"><b>Enter New Password</b></span>
