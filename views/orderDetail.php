@@ -166,12 +166,20 @@ if ($_SESSION['user_id'] == '') {
                                     <tr>
                                         <td>Contact No.</td>
                                         <td>:</td>
-                                        <td><?php echo $userInfo['contact_no'] ?></td>
+                                        <td><?php 
+                                        
+                                        echo $userInfo['contact_no']=='nul' ?'': $userInfo['contact_no']; 
+                                                
+                                                ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Fax</td>
                                         <td>:</td>
-                                        <td><?php echo $userInfo['fax_no'] ?></td>
+                                        <td><?php 
+                                          echo $userInfo['fax_no']=='nul' ?'': $userInfo['fax_no']; 
+                                                
+                                                ?></td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
