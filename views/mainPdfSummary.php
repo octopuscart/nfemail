@@ -74,7 +74,7 @@ $html.= '</td>
                     </tr>
                     <tr> 
                         <td colspan=3><i class="fa">&#xf095;&nbsp;</i>';
-$html.= $userInfo['contact_no'];
+$html.= ( $userInfo['contact_no']=='nul' ?'': $userInfo['contact_no']);
 $html.= '</td> 
                     </tr>
                     <tr> 
