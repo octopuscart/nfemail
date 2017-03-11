@@ -153,10 +153,15 @@ class CategoryHandler {
 
     function relatedProductTag($product_id) {
 
-        $query = "SELECT pt.tag_title,ptc.price,ptc.tag_id,ptc.product_id FROM `nfw_product_tag_connection` as ptc 
+        $query = "SELECT pt.tag_title,
+            
+            if(ptc.sale_price, ptc.sale_price, ptc.price) as price,
+            ptc.price as m_price, ptc.sale_price,
+            ptc.tag_id,ptc.product_id FROM `nfw_product_tag_connection` as ptc 
                  join nfw_product_tag as pt on ptc.tag_id = pt.id
+                 join nfw_product as product on product.id = ptc.product_id
                  join nfw_product_related as pf on ptc.product_id = pf.nfw_related_product_id
-                 where ptc.product_id = $product_id limit 0,1";
+                 where ptc.product_id = $product_id and product.publishing = '1' limit 0,1";
 
         return resultAssociate($query);
     }

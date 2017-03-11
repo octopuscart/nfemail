@@ -384,7 +384,21 @@ $largeImage = str_replace("small", "large", $largeImage);
                                                 <i><?php echo $productInfo3['product_speciality']; ?></i>                       
                                                 <div class="">
                                                     <p>
-                                                        <?php echo $result[$k]['tag_title']; ?> - <?php echo '$' . $result[$k]['price']; ?> 
+                                                    <div class="price_pd im_half_container m_bottom_10 ng-binding">
+                                                        <!-- ngIf: product.sale_price != 0 -->
+                                                        <?php
+                                                        if( $result[$k]['price'] != 0 ){
+                                                        ?>
+                                                        <span  class="cut_price ">
+                                                            <?php echo 'US$ ' . $result[$k]['m_price']; ?> 
+                                                        </span>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <?php echo 'US$ ' . $result[$k]['price']; ?> 
+                                                    </div>
+
+
                                                     </p>		
 
                                                 </div>
