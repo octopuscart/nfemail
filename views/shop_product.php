@@ -387,7 +387,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                                                     <div class="price_pd im_half_container m_bottom_10 ng-binding">
                                                         <!-- ngIf: product.sale_price != 0 -->
                                                         <?php
-                                                        if( $result[$k]['price'] != 0 ){
+                                                        if( $result[$k]['sale_price'] != 0 ){
                                                         ?>
                                                         <span  class="cut_price ">
                                                             <?php echo 'US$ ' . $result[$k]['m_price']; ?> 
