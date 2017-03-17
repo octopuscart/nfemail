@@ -556,7 +556,7 @@ if ($_SESSION['user_id'] == '') {
                                                             <input type="hidden" name="total_price" value="<?php echo $ttt ?>">
                                                             <span>Coupon Code</span><span style="text-align:right">:</span>
                                                             <input type="text" placeholder="Enter your coupon code here" class="color_grey r_corners bg_light fw_light coupon m_xs_bottom_15" name="discount_copon" style="width:40%;height:27px;color: black" autocomplete="off">
-                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset btn btn-default" style="background: red;color:white" id="discount" value="" type="submit">
+                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset btn btn-default" id="discount" value="" type="submit">
                                                                 Submit
                                                             </button>
             <?php
