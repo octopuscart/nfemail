@@ -350,7 +350,7 @@ if ($_SESSION['user_id'] == '') {
                                 <tr>
                                     <th style="width: 25%;"><span style="margin: 0px 0px 0px 13px;">Product Information</span></th>
                                     <th style="width: 7%;">SKU</th>
-                                    <th style="width: 7%;">Tag</th>
+                                    <th style="width: 7%;">Item</th>
                                     <th style="width: 12%;">Qty.</th>
                                     <th style="width: 9%;">Price</th>
                                     <th style="width: 12%;">Extra Price</th>
@@ -527,14 +527,14 @@ if ($_SESSION['user_id'] == '') {
             if ($_SESSION['cp']) {
                 if ($_SESSION['cp']['coupon_status'] == 'active') {
                     ?>
-                                                                <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;"><i class="fa fa-hand-o-up"></i> Use Now</button>
+                                                                <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;background: red;color:white"><i class="fa fa-hand-o-up"></i> Use Now</button>
 
                                                                 <?php
                                                             }
                                                         } else {
                                                             ?>  
 
-                                                            <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;"><i class="fa fa-hand-o-up"></i> Use Now</button>
+                                                            <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;background: red;color:white"><i class="fa fa-hand-o-up"></i> Use Now</button>
 
                                                             <?php
                                                         }
@@ -556,7 +556,7 @@ if ($_SESSION['user_id'] == '') {
                                                             <input type="hidden" name="total_price" value="<?php echo $ttt ?>">
                                                             <span>Coupon Code</span><span style="text-align:right">:</span>
                                                             <input type="text" placeholder="Enter your coupon code here" class="color_grey r_corners bg_light fw_light coupon m_xs_bottom_15" name="discount_copon" style="width:40%;height:27px;color: black" autocomplete="off">
-                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="discount" value="" type="submit">
+                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset btn btn-default" style="background: red;color:white" id="discount" value="" type="submit">
                                                                 Submit
                                                             </button>
             <?php
