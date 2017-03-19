@@ -55,7 +55,7 @@ include 'header.php';
                     <center>
                         <img src="../assets/nfmail/page_offersn1.jpg" style="   
                              float: left;">
-                               <a href="http://nitafashions.com/frontend/views/product_list.php?category=30&amp;item_type=1" target="_blank">
+                               <a href="http://nitafashions.com/frontend/views/product_list.php?category=0&amp;item_type=11" target="_blank">
                             <img src="../assets/nfmail/page_offersn2.jpg" style="   
                              float: left;    margin: -1px 0px;"></a>
                              <img src="../assets/nfmail/page_offersn3.jpg" style="   
