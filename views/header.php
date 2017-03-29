@@ -15,14 +15,33 @@ $imageserver = $conf['image_server'];
 <!doctype html>
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
-
-    <title>Nita Fashions</title>
+<html prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" slick-uniqueid="3"><head>
+<title>Nita Fashions Estd 1953|Bespoke Tailor & Clothiers| Top 10 Tailors in Hong Kong | Custom Made Modern  Suits, Shirts, Wedding Tuxedos, Dress  Etc. </title>
     <!--meta info-->
     <meta charset="utf-8"/>
     <!--<meta name="viewport" content="width=1307, initial-scale=1, maximum-scale=1">-->
-    <meta name="author" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
+    <meta name="author" content="Nita Fashions"/>
+
+<meta name="keywords" content="
+Premier Tailor in Hong Kong, Premier Top 10 Tailor in Hong Kong, Best Tailor in Hong Kong, Best Top 10 tailor in Hong Kong, Best Clothier in Hong Kong, Top 10 Tailors in Hong Kong, Top 5 Tailors in Hong Kong,
+Top 3 Tailors in Hong Kong, Number one Tailor in Hong Kong, Number 1 Tailor in Hong Kong, No.  one Tailor in Hong Kong, No. 1 Tailor in Hong Kong, Best Tailoring Service in Hong Kong,  Affortable Tailor in Hong Kong, Good Tailor in Hong Kong, Low Cost Tailor in Hong Kong, Most efficient tailor in Hong Kong,
+Famous suit designer, Famous suit designer in Asia, Famous suit designer in Hong Kong,  Top 50 Tailors in Asia, Top 100 Tailors in world,  Top 100 Tailors on globe, Global Tailor in Hong Kong,  Shirts, Tailored Shirts, Bespoke Shirts, Shirt Designer, Design Shirt, Make Shirts,  Create a Shirt, Create Shirts, Suit, Tailored Suits, Bespoke Suits, Suit designer,  Design Suit, Make Suit,  Create a Suit, Create Suit,  Jacket,
+Tailored Jacket, Bespoke Jacket, Jacket Designer, Design Jacket, Make Jacket,  Create a Jacket, Create Jacket, Pant, Tailored Pant, Bespoke Pant, Pant designer, Design Pant, Make Pant,  Create a Pant, Create Pant,  Sports Jacket, Tailored Sports Jacket, Bespoke Sports Jacket, Sports Jacket designer, Design Jacket, Make Jacket,  Create a Jacket, Create Jacket, Tux, Tuxedo, Tuxedo Shirt, Tuxedo Suit, Tuxedo Pant, Tuxedo Jacket, Design Tuxedo, Make Tuxedo,  Create a Tuxedo, Create Tuxedo,  Bespoke Tuxedo,
+Bespoke Tuxedo Shirt, Design Tuxedo Shirt, Make Tuxedo Shirt, Create a Tuxedo Shirt, Create Tuxedo Shirt, Bespoke Tuxedo Suit, Design Tuxedo Suit, Make Tuxedo Suit,  Create a Tuxedo Suit, Create Tuxedo Suit, Bespoke Tuxedo Pant, Design Tuxedo Pant, Make Tuxedo Pant,  Create a Tuxedo Pant, Create Tuxedo Pant, Bespoke Tuxedo Jacket, Design Tuxedo Jacket, Make Tuxedo Jacket, Create a Tuxedo Jacket, Create Tuxedo Jacket, Tailored Tuxedo,Tailored Tuxedo Shirt, Tailored Tuxedo Suit,
+Tailored Tuxedo Pant, Tailored Tuxedo Jacket, Bespoke Tuxedo, Bespoke Tuxedo Shirt, Bespoke Tuxedo Suit, Bespoke Tuxedo Pant, Bespoke Tuxedo Jacket, Wedding Suits, Wedding Tuxedos, Wedding Tux,
+overcoat, bespoke overcoat,  tailored overcoat, car coat, bespoke car coat, tailored car coat, topcoat, bespoke topcoat, tailored  topcoat,  sports jacket, bespoke jacket, tailored topcoat, tailored waistcoat,
+bespoke waistcoat, bespoke suits, custom clothes, custom tailor, tailoring, bespoke suit, tailored suit,
+custom made shirts, custom made suits, tailor, Formal wear, Menswear, Womenswear,  suits, tie, shirt,
+affordable, custom suits, custom dress shirts, made to measure suits, hong kong tailors, hong kong fashions, hong kong fashion, custom tailoring, ladies tailoring, mens tailoring, best tailors, costumes,
+chemises, costumes sur measure, des vêtements sur mesure, boutique de vêtement,                  
+tailleurs de Hong Kong, la confection sur mesure, couture dames, hommes couture, meilleurs tailleurs,                        
+Meilleur tailleur en hong kong, Tailleur populaire à Hong Kong,  Anzüge, Hemden,                                    maßgeschneiderte Anzüge, eigene Kleidung, Hong Kong Schneider, Beste hong kong schneider                
+Beliebte hong kong Schneider, Beliebtesten hong kong Schneider, Renommierten hong kong Schneider  
+Maßschneiderei, Damen Schneiderei, Frauen-Schneiderei in Hong Kong, Beste Frauen-Schneiderei in Hong Kong, Beliebteste Frauen-Schneiderei in Hongkong, Schneiderei Herren, am besten Schneider,                                
+Besten Schneider in Hong Kong, trajes, camisas, trajes a medida,ropa a medida, sastres hong kong,                                
+sastrería a medida, damas de costura, sastrería para hombre, los mejores sastres, Mejor sastre en hong kong, La mayoría de los sábanas popula en hong Kong, 西裝,襯衫, 定制西裝, 定制衣服,         
+香港的裁縫, 定做,  女裝的剪裁, 男裝裁縫,  最好的裁縫,"> 
+<meta name="description" content="Nita Fashions is the leading Bespoke Tailor in Hong Kong for both Men and Women’s Clothing.  Chief Tailor, Mr. Peter Daswani and Mr. Anil Daswani travel extensively to service their clients worldwide. ">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
     <!--web fonts-->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic' rel='stylesheet' type='text/css'/>
