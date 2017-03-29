@@ -44,11 +44,11 @@ sastrería a medida, damas de costura, sastrería para hombre, los mejores sastr
 <meta name="description" content="Nita Fashions is the leading Bespoke Tailor in Hong Kong for both Men and Women’s Clothing.  Chief Tailor, Mr. Peter Daswani and Mr. Anil Daswani travel extensively to service their clients worldwide. ">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
     <!--web fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic' rel='stylesheet' type='text/css'/>
     <!--libs css-->
     <script src="../assets/js/jquery-2.1.0.min.js"></script>
     <!--icoinc icon-->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all">
 
     <link rel="stylesheet" type="text/css" media="all" href="../assets/plugins/jackbox/css/jackbox.min.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="../assets/plugins/owl-carousel/owl.carousel.css"/>
