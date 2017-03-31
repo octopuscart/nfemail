@@ -672,7 +672,7 @@ Country</td><td>:';
 
         break;
     case '2':
-        $username = urldecode($_REQUEST['user']);
+        $username = trim(urldecode($_REQUEST['user']));
 //         $username =$_REQUEST['user'];
         $token = $_REQUEST['token'];    
         $confirmlink = $baseurl . '/views/confirmregistration.php?token=' . $token.'&access='.$_REQUEST['access'];
