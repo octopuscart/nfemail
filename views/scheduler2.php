@@ -232,7 +232,7 @@ $shedulearray = array();
                                   float: left;">
                                 <i class="fa fa-phone-square"></i>  <?php echo $value['contact_no']; ?>
                             </span>
-                            <iframe  frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'  height="100px" width="300px"  src="http://maps.google.com/?q=<?php echo $value['location']; ?>+<?php echo $value['address']; ?>&output=embed">
+                            <iframe  frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'  height="100px" width="300px"  src="https://maps.google.com/?q=<?php echo $value['location']; ?>+<?php echo $value['address']; ?>&output=embed">
                             </iframe>  
 
                         </td>
