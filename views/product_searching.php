@@ -144,7 +144,7 @@ if (isset($_REQUEST['searchtag'])) {
     <div class="loader_container" style="display: none">
         <div class='loader_image' style="    padding-top: 15%;    padding-bottom: 14%;" >
             <center>
-                <img src='http://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
+                <img src='https://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
             </center>
             <h3 style="    text-align: center;
                 padding-top: 30px;
