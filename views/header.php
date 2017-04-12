@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-$baselink = 'http://' . $_SERVER['SERVER_NAME'];
+$baselink = 'https://' . $_SERVER['SERVER_NAME'];
 $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
 include '../dbhandler/dbhandler.php';
 include '../producthandler/authHandler.php';
