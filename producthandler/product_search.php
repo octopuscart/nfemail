@@ -11,7 +11,7 @@ $catobj = new CategoryHandler();
 $query = "select nps.id as sid, nps.tag_title as title from nfw_product_search_tag as nps 
         join nfw_product_search_tag_connection as npsc on npsc.tag_id = nps.id 
         join nfw_product as np on np.id = npsc.product_id 
-        where nps.tag_title  like '%$search%' and   np.publishing='1'";
+        where nps.tag_title  like '%$search%' and   np.publishing='1' group by nps.tag_title";
 $searchdata = resultAssociate($query);
 
 echo json_encode($searchdata);
