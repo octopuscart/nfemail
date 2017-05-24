@@ -97,14 +97,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <input type="text" name="middle_name" class="form-control" value="<?php echo $userInfo[0]['middle_name']; ?>"  style="height: 30px;"  disabled>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <span for="name" class="control-label" style="">Birth Date</span>
-                                                </td>
-                                                <td>
-                                                    <input type="date" name="birth_date" class="form-control" value="<?php echo $userInfo[0]['birth_date']; ?>"  style="height: 30px;"  disabled>
-                                                </td>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>
                                                     <span for="name" class="control-label" style="">Last Name/Surname</span>
@@ -113,6 +106,17 @@ if ($_SESSION['user_id'] == '') {
                                                     <input type="text" name="last_name" class="form-control" value="<?php echo $userInfo[0]['last_name']; ?>"  style="height: 30px;"   disabled>
                                                 </td>
                                             </tr>
+                                            
+                                            
+                                            <tr>
+                                                <td>
+                                                    <span for="name" class="control-label" style="">Birth Date</span>
+                                                </td>
+                                                <td>
+                                                    <input type="date" name="birth_date" class="form-control" value="<?php echo $userInfo[0]['birth_date']; ?>"  style="height: 30px;"  disabled>
+                                                </td>
+                                            </tr>
+                                            
                                             <tr>
                                                 <td>
                                                     <span for="name" class="control-label" style="">Gender</span>
