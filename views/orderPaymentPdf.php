@@ -23,7 +23,7 @@ class MailAndMessageHandler {
         $pdf_templater = end($pdf_template);
         $pdf_template_header = $pdf_templater['header'];
         include './paymentHistoryPdf.php';
-
+        $mpdf->setFooter('Page {PAGENO} of {nb}');   
         $mpdf->WriteHTML($html, 2);
         ob_clean();
         $fname = 'PaymentHistory' . $this->client_code . '.pdf';
