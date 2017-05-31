@@ -24,6 +24,7 @@ class MailAndMessageHandler {
         $pdf_template_header = $pdf_templater['header'];
         include './orderTrackingPdf.php';
         // end
+        $mpdf->setFooter('Page {PAGENO} of {nb}');
         $mpdf->WriteHTML($html, 2);
         ob_clean();
         $fname = 'OrderTracking' . $this->client_code . '.pdf';
