@@ -8,20 +8,7 @@ if (isset($_REQUEST['category'])) {
     $item_type = $_REQUEST['item_type'];
     header("location:product_list.php?category=0&item_type=" . $item_type);
 }
-$checkuser = 0;
-if ($_SESSION['user_id'] == '') {
-    ?>
 
-    <?php
-} else {
-    $checkuser = 1;
-    $userid = $_SESSION['user_id'];
-    $professionq = resultAssociate("select profession_id, profession_value from auth_user where id = '$userid'");
-    $professiondict = array();
-    if (count($professionq)) {
-        $professiondict = $professionq[0];
-    }
-}
 
 
 if (isset($_REQUEST['colors'])) {
@@ -313,23 +300,23 @@ if (isset($_REQUEST['category'])) {
 
 
                                     <br>
-    <!--                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
+<!--                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
                                     <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_xs_bottom_10" style="margin:1px 30px 10px 0px;">
                                         <div class="select_title r_corners color_grey fs_medium"><?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'All Type'; ?> </div>
                                         <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
                                         <select class="target d_none" name="Fabric_Category">
-                                    <?php
-                                    echo $query = "SELECT fc.id, fc.title FROM nfw_fabric as fc 
+                                            <?php
+                                            echo $query = "SELECT fc.id, fc.title FROM nfw_fabric as fc 
     join nfw_product as np on np.fabric_title = fc.id
     where np.id in ( $productidstr ) group by fc.id";
-                                    if ($productidstr) {
-                                        $fabric = resultAssociate($query);
-                                        echo '<option value="All Type">All Type</option>';
-                                        foreach ($fabric as $key => $value) {
-                                            echo '<option value="', $value['title'], '">', $value['title'], "</option>";
-                                        }
-                                    }
-                                    ?>
+                                            if ($productidstr) {
+                                                $fabric = resultAssociate($query);
+                                                echo '<option value="All Type">All Type</option>';
+                                                foreach ($fabric as $key => $value) {
+                                                    echo '<option value="', $value['title'], '">', $value['title'], "</option>";
+                                                }
+                                            }
+                                            ?>
 
                                         </select>
                                     </div>
@@ -356,34 +343,17 @@ if (isset($_REQUEST['category'])) {
                         <input type="hidden" name="page_no" value="1">
                         <input type="hidden" name="record_per_page" value="3">
                         <!--<hr class="m_bottom_10">-->
-                        <?php
-                        if ($checkuser) {
-                            ?>
 
-                            <input type="hidden" name="profession_check" value="true">
-                            <?php
-                        }
-                        ?>
                         <div class="row">
                             <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
                                 <div class="select_title sortby r_corners color_grey fs_medium">Sort By</div>
                                 <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
                                 <select class="target d_none" name="sorting">
-                                    <?php
-                                    if ($checkuser) {
-                                        if ($professiondict['profession_id'] != '0') {
-                                            ?>
-
-                                            <option value='<?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
                                     <option value="On Sale">On Sale</option>
                                     <option value="Most Popular">Most Popular</option>
                                     <option value="New Arrival">New Arrival</option>
-                                    <!-- <option value="Price-Asc">Price-Asc</option>
-                                    <option value="Price-Desc">Price-Desc</option>-->
+                                    <!--                                    <option value="Price-Asc">Price-Asc</option>
+                                                                        <option value="Price-Desc">Price-Desc</option>-->
                                     <option value="Sale/Most Popular">Sale/Most Popular</option>
                                 </select>
                             </div>
@@ -621,11 +591,11 @@ if (isset($_REQUEST['category'])) {
     <script>
 
 
-                                $(function () {
+                            $(function () {
 
 
 
-                                });
+                            });
     </script>
 
 
@@ -671,14 +641,14 @@ if (isset($_REQUEST['category'])) {
 
                         var from_price = $scope.priceList[0];
                         var to_price = $scope.priceList[ $scope.priceList.length - 1];
-                        $("#from_price").val(from_price);
-                        $("#to_price").val(to_price);
+                         $("#from_price").val(from_price);
+                            $("#to_price").val(to_price);
 
     <?php
     if (isset($_REQUEST['from_price'])) {
         ?>
-                            $("#from_price").val('<?php echo $_REQUEST['from_price']; ?>');
-                            $("#to_price").val('<?php echo $_REQUEST['to_price']; ?>');
+                            $("#from_price").val('<?php echo $_REQUEST['from_price'];?>');
+                            $("#to_price").val('<?php echo $_REQUEST['to_price'];?>');
 
         <?php
     }
@@ -690,11 +660,11 @@ if (isset($_REQUEST['category'])) {
                                 {
                                     min: 0,
                                     max: 2000,
-                                    values: ['<?php echo $_REQUEST['from_price']; ?>', '<?php echo $_REQUEST['to_price']; ?>'],
-                                    slide: function (event, ui) {
-                                        $(this).next().find('.first_limit').val(ui.values[0]);
-                                        $(this).next().find('.last_limit').val(ui.values[1]);
-                                    },
+                                    values: ['<?php echo $_REQUEST['from_price'];?>', '<?php echo $_REQUEST['to_price'];?>'],
+                                    slide : function(event ,ui){
+							$(this).next().find('.first_limit').val(ui.values[0]);
+							$(this).next().find('.last_limit').val( ui.values[1]);
+						},
                                     change: function () {
                                         var fp = $("#from_price").val();
                                         var tp = $("#to_price").val();
@@ -770,8 +740,8 @@ if (isset($_REQUEST['category'])) {
     <script>
         $(function () {
 
-
-
+    
+ 
     <?php
     if (1) {
         ?>
@@ -864,7 +834,7 @@ if (isset($_REQUEST['category'])) {
     if (isset($_REQUEST['colors'])) {
         $colors = $_REQUEST['colors'];
         $colorslist = $colors;
-// print_r( $_REQUEST['colors']);
+        // print_r( $_REQUEST['colors']);
         foreach ($colorslist as $ind => $colid) {
             if ($colid) {
                 echo '$(".selected_colors[value=' . $colid . ']")[0].checked  = true;';
