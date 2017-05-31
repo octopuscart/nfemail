@@ -1,6 +1,14 @@
 <?php
 include 'header.php';
 $userInfo = $authobj->userProfile($_SESSION['user_id']);
+
+$profession_list = resultAssociate("select * from nfw_profession");
+$professiondict = array();
+foreach ($profession_list as $keyl => $valuel) {
+    $professiondict[$valuel['id']] = $valuel['title'];
+}
+$professiondict["0"] = "Other";
+
 if ($_SESSION['user_id'] == '') {
     ?>
     <script>
@@ -9,7 +17,9 @@ if ($_SESSION['user_id'] == '') {
         }, 500);
     </script>
 
-<?php
+
+
+    <?php
 } else {
 
     if (isset($_REQUEST['updatePass'])) {
@@ -18,7 +28,7 @@ if ($_SESSION['user_id'] == '') {
     }
 
     if (isset($_REQUEST['updateData'])) {
-        $authobj->updateUserDetail($_REQUEST['middle_name'], $_REQUEST['first_name'], $_REQUEST['last_name'], $_REQUEST['email'], $_REQUEST['gender'], $_REQUEST['contact_no'], $_SESSION['user_id'], $_REQUEST['fax_no'], $_REQUEST['telephone_no'], $_REQUEST['birth_date']);
+        $authobj->updateUserDetail($_REQUEST['middle_name'], $_REQUEST['first_name'], $_REQUEST['last_name'], $_REQUEST['email'], $_REQUEST['gender'], $_REQUEST['contact_no'], $_SESSION['user_id'], $_REQUEST['fax_no'], $_REQUEST['telephone_no'], $_REQUEST['birth_date'], $_REQUEST['profession_id'], $_REQUEST['profession_value']);
         header('location:userProfile.php');
     }
     ?>
@@ -59,16 +69,16 @@ if ($_SESSION['user_id'] == '') {
             <div class="row">
                 <aside class="col-lg-3 col-md-3 col-sm-3 m_bottom_50 m_xs_bottom_30" style=" margin-left: -40px;width:18%" >	
 
-    <?php
-    include 'leftMenu.php';
-    ?>
+                    <?php
+                    include 'leftMenu.php';
+                    ?>
 
                 </aside>
 
                 <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30" style="width: 85%;">
-    <?php if ($returnresult) { ?>
+                    <?php if ($returnresult) { ?>
                         <p> <?php echo $returnresult; ?> </p>
-    <?php } ?>
+                    <?php } ?>
                     <div class="panel panel-default" style="">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon-user"></i> Client Code : <?php echo $userInfo[0]['registration_id'] ?></h3>
@@ -97,7 +107,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <input type="text" name="middle_name" class="form-control" value="<?php echo $userInfo[0]['middle_name']; ?>"  style="height: 30px;"  disabled>
                                                 </td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>
                                                     <span for="name" class="control-label" style="">Last Name/Surname</span>
@@ -106,8 +116,26 @@ if ($_SESSION['user_id'] == '') {
                                                     <input type="text" name="last_name" class="form-control" value="<?php echo $userInfo[0]['last_name']; ?>"  style="height: 30px;"   disabled>
                                                 </td>
                                             </tr>
-                                            
-                                            
+
+                                            <tr>
+                                                <td>
+                                                    <span for="name" class="control-label" style="">Profession</span>
+                                                </td>
+                                                <td>
+                                                    <select name="profession_id" id="profession_select"  onchange="professionChange()" class="form-control"  style="height: 30px;"  disabled>
+                                                        <option value="" >Select Profession</option>
+                                                        <?php foreach ($profession_list as $key => $value) { ?>
+                                                            <option value="<?php echo $value['id']; ?>" <?php if ($userInfo[0]['profession_id'] == $value['id']) { ?> Selected =' selected' <?php } ?> ><?php echo $value['title']; ?></option>
+                                                        <?php } ?>
+                                                        <option value="0" <?php if ($userInfo[0]['profession_id'] == '0') { ?> Selected =' selected' <?php } ?>>Other</option>
+                                                    </select>
+
+
+                                                    <input type="text" value="<?php echo $userInfo[0]['profession_value']; ?>" name="profession_value" id="profession_value" placeholder="Your Profession" class="form-control" style="display: <?php if ($userInfo[0]['profession_id'] == '0') { ?> 'show' <?php }else{echo 'none'; } ?>;    height: 28px;" disabled>
+
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>
                                                     <span for="name" class="control-label" style="">Birth Date</span>
@@ -116,7 +144,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <input type="date" name="birth_date" class="form-control" value="<?php echo $userInfo[0]['birth_date']; ?>"  style="height: 30px;"  disabled>
                                                 </td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>
                                                     <span for="name" class="control-label" style="">Gender</span>
@@ -149,7 +177,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <span for="name" class="control-label" style="">Email</span>
                                                 </td>
                                                 <td>
-                                                   <?php echo $userInfo[0]['email']; ?>
+                                                    <?php echo $userInfo[0]['email']; ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -225,7 +253,7 @@ if ($_SESSION['user_id'] == '') {
 
 
                         <table class="profile" align="center" style="color:black">
-<!--                            <tr>
+    <!--                            <tr>
                                 <td>
                                     <span for="name" class="control-label"><b>Enter Old Password</b></span>
                                 </td>
@@ -275,6 +303,7 @@ include 'footer.php';
     $(function () {
         $(".edit").click(function () {
 
+            $("select[name='profession_id']").removeAttr("disabled");
             $("input[name='first_name']").removeAttr("disabled");
             $("input[name='middle_name']").removeAttr("disabled");
             $("input[name='last_name']").removeAttr("disabled");
@@ -284,6 +313,9 @@ include 'footer.php';
             $("input[name='fax_no']").removeAttr("disabled");
             $("input[name='telephone_no']").removeAttr("disabled");
             $("input[name='birth_date']").removeAttr("disabled");
+             $("input[name='profession_value']").removeAttr("disabled");
+            
+            
             $(".submit").show();
             $(".edit").hide();
 
@@ -292,6 +324,21 @@ include 'footer.php';
     });
 </script>
 <script>
+
+    function professionChange() {
+        var prof = $("#profession_select").val();
+        var profdict = <?php echo json_encode($professiondict); ?>;
+        console.log(profdict["" + prof], profdict);
+        $("#profession_value").val(profdict[Number(prof)]);
+        if (prof == '0') {
+            $("#profession_value").show();
+            $("#profession_value").val("");
+        }
+        else {
+            $("#profession_value").hide();
+        }
+    }
+
     $(function () {
         $('.confirmpass').click(function () {
             var pass = $('.pass').val();

@@ -294,6 +294,7 @@ class CategoryHandler {
                         left join nfw_product_search_tag_connection as nptcs on nptcs.product_id = np.id
                         
 
+                        
                         left join nfw_fabric as nf on nf.id = np.fabric_title
                         join nfw_product_tag_connection as ntc on ntc.product_id = np.id";
         $query = "";
@@ -349,6 +350,10 @@ class CategoryHandler {
         $arrayChild = [];
 
         $limitquery = " ";
+
+
+
+
 
         if (1) {
 
@@ -647,7 +652,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
         $color_id = implode(",", $colorlistf);
         $colorlist = explode(",", $color_id);
-        
+
 
 
         $colorcount = count($colorlistf);
@@ -674,7 +679,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
 
         if (isset($fromprice)) {
-            $price = "and if(ntc.sale_price, ntc.sale_price, ntc.price) between '" . $fromprice . "' and '" . $toprice. "'";
+            $price = "and if(ntc.sale_price, ntc.sale_price, ntc.price) between '" . $fromprice . "' and '" . $toprice . "'";
         } else {
             $price = '';
         }
@@ -687,6 +692,18 @@ order by count(nfw_color_id) asc, colorbunch";
         $sorting = $_REQUEST['sorting'];
         $sortquery = "'' as sort_type";
         $sortt = "";
+
+        //        profession sorting
+        if (isset($_REQUEST['profession_check'])) {
+            $profq = resultAssociate("select id from nfw_profession where title = '$sorting'");
+            if (count($profq)) {
+                $sorting = "Profession";
+                $profession_id = $profq[0]['id'];
+            }
+        };
+//        end of profession sorting
+
+
         if (isset($sorting)) {
 
             switch ($sorting) {
@@ -712,6 +729,11 @@ order by count(nfw_color_id) asc, colorbunch";
                     $sortquery = "'Sale' as sort_type";
                     break;
 
+                case 'Profession':
+                    $sortt = " and np.id in (SELECT nfw_product_id FROM nfw_product_profession where nfw_profession_id = '$profession_id') and np.publishing = 1  ";
+                    $sortquery = "'Profession' as sort_type";
+                    break;
+
                 case 'New Arrival':
                     $sortt = " and np.id in (SELECT product_id FROM `nfw_new_arrival`) and np.publishing = 1  ";
                     $sortquery = "'New' as sort_type ";
@@ -735,7 +757,7 @@ order by count(nfw_color_id) asc, colorbunch";
             $prequery = $preselectq . ", '' as sort_type FROM  nfw_product as np $colorjoin  $category $price $color $fabtype";
         }
 
-//echo $sort;        
+
 
 
 
@@ -754,7 +776,11 @@ order by count(nfw_color_id) asc, colorbunch";
                    left join nfw_product_images as nfimg on nfimg.nfw_product_id = np.id 
                    join nfw_product_tag_connection as ntc on ntc.product_id = np.id 
                    join nfw_product_color as npc on np.id =  npc.nfw_product_id
-                   join nfw_color as nc on npc.nfw_color_id = nc.id
+                   
+
+                   
+
+                    join nfw_color as nc on npc.nfw_color_id = nc.id
                     where ntc.tag_id = $item_type and publishing = 1 $sortt $colorquerycc $category $price group by np.id order by np.id $orderquerycolor ";
 
 
@@ -795,7 +821,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
         $finalResult = array();
         $count = count($result);
-        
+
         if (count($result)) {
 
             $fresult = [];
@@ -839,7 +865,7 @@ order by count(nfw_color_id) asc, colorbunch";
                     $temp41a = array();
                     $colortemparray = array_values($colorlist);
                     $colorsorting = get_permutations($colortemparray, $colorcount);
-                  
+
                     $queryc1a = "(select nfw_product_id, colorbunch from(
 SELECT nfw_product_id, nfw_color_id, 
 (select group_concat(nc.nfw_color_id ) colorbrc from nfw_product_color as nc where nc.nfw_product_id = npc.nfw_product_id group by npc.nfw_product_id ) as colorbunch
@@ -919,7 +945,7 @@ order by count(nfw_color_id) asc, colorbunch";
 //            print_r($value);
             array_push($productlists, $value);
         }
-        $selectedColors = array_reverse($selectedColors); 
+        $selectedColors = array_reverse($selectedColors);
         return array('count' => $count, 'productdata' => $productlists, 'colors' => $colorArray, 'selected_colors' => $selectedColors, 'pricelist' => $pricelist);
     }
 

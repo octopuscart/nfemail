@@ -144,8 +144,11 @@ class AuthHandler {
             $middlename = mysql_real_escape_string($data['middle_name']);
             $fname = mysql_real_escape_string($data['first_name']);
             $lname = mysql_real_escape_string($data['last_name']);
+            
+            $profession_value = mysql_real_escape_string($data['profession_value']);
+            $profession_id = mysql_real_escape_string($data['profession_id']);
 
-            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img, joining_date) VALUES ('" . $middlename . "','" . $fname . "','" . $lname . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '" . $token . "', '" . $op_date_time . "')");
+            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img, joining_date, profession_value, profession_id) VALUES ('" . $middlename . "','" . $fname . "','" . $lname . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '" . $token . "', '" . $op_date_time . "', '".$profession_value."', '".$profession_id."')");
             $id = mysql_insert_id();
 
             $registration_id = 1100 + $id;
@@ -252,12 +255,12 @@ class AuthHandler {
 
     ## For Update user detail
 
-    function updateUserDetail($middlename, $fname, $lname, $email, $gender, $contact, $user_id, $fax_no, $telephone_no, $birthdate) {
+    function updateUserDetail($middlename, $fname, $lname, $email, $gender, $contact, $user_id, $fax_no, $telephone_no, $birthdate, $profession_id, $profession_value) {
         $pas = md5($pass);
         $middlename = mysql_real_escape_string($middlename);
         $fname = mysql_real_escape_string($fname);
         $lname = mysql_real_escape_string($lname);
-        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no', birth_date='$birthdate' where id = $user_id");
+        mysql_query("update auth_user set middle_name = '$middlename', first_name = '$fname', last_name = '$lname',gender = '$gender',contact_no = '$contact',fax_no = '$fax_no', telephone_no = '$telephone_no', birth_date='$birthdate', profession_id = '$profession_id', profession_value = '$profession_value' where id = $user_id");
         $this->userProfile($user_id);
     }
 

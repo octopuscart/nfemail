@@ -10,7 +10,7 @@ $mpdf->defaultheaderfontsize = 10; /* in pts */
 $mpdf->defaultheaderfontstyle = B; /* blank, B, I, or BI */
 $mpdf->defaultheaderline = 1;  /* 1 to include line below header/above footer */
 //$mpdf->SetHeader('|' . $current_date . '');
-$mpdf->SetFooter('|{PAGENO}/{nb}'); /* defines footer for Odd and Even Pages - placed at Outer margin */
+$mpdf->setFooter('Page {PAGENO} of {nb}'); /* defines footer for Odd and Even Pages - placed at Outer margin */
 $invoiceData = $this->authobj->invoiceDetail($this->user_id);
 $html = '
 <html>
