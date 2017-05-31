@@ -695,6 +695,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
         //        profession sorting
         if (isset($_REQUEST['profession_check'])) {
+            $sorting = str_replace("Fabric 4 ","",$sorting);
             $profq = resultAssociate("select id from nfw_profession where title = '$sorting'");
             if (count($profq)) {
                 $sorting = "Profession";
