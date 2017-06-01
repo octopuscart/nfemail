@@ -374,7 +374,7 @@ if (isset($_REQUEST['category'])) {
                                         if ($professiondict['profession_id'] != '0') {
                                             ?>
 
-                                            <option value='<?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
+                                            <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
                                             <?php
                                         }
                                     }
