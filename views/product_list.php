@@ -366,7 +366,7 @@ if (isset($_REQUEST['category'])) {
                         ?>
                         <div class="row">
                             <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
-                                <div class="select_title sortby r_corners color_grey fs_medium">Sort By</div>
+                                <div class="select_title sortby r_corners color_grey fs_medium" style="    font-size: 13px;">Sort By</div>
                                 <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
                                 <select class="target d_none" name="sorting">
                                     <?php
