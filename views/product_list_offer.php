@@ -256,7 +256,7 @@ if (isset($_REQUEST['category'])) {
 
         <div class="section_offset" style="padding: 13px 0 67px; ">
 
-            <div class="container" style="    width: 1200px;">
+            <div class="container" style="    width: 100%;">
                 <div class="row">
 
                     <!--                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%;    background: rgb(255, 255, 255);
