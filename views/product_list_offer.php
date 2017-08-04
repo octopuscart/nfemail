@@ -191,50 +191,64 @@ if (isset($_REQUEST['category'])) {
 
         <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="    padding: 0px;background: black;">
             <div class="" style="    background: url(../assets/offerheader2.jpg);
-    height: 62px;
-    background-size: 100%;
-    background-position: 0px;
-    background-repeat: no-repeat;">
+                 height: 62px;
+                 background-size: 100%;
+                 background-position: 0px;
+                 background-repeat: no-repeat;">
+
+                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+                    <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
+                        <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right: 0px !important;
+    color: white;
+    font-size: 24px;
+    line-height: 40px;
+    text-shadow: 0px 0px 7px #000;">
+                            <i class="icon-gift"></i>&nbsp;&nbsp;Offers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+                    </li>
+                </ul>
+
+
 
                 <!-- breadcrumbs -->
-<!--                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
-                    <?php
-                    $id = $_REQUEST['item_type'];
-                    $query = "select tag_title from nfw_product_tag where id = $id";
-                    $res = resultAssociate($query);
+                <!--                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+                <?php
+                $id = $_REQUEST['item_type'];
+                $query = "select tag_title from nfw_product_tag where id = $id";
+                $res = resultAssociate($query);
+                ?>
+                                    <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
+                                        <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right:0px !important;color:black;">
+                                            <i class="icon-home-1"></i>&nbsp;&nbsp;Home&nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                    </li>
+                                    <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
+                                        <a href="product_list.php?category=0&item_type=<?php echo $_REQUEST['item_type']; ?>" class="" style="margin-right:0px !important;color:black;">
+                <?php echo $res[0]['tag_title']; ?>&nbsp;&nbsp;
+                                        </a>
+                                    </li>
+                <?php
+                $parents = $catobj->get_parent($_REQUEST['category']);
+                $parentArray = explode(',', $parents);
+                for ($i = 0; $i < count($parentArray); $i++) {
+                    $res = mysql_query("select name from nfw_category where id = $parentArray[$i] ");
+                    $row = mysql_fetch_array($res);
                     ?>
-                    <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                        <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right:0px !important;color:black;">
-                            <i class="icon-home-1"></i>&nbsp;&nbsp;Home&nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;&nbsp;
-                        </a>
-                    </li>
-                    <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                        <a href="product_list.php?category=0&item_type=<?php echo $_REQUEST['item_type']; ?>" class="" style="margin-right:0px !important;color:black;">
-                            <?php echo $res[0]['tag_title']; ?>&nbsp;&nbsp;
-                        </a>
-                    </li>
+                                            <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
+                                                <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:black;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
+                    <?php echo $row['name']; ?> 
                     <?php
-                    $parents = $catobj->get_parent($_REQUEST['category']);
-                    $parentArray = explode(',', $parents);
-                    for ($i = 0; $i < count($parentArray); $i++) {
-                        $res = mysql_query("select name from nfw_category where id = $parentArray[$i] ");
-                        $row = mysql_fetch_array($res);
+                    if (($i + 1) === count($parentArray)) {
+                        
+                    } else {
                         ?>
-                        <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                            <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:black;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
-                                <?php echo $row['name']; ?> 
-                                <?php
-                                if (($i + 1) === count($parentArray)) {
-                                    
-                                } else {
-                                    ?>
-                                    &nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;
-                                <?php } ?>
-                            </a>
-                        </li>
+                                                            &nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;
                     <?php } ?>
-
-                </ul>-->
+                                                </a>
+                                            </li>
+                <?php } ?>
+                
+                                </ul>-->
             </div>
         </section>
         <!--content-->
@@ -245,126 +259,126 @@ if (isset($_REQUEST['category'])) {
             <div class="container" style="    width: 1200px;">
                 <div class="row">
 
-<!--                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%;    background: rgb(255, 255, 255);
-    border: 5px solid #F44336;margin-top: 47px;" >
+                    <!--                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%;    background: rgb(255, 255, 255);
+                        border: 5px solid #F44336;margin-top: 47px;" >
+                    
+                                            <div class="m_bottom_45 m_xs_bottom_30" >
+                    
+                                                <div class="m_bottom_40 m_xs_bottom_30">
+                    <?php
+                    $res = $catobj->productSubCategory($_REQUEST['category'], $_REQUEST['item_type']);
+                    if ($res) {
+                        ?> 
+                                                            <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
+                                                            <ul class="categories_list" style="font-size: 14px;">
+                        
+                        <?php
+                        //print_r($res);
+                        if ($_REQUEST['category'] == '0') {
 
-                        <div class="m_bottom_45 m_xs_bottom_30" >
-
-                            <div class="m_bottom_40 m_xs_bottom_30">
-                                <?php
-                                $res = $catobj->productSubCategory($_REQUEST['category'], $_REQUEST['item_type']);
-                                if ($res) {
-                                    ?> 
-                                    <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
-                                    <ul class="categories_list" style="font-size: 14px;">
-
-                                        <?php
-                                        //print_r($res);
-                                        if ($_REQUEST['category'] == '0') {
-
-                                            foreach ($res as $key => $value) {
-                                                $cat_id = $value['id'];
-                                                $tag_id = $_REQUEST['item_type'];
-                                                $query = "select * from nfw_category_tag_connection where category_id = '$cat_id' and tag_id='$tag_id'";
-                                                $check_category = resultAssociate($query);
-                                                if (count($check_category)) {
-                                                    ?>
-                                                    <li>
-                                                        <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
-                                                            <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
-                                                                <i class="icon-angle-right"></i>
-                                                            </span>
-                                                            <?php echo $value['name']; ?>
-                                                        </a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                            }
-                                        } else {
-                                            foreach ($res as $key => $value) {
-                                                ?>
-                                                <li>
-                                                    <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
-                                                        <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
-                                                            <i class="icon-angle-right"></i>
-                                                        </span>
-                                                        <?php echo $value['name']; ?>
-                                                    </a>
-                                                </li>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-                                    </ul>
-                                <?php } else { ?>
-                                            <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>
-                                <?php } ?>
-
-                            </div>
-
-                            <form id="filterform">
-                                price
-                                <div class="m_bottom_12" style="margin-top:-17%">
-                                    <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
-                                    <div id="pricerange"><div id="price_loader">Loading...</div></div>
-                                    <div class="clearfix" style="font-size:12px;color:black;">
-
-                                        <input type="text" value=""  id="from_price" name="from_price"  class="f_left half_column first_limit color_dark fw_light d_done" style="color:black;font-size: 12px;
-                                               font-weight: 700;">
-                                        <input type="text" value="" id="to_price" name="to_price"  class="f_right half_column t_align_r last_limit color_dark fw_light d_done" style="color:black;font-size: 12px;
-                                               font-weight: 700;">
-                                    </div>
-                                </div>
-                                
-<br/>
-                                <div class="m_bottom_20" style="margin-top:-8%">
-
-                                    <input type="hidden" name="color"  value="<?php echo $_REQUEST['color']; ?>">
-                                    <input type="hidden" name="category"  value="<?php echo $_REQUEST['category']; ?>">
-                                    <input type="hidden" name="item_type"  value="<?php echo $_REQUEST['item_type']; ?>">
-                                    <input type="hidden" name="searchtag"  value="<?php echo $_REQUEST['searchtag']; ?>">
-
-                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Colors</p>
-                                    <ul class="hr_list color_list">
-                                        <li class=" m_sm_bottom_5"  data-toggle="tooltip" data-placement="left" title="{{color.title}}" ng-repeat="color in colorList"> 
-                                            <input type="checkbox" id="shop_style{{color.id}}" class="shop_style d_none selected_colors" colorname="{{color.title}}" colorcode="{{color.color_code}}" name="colors[]" value="{{color.id}}">
-                                            <label    for="shop_style{{color.id}}" class="d_inline_m m_right_2 color_button color_button_check tr_delay  bg_color_dark " style="font-size: 22px;background:{{color.color_code}};"></label>
-                                        </li>
-                                    </ul>
-
-
-                                    <br>
-                                        <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
-                                    <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_xs_bottom_10" style="margin:1px 30px 10px 0px;">
-                                        <div class="select_title r_corners color_grey fs_medium"><?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'All Type'; ?> </div>
-                                        <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
-                                        <select class="target d_none" name="Fabric_Category">
+                            foreach ($res as $key => $value) {
+                                $cat_id = $value['id'];
+                                $tag_id = $_REQUEST['item_type'];
+                                $query = "select * from nfw_category_tag_connection where category_id = '$cat_id' and tag_id='$tag_id'";
+                                $check_category = resultAssociate($query);
+                                if (count($check_category)) {
+                                    ?>
+                                                                                        <li>
+                                                                                            <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
+                                                                                                <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
+                                                                                                    <i class="icon-angle-right"></i>
+                                                                                                </span>
+                                    <?php echo $value['name']; ?>
+                                                                                            </a>
+                                                                                        </li>
                                     <?php
-                                    echo $query = "SELECT fc.id, fc.title FROM nfw_fabric as fc 
+                                }
+                            }
+                        } else {
+                            foreach ($res as $key => $value) {
+                                ?>
+                                                                                <li>
+                                                                                    <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
+                                                                                        <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
+                                                                                            <i class="icon-angle-right"></i>
+                                                                                        </span>
+                                <?php echo $value['name']; ?>
+                                                                                    </a>
+                                                                                </li>
+                                <?php
+                            }
+                        }
+                        ?>
+                        
+                                                            </ul>
+                    <?php } else { ?>
+                                                                    <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>
+                    <?php } ?>
+                    
+                                                </div>
+                    
+                                                <form id="filterform">
+                                                    price
+                                                    <div class="m_bottom_12" style="margin-top:-17%">
+                                                        <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
+                                                        <div id="pricerange"><div id="price_loader">Loading...</div></div>
+                                                        <div class="clearfix" style="font-size:12px;color:black;">
+                    
+                                                            <input type="text" value=""  id="from_price" name="from_price"  class="f_left half_column first_limit color_dark fw_light d_done" style="color:black;font-size: 12px;
+                                                                   font-weight: 700;">
+                                                            <input type="text" value="" id="to_price" name="to_price"  class="f_right half_column t_align_r last_limit color_dark fw_light d_done" style="color:black;font-size: 12px;
+                                                                   font-weight: 700;">
+                                                        </div>
+                                                    </div>
+                                                    
+                    <br/>
+                                                    <div class="m_bottom_20" style="margin-top:-8%">
+                    
+                                                        <input type="hidden" name="color"  value="<?php echo $_REQUEST['color']; ?>">
+                                                        <input type="hidden" name="category"  value="<?php echo $_REQUEST['category']; ?>">
+                                                        <input type="hidden" name="item_type"  value="<?php echo $_REQUEST['item_type']; ?>">
+                                                        <input type="hidden" name="searchtag"  value="<?php echo $_REQUEST['searchtag']; ?>">
+                    
+                                                        <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Colors</p>
+                                                        <ul class="hr_list color_list">
+                                                            <li class=" m_sm_bottom_5"  data-toggle="tooltip" data-placement="left" title="{{color.title}}" ng-repeat="color in colorList"> 
+                                                                <input type="checkbox" id="shop_style{{color.id}}" class="shop_style d_none selected_colors" colorname="{{color.title}}" colorcode="{{color.color_code}}" name="colors[]" value="{{color.id}}">
+                                                                <label    for="shop_style{{color.id}}" class="d_inline_m m_right_2 color_button color_button_check tr_delay  bg_color_dark " style="font-size: 22px;background:{{color.color_code}};"></label>
+                                                            </li>
+                                                        </ul>
+                    
+                    
+                                                        <br>
+                                                            <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
+                                                        <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_xs_bottom_10" style="margin:1px 30px 10px 0px;">
+                                                            <div class="select_title r_corners color_grey fs_medium"><?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'All Type'; ?> </div>
+                                                            <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
+                                                            <select class="target d_none" name="Fabric_Category">
+                    <?php
+                    echo $query = "SELECT fc.id, fc.title FROM nfw_fabric as fc 
     join nfw_product as np on np.fabric_title = fc.id
     where np.id in ( $productidstr ) group by fc.id";
-                                    if ($productidstr) {
-                                        $fabric = resultAssociate($query);
-                                        echo '<option value="All Type">All Type</option>';
-                                        foreach ($fabric as $key => $value) {
-                                            echo '<option value="', $value['title'], '">', $value['title'], "</option>";
-                                        }
-                                    }
-                                    ?>
-
-                                        </select>
-                                    </div>
-                                    <br>
-
-
-                                </div>
-                                <div class="m_bottom_20 clearfix">
-                                    <button type="submit" id="filter" class="button_type_5 f_left m_right_5 m_sm_bottom_5 r_corners tr_all color_pink transparent fs_medium" style="display: none">Show</button>
-                                        <button type="reset" id="reset_filter_form" form="manufacturers_form" class="btn btn-default btn-xs" onclick=" window.location.href = 'http://192.168.3.47/nf3/frontend/views/product_list.php?category=0&item_type=1'"><i class="icon-arrow">Reset</button>
-                                </div>
-                        </div>
-                    </aside>-->
+                    if ($productidstr) {
+                        $fabric = resultAssociate($query);
+                        echo '<option value="All Type">All Type</option>';
+                        foreach ($fabric as $key => $value) {
+                            echo '<option value="', $value['title'], '">', $value['title'], "</option>";
+                        }
+                    }
+                    ?>
+                    
+                                                            </select>
+                                                        </div>
+                                                        <br>
+                    
+                    
+                                                    </div>
+                                                    <div class="m_bottom_20 clearfix">
+                                                        <button type="submit" id="filter" class="button_type_5 f_left m_right_5 m_sm_bottom_5 r_corners tr_all color_pink transparent fs_medium" style="display: none">Show</button>
+                                                            <button type="reset" id="reset_filter_form" form="manufacturers_form" class="btn btn-default btn-xs" onclick=" window.location.href = 'http://192.168.3.47/nf3/frontend/views/product_list.php?category=0&item_type=1'"><i class="icon-arrow">Reset</button>
+                                                    </div>
+                                            </div>
+                                        </aside>-->
 
                     <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
                     </section>
@@ -398,8 +412,8 @@ if (isset($_REQUEST['category'])) {
                             if ($checkuser) {
                                 if ($professiondict['profession_id'] != '0') {
                                     ?>
-                                            
-                                                                                        <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
+                                                    
+                                                                                                <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
                                     <?php
                                 }
                             }
@@ -624,8 +638,8 @@ if (isset($_REQUEST['category'])) {
                             ?>
 
                         </section>
- <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
-                    </section>
+                        <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
+                        </section>
                     <?php } else {
                         ?>
 
@@ -648,11 +662,11 @@ if (isset($_REQUEST['category'])) {
     <script>
 
 
-                                $(function () {
+                            $(function () {
 
 
 
-                                });
+                            });
     </script>
 
 
