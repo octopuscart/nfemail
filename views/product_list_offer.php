@@ -67,6 +67,11 @@ if (isset($_REQUEST['category'])) {
 
 
     <style>
+        .color_grey, .tweet_time a {
+            color: #000000;
+        }
+
+
         .page_navigation{float: right;}
         .page_navigation a {
             height: 10px;
@@ -167,6 +172,15 @@ if (isset($_REQUEST['category'])) {
         .waves-effect{
             display: inherit;
         }
+
+        .backparrlax{
+            background: url(../assets/offerback.jpg);
+            background-size: cover;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+        }
     </style>
     <!--start of template-->
     <div ng-controller="ProductListController" id="ProductListControllerId">
@@ -175,23 +189,27 @@ if (isset($_REQUEST['category'])) {
 
         <!--end of template-->
 
-        <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="    padding: 0px 1px 8px 1px;background: black;">
-            <div class="">
+        <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="    padding: 0px;background: black;">
+            <div class="" style="    background: url(../assets/offerheader2.jpg);
+    height: 62px;
+    background-size: 100%;
+    background-position: 0px;
+    background-repeat: no-repeat;">
 
                 <!-- breadcrumbs -->
-                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+<!--                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
                     <?php
                     $id = $_REQUEST['item_type'];
                     $query = "select tag_title from nfw_product_tag where id = $id";
                     $res = resultAssociate($query);
                     ?>
                     <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                        <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right:0px !important;color:white;">
+                        <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right:0px !important;color:black;">
                             <i class="icon-home-1"></i>&nbsp;&nbsp;Home&nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;&nbsp;
                         </a>
                     </li>
                     <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                        <a href="product_list.php?category=0&item_type=<?php echo $_REQUEST['item_type']; ?>" class="" style="margin-right:0px !important;color:white;">
+                        <a href="product_list.php?category=0&item_type=<?php echo $_REQUEST['item_type']; ?>" class="" style="margin-right:0px !important;color:black;">
                             <?php echo $res[0]['tag_title']; ?>&nbsp;&nbsp;
                         </a>
                     </li>
@@ -203,7 +221,7 @@ if (isset($_REQUEST['category'])) {
                         $row = mysql_fetch_array($res);
                         ?>
                         <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                            <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:white;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
+                            <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:black;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
                                 <?php echo $row['name']; ?> 
                                 <?php
                                 if (($i + 1) === count($parentArray)) {
@@ -216,15 +234,19 @@ if (isset($_REQUEST['category'])) {
                         </li>
                     <?php } ?>
 
-                </ul>
+                </ul>-->
             </div>
         </section>
         <!--content-->
-        <div class="section_offset" style="padding: 13px 0 67px;">
+        <div class="backparrlax" ></div>
+
+        <div class="section_offset" style="padding: 13px 0 67px; ">
+
             <div class="container" style="    width: 1200px;">
                 <div class="row">
 
-                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%" >
+<!--                    <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%;    background: rgb(255, 255, 255);
+    border: 5px solid #F44336;margin-top: 47px;" >
 
                         <div class="m_bottom_45 m_xs_bottom_30" >
 
@@ -276,13 +298,13 @@ if (isset($_REQUEST['category'])) {
 
                                     </ul>
                                 <?php } else { ?>
-            <!--                                <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>-->
+                                            <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>
                                 <?php } ?>
 
                             </div>
 
                             <form id="filterform">
-                                <!--price-->
+                                price
                                 <div class="m_bottom_12" style="margin-top:-17%">
                                     <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
                                     <div id="pricerange"><div id="price_loader">Loading...</div></div>
@@ -294,8 +316,8 @@ if (isset($_REQUEST['category'])) {
                                                font-weight: 700;">
                                     </div>
                                 </div>
-                                <!--colors-->
-
+                                
+<br/>
                                 <div class="m_bottom_20" style="margin-top:-8%">
 
                                     <input type="hidden" name="color"  value="<?php echo $_REQUEST['color']; ?>">
@@ -313,7 +335,7 @@ if (isset($_REQUEST['category'])) {
 
 
                                     <br>
-    <!--                                    <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
+                                        <p class="m_bottom_5" style="color: #000 !important; font-weight: 500">Fabric Type</p>
                                     <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_xs_bottom_10" style="margin:1px 30px 10px 0px;">
                                         <div class="select_title r_corners color_grey fs_medium"><?php echo isset($_REQUEST['Fabric_Category']) ? $_REQUEST['Fabric_Category'] : 'All Type'; ?> </div>
                                         <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
@@ -333,16 +355,19 @@ if (isset($_REQUEST['category'])) {
 
                                         </select>
                                     </div>
-                                    <br>-->
+                                    <br>
 
 
                                 </div>
                                 <div class="m_bottom_20 clearfix">
                                     <button type="submit" id="filter" class="button_type_5 f_left m_right_5 m_sm_bottom_5 r_corners tr_all color_pink transparent fs_medium" style="display: none">Show</button>
-        <!--                                <button type="reset" id="reset_filter_form" form="manufacturers_form" class="btn btn-default btn-xs" onclick=" window.location.href = 'http://192.168.3.47/nf3/frontend/views/product_list.php?category=0&item_type=1'"><i class="icon-arrow">Reset</button>-->
+                                        <button type="reset" id="reset_filter_form" form="manufacturers_form" class="btn btn-default btn-xs" onclick=" window.location.href = 'http://192.168.3.47/nf3/frontend/views/product_list.php?category=0&item_type=1'"><i class="icon-arrow">Reset</button>
                                 </div>
                         </div>
-                    </aside>
+                    </aside>-->
+
+                    <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
+                    </section>
 
                     <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:80%;    margin-top: -25px;">
                         <!--filter-->
@@ -365,28 +390,28 @@ if (isset($_REQUEST['category'])) {
                         }
                         ?>
                         <div class="row">
-                            <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
-                                <div class="select_title sortby r_corners color_grey fs_medium" style="    font-size: 13px;">Sort By</div>
-                                <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
-                                <select class="target d_none" name="sorting">
-                                    <?php
-                                    if ($checkuser) {
-                                        if ($professiondict['profession_id'] != '0') {
-                                            ?>
-
-                                            <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
-                                            <?php
-                                        }
-                                    }
+                            <!--                            <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
+                                                            <div class="select_title sortby r_corners color_grey fs_medium" style="    font-size: 13px;">Sort By</div>
+                                                            <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
+                                                            <select class="target d_none" name="sorting">
+                            <?php
+                            if ($checkuser) {
+                                if ($professiondict['profession_id'] != '0') {
                                     ?>
-                                    <option value="On Sale">On Sale</option>
-                                    <option value="Most Popular">Most Popular</option>
-                                    <option value="New Arrival">New Arrival</option>
-                                    <!-- <option value="Price-Asc">Price-Asc</option>
-                                    <option value="Price-Desc">Price-Desc</option>-->
-                                    <option value="Sale/Most Popular">Sale/Most Popular</option>
-                                </select>
-                            </div>
+                                            
+                                                                                        <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
+                                    <?php
+                                }
+                            }
+                            ?>
+                                                                <option value="On Sale">On Sale</option>
+                                                                <option value="Most Popular">Most Popular</option>
+                                                                <option value="New Arrival">New Arrival</option>
+                                                                 <option value="Price-Asc">Price-Asc</option>
+                                                                <option value="Price-Desc">Price-Desc</option>
+                                                                <option value="Sale/Most Popular">Sale/Most Popular</option>
+                                                            </select>
+                                                        </div>-->
 
                             <?php
                             if (count($_SESSION['colorlist'])) {
@@ -585,7 +610,7 @@ if (isset($_REQUEST['category'])) {
                                     Loading...
                                 </h3>
                             </div> 
-                            <div class="page_navigation"  style="margin-right: 37%;"></div>
+                            <div class="page_navigation"  style="margin-right: 25%;"></div>
 
 
 
@@ -599,6 +624,8 @@ if (isset($_REQUEST['category'])) {
                             ?>
 
                         </section>
+ <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
+                    </section>
                     <?php } else {
                         ?>
 
