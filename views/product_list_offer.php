@@ -72,7 +72,7 @@ if (isset($_REQUEST['category'])) {
         }
 
 
-        .page_navigation{float: right;}
+        .page_navigation{float: none;}
         .page_navigation a {
             height: 10px;
             padding: 6px;
@@ -199,10 +199,10 @@ if (isset($_REQUEST['category'])) {
                 <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
                     <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
                         <a href="index.php" class="color_default d_inline_m m_right_10" style="margin-right: 0px !important;
-    color: white;
-    font-size: 24px;
-    line-height: 40px;
-    text-shadow: 0px 0px 7px #000;">
+                           color: white;
+                           font-size: 24px;
+                           line-height: 40px;
+                           text-shadow: 0px 0px 7px #000;">
                             <i class="icon-gift"></i>&nbsp;&nbsp;Offers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                     </li>
@@ -234,18 +234,18 @@ if (isset($_REQUEST['category'])) {
                     $res = mysql_query("select name from nfw_category where id = $parentArray[$i] ");
                     $row = mysql_fetch_array($res);
                     ?>
-                                            <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
-                                                <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:black;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
+                                                <li class="m_right_8 f_xs_none" style="margin-right:0px !important" >
+                                                    <a class="color_default d_inline_m m_right_10"   style="margin-right:0px !important;color:black;" href="product_list.php?category=<?php echo $parentArray[$i]; ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" >
                     <?php echo $row['name']; ?> 
                     <?php
                     if (($i + 1) === count($parentArray)) {
                         
                     } else {
                         ?>
-                                                            &nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;<i class="icon-angle-right d_inline_m color_white fs_small"></i>&nbsp;&nbsp;
                     <?php } ?>
-                                                </a>
-                                            </li>
+                                                    </a>
+                                                </li>
                 <?php } ?>
                 
                                 </ul>-->
@@ -269,9 +269,9 @@ if (isset($_REQUEST['category'])) {
                     $res = $catobj->productSubCategory($_REQUEST['category'], $_REQUEST['item_type']);
                     if ($res) {
                         ?> 
-                                                            <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
-                                                            <ul class="categories_list" style="font-size: 14px;">
-                        
+                                                                <h7 style="color: #000 !important; font-weight: 500">Product Categories</h7>
+                                                                <ul class="categories_list" style="font-size: 14px;">
+                            
                         <?php
                         //print_r($res);
                         if ($_REQUEST['category'] == '0') {
@@ -283,36 +283,36 @@ if (isset($_REQUEST['category'])) {
                                 $check_category = resultAssociate($query);
                                 if (count($check_category)) {
                                     ?>
-                                                                                        <li>
-                                                                                            <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
-                                                                                                <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
-                                                                                                    <i class="icon-angle-right"></i>
-                                                                                                </span>
+                                                                                                        <li>
+                                                                                                            <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
+                                                                                                                <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
+                                                                                                                    <i class="icon-angle-right"></i>
+                                                                                                                </span>
                                     <?php echo $value['name']; ?>
-                                                                                            </a>
-                                                                                        </li>
+                                                                                                            </a>
+                                                                                                        </li>
                                     <?php
                                 }
                             }
                         } else {
                             foreach ($res as $key => $value) {
                                 ?>
-                                                                                <li>
-                                                                                    <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
-                                                                                        <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
-                                                                                            <i class="icon-angle-right"></i>
-                                                                                        </span>
+                                                                                            <li>
+                                                                                                <a href="product_list.php?category=<?php echo $value['id'] ?>&item_type=<?php echo $_REQUEST['item_type']; ?>" class="color_dark tr_all d_block">
+                                                                                                    <span class="icon_wrap_size_0 circle d_inline_m m_right_8 color_grey_light_5 tr_inherit">
+                                                                                                        <i class="icon-angle-right"></i>
+                                                                                                    </span>
                                 <?php echo $value['name']; ?>
-                                                                                    </a>
-                                                                                </li>
+                                                                                                </a>
+                                                                                            </li>
                                 <?php
                             }
                         }
                         ?>
-                        
-                                                            </ul>
+                            
+                                                                </ul>
                     <?php } else { ?>
-                                                                    <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>
+                                                                        <p style="font-size:12px;color:steelblue;margin-top: 7px">No Category Found</p>
                     <?php } ?>
                     
                                                 </div>
@@ -412,8 +412,8 @@ if (isset($_REQUEST['category'])) {
                             if ($checkuser) {
                                 if ($professiondict['profession_id'] != '0') {
                                     ?>
-                                                    
-                                                                                                <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
+                                                            
+                                                                                                        <option value='Fabric 4 <?php echo $professiondict['profession_value']; ?>'><?php echo $professiondict['profession_value']; ?></option>
                                     <?php
                                 }
                             }
@@ -624,7 +624,9 @@ if (isset($_REQUEST['category'])) {
                                     Loading...
                                 </h3>
                             </div> 
-                            <div class="page_navigation"  style="margin-right: 25%;"></div>
+                            <center>
+                                <div class="page_navigation"  style=""></div>
+                            </center>
 
 
 
