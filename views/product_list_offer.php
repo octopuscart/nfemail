@@ -525,7 +525,7 @@ if (isset($_REQUEST['category'])) {
 
                                                 <a href="#" class="fs_medium color_grey d_inline_b m_bottom_3"> 
                                                     <i class="product_speciality" data-toggle="tooltip" data-placement="center" title="{{product.product_speciality}}">
-                                                        {{product.product_speciality|limitTo:25}} {{product.product_speciality.length>25?'...':''}}
+                                                        {{product.product_speciality|limitTo:18}} {{product.product_speciality.length>18?'...':''}}
                                                     </i>
                                                 </a>
                                                 <div class="price_pd im_half_container m_bottom_10">
