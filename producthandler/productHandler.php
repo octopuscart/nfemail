@@ -695,7 +695,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
         //        profession sorting
         if (isset($_REQUEST['profession_check'])) {
-            $sorting = str_replace("Fabric 4 ","",$sorting);
+            $sorting = str_replace("Fabric 4 ", "", $sorting);
             $profq = resultAssociate("select id from nfw_profession where title = '$sorting'");
             if (count($profq)) {
                 $sorting = "Profession";
@@ -747,7 +747,14 @@ order by count(nfw_color_id) asc, colorbunch";
 
                     $sortquery = "'MP_SALE' as sort_type";
                     break;
+                
+                case 'Offers':
 
+                    $sortt = " and np.id in (SELECT npps.product_id FROM nfw_offer_product as npps
+                                    join nfw_on_sale as nss on nss.product_id = npps.product_id)     ";
+
+                    $sortquery = "'Sale' as sort_type";
+                    break;
 
                 default:
                     $prequery = $preselectq . ", '' as sort_type FROM  nfw_product as np $colorjoin  $category $price $color $fabtype";

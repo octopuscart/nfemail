@@ -529,7 +529,7 @@ if (isset($_REQUEST['category'])) {
                                                     </i>
                                                 </a>
                                                 <div class="price_pd im_half_container m_bottom_10">
-                                                    <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>US$ {{product.price_r}}
+                                                    <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>&nbsp;US$ {{product.price_r}}
                                                     <!--                                                <div class="half_column d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_sm_align_c t_xs_align_r d_inline_m t_align_r tr_all animate_fctr with_ie">
                                                                                                         <ul class="rating_list d_inline_m hr_list tr_all">
                                                                                                             <li class="relative active lh_ex_small">
