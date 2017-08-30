@@ -61,7 +61,10 @@ sastrería a medida, damas de costura, sastrería para hombre, los mejores sastr
     <link rel="stylesheet" type="text/css" media="all" href="../assets/css/style.css"/>
     <!--head libs-->
     <script src="../assets/js/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.8/angular-sanitize.min.js"></script>
+    
+    
+    <script src="../assets/js/angular-sanitize.min.js"></script>
+
     <script src="../assets/plugins/jquery.queryloader2.min.js"></script>
     <script src="../assets/plugins/modernizr.js"></script>
     <!--vertical tabs-->
