@@ -313,7 +313,7 @@ include 'footer.php';
                                 <span for="name"><b>Zip/Postal</b></span>
                             </td>
                             <td>
-                                <input type="text" required  name="zip" class="form-control is_number"  value=""  style="height: 10%;">
+                                <input type="text" required  name="zip" class="form-control "  value=""  style="height: 10%;">
                             </td>
                         </tr>
                         <tr>
@@ -411,7 +411,7 @@ include 'footer.php';
                                 <span><b>Zip/Postal</b></span>
                             </td>
                             <td>
-                                <input type="text" required name="zip" class="form-control is_number"  value=""  style="height: 10%;">
+                                <input type="text" required name="zip" class="form-control "  value=""  style="height: 10%;">
                             </td>
                         </tr>
                         <tr>
