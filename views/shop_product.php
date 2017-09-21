@@ -6,7 +6,7 @@ include '../producthandler/productHandler.php';
 $id = $_REQUEST['product_id'];
 $tag_id = $_REQUEST['item_type'];
 if ($tag_id == '') {
-    $query = "SELECT * FROM nfw_product_tag_connection where product_id = '$id'";
+    $query = "SELECT * FROM nfw_product_tag_connection where product_id = '$id' order by tag_id";
     $tagdata = resultAssociate($query);
     if (count($tagdata)) {
         $tag_id = $tagdata[0]['tag_id'];
