@@ -339,8 +339,10 @@ class CategoryHandler {
 
 //searching implementations
         $searchtag = "";
+        $searchorder = "";
         if (isset($_REQUEST['searchtag'])) {
             $searchtag = $_REQUEST['searchtag'];
+            $searchorder = " order by ntc.tag_id "; 
         }
 //searching
 
@@ -472,7 +474,7 @@ class CategoryHandler {
                 }
             } else {
                 $sort = '';
-                $prequery = $preselectq . ", '' as sort_type FROM  nfw_product as np $colorjoin  $category $price $color $fabtype";
+                $prequery = $preselectq . ", '' as sort_type FROM  nfw_product as np $colorjoin  $category $price $color $fabtype $searchorder";
             }
 
 //echo $sort;        
