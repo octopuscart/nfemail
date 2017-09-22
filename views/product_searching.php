@@ -298,7 +298,7 @@ if (isset($_REQUEST['searchtag'])) {
                                           where npc.nfw_product_id in ($productidstr)
                                          group by nc.id order by nc.display_index asc
                                             ";
-                                     echo $query;
+                                 
                                     $colorArray = resultAssociate($query);
                                 } else {
                                     $colorArray = array();
