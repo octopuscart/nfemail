@@ -140,6 +140,8 @@ if (isset($_REQUEST['searchtag'])) {
         }
 
     </style>
+    
+
     <!--start of template-->
     <div class="loader_container" style="display: none">
         <div class='loader_image' style="    padding-top: 15%;    padding-bottom: 14%;" >
@@ -289,14 +291,14 @@ if (isset($_REQUEST['searchtag'])) {
                                 }
                                 $productidstr = implode(",", $productIDS);
                                 $color_list4 = implode(",", $productIDS);
-                                if (1) {
+                                if ($productidstr) {
                                     $query = "
                                         SELECT nc.id,nc.color_code, nc.title FROM nfw_color as nc
                                           join nfw_product_color as npc on npc.nfw_color_id = nc.id
                                           where npc.nfw_product_id in ($productidstr)
                                          group by nc.id order by nc.display_index asc
                                             ";
-                                    //  echo $query;
+                                     echo $query;
                                     $colorArray = resultAssociate($query);
                                 } else {
                                     $colorArray = array();
