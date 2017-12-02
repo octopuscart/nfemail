@@ -227,7 +227,7 @@ switch ($mailtype) {
 
 Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
 
-<p>We would like to confirm that your <b>Order ($order_no)</b> has been cancelled and the transaction amount will be reimburse to you. 
+<p>We would like to confirm that your <b>Order ($order_no)</b> has been cancelled. 
 
 <p>We look forward to you visiting us on our online store in the near future.</p>
 
