@@ -290,12 +290,14 @@ if ($_SESSION['user_id'] == '') {
                             <?php
                             $proccessArray = [];
                             $temp = ($order_status_record);
+                            
                             foreach ($temp as $key => $value) {
+                            
                                 $ht = "<tr '>";
                                 $ht.= "<td style='width:170px'>" . $value['date'] . "</td>";
                                 $ht.= "<td style='      border-left: 1px solid;padding: 0;width: 1px; padding-top: 12px; '><i class='icon-circle' style='margin-left: -25px;margin-left: -11px;    font-size: 25px;
     margin-top: 11px;'></i></td>";
-                                $ht.= '<th>' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">' . $value['remark'] . '</small> </th>';
+                                $ht.= '<th>' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">'  . ($value['status_tag']!='7'? $value['remark']:'') . '</small> </th>';
 
 
                                 array_push($proccessArray, $ht);

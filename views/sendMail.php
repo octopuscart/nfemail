@@ -281,7 +281,20 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 </small>";
 
                 break;
+            case '7':
+                $subject = "Order No. $order_no has been picked at store";
+                $shipobj = resultAssociate("select * from nfw_order_shipping where order_id = $orderId");
+                $shipobj = end($shipobj);
+                $trkid = $shipobj['tracking_no'];
+                $trklink = $shipobj['tracking_link'];
+                $trkcomp = $shipobj['shipping_company'];
+                $trktelno= $shipobj['shipping_tel_no'];
+                $subjectmsg = $subject;
+                $title = "YOUR ORDER HAS BEEN POCKED AT STORE";
+                $titlemsg = $title;
+                $title.="";
 
+                break;
             case '4':
                 $title = "YOUR ORDER HAS BEEN DELIVERED";
                 $titlemsg = $title;
@@ -386,7 +399,7 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
 
             $count--;
             $ht.= '<th style="width:48%;border-bottom: 1px solid #000;
-                text-align: left;padding-left: 20px;">' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">' . $value['remark'] . '</small> </th>';
+                text-align: left;padding-left: 20px;">' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">' . ($statustype!='7'?$value['remark']:'') . '</small> </th>';
 
 
             array_push($proccessArray, $ht);
