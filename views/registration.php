@@ -17,6 +17,12 @@ foreach ($profession_list as $keyl => $valuel) {
     $professiondict[$valuel['id']] = $valuel['title'];
 }
 $professiondict["0"] = "Other";
+
+$country_list = resultAssociate("select * from countries");
+$professiondict = array();
+foreach ($country_list as $keyl => $valuel) {
+    $professiondict[$valuel['id']] = $valuel['title'];
+}
 ?>
 
 <!--header image-->
@@ -55,9 +61,21 @@ $professiondict["0"] = "Other";
                             </li>
 
                             <li class="m_bottom_10 m_xs_bottom_15 relative" style="display: none;" id="professionother">
-    <!--<i class="icon-user login_icon fs_medium color_grey_light_2"></i>-->
-                                <input type="text" name="profession_value" id="profession_value" placeholder="Your Profession" class="r_corners bg_light w_full border_none" required>
+<!--<i class="icon-user login_icon fs_medium color_grey_light_2"></i>-->
+                                <input type="text" name="profession_value" id="profession_value" placeholder="Your Profession" class="r_corners bg_light w_full border_none" >
                             </li>
+
+                            <li class="m_bottom_20 m_xs_bottom_15 relative" style="margin-bottom: 10px;">
+                                <select name="country" id="country"  onchange="countryChange()" class="r_corners bg_light w_full border_none" style="width: 100%;height: 40px;padding: 5px;" required >
+                                    <option value="" >Select Country</option>
+                                    <?php foreach ($country_list as $key => $value) { ?>
+                                        <option value="<?php echo $value['country_name']; ?>" ><?php echo $value['country_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </li>
+
+
+
 
                             <li class="m_bottom_20 m_xs_bottom_15 relative" style="text-align: left;color:#fff;    margin-top: 30px; ">
                                 <input type="radio" checked id="radio_1" name="gender" class="d_none" value="male">
@@ -146,7 +164,7 @@ $professiondict["0"] = "Other";
             $("#professionother").show();
             $("#profession_value").val("");
         }
-        else{
+        else {
             $("#professionother").hide();
         }
     }

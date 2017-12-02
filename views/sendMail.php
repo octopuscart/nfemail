@@ -704,7 +704,7 @@ Country</td><td>:';
 </table>
 <p style=" "><span style="line-height: 1.2;    font-size: 12.8000001907349px;">Dear ' . ucwords($username) . ',</span><br></p>
 
-<div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
+<div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account from '.$_REQUEST['country'].'. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
 <br/>Your username is <strong>' . $email[0] . '</strong>
     <br/> 
     <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;

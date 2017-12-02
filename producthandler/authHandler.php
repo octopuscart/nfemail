@@ -144,11 +144,12 @@ class AuthHandler {
             $middlename = mysql_real_escape_string($data['middle_name']);
             $fname = mysql_real_escape_string($data['first_name']);
             $lname = mysql_real_escape_string($data['last_name']);
+            $country = mysql_real_escape_string($data['country']);
             
             $profession_value = mysql_real_escape_string($data['profession_value']);
             $profession_id = mysql_real_escape_string($data['profession_id']);
 
-            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img, joining_date, profession_value, profession_id) VALUES ('" . $middlename . "','" . $fname . "','" . $lname . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '" . $token . "', '" . $op_date_time . "', '".$profession_value."', '".$profession_id."')");
+            mysql_query("INSERT INTO $table(middle_name,first_name, last_name, email, password,gender,birth_date, status, user_img, joining_date, profession_value, profession_id, country) VALUES ('" . $middlename . "','" . $fname . "','" . $lname . "','" . $data['email'] . "','$pass','" . $data['gender'] . "','" . $birth . "', 'Inactive', '" . $token . "', '" . $op_date_time . "', '".$profession_value."', '".$profession_id."', '".$country."')");
             $id = mysql_insert_id();
 
             $registration_id = 1100 + $id;
@@ -185,7 +186,7 @@ class AuthHandler {
             }
             ///////////////////////////
             $mailurl = $baselinkmain . "/views/sendMail.php";
-            $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email . "&token=" . $token . "&access=" . $id;
+            $a = $mailurl . "?mail_type=2&user=" . $username . "&email=" . $email . "&token=" . $token . "&country=" . $country . "&access=" . $id;
             header("location:$a");
             $msg = 'TRUE';
         } else {
