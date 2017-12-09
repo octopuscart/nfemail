@@ -5,12 +5,18 @@ include '../producthandler/productHandler.php';
 
 $id = $_REQUEST['product_id'];
 $tag_id = $_REQUEST['item_type'];
-if ($tag_id == '') {
-    $query = "SELECT * FROM nfw_product_tag_connection where product_id = '$id' order by tag_id";
+if($tag_id){
+//    echo "sadfasdf";
+}
+else{
+
+    $query = "SELECT * FROM nfw_product_tag_connection where product_id = '$id' and tag_id>0 order by tag_id";
     $tagdata = resultAssociate($query);
+//    print_r($tagdata);
     if (count($tagdata)) {
         $tag_id = $tagdata[0]['tag_id'];
         $tag_idg = $tag_id;
+        
         header("location:shop_product.php?product_id=$id&item_type=" . $tag_idg);
     }
 }
