@@ -372,14 +372,14 @@ class CategoryHandler {
      where nfw_product_tag_connection.tag_id = '$item_type' and nfw_product_subcategory.category_id in ($categoryString )";
 
 
-                $category = "where (np.product_category in (" . $categoryString . ") or np.id in ($subcategorycheck))  and ntc.tag_id = $item_type";
+                $category = "where (np.product_category in (" . $categoryString . ") or np.id in ($subcategorycheck))  and ntc.tag_id = $item_type and ntc.tag_id >0";
 
                 if ($searchtag != "") {
-                    $category .= " and nptcs.tag_id  = '$searchtag' ";
+                    $category .= " and nptcs.tag_id  = '$searchtag' and ntc.tag_id>0  ";
                 }
             } else {
 
-                $category = "where  nptcs.tag_id  = '$searchtag' ";
+                $category = "where  nptcs.tag_id  = '$searchtag' and ntc.tag_id>0 ";
             }
 
 
@@ -487,7 +487,7 @@ class CategoryHandler {
         if (count($colorlist)) {
             $checkcolorsort = ", color ";
         }
-        $query = " select id, color, title, product_speciality, price, price_r, sale_price, image1, image2, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
+         $query = " select id, color, title, product_speciality, price, price_r, sale_price, image1, image2, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
                             group by id order by  $pricesort  $checkcolorsort  $limitquery";
 
 
