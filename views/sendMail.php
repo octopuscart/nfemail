@@ -220,7 +220,7 @@ switch ($mailtype) {
             case '6':
                 $title = "YOUR ORDER HAS BEEN CANCELLED";
                 $titlemsg = $title;
-                $subject = "Order No. $order_no cancelled";
+                $subject = "Order No. $order_no has been cancelled";
                 $subjectmsg = "";
                 $extramessage = "<p style='font-size:12.8000001907349px'>
                     
