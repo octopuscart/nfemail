@@ -297,7 +297,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                                         }
                                         ?> 
 
-                                        <small style="font-weight: 300;margin-left: 10px;font-size:15px"><b>(For <?php echo $tag_name[0]['tag_title']; ?>)</b></small>
+                                        <small style="font-weight: 300;margin-left: 10px;font-size:15px"><b>(<?php echo $tag_name[0]['tag_title']; ?>)</b></small>
                                     </span>
                                 </td>
                             </tr>
