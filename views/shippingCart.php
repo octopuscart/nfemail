@@ -4,7 +4,6 @@ include '../producthandler/productHandler.php';
 $cartprd = new CartHandler();
 $orderObj = new UserAddressDetail();
 
-
 //echo $_SESSION['price'];
 if ($_SESSION['user_id'] == '') {
     ?>
@@ -54,9 +53,7 @@ if ($_SESSION['user_id'] == '') {
     }
 ### user coupon detail
     $user_coupon = $authobj->userCouponDetail($_SESSION['user_id']);
-    if (count($user_coupon)) {
-        $user_coupon = $user_coupon[0];
-    }
+    // print_r($user_coupon);
 #### end #############
     if (isset($_POST['deleteCart'])) {
         $cartprd->deleteFromCart($_POST['deleteCart']);
@@ -67,65 +64,11 @@ if ($_SESSION['user_id'] == '') {
 
     $countproduct = $cartprd->cartProductsCount($_SESSION['user_id'], 'and customization_id != ""');
 
-    //    universal coupon implementation
-    $universal_coupon = array();
-    $tempcoupon = array();
-
-    //universal coupon
-
-    $universal_coupon_obj = resultAssociate("SELECT * FROM `nfw_universal_coupon`");
-    $universal_coupon_check = count($universal_coupon_obj);
-
-
-    if ($universal_coupon_check) {
-        $universal_coupon = end($universal_coupon_obj);
-        if ($universal_coupon['coupon_status'] == 'active') {
-            $tempcoupon['coupon_id'] = 'offer';
-            $tempcoupon['coupon_status'] = $universal_coupon['coupon_status'];
-            $tempcoupon['coupon_code'] = $universal_coupon['coupon_code'];
-            $tempcoupon['value_code'] = $universal_coupon['coupon_amount'];
-        }
-    }
-
-
-
-
-//    flat discount
-
-    $discount_obj = resultAssociate("SELECT * FROM `nfw_flat_discount`");
-
-    $discount_objc = count($discount_obj);
-    $discount_array = array();
-    if ($discount_objc) {
-        $discount_array = end($discount_obj);
-        if ($discount_array['discount_status'] == 'active') {
-
-            $tempcoupon['coupon_id'] = 'offer';
-            $tempcoupon['coupon_status'] = $discount_array['discount_status'];
-            $tempcoupon['coupon_code'] = "Flat Discount " . ($discount_array['discount_type'] == 'Percent' ? $discount_array['discount_value'] . ' %' : ' $' . $discount_array['discount_value']);
-            if ($discount_array['discount_type'] == 'Percent') {
-                
-            } else {
-                $tempcoupon['value_code'] = $discount_array['discount_value'];
-            }
-        }
-    }
-
-
-
-
-    $_SESSION['cp'] = $tempcoupon;
-
-
-
-//    end of flat discount
-//    end of universal coupon code implementation
 #11-sep-2015
 //$_SESSION['cp'] = array();
 
     if (isset($_POST['coupon'])) {
         //print_r($_POST);
-
         $_SESSION['cp'] = $authobj->discountManage($_REQUEST['discount_copon'], $_SESSION['user_id'], $_REQUEST['total_price']);
     }
     $customizedData = $cartprd->idCustomizationwithValue($_SESSION['user_id']);
@@ -148,15 +91,10 @@ if ($_SESSION['user_id'] == '') {
     } else {
         $use_wallet = 0;
     }
-
-
-
-
     $shiping_deduct = resultAssociate("SELECT * FROM `nfw_shipping`");
 #update14-dec-2015
 
     if (isset($_POST['shipping_id'])) {
-        //print_r($_POST);
         $_POST['billing_id'] = '0';
         $_POST['shipping_amount'] = $_SESSION['shipping_amount'];
         $ship_amt = $_POST['shipping_amount'];
@@ -170,37 +108,17 @@ if ($_SESSION['user_id'] == '') {
 
         $subtotal = $_POST['subtotal'];
         $card_id = $_POST['card_id'];
-
-//        offer coupon
-
-        if ($_SESSION['coupon_id'] == 'offer') {
+        if ($_SESSION['coupon_id'] == 'dis') {
             $start_date = date('Y-m-d');
             $end_date = date('Y-m-d', strtotime('+1 day'));
             $cccode = $_SESSION['cp']['coupon_code'];
             $ccamt = $_SESSION['cp']['value_code'];
-           
-
-
-            if ($discount_array['discount_type'] == 'Percent') {
-                if ($discount_array['discount_status'] == 'active') {
-                    $total_pricess = $_SESSION['subtotal'];
-                    $discount_value = (($total_pricess * $discount_array['discount_value']) / 100);
-                    $discount_value = round($discount_value);
-                    $_SESSION['cp']['value_code'] = $discount_value;
-                    $ccamt = $discount_value;
-                }
-            }
-
-             $querydd = " insert into nfw_coupon (coupon_code,value,value_type,start_date,end_date) values('$cccode','$ccamt','Fixed','$start_date','$end_date')";
-            mysql_query($querydd);
+            mysql_query(" insert into nfw_coupon (coupon_code,value,value_type,start_date,end_date) values('$cccode','$ccamt','Fixed','$start_date','$end_date')");
             $last_id = mysql_insert_id();
             $_POST['coupon_id'] = $last_id;
         } else {
             $_POST['coupon_id'] = $_SESSION['coupon_id'];
         }
-//        end of offer coupon
-
-
         $coupon_id = $_POST['coupon_id'];
         $cartIdss = explode(",", $arr);
         $user_id = $_SESSION['user_id'];
@@ -396,7 +314,7 @@ if ($_SESSION['user_id'] == '') {
                                 <tr>
                                     <th style="width: 25%;"><span style="margin: 0px 0px 0px 13px;">Product Information</span></th>
                                     <th style="width: 7%;">SKU</th>
-                                    <th style="width: 7%;">Item</th>
+                                    <th style="width: 7%;">Tag</th>
                                     <th style="width: 12%;">Qty.</th>
                                     <th style="width: 9%;">Price</th>
                                     <th style="width: 12%;">Extra Price</th>
@@ -525,8 +443,8 @@ if ($_SESSION['user_id'] == '') {
                                             <input type="hidden"   value="<?php echo $cartInfo['cart_product_id']; ?>" name="cart_product_id">
 
                                             <input type="submit" style="    width: 100px;
-                                                   border-top-left-radius: 0px;
-                                                   border-top-right-radius: 0px;" name="submit" class="btn btn-default btn-xs" value="Edit">
+                                                   border-top-left-radius: 0px;    background: red;
+                                                   border-top-right-radius: 0px;" name="submit" class="btn btn-danger btn-sm" value="Edit">
 
                                         </td>
 
@@ -559,7 +477,39 @@ if ($_SESSION['user_id'] == '') {
                                     $quntit = $quntit + $cartInfo['quantity'];
                                 }
                                 ?> 
+                                <?php
+                                $temp_discount_price = 0;
+                                $tempcoupon = array();
 
+
+                                $character_array = array_merge(range('A', 'Z'), range(0, 9));
+                                $string = "";
+                                for ($i = 0; $i < 8; $i++) {
+                                    $string .= $character_array[rand(0, (count($character_array) - 1))];
+                                }
+
+                                $tempcoupon['coupon_id'] = 'dis';
+                                $tempcoupon['coupon_code'] = $string;
+                                $tempcoupon['value_code'] = 0;
+                                $discount_prd = implode(", ", $cartIdArray);
+
+                                $discount_query = "SELECT sum(npc.quantity) as quantity, np.discount_tag FROM nfw_product_cart as npc 
+                                                  join nfw_product as np on np.id = npc.product_id 
+                                                  where npc.id in ($discount_prd) and npc.tag_id = '1'
+                                                  group by np.discount_tag";
+                                $discountdata = resultAssociate($discount_query);
+                                
+                              
+
+                                foreach ($discountdata as $key => $value) {
+                                    if ($value['quantity'] >= 12) {
+
+                                        $temp_discount_price += floor($value['quantity'] / 12) * $value['discount_tag'];
+                                    }
+                                }
+
+                                $tempcoupon['value_code'] = $temp_discount_price;
+                                ?>
                                 <input type="hidden" id="no_of_product" value="<?php echo $quntit; ?>">
 
                                 <tr class="bg_light_2">
@@ -569,57 +519,60 @@ if ($_SESSION['user_id'] == '') {
                                             <div class="d_table w_full" style="margin-bottom: 5px;">
                                                 <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
                                                     <?php
-                                                    if ($user_coupon['coupon_code']) {
-                                                        if ($_SESSION['cp']) {
-                                                            if ($_SESSION['cp']['coupon_status'] == 'active') {
-                                                                ?>
-                                                                <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;background: red;color:white"><i class="fa fa-hand-o-up"></i> Use Now</button>
+                                                    if ($temp_discount_price) {
+                                                        if (isset($_SESSION['cp']['coupon_id'])) {
+
+                                                            if ($temp_discount_price == $_SESSION['cp']['value_code']) {
+                                                                
+                                                            } else {
+
+                                                                if ($temp_discount_price > 0) {
+
+                                                                    $_SESSION['cp']['value_code'] = $temp_discount_price;
+                                                                } else {
+
+                                                                    unset($_SESSION['cp']);
+                                                                }
+                                                            }
+                                                        } else {
+
+                                                            $_SESSION['cp'] = $tempcoupon;
+                                                        }
+                                                    } else {
+                                                        unset($_SESSION['cp']);
+                                                        if ($user_coupon[0]['coupon_code']) {
+                                                            if ($_SESSION['cp']) {
+                                                                
+                                                            } else {
+                                                                ?>  
+
+                                                                <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon[0]['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;"><i class="fa fa-hand-o-up"></i> Use Now</button>
 
                                                                 <?php
                                                             }
                                                         } else {
-                                                            ?>  
-
-                                                            <span class="test fw_light d_inline_m m_right_5 d_xs_block" >Use Coupon for shopping : &nbsp;&nbsp;</span><span id="copy_coupon"   class="fw_light d_inline_m m_right_5 d_xs_block" style="margin-top: 2px;"><b><?php echo $user_coupon['coupon_code'] ?></b></span>&nbsp;&nbsp;<button id="coupon_copy" class="btn btn-default btn-sm" style="margin-top: 5px;background: red;color:white"><i class="fa fa-hand-o-up"></i> Use Now</button>
-
-                                                            <?php
+                                                            
                                                         }
-                                                    } else {
-                                                        
                                                     }
                                                     ?>
                                                 </div>
                                             </div>
                                             <!-- ################# -->
 
+
                                             <div class="d_table w_full" style="">
                                                 <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
             <!--                                            <p class="fw_light d_inline_m m_right_5 d_xs_block"></p>-->
                                                     <form method="post" action="#">
-                                                        <?php
-                                                        if ($_SESSION['cp']['coupon_status'] != 'active') {
-                                                            ?>
+                                                        <?php if ($temp_discount_price == 0) { ?>
                                                             <input type="hidden" name="total_price" value="<?php echo $ttt ?>">
                                                             <span>Coupon Code</span><span style="text-align:right">:</span>
                                                             <input type="text" placeholder="Enter your coupon code here" class="color_grey r_corners bg_light fw_light coupon m_xs_bottom_15" name="discount_copon" style="width:40%;height:27px;color: black" autocomplete="off">
-                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset btn btn-default" id="discount" value="" type="submit">
+                                                            <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="discount" value="" type="submit">
                                                                 Submit
                                                             </button>
-                                                            <?php
-                                                        } else {
-                                                            if ($user_coupon['coupon_code']) {
-                                                                ?>
-                                                                <input type="hidden" name="total_price" value="<?php echo $ttt ?>">
-                                                                <span>Coupon Code</span><span style="text-align:right">:</span>
-                                                                <input type="text" placeholder="Enter your coupon code here" class="color_grey r_corners bg_light fw_light coupon m_xs_bottom_15" name="discount_copon" style="width:40%;height:27px;color: black" autocomplete="off">
-                                                                <button name="coupon" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="discount" value="" type="submit">
-                                                                    Submit
-                                                                </button>
 
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
+                                                        <?php } ?>
                                                         <?php
                                                         if (isset($_POST['coupon'])) {
                                                             //echo "dssf";
@@ -639,17 +592,26 @@ if ($_SESSION['user_id'] == '') {
                                                         if ($_SESSION['cp']) {
                                                             $cp = $_SESSION['cp'];
                                                             ?>
-                                                            <p id="deletCP">Applied Coupon: <input type="text" name="valid_copon" value="<?php echo $cp['coupon_code']; ?>" style="height:24px;border: none">
+                                                            <p id="deletCP">
+                                                                <?php if($temp_discount_price){?>
+                                                                Christmas Discount Coupon:
+                                                                <?php }else{?>
+                                                                Applied Coupon:
+                                                                <?php }?>
+                                                                <input type="text" name="valid_copon" value="<?php echo $cp['coupon_code']; ?>" style="height:24px;border: none">
 
-                                                                <?php
-                                                                if ($cp['coupon_status'] != 'active') {
-                                                                    ?>
+                                                                <?php if ($temp_discount_price == 0) { ?>
                                                                     <button class="color_grey_light_2 color_dark_hover tr_all" data-toggle="" data-placement="left" title="Delete coupon" name="cancel_coupon_code" id="deletecopondata" class="btn btn-primary" value="fd">
                                                                         <i class="icon-cancel-circled-1 fs_medium"></i>
                                                                     </button>
-                                                                    <?php
-                                                                }
-                                                                ?>
+                                                                <?php } else {
+                                                                    ?>
+                                                                <h5 style="font-size: 15px;
+                                                                    color: red;"><b>$141</b> Discount On 12 <b>Sea Island Cotton (AM/B/WF Series)</b> Shirts</h5>
+                                                                <h5 style="font-size: 15px;
+                                                                    color: red;"><b>$150</b> Discount On 12 <b>Egyptian Cotton (D Series)</b> Shirts</h5>
+                                                                
+                                                                <?php } ?>
                                                             </p> 
                                                             <?php
                                                         }
@@ -659,6 +621,7 @@ if ($_SESSION['user_id'] == '') {
                                                     </form>
                                                 </div>
                                             </div>
+
                                             <hr style="margin-top: 7px;height: 0px;margin-bottom: 8px;">
                                             <!-- ################# -->
                                             <div class="d_table w_full">
@@ -716,17 +679,6 @@ if ($_SESSION['user_id'] == '') {
                                         //   print_r($_SESSION['cp']);
                                         if ($_SESSION['cp']) {
                                             $cp = $_SESSION['cp'];
-
-                                            if ($discount_array['discount_type'] == 'Percent') {
-                                                if ($discount_array['discount_status'] == 'active') {
-                                                    $discount_value = (($total_price1 * $discount_array['discount_value']) / 100);
-                                                    $discount_value = round($discount_value);
-                                                    $_SESSION['cp']['value_code'] = $discount_value;
-                                                    $cp['value_code'] = $discount_value;
-                                                }
-                                            }
-//                                            print_r($_SESSION);
-
 
                                             if ($cp) {
                                                 ?>
@@ -842,21 +794,21 @@ if ($_SESSION['user_id'] == '') {
                                                                 </div>
                                                                 <div class="panel-body">
                             <?php if ($billdata) { ?>  
-                                                                                                                                                                            <address>
-                                                                                                                                                                                <strong style="text-transform: capitalize;">
+                                                                                                                                                <address>
+                                                                                                                                                    <strong style="text-transform: capitalize;">
                                 <?php echo $userInfo[0]['first_name'] . ' ' . $userInfo[0]['middle_name'] . ' ' . $userInfo[0]['last_name'] ?>
-                                                                                                                                                                                </strong><br>
+                                                                                                                                                    </strong><br>
                                 <?php echo $billdata[0]['add1']; ?><br>
                                 <?php echo $billdata[0]['add2']; ?><br>
                                 <?php echo $billdata[0]['add3']; ?><br> 
                                 <?php echo $billdata[0]['add4']; ?><br>
-                                                                                                                                
-                                                                                                                                                                                    <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
-                                                                                                                                                                            </address>
+                                                                                                    
+                                                                                                                                                        <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
+                                                                                                                                                </address>
                             <?php } else { ?>
-                                                                                                                                                                            <span style="color:red">
-                                                                                                                                                                                BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
-                                                                                                                                                                            </span>
+                                                                                                                                                <span style="color:red">
+                                                                                                                                                    BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
+                                                                                                                                                </span>
                             <?php } ?>
                                                                 </div>
                                                             </div>
@@ -1195,7 +1147,7 @@ include 'footer.php'
                             </td>
                         </tr>
                         <tr>
-                            <td style="line-height: 25px;">git 
+                            <td style="line-height: 25px;">
                                 <span for="name"><b>Country</b></span>
                             </td>
                             <td>
