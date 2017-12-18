@@ -290,7 +290,7 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 $trkcomp = $shipobj['shipping_company'];
                 $trktelno= $shipobj['shipping_tel_no'];
                 $subjectmsg = $subject;
-                $title = "YOUR ORDER HAS BEEN POCKED AT STORE";
+                $title = "YOUR ORDER HAS BEEN PICKED AT STORE";
                 $titlemsg = $title;
                 $title.="";
 
