@@ -296,7 +296,10 @@ class CategoryHandler {
 
                         
                         left join nfw_fabric as nf on nf.id = np.fabric_title
-                        join nfw_product_tag_connection as ntc on ntc.product_id = np.id";
+                        
+                        join nfw_product_tag_connection as ntc on ntc.product_id = np.id
+join nfw_product_tag as nptt on nptt.id = ntc.tag_id                        
+";
         $query = "";
 
         $imageq = " IFNULL(
@@ -315,7 +318,7 @@ class CategoryHandler {
                        ) as image2
                 ";
 
-        $preselectq = "SELECT distinct np.id as id, 
+        $preselectq = "SELECT distinct np.id as id, nptt.tag_title as tag_title,
                        ( 
                        SELECT group_concat(snc.id, snc.color_code) FROM nfw_color as snc  
          left join nfw_product_color as snpc on snpc.nfw_color_id = snc.id
@@ -342,7 +345,7 @@ class CategoryHandler {
         $searchorder = "";
         if (isset($_REQUEST['searchtag'])) {
             $searchtag = $_REQUEST['searchtag'];
-            $searchorder = " order by ntc.tag_id "; 
+            $searchorder = " order by ntc.tag_id ";
         }
 //searching
 
@@ -487,7 +490,7 @@ class CategoryHandler {
         if (count($colorlist)) {
             $checkcolorsort = ", color ";
         }
-         $query = " select id, color, title, product_speciality, price, price_r, sale_price, image1, image2, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
+        $query = " select id, color,tag_title, title, product_speciality, price, price_r, sale_price, image1, image2, sort_type, publishing from (" . $query . "  )  as dc where publishing = 1
                             group by id order by  $pricesort  $checkcolorsort  $limitquery";
 
 
@@ -749,7 +752,7 @@ order by count(nfw_color_id) asc, colorbunch";
 
                     $sortquery = "'MP_SALE' as sort_type";
                     break;
-                
+
                 case 'Offers':
 
                     $sortt = " and np.id in (SELECT npps.product_id FROM nfw_offer_product as npps
