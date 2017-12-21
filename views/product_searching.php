@@ -658,12 +658,12 @@ if (isset($_REQUEST['searchtag'])) {
 
                         if (product['sale_price'] > 0) {
 
-                            $(obj).find(".price_pd").html("<span class='cut_price'>US$ " + product['price'] + "</span><span class='sale_price'>US$ " + product['sale_price'] +"<br/><span class=''>" + product['tag_title'] + "</span>");
+                            $(obj).find(".price_pd").html("<span class='cut_price'>US$ " + product['price'] + "</span><span class='sale_price'>US$ " + product['sale_price'] +"</span><br/><span class=''>" + product['tag_title'] + "</span>");
                             $(obj).find(".product_sort_type").show().find("span").html('Sale');
 
                         }
                         else {
-                            $(obj).find(".price_pd").html("US$ " + product['price']);
+                            $(obj).find(".price_pd").html("<span class=''>US$ " + product['price'] +"</span><br/><span class=''>" + product['tag_title'] + "</span>"  );
                         }
 
 
