@@ -252,7 +252,7 @@ if ($_SESSION['user_id'] == '') {
         </div>
     </section>
     <section class="footer_bottom_part t_align_c color_grey bg_light_4 fw_light" style="padding: 5px;">
-        <p>Copyright © 2016 NitaFashions.com, All rights reserved.</p>
+        <p>Copyright © <?php echo date('Y');?> NitaFashions.com, All rights reserved.</p>
     </section>
 </footer>
 </div>
