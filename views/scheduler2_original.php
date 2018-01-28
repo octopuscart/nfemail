@@ -143,12 +143,104 @@ $shedulearray = array();
     <div class="container clearfix">
         <div class="row page_block">
             <section class="col-lg-12 col-md-12 col-sm-12 m_xs_bottom_30" style="margin-bottom: 20px;">
-                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Tour Schedule Comming Soon...</h3>
+                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Tour Schedule</h3>
 
 
             </section>
 
-          
+            <table class="table table-borderd">
+                <tr style="    background-color: #000;
+                    color: #fff;">
+                    <th style="width: 100px">Country</th>
+                    <th style="width: 150px">City/State</th>
+                    <th style="">Hotel Name & Address</th>
+
+                    <th style="width: 350px">From Date - To Date</th>
+                    <th style="width: 200px"></th>
+
+                </tr>
+                <?php
+                foreach ($data as $key => $value) {
+                    ?>
+                    <tr>
+                        <td>
+
+                            <?php echo $value['country']; ?>
+                        </td>
+                        <td>
+                            <?php echo $value['city']; ?><br/>  <?php echo $value['state']; ?>
+                        </td>
+
+                        <td>
+                            <b>
+                                <i class="fa fa-building-o"></i>
+                                <span style="line-height: 14px;"> <?php echo $value['location']; ?></span>
+                            </b>
+                            <br/>
+                            <small>
+                                <?php echo $value['address']; ?>
+                            </small>
+                        </td>
+
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            <b><?php
+                                $date1 = date_create($value['start_date']);
+                                echo date_format($date1, "j<\s\u\p>S</\s\u\p>   F");
+                                ?></b> <span style="
+                                font-size: 12px;
+                                line-height: 24px;
+                                           margin: 0px 10px;"> Until</span>  <b><?php
+                                           $date2 = date_create($value['end_date']);
+                                           echo date_format($date2, "j<\s\u\p>S</\s\u\p> F Y");
+                                             if($value['total_days'] == ""){
+                                           $days = $date2->diff($date1)->format("%a");
+                                           echo "<br/> <center> (" . ($days + 1) . " Days)</center> ";
+                                             }
+                                             else{
+                                                  echo "<br/> <center> (" . ($value['total_days']) . " Days)</center> ";
+                                             }
+                                           ?></b>
+                            <br/>
+
+                            <?php
+                            $date_ids = $value['main_id'];
+
+                            $temp = resultAssociate("SELECT id,schedule_date FROM nfw_app_time_schedule where nfw_app_start_end_date_id = $date_ids group by schedule_date");
+                            // $shedulearray['main_id'] = $temp;
+                            $temp2 = array('timing' => array(), 'schedule_date' => $temp, 'location' => $value['location'], 'address' => $value['address']);
+
+                            for ($j = 0; $j < count($temp); $j++) {
+                                $tp = $temp[$j];
+                                $app_date = $tp['schedule_date'];
+                                $app_id = $tp['id'];
+                                $app_data = resultAssociate("SELECT * FROM nfw_app_time_schedule where  nfw_app_start_end_date_id = $date_ids and schedule_date = '$app_date' ");
+
+                                $temp2['timing'][$app_id] = $app_data;
+                            }
+                            $shedulearray[$date_ids] = $temp2;
+                            ?>
+                            <br/>
+
+                            <button class="btn btn-danger" style="background: black" data-toggle="modal" data-target="#schedule_modal" onclick="setAddress(<?php echo $date_ids; ?>)">
+                                Book Now
+                            </button>
+                        </td>
+                        <td style="">
+                            <span style="    line-height: 15px;
+                                  padding: 0px 0px 10px;    color: black;
+                                  float: left;">
+                                <i class="fa fa-phone-square"></i>  <?php echo $value['contact_no']; ?>
+                            </span>
+                            <iframe  frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'  height="100px" width="300px"  src="https://maps.google.com/?q=<?php echo $value['location']; ?>+<?php echo $value['address']; ?>&output=embed">
+                            </iframe>  
+
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
             <!--<div id="calendar" class="calendar"></div>-->
         </div>
     </div>
