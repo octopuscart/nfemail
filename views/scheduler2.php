@@ -143,7 +143,7 @@ $shedulearray = array();
     <div class="container clearfix">
         <div class="row page_block">
             <section class="col-lg-12 col-md-12 col-sm-12 m_xs_bottom_30" style="margin-bottom: 20px;">
-                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Tour Schedule Coming Soon...</h3>
+                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Tour Schedule Is Coming Soon...</h3>
 
 
             </section>
