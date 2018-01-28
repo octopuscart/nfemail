@@ -180,3 +180,4 @@
 [15-Feb-2017 09:59:06 America/Chicago] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
 [06-Sep-2017 03:04:24 America/Chicago] PHP Warning:  session_start(): open(/tmp/sess_1tgodh534imvvbrk3gpcnajv85, O_RDWR) failed: Permission denied (13) in /home1/n1c7v2s5/public_html/frontend/views/header.php on line 3
 [18-Dec-2017 02:49:41 America/Chicago] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[18-Dec-2017 03:31:02 America/Chicago] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
