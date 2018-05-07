@@ -17,6 +17,35 @@ if ($_SESSION['user_id'] == '') {
     $cartProductsInfo = $cartprd->findCustomizationId($_SESSION['user_id']);
     $cartTags = $cartprd->userTag($_SESSION['user_id']);
     $countproduct = $cartprd->cartProductsCount($_SESSION['user_id'], '');
+    if (isset($_GET['custom_product'])) {
+        $getData = $_GET['custom_product'];
+        if ($getData) {
+            $getDataArray = explode(",", $getData);
+
+            foreach ($getDataArray as $key => $value) {
+                $query = "update nfw_product_cart set customize_table = 1 where id = $value";
+                resultAssociate($query);
+            }
+        }
+    }
+
+    if (isset($_POST['removeCustomCart'])) {
+        $ccid = $_POST['removeCustomCart'];
+        $query = "update nfw_product_cart set customize_table = '' where id = $ccid";
+        resultAssociate($query);
+        
+//header("location:shopAllCartCustom.php");
+    }
+
+
+    $customdataquery = "select id from nfw_product_cart where customize_table = 1 and user_id = " . $_SESSION['user_id'];
+    $getDataArray = resultAssociate($customdataquery);
+    $temp = array();
+    foreach ($getDataArray as $key => $value) {
+        array_push($temp, $value['id']);
+    }
+
+    $getDataArray = $temp;
 
     if (isset($_POST['Copy'])) {
         $cartprd->CartCopyToWishlist($_POST['Cart_id'], $_SESSION['user_id']);
@@ -26,6 +55,7 @@ if ($_SESSION['user_id'] == '') {
         //echo $_POST['deleteCart'];
         $cartprd->deleteFromCart($_POST['deleteCart']);
     };
+
     $custom_form_array = array(
         'shirt' => 'shirtcustom',
         'pant' => 'pantcustom',
@@ -40,10 +70,10 @@ if ($_SESSION['user_id'] == '') {
         'overcoat' => 'overcoatcustom',
         'sports_jacket' => 'jacketcustom',
     );
-    if (isset($_REQUEST['cart_id'])) {
-        $custom_form = $_REQUEST['custom_form'];
-        $cart_ids = $_REQUEST["cart_id"];
-        $tag_id = $_REQUEST["tag_id"];
+    if (isset($_POST['do_customization'])) {
+        $custom_form = $_POST['custom_form'];
+        $cart_ids = $_POST["cart_id"];
+        $tag_id = $_POST["tag_id"];
         $cart_ids = implode(',', $cart_ids);
         $custom_form_val = $custom_form_array[$custom_form];
         header("location:custom_form.php?custom_form=" . $custom_form_val . "&product_array=" . $cart_ids . "&tag_id=" . $tag_id);
@@ -128,6 +158,7 @@ if ($_SESSION['user_id'] == '') {
         .badge {
             display: inline-block;
             min-width: 6px;
+            width: 20px;
             padding: 5px 5px;
             font-size: 11px;
             font-weight: 700;
@@ -140,6 +171,24 @@ if ($_SESSION['user_id'] == '') {
             border-radius: 15px;
             /* border: 2px solid #484848; */
             float: right;
+        }
+        .gift_detail td{
+            padding: 0px!important;
+            border: none !important;
+            font-size: 12px;
+        }
+        .gift_detail{
+            margin-bottom: 10px;
+        }
+        .payment_span{
+            box-sizing: border-box;
+            width: 100%;
+            background: #CECECE;
+            /* height: 20px; */
+            float: left;
+            color: #000000;
+            padding: 6px;
+            margin-bottom: 11px;
         }
 
 
@@ -200,9 +249,24 @@ if ($_SESSION['user_id'] == '') {
         <div class="container">
 
             <h5 style="    font-weight: 300;    margin-bottom: 10px;
-                font-size: 46px;"> <i class="icon-basket color_grey_light_2 tr_inherit"></i>  Shopping Cart</h5>
+                font-size: 46px;"> <i class="icon-basket color_grey_light_2 tr_inherit"></i>  Customization Cart</h5>
             <!--breadcrumbs-->
-            <small style="font-size: 15px">Your shopping cart contains <span id="total_cart_quantitys">0 products</span> </small>
+    <!--            <small style="font-size: 15px"><span id="total_cart_quantitys">0</span> are ready to customize</small><br/>-->
+
+            <a href="shopAllCart.php">
+                <span style="
+                      font-size: 13px;
+                      font-weight: 500;
+                      /* margin-left: 10px; */
+                      margin-top: 14px;
+                      /* text-decoration: overline; */
+                      /* border: 1px solid #000; */
+                      padding: 6px 6px;
+                      border-radius: 6px;
+                      background-color: #E0E0E0;
+                      /* float: left; */
+                      "><i class="icon-left-1"></i>&nbsp; Back To Cart Items </span>
+            </a>
 
         </div>
 
@@ -212,7 +276,7 @@ if ($_SESSION['user_id'] == '') {
 
 
     <div class=" counter" style="">
-        <div class="container" style="margin-bottom: 20px">
+        <div class="container" style="margin-bottom: 20px;    width: 100%;">
 
             <div class=" tab-content" style="">
                 <div class="" id="cusmotize_items">
@@ -225,24 +289,48 @@ if ($_SESSION['user_id'] == '') {
                                 <?php
                                 $count = 0;
                                 $tag = $cartprd->tags();
+                                $tag_sort = array();
+
+                                $custom_order = ['Overcoat', 'Tuxedo Suit', 'Tuxedo Jacket', 'Tuxedo Pant', 'Tuxedo Shirt',
+                                    '3 Piece Suit', 'Suit', 'Sports Jacket', 'Jacket', 'Pant', 'Waistcoat', 'Shirt'];
+                                foreach ($custom_order as $key1 => $value1) {
+                                    foreach ($tag as $key => $value) {
+                                        //echo $value1, $value['tag_title'];
+                                        if ($value1 == $value['tag_title']) {
+
+                                            array_push($tag_sort, $value);
+                                        }
+                                    }
+                                }
+                                $tag = $tag_sort;
+
+
                                 $count = 0;
                                 $totalq = 0;
                                 $temp = 0;
+
                                 for ($t = 0; $t < count($tag); $t++) {
                                     $bas_tag = $tag[$t]['tag_title'];
                                     $bas_tag_id = $tag[$t]['id'];
                                     $bas_tag_temp = str_replace(" ", "_", $bas_tag);
                                     $bas_tag_temp = strtolower($bas_tag_temp);
-                                    $cartIds = $cartprd->idCustomizationWithZero($_SESSION['user_id'], $bas_tag_id);
-                                    if (count($cartIds)) {
+                                    $cartIds = $cartprd->idCustomizationWithZero($_SESSION['user_id'], $bas_tag_id, "=");
+                                    $customArray = array();
+                                    foreach ($cartIds as $key => $value) {
+                                        foreach ($getDataArray as $key1 => $value1) {
+                                            if ($value['id'] == $value1) {
+                                                array_push($customArray, $value);
+                                            }
+                                        }
+                                    }
+                                    if (count($customArray)) {
                                         ?>
-
                                         <li role="presentation" class="<?php echo $temp == 0 ? 'active' : ''; ?> ">
                                             <a class="" href="#<?php echo $bas_tag_id; ?>" aria-controls="<?php echo $bas_tag_id; ?>" role="tab" data-toggle="tab">
                                                 <?php echo $bas_tag; ?>
+                                                <span class='badge'><?php echo count($customArray); ?></span>
                                             </a>
                                         </li>
-
                                         <?php
                                         $temp++;
                                         $count++;
@@ -252,11 +340,27 @@ if ($_SESSION['user_id'] == '') {
 
                             </ul>
                         </div>
-                        <div class="col-sm-10" style="    padding-right: 0;">
+                        <div class="col-sm-10" style="    padding: 0;">
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <?php
                                 $tag = $cartprd->tags();
+
+                                $tag_sort = array();
+
+                                $custom_order = ['Overcoat', 'Tuxedo Suit', 'Tuxedo Jacket', 'Tuxedo Pant', 'Tuxedo Shirt',
+                                    '3 Piece Suit', 'Suit', 'Sports Jacket', 'Jacket', 'Pant', 'Waistcoat', 'Shirt'];
+                                foreach ($custom_order as $key1 => $value1) {
+                                    foreach ($tag as $key => $value) {
+                                        //echo $value1, $value['tag_title'];
+                                        if ($value1 == $value['tag_title']) {
+
+                                            array_push($tag_sort, $value);
+                                        }
+                                    }
+                                }
+                                $tag = $tag_sort;
+
                                 $count = 0;
                                 $totalq = 0;
                                 $temp = 0;
@@ -265,156 +369,154 @@ if ($_SESSION['user_id'] == '') {
                                     $bas_tag_id = $tag[$t]['id'];
                                     $bas_tag_temp = str_replace(" ", "_", $bas_tag);
                                     $bas_tag_temp = strtolower($bas_tag_temp);
-                                    $cartIds = $cartprd->idCustomizationWithZero($_SESSION['user_id'], $bas_tag_id);
-                                    if (count($cartIds)) {
+                                    $customArray = array();
+                                    $cartIds = $cartprd->idCustomizationWithZero($_SESSION['user_id'], $bas_tag_id, "=");
+                                    foreach ($cartIds as $key => $value) {
+                                        foreach ($getDataArray as $key1 => $value1) {
+                                            if ($value['id'] == $value1) {
+                                                array_push($customArray, $value);
+                                            }
+                                        }
+                                    }
+                                    if (count($customArray)) {
                                         ?>
 
                                         <div role="tabpanel" class="custom_form_tables tab-pane <?php echo $temp == 0 ? 'active' : ''; ?> " id="<?php echo $bas_tag_id; ?>">
 
-                                            <div class="custom_container"
-                                                 style="
-                                                 
-                                                 color: #000;
-                                                 border: 1px solid;
-                                                 background-repeat: no-repeat;
-                                                 background-size: 935px;
-                                                 margin-bottom: 10px;
-                                                 padding-bottom: 10px;
-                                                 "
-                                                 >
-                                                <p style="   
-                                                  font: 400 60px 'Lato';
-                                                   color: #FFF;
-                                                   font-size: 30px;
-                                                   font-weight: 300;
-                                                   background-color: #000;
-                                                   padding: 5px;
-                                                   ">
+                                            <form method="post" action="#">
+                                                <div class="custom_container "
+                                                     style="
+                                                     color: #000;
+                                                     background-repeat: no-repeat;
+                                                     background-size: 935px;
+                                                     margin-bottom: 10px;
+                                                     padding-bottom: 10px;
+                                                     " >
 
-                                                    <?php echo $bas_tag; ?>
-                                                    <a href="product_list.php?category=0&item_type=<?php echo $bas_tag_id; ?>">
-                                                        <span style="
-                                                              font-size: 17px;
-                                                              font-weight: 500;
-                                                              margin-top: 8px;
-                                                              float: right;
-                                                              /* text-decoration: overline; */
-                                                              /* border: 1px solid #000; */
-                                                              padding: 1px 10px;
-                                                              color: #FFF;
-                                                              border-bottom: 1px solid #F00;
-                                                              text-align: right;
-                                                              background-color: #000000;
-                                                              ">&nbsp;Add More <?php echo $bas_tag; ?> To Cart <i class="icon-right-1"></i></span>
-                                                    </a>
-                                                </p>
-                                                <form method="post" action="#">
-                                                    <table class = "table withoutCustom" style = "background:#fff">
-                                                        <thead>
-                                                            <tr class = "bg_light_2 color_dark">
-                                                                <th style="width: 5%;
-                                                                    padding: 0px 10px;">
-                                                                    <span 
-                                                                        style="
-                                                                        font-size: 11px;
-                                                                        font-weight: 700;
-                                                                      
-                                                                        float: left;
-                                                                        margin-bottom: 5px;
-                                                                        ">
-                                                                        Select All
-                                                                    </span>
-                                                                    <br/>
-                                                                    <span class="selectall" style="float: left;
-                                                                          width: 6px;">
-                                                                        <input type="checkbox" id="checkboxs_all_<?php echo $bas_tag_id; ?>"   class="d_none check_icon check_icon_all" >
-                                                                        <label for="checkboxs_all_<?php echo $bas_tag_id; ?>"  class="d_inline_m m_right_10 lableall"></label>
+                                                    <p style="   
+                                                       font: 300 60px 'Lato';
+                                                       color: #000;
+                                                       font-size: 26px;
+                                                       font-weight: 300;
+                                                       padding: 5px;
+                                                       margin-bottom: 22px;
+                                                       ">
+                                                        <span style=" "> Design Your <?php echo $bas_tag; ?></span>
 
-                                                                    </span>
+                                                        <input type="hidden" name="tag_id" value="<?php echo $bas_tag_id; ?>" >
+                                                        <input type="hidden" name="custom_form" value="<?php echo $bas_tag_temp; ?>">
+                                                        <button class="btn btn-danger " name='do_customization' type="submit" style="
+                                                                background: #000;
+                                                                font-size: 18px;
+                                                                margin-right: 60px;
+                                                                float: right;
+                                                                ">
+                                                            Customize Now &nbsp;<i class="icon-right-1"></i>
+                                                        </button>
 
-                                                                </th>
+                                                    </p>
 
+                                                    <div class="col-md-9 row" style="padding: 0px">
+                                                        <?php
+                                                        $temp++;
+                                                        for ($i = 0; $i < count($customArray); $i++) {
 
-                                                                <th style="width:30%">Product Information</th>
-                                                                <th style="width:12%">SKU</th>
-                                                                <th style="width:12%">Price</th>
-                                                                <th style="width:12%">Qty.</th>
-                                                                <th style="width:12%">Total</th>
-                                                                <th style="width:5%"></th
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $temp++;
-                                                            for ($i = 0; $i < count($cartIds); $i++) {
-
-                                                                $cartid = $cartIds[$i]['id'];
-                                                                $cartInfo = $cartprd->cartProductsInformation($cartid, $_SESSION['user_id'], $bas_tag_id);
-                                                                // print_r($cartInfo);
-                                                                $tg1 = $cartInfo['product_tag'];
-                                                                $count++;
-                                                                ?>
-                                                                <!-- without customized product list -->
-                                                                <tr class="tr_delay">
-                                                                    <td data-title="line-height: 10px;">
-                                                                        <input type="checkbox" id="checkboxs_<?php echo $count; ?>" name="cart_id[]" class="d_none product_checkBox" value="<?php echo $cartInfo['cart_product_id']; ?>">
-                                                                        <label for="checkboxs_<?php echo $count; ?>" class="d_inline_m m_right_10 product_checkBox"></label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div style="width: 65px;float: left;">
-                                                                            <a href="#" class="r_corners d_inline_b wrapper">
-                                                                                <img src="<?php echo $cartInfo['image']; ?>" alt="" style="height:45px;width:42px;">
-                                                                            </a>
-                                                                        </div>
-                                                                        <div>                                  
-                                                                            <p class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['title']; ?></a></p>
-                                                                            <p class="" style="margin-top: -8px;font-size: 13px">
-                                                                                <?php echo $cartInfo['product_speciality']; ?>
-                                                                            </p>
-                                                                        </div>
-
-                                                                    </td>
-                                                                    <td data-title="SKU" class=""><?php echo $cartInfo['sku']; ?></td>
-                                                                    <td data-title="Price" class=""><?php echo '$' . $cartInfo['price'] . '.00' ?></td>
-
-                                                                    <td data-title="Quantity" class="">
-                                                                        <?php
-                                                                        echo $cartInfo['quantity'];
-                                                                        $totalq += $cartInfo['quantity'];
-                                                                        ?>
-
-                                                                    </td>
-
-                                                                    <td data-title="Total" class="">
-                                                                        <?php echo '$' . $cartInfo['cart_price'] . '.00'; ?>
-                                                                    </td>
-
-                                                                    <td data-title="Action" class="fw_ex_bold color_dark"  style="width:20px">
-                                                                        <button class="color_grey_light_2 color_dark_hover tr_all" name="deleteCart" value="<?php echo $cartInfo['cart_product_id']; ?> ">
-                                                                            <i class="icon-cancel-circled-1 fs_large"></i>
-                                                                        </button>
-
-                                                                    </td>                                                                
-
-                                                                </tr>
-                                                                <?php
-                                                                $total_price = $total_price + $cartInfo['cart_price'];
-                                                            }
+                                                            $cartid = $customArray[$i]['id'];
+                                                            $cartInfo = $cartprd->cartProductsInformation($cartid, $_SESSION['user_id'], $bas_tag_id);
+                                                            // print_r($cartInfo);
+                                                            $tg1 = $cartInfo['product_tag'];
+                                                            $count++;
                                                             ?>
 
-                                                        </tbody>
-                                                    </table>
-                                                    <input type="hidden" name="tag_id" value="<?php echo $bas_tag_id; ?>" >
-                                                    <input type="hidden" name="custom_form" value="<?php echo $bas_tag_temp; ?>">
-                                                    <button class="btn btn-danger btn-sm" type="submit" style="background:#000;    margin-left: 10px;">
-                                                        <i class="icon-tools"></i> Customize Now
-                                                    </button>
+                                                            <div class=" col-md-3">
+                                                                <div class="thumbnail">
+                                                                    <div class="image_class" style="background: url(<?php echo $cartInfo['image']; ?>);height: 132px;">
+                                                                    </div>
+                                                                    <div class="caption" style="    border: 1px solid #DDD;
+                                                                         border-top: 0px;">
+                                                                        <h3 style="font-weight: 300;font-size: 24px;padding: 9px 0px;">
+                                                                            <?php echo $cartInfo['title']; ?> 
+                                                                            <form method="post" action="#" style='float: right' onsubmit="confirm('Are you sure want to remove this product from customization cart?')">
+                                                                                <button type='submit' class='pull-right' name='removeCustomCart' value='<?php echo $cartInfo['cart_product_id']; ?>'> 
+                                                                                    <i class="icon-cancel" style='color: red;'></i>
+                                                                                </button>
+                                                                            </form>
+                                                                        </h3>
+                                                                        <input type="hidden"  name="cart_id[]"  value="<?php echo $cartInfo['cart_product_id']; ?>">
+                                                                        <p style="font-size: 11px;    margin-bottom: 10px;">
+                                                                            <?php
+                                                                            $lens = strlen($cartInfo['product_speciality']);
+                                                                            if ($lens > 20) {
+                                                                                ?>
+                                                                            <p class="" style="margin-top: -8px;font-size: 13px" data-toggle="tooltip" data-placement="left" title="<?php echo $cartInfo['product_speciality']; ?>">
+                                                                                <?php echo substr($cartInfo['product_speciality'], 0, 20) . ' ...'; ?>
+                                                                            </p>
+                                                                        <?php } else { ?>
+                                                                            <p class="" style="margin-top: -8px;font-size: 13px" data-toggle="tooltip" data-placement="left" title="<?php echo $cartInfo['product_speciality']; ?>">
+                                                                                <?php echo $cartInfo['product_speciality']; ?>
+                                                                            </p>
+                                                                        <?php } ?>
+                                                                        <table class="gift_detail">
+                                                                            <tr><td>Quantity</td> <td>: <?php echo $cartInfo['quantity']; ?></td></tr>
+                                                                            <tr><td>Total</td> <td> : <b> <?php
+                                                                                        echo '$' . $cartInfo['cart_price'] . '.00';
+                                                                                        $totalq += $cartInfo['cart_price'];
+                                                                                        ?></b></td></tr>
+                                                                        </table>
+                                                                        </p>
 
 
-                                                </form>
+                                                                    </div>
+                                                                </div>
 
-                                            </div>
+                                                            </div>
+
+
+                                                            <!-- without customized product list -->
+
+                                                            <?php
+                                                            $total_price = $total_price + $cartInfo['cart_price'];
+                                                        }
+                                                        ?>
+
+
+
+
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-danger " type="submit" name='do_customization' style="
+                                                                    background: #000;
+                                                                    font-size: 18px;float: left;
+                                                                    background: #000;
+                                                                    font-size: 18px;
+                                                                    float: left;
+                                                                    padding: 6px 20px;
+
+                                                                    ">
+                                                                Customize Now &nbsp;<i class="icon-right-1"></i>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-3" style="    padding: 0;">
+                                                        <div class="" 
+                                                             style="min-height: 450px;
+                                                             height: 100%;
+                                                             background: url(custom_form_view/background_new_custom/<?php echo $bas_tag_id; ?>.jpg); 
+                                                             background-position-y: 11px;
+                                                             background-size: 100%;
+                                                             background-repeat: no-repeat;">
+
+                                                        </div>
+                                                    </div>
+                                                    <div style="clear: both"></div>
+
+                                                </div>
+                                                <div style="clear: both"></div>
+
+
+                                            </form>
+
+
                                         </div>
                                         <?php
                                     }
@@ -454,6 +556,7 @@ if ($_SESSION['user_id'] == '') {
                             </div>
                             <!-- End -->
                         </div>
+
                     </div>
 
 
@@ -496,7 +599,33 @@ if ($_SESSION['user_id'] == '') {
     </div><!-- /.modal -->
     <!---------------- ------------------------------------------------------------------------>
 
+
+
+
     <script>
+
+
+        function getCartData() {
+            //changes for new page customcart page
+            $("[name='cart_id[]']").each(function () {
+                if (this.checked) {
+                    var trobj = $(this).parents("tr");
+                    console.log($(trobj).children()[1]);
+                    console.log($(trobj).children()[3]);
+                }
+                ;
+            })
+            //end of custom cart page
+        }
+
+        $(function () {
+            $("[name='cart_id[]']").click(function () {
+                getCartData();
+            })
+        })
+
+
+
         $(function () {
             $("#checkbox_71").click(function () {
                 if (this.checked) {
@@ -509,7 +638,12 @@ if ($_SESSION['user_id'] == '') {
 
             $("#total_cart_quantitys").text("<?php echo $totalq > 1 ? $totalq . " products" : $totalq . " product"; ?>");
 
+
+
+
         });
+
+
     </script>
 
     <script>
@@ -612,14 +746,7 @@ if ($_SESSION['user_id'] == '') {
                 }
 
             })
-            $(".custom_form_tables").each(function () {
-                var trLength = ($(this).find("tr").length);
-                if (trLength) {
-                    var custom_id = this.id;
-                    var tag_target = $("[aria-controls=" + custom_id + "]");
-                    $(tag_target).html($(tag_target).html() + "<span class='badge'>" + (trLength - 1) + "</span> ")
-                }
-            })
+
 
 <?php
 if (isset($_REQUEST['backlink'])) {

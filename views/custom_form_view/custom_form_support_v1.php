@@ -134,7 +134,7 @@ function jacket_front_styles() {
             </div>
         </div>
     </div>
-    <?php //echo get_custom_data('52'); ?>
+    <?php echo get_custom_data('52'); ?>
     <!-- Back vent -->
     <?php echo get_custom_data('53'); ?>
     <?php

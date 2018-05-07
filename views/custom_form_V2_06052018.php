@@ -1061,7 +1061,7 @@ if ($_SESSION['user_id'] == '') {
                 if (isConfirm) {
                     confirmOnPageExit = false;
                     window.onbeforeunload = confirmOnPageExit;
-                    window.location = "shopAllCart.php";
+                    window.location = "shopAllCartCustom.php";
                 }
                 else {
                     swal("Cancelled", "Your style is safe :)", "success");

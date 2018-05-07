@@ -22,8 +22,8 @@ nitaFasions.filter('sumOfValue', function () {
         });
         return sum;
     }
-}); 
- 
+});
+
 
 nitaFasions.filter('sumOfTotal', function () {
     return function (producttotal) {
@@ -152,7 +152,46 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
         $scope.selected_child_ng = child;
         $scope.selected_validation = validation_dict;
         $scope.unwanted = unwanted;
+
+        $(".check_icon_all").attr("disabled", false).removeClass("disablecheckbox");
+        $(".check_icon").attr("disabled", false).removeClass("disablecheckbox");
+
         switch ($scope.selected_parent_ng) {
+            
+            
+            //changes on 06-05-2018
+            case 'Body Fit':
+                $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
+                $(".check_icon").attr("disabled", "true").addClass("disablecheckbox");
+                for (i in $scope.productStyleArrayNg) {
+                    var obj = $scope.productStyleArrayNg[i];
+                    obj['custom_data'][$scope.selected_parent_ng] = child;
+                }
+                break
+                
+            
+            case 'Wrist Watch':
+                $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
+                $(".check_icon").attr("disabled", "true").addClass("disablecheckbox");
+                for (i in $scope.productStyleArrayNg) {
+                    var obj = $scope.productStyleArrayNg[i];
+                    obj['custom_data'][$scope.selected_parent_ng] = child;
+                }
+                break
+            
+            
+            case 'Label':
+                $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
+                $(".check_icon").attr("disabled", "true").addClass("disablecheckbox");
+                for (i in $scope.productStyleArrayNg) {
+                    var obj = $scope.productStyleArrayNg[i];
+                    obj['custom_data'][$scope.selected_parent_ng] = child;
+                }
+                break
+                
+            //end of changes 06-05-2018    
+
+
             case 'Collar Style':
                 $scope.unwanted = {'Add 2 Buttons On The Collar Band': 'show', 'Collar Stays': 'show'};
 
@@ -299,6 +338,9 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
                 break;
 
 
+            case 'Body Fit':
+                console.log("Body Fit Case Selected")
+                break;
 
 
 
