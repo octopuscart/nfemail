@@ -155,10 +155,12 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
 
         $(".check_icon_all").attr("disabled", false).removeClass("disablecheckbox");
         $(".check_icon").attr("disabled", false).removeClass("disablecheckbox");
-
+        
+        $(".check_icon_all").attr("disabled", false).removeClass("disablecheckbox");
+        $(".check_icon").attr("disabled", false).removeClass("disablecheckbox");
         switch ($scope.selected_parent_ng) {
-            
-            
+
+
             //changes on 06-05-2018
             case 'Body Fit':
                 $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
@@ -168,8 +170,8 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
                     obj['custom_data'][$scope.selected_parent_ng] = child;
                 }
                 break
-                
-            
+
+
             case 'Wrist Watch':
                 $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
                 $(".check_icon").attr("disabled", "true").addClass("disablecheckbox");
@@ -178,8 +180,8 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
                     obj['custom_data'][$scope.selected_parent_ng] = child;
                 }
                 break
-            
-            
+
+
             case 'Label':
                 $(".check_icon_all").attr("disabled", "true").addClass("disablecheckbox");
                 $(".check_icon").attr("disabled", "true").addClass("disablecheckbox");
@@ -188,8 +190,8 @@ nitaFasions.controller('CustomController', function ($scope, $http, $filter, $ti
                     obj['custom_data'][$scope.selected_parent_ng] = child;
                 }
                 break
-                
-            //end of changes 06-05-2018    
+
+                //end of changes 06-05-2018    
 
 
             case 'Collar Style':

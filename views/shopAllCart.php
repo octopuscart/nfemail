@@ -407,7 +407,7 @@ if ($_SESSION['user_id'] == '') {
                                                     </table>
                                                     <input type="hidden" name="tag_id" value="<?php echo $bas_tag_id; ?>" >
                                                     <input type="hidden" name="custom_form" value="<?php echo $bas_tag_temp; ?>">
-                                                    <button class="btn btn-danger btn-sm" type="submit" style="background:#000;    margin-left: 10px;">
+                                                    <button class="btn btn-danger btn-lg" type="submit" style="background:#000;    margin-left: 10px;">
                                                         <i class="icon-tools"></i> Customize Now
                                                     </button>
 
