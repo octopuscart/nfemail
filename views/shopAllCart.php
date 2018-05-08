@@ -305,7 +305,7 @@ if ($_SESSION['user_id'] == '') {
                                                               border-bottom: 1px solid #F00;
                                                               text-align: right;
                                                               background-color: #000000;
-                                                              ">&nbsp;Add More <?php echo $bas_tag; ?> To Cart <i class="icon-right-1"></i></span>
+                                                              ">&nbsp;Add More <?php echo $bas_tag; ?>s To Cart <i class="icon-right-1"></i></span>
                                                     </a>
                                                 </p>
                                                 <form method="post" action="#">
