@@ -55,7 +55,8 @@ sastrería a medida, damas de costura, sastrería para hombre, los mejores sastr
     <link rel="stylesheet" type="text/css" media="all" href="../assets/plugins/owl-carousel/owl.transitions.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/plugins/rs-plugin/css/settings.css"/>
     <!--theme css-->
-    <link rel="stylesheet" type="text/css" media="all" href="../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../assets/css/bootstrap.css"/>
+    <!--<link rel="stylesheet" type="text/css" media="all" href="../assets/css/bootstrap.min.css"/>-->
     <link rel="stylesheet" type="text/css" media="all" href="../assets/css/animate.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="../assets/css/theme-animate.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="../assets/css/style.css"/>
@@ -235,7 +236,7 @@ sastrería a medida, damas de costura, sastrería para hombre, los mejores sastr
 </div>            
 <?php
 $urlcheck = $_SERVER['REQUEST_URI'];
-$stylewidth = "";
+$stylewidth =  "min-width:  1307px;";;
 if (strpos($urlcheck, 'product_list.php')){
     $stylewidth = "min-width:  1307px;";
 }
