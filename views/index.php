@@ -94,7 +94,7 @@ $_SESSION['carts'] = array();
 </section>
 <!--content-->
 <section class="section_offset" style="padding-bottom: 50px;padding-top: 50px;">
-    <div class="container" style="margin-top: -50px;">
+    <div class="container frontpagecontainer" style="margin-top: -50px;">
         <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products</h3>
         <div class="relative m_bottom_70 m_xs_bottom_30" style="margin-bottom: 50px;">
 

@@ -1587,11 +1587,26 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+
+
+//for non responsive design
 @media (min-width: 768px) {
   .container {
-    /*width: 750px;*/
+     width: 970px;
   }
 }
+
+///
+ .frontpagecontainer {
+    width: 750px;
+  }
+@media (min-width: 768px) {
+  .frontpagecontainer {
+    width: 750px;
+  }
+}
+
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
