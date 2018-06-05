@@ -88,7 +88,7 @@ if (isset($_POST['submitEnquiry'])) {
         $mail->IsSMTP();
         $mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
         $mail->SMTPAuth = true;  // authentication enabled
-        $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+//        $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
         $mail->Host = $mailconf['host'];
         $mail->Port = $mailconf['port'];
         $mail->Username = $mailconf['username']; //Username for SMTP authentication any valid email created in your domain
