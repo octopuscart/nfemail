@@ -98,6 +98,7 @@ if (isset($_POST['submitEnquiry'])) {
 // put your while loop here like below,
         $mail->Subject = $subject; //Subject od your mail
         $mail->AddCC($email);
+        $mail->AddCC($mailconf['mail_sender']);
         $mail->AddAddress($messageto, "");              // name is optional
 //echo $welcomemsg;
         $mail->MsgHTML($mailtemplate); //Put your body of the message you can place html code here
