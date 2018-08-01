@@ -233,7 +233,7 @@ class AuthHandler {
         $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
         $mailurl = $baselinkmain . "/views/sendMail.php";
         echo $a = $mailurl . "?mail_type=3&passwordkey=" . $password . "&email=" . $email . "&id=" . $id;
-        //header("location:$a");
+        //header("location:$a"); 
     }
 
     function user_status($id, $status) {
