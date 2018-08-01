@@ -229,13 +229,9 @@ class AuthHandler {
         $password = $get_fetch_auth['password'];
         $id = $get_fetch_auth['id'];
         $serverconf = $this->server_configuration();
-
-
-
         $baselink = 'http://' . $_SERVER['SERVER_NAME'];
         $baselinkmain = strpos($baselink, '192.168') ? $baselink . '/nf3/gitfrontend' : $baselink . '/frontend';
         $mailurl = $baselinkmain . "/views/sendMail.php";
-
         $a = $mailurl . "?mail_type=3&passwordkey=" . $password . "&email=" . $email . "&id=" . $id;
         header("location:$a");
     }
