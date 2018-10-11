@@ -179,7 +179,7 @@ if (isset($_POST['submitEnquiry'])) {
                     <li class="m_right_15 m_bottom_15 tooltip_container m_xs_right_15">
                         <!--tooltip-->
                         <span class="d_block r_corners color_default tooltip fs_small tr_all">Follow Us on Instagram </span>
-                        <a href="https://www.instagram.com/Nita.fashions" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2">
+                        <a href="https://www.instagram.com/Nita.fashions" target="_blank" class="d_block googleplus icon_wrap_size_2 circle color_grey_light_2">
                             <i class="icon-instagram fs_small"></i>
                         </a>
                     </li>
