@@ -231,12 +231,30 @@ if ($_SESSION['user_id'] == '') {
             <a href="pages_faq.php" class="menu-link  color_dark relative main-menu-link">FAQ's</a>  |                             
             <a href="pages_t&amp;c.php" class="menu-link  color_dark relative main-menu-link">Terms of Service</a>  |                          
             <a href="pages_policy.php" class="menu-link  color_dark relative main-menu-link">Privacy Policy</a>     
+            <a href="https://www.youtube.com/channel/UC5inme9JgQVjEBJJj_7VfHA"  target="_blank" class="menu-link facebook active icon_wrap_size_1  circle " style="  
+               width: 26px;
+               height: 26px;float: right;    font-size: 18px;
+               color: #fff;    background: red;
+    border-color: red;
+                   line-height: 27px;    margin: 0px 5px;
+               ">
+                <i class="icon-youtube-play fs_small"></i>
+            </a>
+            <a href="https://www.instagram.com/Nita.fashions"  target="_blank" class="menu-link facebook active icon_wrap_size_1  circle " style="  
+               width: 26px;
+               height: 26px;float: right;    font-size: 18px;
+               color: #fff;    background: #ce1785;
+    border-color: #ff6f2b;
+                   line-height: 27px;    margin: 0px 5px;
+               ">
+                <i class="icon-instagram fs_small"></i>
+            </a>
             <a href="https://twitter.com/nitafashions" target="_blank" class="menu-link twitter icon_wrap_size_1 circle " style="
                width: 26px;
                height: 26px;float: right;    font-size: 18px;
                color: #fff;    background: #40bff5;
                border-color:#40bff5;
-               line-height: 29px;        margin: 0px 16px 0px 5px;
+               line-height: 29px;        margin: 0px 4px 0px 5px;
                ">
                 <i class="icon-twitter fs_small"></i>
             </a>
@@ -249,6 +267,7 @@ if ($_SESSION['user_id'] == '') {
                ">
                 <i class="icon-facebook fs_small"></i>
             </a>
+            
         </div>
     </section>
     <section class="footer_bottom_part t_align_c color_grey bg_light_4 fw_light" style="padding: 5px;">
