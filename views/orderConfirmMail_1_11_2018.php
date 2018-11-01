@@ -1,5 +1,5 @@
 <?php
-
+ 
 $totals = '';
 $welcomemsg = '
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -38,7 +38,7 @@ $welcomemsg = '
  <tbody><tr>
                                     <td style="text-align:center">
                                     
-                                     ORDER NO. : &nbsp; ' . $orderDetail[0]['order_no'] . '
+                                     ORDER NO. : &nbsp; '.$orderDetail[0]['order_no'].'
                                      </td>
                                  </tr>
 </tbody></table>
@@ -272,8 +272,7 @@ if ($orderDetail[0]['coupon_id']) {
     $out_data = 0;
 }
 $welcomemsg.= '<tr style="">
-                    <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=7>
-                    <p style="white-space: pre-line;font-size:10px;">'. (isset($_SESSION['cardinfo'])? $_SESSION['cardinfo']:$_SESSION['cardinfo']).'</p>
+                    <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=8>
                    ' . mail_template("Order", "footer") . '
 </td>
                     <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;width:133px"  colspan=2><b>Sub Total</b></td>
@@ -346,7 +345,7 @@ $mail->SMTPDebug = 2;  // debugging: 1 = errors and messages, 2 = messages only
 $mail->SMTPAuth = true;  // authentication enabled
 //$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
 $mail->Host = $mailconf['host'];
-$mail->Port = $mailconf['port'];
+$mail->Port = $mailconf['port']; 
 $mail->Username = $mailconf['username']; //Username for SMTP authentication any valid email created in your domain
 $mail->Password = $mailconf['password']; //Password for SMTP authentication
 $mail->AddReplyTo($mailconf['mail_sender'], "Nita Fashions"); //reply-to address
@@ -354,19 +353,15 @@ $mail->SetFrom($mailconf['username'], "Nita Fashions"); //From address of the ma
 // put your while loop here like below,
 $mail->Subject = 'Order Confirmed' . '  ' . $orderDetail[0]['order_no']; //Subject od your mail
 $mail->AddCC($mailconf['mail_sender']);
-$mail->AddBCC($mailconf['username']);
+$mail->AddBCC($mailconf['username']); 
 foreach ($email as $to_add) {
     $mail->AddAddress($to_add, "");              // name is optional
 }
 //echo $welcomemsg;
-$checksend = 1;
-if ($checksend) {
-    $mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
-    $send = $mail->Send(); //Send the mails
-}
-else{
-    echo $welcomemsg;
-}
+
+ 
+$mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
+$send = $mail->Send(); //Send the mails
 
 //header('location:' . $_SERVER['HTTP_REFERER'] . '&mailsend=1');
 ?>

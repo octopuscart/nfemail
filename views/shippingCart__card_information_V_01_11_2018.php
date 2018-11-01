@@ -3,7 +3,8 @@ include 'header.php';
 include '../producthandler/productHandler.php';
 $cartprd = new CartHandler();
 $orderObj = new UserAddressDetail();
-//
+
+
 //echo $_SESSION['price'];
 if ($_SESSION['user_id'] == '') {
     ?>
@@ -24,11 +25,6 @@ if ($_SESSION['user_id'] == '') {
 //#### billing & shipping address ##
     $userInfo = $authobj->userProfile($_SESSION['user_id']);
     $addressData = $authobj->findAddress($_SESSION['user_id']);
-
-    if (isset($_POST['removecard'])) {
-        $_SESSION['cardinfo'] = "";
-        header("location: ./shippingCart.php?address=' ok '");
-    }
 
     if (isset($_POST['submitData'])) {
         $authobj->ChangeBillShip($_POST['bill_radio'], $_POST['ship_radio']);
@@ -182,7 +178,7 @@ if ($_SESSION['user_id'] == '') {
             $end_date = date('Y-m-d', strtotime('+1 day'));
             $cccode = $_SESSION['cp']['coupon_code'];
             $ccamt = $_SESSION['cp']['value_code'];
-
+           
 
 
             if ($discount_array['discount_type'] == 'Percent') {
@@ -195,7 +191,7 @@ if ($_SESSION['user_id'] == '') {
                 }
             }
 
-            $querydd = " insert into nfw_coupon (coupon_code,value,value_type,start_date,end_date) values('$cccode','$ccamt','Fixed','$start_date','$end_date')";
+             $querydd = " insert into nfw_coupon (coupon_code,value,value_type,start_date,end_date) values('$cccode','$ccamt','Fixed','$start_date','$end_date')";
             mysql_query($querydd);
             $last_id = mysql_insert_id();
             $_POST['coupon_id'] = $last_id;
@@ -846,21 +842,21 @@ if ($_SESSION['user_id'] == '') {
                                                                 </div>
                                                                 <div class="panel-body">
                             <?php if ($billdata) { ?>  
-                                                                                                                                                                                                <address>
-                                                                                                                                                                                                    <strong style="text-transform: capitalize;">
+                                                                                                                                                                            <address>
+                                                                                                                                                                                <strong style="text-transform: capitalize;">
                                 <?php echo $userInfo[0]['first_name'] . ' ' . $userInfo[0]['middle_name'] . ' ' . $userInfo[0]['last_name'] ?>
-                                                                                                                                                                                                    </strong><br>
+                                                                                                                                                                                </strong><br>
                                 <?php echo $billdata[0]['add1']; ?><br>
                                 <?php echo $billdata[0]['add2']; ?><br>
                                 <?php echo $billdata[0]['add3']; ?><br> 
                                 <?php echo $billdata[0]['add4']; ?><br>
-                                                                                                                                                    
-                                                                                                                                                                                                        <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
-                                                                                                                                                                                                </address>
+                                                                                                                                
+                                                                                                                                                                                    <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
+                                                                                                                                                                            </address>
                             <?php } else { ?>
-                                                                                                                                                                                                <span style="color:red">
-                                                                                                                                                                                                    BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
-                                                                                                                                                                                                </span>
+                                                                                                                                                                            <span style="color:red">
+                                                                                                                                                                                BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
+                                                                                                                                                                            </span>
                             <?php } ?>
                                                                 </div>
                                                             </div>
@@ -982,54 +978,30 @@ if ($_SESSION['user_id'] == '') {
                                     </label>
                                 </li>
                             </ul>
-
                             <hr style="height: 0px;margin-top: 0px;">
-                            <?php
-                            if ($_SESSION['cardinfo']) {
-                                echo "<p style='white-space: pre-line;'>" . $_SESSION['cardinfo'] . "</p>";
-                                ?>
-
-                                <input type="radio" checked id="radio_6_card" name="card_id" class="d_none" value="<?php echo $_SESSION['cardinfo']; ?>">
-                                <label for="radio_6_card" class="d_inline_m m_right_15 m_bottom_3 fw_light">Select This Card</label>
-                                <form method="post" action="#">
-                                    <button type="submit" name="removecard" class=" btn btn-danger btn-xs">Remove Card</button>
-                                </form>
-                                <?php
-                            } else {
-                                ?>
-                                <span style="color:red;margin-top: 17px;">TO PAYMENT WITH CREDIT CARD, KINDLY ADD CREDIT CARD DETAILS <i class="icon-right-1"></i></span>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myCardModal" id=""><i class="icon-plus"></i> Add Card Detail</button>
-
-                                <?php
-                            }
-                            ?>
-                            <?php if (0) { ?>
+                            <?php if ($card_detatil) { ?>
                                 <h5 class="fw_light color_dark m_bottom_23">Choose Your Card </h5>
-
                                 <ul>
                                     <?php
-                                    if (0) {
-                                        for ($k = 0; $k < count($card_detatil); $k++) {
-                                            $info1 = $card_detatil[$k];
-                                            ?>
-                                            <li class="m_bottom_15">
-                                                <input type="radio" checked id="radio_6_<?php echo $k; ?>" name="card_id" class="d_none" value="<?php echo $info1['id'] ?>">
-                                                <label for="radio_6_<?php echo $k; ?>" class="d_inline_m m_right_15 m_bottom_3 fw_light">
-                                                    <?php
-                                                    $dd = substr($info1['card_number'], -4);
+                                    for ($k = 0; $k < count($card_detatil); $k++) {
+                                        $info1 = $card_detatil[$k];
+                                        ?>
+                                        <li class="m_bottom_15">
+                                            <input type="radio" checked id="radio_6_<?php echo $k; ?>" name="card_id" class="d_none" value="<?php echo $info1['id'] ?>">
+                                            <label for="radio_6_<?php echo $k; ?>" class="d_inline_m m_right_15 m_bottom_3 fw_light">
+                                                <?php
+                                                $dd = substr($info1['card_number'], -4);
 
-                                                    echo '************' . $dd . ' <b>Exp. month</b>' . ' ' . $info1['expiry_month'] . ' <b>Exp. year</b> ' . '  ' . $info1['expiry_year']
-                                                    ?>
-                                                </label>
-                                            </li>
-                                            <?php
-                                        }
+                                                echo '************' . $dd . ' <b>Exp. month</b>' . ' ' . $info1['expiry_month'] . ' <b>Exp. year</b> ' . '  ' . $info1['expiry_year']
+                                                ?>
+                                            </label>
+                                        </li>
+                                        <?php
                                     }
                                 } else {
                                     ?>
-
-
-
+                                    <span style="color:red;margin-top: 17px;">CREDIT CARD DETAILS  NOT FOUND!  KINDLY ADD CREDIT CARD DETAILS <i class="icon-right-1"></i></span>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myCardModal" id=""><i class="icon-plus"></i> Add Card Detail</button>
                                 <?php }
                                 ?> 
                             </ul>
@@ -1272,79 +1244,74 @@ include 'footer.php'
                 </p>
             </div>
             <form class="form-horizontal" role="form" method="post" action="#">
-                <div class="modal-body" >
+                <div class="modal-body" style="margin-right: -36%;">
 
 
                     <fieldset>
 
-                        <div class="form-group " style="    padding: 0px 50px;">
-
-                            <label class=" control-label" for="card-holder-name">Fill Card Details</label>
-                            <div class="">
-                                <textarea class="form-control" name="card-holder-name" id="card-holder-name" style="width: 100%;height: 200px;font-size: 20px;">Card No.: .... .... .... ....&#13;&#10;Exp. Date: .../...&#13;&#10;Name on Card: ..............&#13;&#10;CVV: ... &#13;&#10;Card Type: ......  
-                                </textarea>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Name on Card" >
                             </div>
-
-
-
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="card-number">Card Number</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control is_number" name="card-number" id="card-number" placeholder="Credit Card Number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-xs-3" style="width:135px">
+                                        <select class="form-control col-sm-3" name="expiry-month" id="expiry-month">
+                                            <option>Month</option>
+                                            <option value="01">Jan (01)</option>
+                                            <option value="02">Feb (02)</option>
+                                            <option value="03">Mar (03)</option>
+                                            <option value="04">Apr (04)</option>
+                                            <option value="05">May (05)</option>
+                                            <option value="06">June (06)</option>
+                                            <option value="07">July (07)</option>
+                                            <option value="08">Aug (08)</option>
+                                            <option value="09">Sep (09)</option>
+                                            <option value="10">Oct (10)</option>
+                                            <option value="11">Nov (11)</option>
+                                            <option value="12">Dec (12)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3" style="width:135px">
+                                        <select class="form-control isNumber" name="expiry-year">
+                                            <?php for ($i = 2015; $i < 2040; $i++) { ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="cvv">Card Type</label>
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control" name="bank_name" id="card_type" placeholder="Card Type"   style="" >
+                            </div>
+                        </div>
+
                         <!--                        <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="card-number">Card Number</label>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control is_number" name="card-number" id="card-number" placeholder="Credit Card Number">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
-                                                    <div class="col-sm-9">
-                                                        <div class="row">
-                                                            <div class="col-xs-3" style="width:135px">
-                                                                <select class="form-control col-sm-3" name="expiry-month" id="expiry-month">
-                                                                    <option>Month</option>
-                                                                    <option value="01">Jan (01)</option>
-                                                                    <option value="02">Feb (02)</option>
-                                                                    <option value="03">Mar (03)</option>
-                                                                    <option value="04">Apr (04)</option>
-                                                                    <option value="05">May (05)</option>
-                                                                    <option value="06">June (06)</option>
-                                                                    <option value="07">July (07)</option>
-                                                                    <option value="08">Aug (08)</option>
-                                                                    <option value="09">Sep (09)</option>
-                                                                    <option value="10">Oct (10)</option>
-                                                                    <option value="11">Nov (11)</option>
-                                                                    <option value="12">Dec (12)</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-xs-3" style="width:135px">
-                                                                <select class="form-control isNumber" name="expiry-year">
-                        <?php for ($i = 2015; $i < 2040; $i++) { ?>
-                                                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="cvv">Card Type</label>
+                                                    <label class="col-sm-3 control-label" for="cvv">Address</label>
                                                     <div class="col-xs-4">
-                                                        <input type="text" class="form-control" name="bank_name" id="card_type" placeholder="Card Type"   style="" >
-                                                    </div>
-                                                </div>
-                        
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label" for="cvv">Address</label>
-                                                                            <div class="col-xs-4">
-                                                                                <input type="text" class="form-control" name="address" id="address" placeholder="Address"   style="" >
-                                                                            </div>
-                                                                        </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="cvv">CVV</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control is_number" name="cvv" id="cvv" placeholder="Code"  min="3" max="3" style="width:45%" >
+                                                        <input type="text" class="form-control" name="address" id="address" placeholder="Address"   style="" >
                                                     </div>
                                                 </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="cvv">CVV</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control is_number" name="cvv" id="cvv" placeholder="Code"  min="3" max="3" style="width:45%" >
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
                 <div class="modal-footer">

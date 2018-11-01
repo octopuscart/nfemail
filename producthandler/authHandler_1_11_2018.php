@@ -929,17 +929,14 @@ class AuthHandler {
 
     function cardInfoInsertion($user_id, $data) {
         $f1 = $data['card-holder-name'];
-        
         $f2 = $data['card-number'];
         $f3 = $data['expiry-month'];
         $f4 = $data['expiry-year'];
         $f7 = $data['bank_name'];
         $f5 = $data['address'];
         $f6 = $data['cvv'];
-        $_SESSION['cardinfo'] = $f1;
-        
         $query = "insert into nfw_user_card (user_id,card_holder_name,card_number,expiry_month,expiry_year,address,cvv,default_active,bank_name) values('$user_id','$f1','$f2','$f3','$f4','$f5','$f6','0','$f7') ";
-        //mysql_query($query);
+        mysql_query($query);
     }
 
     #fetch card detail

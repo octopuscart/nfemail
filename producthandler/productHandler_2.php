@@ -1873,9 +1873,9 @@ class CartHandler {
             $carddata1 = "Manual payment";
             $cardTitle = 'Manual payment';
         } else {
-            //$query = "SELECT card_holder_name,card_number,expiry_month,expiry_year,address,bank_name,cvv FROM `nfw_user_card` where id = $card_id";
-            //$carddata = resultAssociate($query);
-            $carddata1 = $_SESSION['cardinfo'];
+            $query = "SELECT card_holder_name,card_number,expiry_month,expiry_year,address,bank_name,cvv FROM `nfw_user_card` where id = $card_id";
+            $carddata = resultAssociate($query);
+            $carddata1 = json_encode(end($carddata));
             $cardTitle = 'Credit Card';
         }
 // echo 4;
@@ -1935,7 +1935,6 @@ class CartHandler {
             $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
             mysql_query($query);
         }
-//        $_SESSION['cardinfo'] = '';
         return $last_id;
     }
 
