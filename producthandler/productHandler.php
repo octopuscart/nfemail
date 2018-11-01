@@ -1875,7 +1875,7 @@ class CartHandler {
         } else {
             //$query = "SELECT card_holder_name,card_number,expiry_month,expiry_year,address,bank_name,cvv FROM `nfw_user_card` where id = $card_id";
             //$carddata = resultAssociate($query);
-            $carddata1 = $_SESSION['cardinfo'];
+            $carddata1 = "";//$_SESSION['cardinfo'];
             $cardTitle = 'Credit Card';
         }
 // echo 4;
