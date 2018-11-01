@@ -991,9 +991,9 @@ if ($_SESSION['user_id'] == '') {
 
                                 <input type="radio" checked id="radio_6_card" name="card_id" class="d_none" value="<?php echo $_SESSION['cardinfo']; ?>">
                                 <label for="radio_6_card" class="d_inline_m m_right_15 m_bottom_3 fw_light">Select This Card</label>
-                                <form method="post" action="#">
+<!--                                <form method="post" action="#">
                                     <button type="submit" name="removecard" class=" btn btn-danger btn-xs">Remove Card</button>
-                                </form>
+                                </form>-->
                                 <?php
                             } else {
                                 ?>
