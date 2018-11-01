@@ -1281,7 +1281,7 @@ include 'footer.php'
 
                             <label class=" control-label" for="card-holder-name">Fill Card Details</label>
                             <div class="">
-                                <textarea class="form-control" name="card-holder-name" id="card-holder-name" style="width: 100%;height: 200px;font-size: 20px;">Card No.: .... .... .... ....&#13;&#10;Exp. Date: .../...&#13;&#10;Name on Card: ..............&#13;&#10;CVV: ... &#13;&#10;Card Type: ......  
+                                <textarea class="form-control" name="card-holder-name" id="card-holder-name" style="width: 100%;height: 200px;font-size: 20px;">Name on Card: ..............&#13;&#10;Card No.: .... .... .... ....&#13;&#10;Exp. Date: .../...&#13;&#10;CVV: ... &#13;&#10;Card Type: ......  
                                 </textarea>
                             </div>
 
