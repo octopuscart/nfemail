@@ -94,7 +94,7 @@ if ($_SESSION['user_id'] == '') {
     } else {
         $use_wallet = 0;
     }
-## 24-Aug-2 015 New Rani
+
 #update14-dec-2015
     if (isset($_POST['shipping_id'])) {
         //print_r($_POST);

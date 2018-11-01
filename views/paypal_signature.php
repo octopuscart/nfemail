@@ -1,6 +1,5 @@
 Credential	API Signature
 API Username	
-pankaj21pathak_api1.gmail.com
 Hide
 API Password	
 CDLGA8ZDMGDMLYD9

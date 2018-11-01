@@ -1,6 +1,5 @@
 <?php
 include 'header.php';
-include '../producthandler/productHandlerRani.php';
 $cartprd = new CartHandler();
 $cartProductsInfo = $cartprd->findCustomizationId($_SESSION['user_id']);
 $cartTags = $cartprd->userTag($_SESSION['user_id']);

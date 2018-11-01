@@ -1,7 +1,7 @@
 <?php 
 	
 	// your email
-	$user_email = "pankaj21pathak@gmail.com";
+	$user_email = "";
 
 	$mail = array(
 		"name" => htmlspecialchars($_POST['cf_name']),

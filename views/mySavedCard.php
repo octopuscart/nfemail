@@ -1,4 +1,5 @@
 <?php
+ header('location:userProfile.php');
 include 'header.php';
 $userInfo = $authobj->userProfile($_SESSION['user_id']);
 if ($_SESSION['user_id'] == '') {
