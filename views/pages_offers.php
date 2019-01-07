@@ -1,5 +1,5 @@
 <?php
-header("Location: https://www.nitafashions.com/frontend/views/product_list_offer.php?category=0&item_type=1&&sorting=On+Sale");
+//header("Location: https://www.nitafashions.com/frontend/views/product_list_offer.php?category=0&item_type=1&&sorting=On+Sale");
 include 'header.php';
 ?>
 <!--page title-->

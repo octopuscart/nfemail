@@ -95,7 +95,12 @@ $_SESSION['carts'] = array();
 <!--content-->
 <section class="section_offset" style="padding-bottom: 50px;padding-top: 50px;">
     <div class="container frontpagecontainer" style="margin-top: -50px;">
-        <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products</h3>
+        <!--<h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products</h3> -->
+        
+        
+        
+        <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Top 10 Sea Island Cotton Shirt Fabrics of 2019</h3>
+        
         <div class="relative m_bottom_70 m_xs_bottom_30" style="margin-bottom: 50px;">
 
             <div class="row">
