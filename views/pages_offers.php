@@ -1,6 +1,6 @@
 <?php
 header("Location: https://www.nitafashions.com/frontend/views/product_list_offer.php?category=0&item_type=1&&sorting=On+Sale");
-include 'header.php';
+include 'header.php'; 
 ?>
 <!--page title-->
 <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="    padding: 0px 1px 8px 1px;background: black;">
