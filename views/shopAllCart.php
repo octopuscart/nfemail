@@ -273,7 +273,7 @@ if ($_SESSION['user_id'] == '') {
 
                                             <div class="custom_container"
                                                  style="
-                                                 
+
                                                  color: #000;
                                                  border: 1px solid;
                                                  background-repeat: no-repeat;
@@ -283,7 +283,7 @@ if ($_SESSION['user_id'] == '') {
                                                  "
                                                  >
                                                 <p style="   
-                                                  font: 400 60px 'Lato';
+                                                   font: 400 60px 'Lato';
                                                    color: #FFF;
                                                    font-size: 30px;
                                                    font-weight: 300;
@@ -318,7 +318,7 @@ if ($_SESSION['user_id'] == '') {
                                                                         style="
                                                                         font-size: 11px;
                                                                         font-weight: 700;
-                                                                      
+
                                                                         float: left;
                                                                         margin-bottom: 5px;
                                                                         ">
@@ -407,10 +407,14 @@ if ($_SESSION['user_id'] == '') {
                                                     </table>
                                                     <input type="hidden" name="tag_id" value="<?php echo $bas_tag_id; ?>" >
                                                     <input type="hidden" name="custom_form" value="<?php echo $bas_tag_temp; ?>">
-                                                    <button class="btn btn-danger btn-lg" type="submit" style="background:#000;    margin-left: 10px;">
+                                                    <button class="btn btn-danger btn-lg pull-left" type="submit" style="background:#000;    margin-left: 10px;">
                                                         <i class="icon-tools"></i> Customize Now
                                                     </button>
-
+                                                    <p class="pull-left" style="    margin-left: 14px;
+                                                       color: red;margin-top: 10px;"><i class="fa fa-warning" style="    margin-top: 5px;"></i> To Customize, Please check the item(s).
+                                                        <a href="#" data-toggle="modal" data-target="#helpModal">Help?</a>
+                                                    </p>
+                                                    <div style="clear: both"></div>
 
                                                 </form>
 
@@ -465,6 +469,23 @@ if ($_SESSION['user_id'] == '') {
     }
     include 'footer.php';
     ?>
+
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       
+      </div>
+                      <div class="modal-body">
+
+                <img src="../assets/help/nf_customization_help.gif">
+                      </div>
+            </div>
+        </div>
+    </div>
+
+    
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
