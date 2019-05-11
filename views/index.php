@@ -9,6 +9,7 @@ $_SESSION['carts'] = array();
 <section class="relative w_full m_bottom_15">
     <div class="r_slider">
         <ul>
+            <!--
             <li data-transition="fade" data-slotamount="10">
                 <img src="../assets/images/web19_21.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
@@ -19,6 +20,7 @@ $_SESSION['carts'] = array();
                 </div>
 
             </li>
+            -->
             
             
             
@@ -109,11 +111,12 @@ $_SESSION['carts'] = array();
 <!--content-->
 <section class="section_offset" style="padding-bottom: 50px;padding-top: 50px;">
     <div class="container frontpagecontainer" style="margin-top: -50px;">
-        <!--<h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products</h3> -->
+        <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products 2019</h3>
         
-        
+        <!--
         
         <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Top 10 Sea Island Cotton Shirt Fabrics of 2019</h3>
+         -->
         
         <div class="relative m_bottom_70 m_xs_bottom_30" style="margin-bottom: 50px;">
 
