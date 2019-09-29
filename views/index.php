@@ -21,10 +21,10 @@ $_SESSION['carts'] = array();
 
             </li>
             -->
-            
-            
-            
-            
+
+
+
+
             <li data-transition="fade" data-slotamount="10">
                 <img src="../assets/images/web10.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
@@ -38,7 +38,7 @@ $_SESSION['carts'] = array();
 
 
 
-<li data-transition="fade" data-slotamount="10">
+            <li data-transition="fade" data-slotamount="10">
                 <img src="../assets/images/web13.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
                     <h1 class='fw_ex_light color_light tt_uppercase'>        </h1>
@@ -51,7 +51,7 @@ $_SESSION['carts'] = array();
 
 
             <li data-transition="fade" data-slotamount="10">
-                <img src="../assets/images/slide_06.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
+                <img src="../assets/images/web21.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="left" data-y="109" data-speed="700" data-start="1500">
                     <p class='slider_title_1 fw_ex_bold color_light tt_uppercase lh_ex_small'>New</p>
                     <h1 class='fw_ex_light color_light slider_title_3 tt_uppercase m_bottom_10 m_sm_bottom_0' style="color: #1FB8C6 !important;">Arrivals</h1>
@@ -63,8 +63,8 @@ $_SESSION['carts'] = array();
             </li>
 
 
-<li data-transition="fade" data-slotamount="10">
-                <img src="../assets/images/web11.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
+            <li data-transition="fade" data-slotamount="10">
+                <img src="../assets/images/web22.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
                     <h1 class='fw_ex_light color_light tt_uppercase'>        </h1>
                     <p class='slider_title_1 fw_ex_bold color_light tt_uppercase lh_ex_small m_bottom_23 m_sm_bottom_5'>     </p>
@@ -76,7 +76,7 @@ $_SESSION['carts'] = array();
 
 
 
-<li data-transition="fade" data-slotamount="10">
+            <li data-transition="fade" data-slotamount="10">
                 <img src="../assets/images/web12.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
                     <h1 class='fw_ex_light color_light tt_uppercase'>        </h1>
@@ -88,13 +88,7 @@ $_SESSION['carts'] = array();
             </li>
 
 
-
-
-
-
-
-
-<li data-transition="fade" data-slotamount="10">
+            <li data-transition="fade" data-slotamount="10">
                 <img src="../assets/images/slide_04.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
                 <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
                     <h1 class='fw_ex_light color_light tt_uppercase'>The biggest</h1>
@@ -104,6 +98,21 @@ $_SESSION['carts'] = array();
                 </div>
 
             </li>
+            
+            
+            
+            
+            <li data-transition="fade" data-slotamount="10">
+                <img src="../assets/images/web23.jpg" alt="" data-bgfit="cover" data-bgposition="center center">
+                <div class="caption sfl str" data-x="right" data-y="108" data-speed="700">
+                    <h1 class='fw_ex_light color_light tt_uppercase'>        </h1>
+                    <p class='slider_title_1 fw_ex_bold color_light tt_uppercase lh_ex_small m_bottom_23 m_sm_bottom_5'>     </p>
+                    <p class='color_light m_bottom_25 m_sm_bottom_5'><b>      </b></p>
+
+                </div>
+
+            </li>
+
 
         </ul>
     </div>
@@ -112,12 +121,12 @@ $_SESSION['carts'] = array();
 <section class="section_offset" style="padding-bottom: 50px;padding-top: 50px;">
     <div class="container frontpagecontainer" style="margin-top: -50px;">
         <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products 2019</h3>
-        
+
         <!--
         
         <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Top 10 Sea Island Cotton Shirt Fabrics of 2019</h3>
-         -->
-        
+        -->
+
         <div class="relative m_bottom_70 m_xs_bottom_30" style="margin-bottom: 50px;">
 
             <div class="row">
@@ -211,7 +220,7 @@ $_SESSION['carts'] = array();
                                             </button>
                                         </div>
                                         <div class="half_column w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie">
-                                            <?php if(isset($_SESSION['user_id'])){ ?>
+                                            <?php if (isset($_SESSION['user_id'])) { ?>
                                                 <a href="#" class="button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button"  item_type="<?php echo $result[$k]['tag_id']; ?>"  wishlistaddid="<?php echo $result[$k]['product_id']; ?>"  style="font-size: 12px;
                                                    height: 26px;
                                                    padding: 0px 6px;
@@ -252,7 +261,7 @@ $_SESSION['carts'] = array();
                 <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_2.jpg" alt=""  width="371" height="141"></a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 m_bottom_12 m_xs_bottom_0" data-appear-animation="fadeInUp" data-appear-animation-delay="400">
-                <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_3.jpg" alt=""  width="371" height="141"></a>
+                <a href="#" class="d_block d_xs_inline_b d_mxs_block"><img src="../assets/images/banner_4.jpg" alt=""  width="371" height="141"></a>
             </div>
         </section>
     </div>
@@ -260,7 +269,7 @@ $_SESSION['carts'] = array();
 
 <section class="section_offset" style="padding:0px;margin-top: -40px;">
     <div class="container">
-
+ 
         <h3 class="color_dark fw_light m_bottom_15 t_align_c" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;">Labels We Carry</h3>
         <!--<p class="m_bottom_35 t_align_c" data-appear-animation="bounceInLeft" data-appear-animation-delay="200" style="margin-bottom: 15px;">Nita Fashions is having Numerous Brands.</p>-->
         <div class="relative" data-appear-animation="bounceInLeft" data-appear-animation-delay="400">
