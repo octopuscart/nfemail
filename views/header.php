@@ -512,7 +512,7 @@ function child($table, $column, $id) {
 
 
                                             <hr style = "margin-bottom: 0px;margin-top: 5px;">
-                                                <section class="sticky_part bg_light" style="">
+                                                <section class="sticky_part bg_light desktopmenu hideonmobile" style="">
                                                     <div class="container">
                                                         <!--main navigation-->
                                                         <button id="menu_button" class="r_corners tr_all color_blue db_centered m_bottom_20 d_none d_xs_block">
