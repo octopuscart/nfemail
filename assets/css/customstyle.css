@@ -1,0 +1,135 @@
+.appheaderpart .contact_info_list{
+    float: right;
+    color: #000;
+    padding-top: 6px;
+}
+
+.headertopemail{
+    margin-bottom: -15px;
+}
+
+#loginCartWish{
+    margin-top: 25px;
+}
+
+.textoverflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.showonmobile{
+    display: none;
+}
+
+.productlistimage{
+    height: 250px;
+    width: 250px;
+}
+.dropdownheader{
+    width: 300px;
+}
+
+.dropdownheader h5{
+    width: 300px;
+}
+
+.productitems{
+    margin-bottom: 20px;
+}
+
+.dropdownheader2 h5{
+    width: 380px;
+}
+
+.paddinglr125{
+    padding:0 125px;
+}
+
+
+#side_menu{
+    background: white;
+}
+#close_side_menu {
+    opacity: .2;
+    opacity: 1;
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .paddinglr125{
+        padding:0 10px;
+    }
+
+    .dropdownheader{
+        width: 266px;
+    }
+    .dropdownheader h5{
+        width: 266px;
+    }
+
+    .dropdownheader2{
+        width: 266px;
+    }
+    .dropdownheader2 h5{
+        width: 266px;
+    }
+    .login_form{
+        padding: 10px;
+    }
+    .productlistimage{
+        height: auto;
+        width: auto;
+    }
+    .d_inline_m_mob{
+        display: inline;
+        display: inline!important;
+        margin-bottom: 20px;
+    }
+    .showonmobile{
+        display: block;
+    }
+    .col-sm-6{
+        width: 50%;
+        float: left;
+    }
+    .appheaderpart .contact_info_list{
+        float: right;
+        color: #000;
+        padding-top: 6px;
+    }
+    .hideonmobile{display: none}
+    .headertopemail{
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px!important;
+    }
+    #loginCartWish{
+        margin-top: 10px;
+    }
+
+    .productimagesfrontpage{
+
+    } 
+
+    .labels_container {
+        position: absolute;
+        left: 67px;
+        top: 10px;
+        z-index: 2;
+    }
+
+    #open_side_menu {
+        /* color: black; */
+        position: fixed;
+        top: 30px;
+        right: -40px;
+        cursor: pointer;
+        z-index: 25;
+        opacity: 1!important;
+        background: red;
+        border: 2px solid red;
+    }
+
+}

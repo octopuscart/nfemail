@@ -288,7 +288,7 @@
 				oButton = $('#open_side_menu'),
 				cButton = $('#close_side_menu'),
 				sideContainer = $('#side_menu'),
-				offset = $('[role="banner"]').outerHeight() + 100;
+				offset = 20;
 
 			sideMenu.init = function(){
 				sideMenu.checkSideMenu();

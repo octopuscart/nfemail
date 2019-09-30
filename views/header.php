@@ -12,6 +12,104 @@ $conf = resultAssociate("select * from server_conf");
 $conf = end($conf);
 $imageserver = $conf['image_server'];
 ?>
+<?php
+$menuArray = array(
+    "Home" => array(
+        "About Us" => array(),
+        "Schedule" => array(),
+        "FAQ's" => array(),
+        "Contact Us" => array()
+    ),
+    "Shop Now" => array(
+        "Men's" => array("Shirt", "Tuxedo Shirt", "Suit", "Sports Jacket", "Trouser", "Waisetcoat", "Tuxedo Suit", "Tuxedo Jacket", "Tuxedo Trousers", "Overcoat"),
+        "Woman's" => array("Shirt", "Blouse", "Suit", "Jacket"),
+    // "Accessories" => array("Tie", "Bow", "Cuffline", "Suspender")
+    ),
+//    "Men's" => array(
+//        "Shirt" => array("Two-Ply Superline", "Wrinkle-Free 100% Cotton", "Executive", "Linen", "Cotton/Poly Blends")
+//    ),
+//    "Mens Shirt"=>array("Two-Ply Superline","Wrinkle-Free 100% Cotton","Executive","Linen","Cotton/Poly Blends"),
+//    "Women's" => array(
+//        "Shirt" => array(),
+//        "Blouse" => array(),
+//        "Suit" => array(),
+//        "Jacket" => array()
+//    ),
+    "Accessories" => array(
+        "Tie" => array(),
+        "Bow" => array(),
+        "Cuffline" => array(),
+        "Suspender" => array()
+    ),
+    "Schedule" => array(
+        "Us" => array(),
+        "Uk" => array(),
+        "Eurpo" => array("France", "Germany", "Spain"),
+        "Australia" => array()
+    ),
+    "FAQ's" => array(),
+    "Contact Us" => array()
+);
+
+function parent_get($table, $column, $id) {
+    ?>
+    <ul class="hr_list main_menu type_2 fw_light true">       
+        <?php
+        $query = mysql_query("select * from $table where $column=$id order by menu_index");
+        while ($row = mysql_fetch_array($query)) {
+            ?> 
+            <li class="container3d relative <?php if ($row['menu_page'] == '') { ?> f_xs_none m_xs_bottom_5 <?php } ?>"  >
+
+                <a href="<?php echo $row['menu_page']; ?> " class="menu-link d_block color_dark relative main-menu-link"> <?php echo $row['name']; ?> </a>
+
+                <?php
+                $cat[$row['id']] = child($table, $column, $row['id']);
+                ?>
+            </li>
+            <?php
+        }
+        ?>
+    </ul>           
+    <?php
+    return $cat;
+}
+
+function child($table, $column, $id) {
+    // echo "select * from $table where $column=$id order by menu_index";
+    ?>
+
+    <?php
+    $query = mysql_query("select * from $table where $column=$id order by menu_index");
+    $cat = array();
+    if (mysql_num_rows($query)) {
+        ?>
+        <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
+            <?php
+            while ($row = mysql_fetch_array($query)) {
+                ?>
+                <li class="container3d relative <?php if ($row['menu_page'] == '') { ?> f_xs_none m_xs_bottom_5 <?php } ?>">
+                    <?php
+                    ?>
+                    <a href="<?php echo $row['menu_page']; ?> " class="menu-link d_block color_dark relative main-menu-link"> <?php echo $row['name']; ?> <?php echo $row['name'] == 'Tuxedo' ? '<i class="icon-angle-right"></i>' : ''; ?></a>
+                    <?php
+                    $tt = child($table, $column, $row['id']);
+
+
+                    $cat[$row['id']] = $tt;
+                    ?> 
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+        <?php
+    }
+    ?>
+
+    <?php
+    return $cat;
+}
+?>
 <!doctype html>
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
@@ -246,102 +344,102 @@ $imageserver = $conf['image_server'];
                                         $httpProvider.defaults.timeout = 5000;
                                         }])
                                     </script>
-         <button id="open_side_menu" class="icon_wrap_size_2 circle color_light bg_gradiant">
-                <i class="icon-menu"></i>
-            </button>
-            <div id="side_menu" class='bg_gradiant'>
-                <header class="m_bottom_30 d_table w_full" >
-                    <!--logo-->
-                    <div class="d_table_cell half_column v_align_m" style="background: white">
-                        <a href="/">
-                            <img src="http://localhost/shanielfashions/assets/images/logo22.png" alt="">
-                        </a>
-                    </div>
-                    <!--close sidemenu button-->
-                    <div class="d_table_cell half_column v_align_m t_align_r">
-                        <button class="icon_wrap_size_2 circle color_light _2 d_inline_m" id="close_side_menu">
-                            <i class="icon-cancel"></i>
-                        </button>
-                    </div>
-                </header>
-                <hr class="divider_type_2 m_bottom_20">
+                                    <button id="open_side_menu" class="icon_wrap_size_2 circle color_light bg_gradiant">
+                                        <i class="icon-menu"></i>
+                                    </button>
+                                    <div id="side_menu" class='bg_gradiant'>
+                                        <header class="m_bottom_30 d_table w_full" >
+                                            <!--logo-->
+                                            <div class="d_table_cell half_column v_align_m" style="background: white">
+                                                <a href="/">
+                                                    <img src="../assets/images/logo/nf_logo_8.png" alt="">
+                                                </a>
+                                            </div>
+                                            <!--close sidemenu button-->
+                                            <div class="d_table_cell half_column v_align_m t_align_r">
+                                                <button class="icon_wrap_size_2 circle color_light _2 d_inline_m" id="close_side_menu">
+                                                    <i class="icon-cancel"></i>
+                                                </button>
+                                            </div>
+                                        </header>
+                                        <hr class="divider_type_2 m_bottom_20">
 
-                <!--main menu-->
-                <nav>
-                    <ul class="side_main_menu fw_light">
+                                            <!--main menu-->
+                                            <nav>
+                                                <ul class="side_main_menu fw_light">
 
                                                     <li class="has_sub_menu  m_bottom_10">
-                                <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Home</a>
-                                <!--sub menu(second level)-->
-                                 <ul class="d_none m_top_10">       
-                                    <li class="m_bottom_10"><a href="#" class="d_block relative color_light_2 color_blue_hover">About Us</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="#" class="d_block relative color_light_2 color_blue_hover">FAQ's</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="#" class="d_block relative color_light_2 color_blue_hover">Terms of Service</a></li>
-
-                                    </ul> </li>                            <li class="  m_bottom_10">
-                                <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Our History</a>
-                                <!--sub menu(second level)-->
-                                 </li>                            <li class="has_sub_menu  m_bottom_10">
-                                <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Men</a>
-                                <!--sub menu(second level)-->
-                                 <ul class="d_none m_top_10">       
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/2/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/4/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/1/0" class="d_block relative color_light_2 color_blue_hover">Shirts</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/3/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/9/0" class="d_block relative color_light_2 color_blue_hover">Waistcoats</a></li>
-
-                                    </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
-                                <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Women</a>
-                                <!--sub menu(second level)-->
-                                 <ul class="d_none m_top_10">       
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/5/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/7/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/6/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/8/0" class="d_block relative color_light_2 color_blue_hover">Skirts</a></li>
-
-                                    </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
-                                <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Leather Jacket</a>
-                                <!--sub menu(second level)-->
-                                 <ul class="d_none m_top_10">       
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/men" class="d_block relative color_light_2 color_blue_hover">Men</a></li>
-
-                                           
-                                    <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/women" class="d_block relative color_light_2 color_blue_hover">Women</a></li>
-
-                                    </ul> </li>                            <li class="  m_bottom_10">
-                                <a href="http://localhost/shanielfashions/Shop/lookbook/lookbook" class="d_block relative fs_large color_light_2 color_blue_hover">Style Tips</a>
-                                <!--sub menu(second level)-->
-                                 </li>                            <li class="  m_bottom_10">
-                                <a href="http://localhost/shanielfashions/Shop/contactus" class="d_block relative fs_large color_light_2 color_blue_hover">Contact Us</a>
-                                <!--sub menu(second level)-->
-                                 </li>
+                                                        <a href="#" class="d_block relative fs_large color_black color_blue_hover">Home</a>
+                                                        <!--sub menu(second level)-->
+                                                        <ul class="d_none m_top_10">       
+                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">About Us</a></li>
 
 
+                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">FAQ's</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">Terms of Service</a></li>
+
+                                                        </ul> </li>                            <li class="  m_bottom_10">
+                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Our History</a>
+                                                        <!--sub menu(second level)-->
+                                                    </li>                            <li class="has_sub_menu  m_bottom_10">
+                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Men</a>
+                                                        <!--sub menu(second level)-->
+                                                        <ul class="d_none m_top_10">       
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/2/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/4/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/1/0" class="d_block relative color_light_2 color_blue_hover">Shirts</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/3/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/9/0" class="d_block relative color_light_2 color_blue_hover">Waistcoats</a></li>
+
+                                                        </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
+                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Women</a>
+                                                        <!--sub menu(second level)-->
+                                                        <ul class="d_none m_top_10">       
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/5/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/7/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/6/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/8/0" class="d_block relative color_light_2 color_blue_hover">Skirts</a></li>
+
+                                                        </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
+                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Leather Jacket</a>
+                                                        <!--sub menu(second level)-->
+                                                        <ul class="d_none m_top_10">       
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/men" class="d_block relative color_light_2 color_blue_hover">Men</a></li>
+
+
+                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/women" class="d_block relative color_light_2 color_blue_hover">Women</a></li>
+
+                                                        </ul> </li>                            <li class="  m_bottom_10">
+                                                        <a href="http://localhost/shanielfashions/Shop/lookbook/lookbook" class="d_block relative fs_large color_light_2 color_blue_hover">Style Tips</a>
+                                                        <!--sub menu(second level)-->
+                                                    </li>                            <li class="  m_bottom_10">
+                                                        <a href="http://localhost/shanielfashions/Shop/contactus" class="d_block relative fs_large color_light_2 color_blue_hover">Contact Us</a>
+                                                        <!--sub menu(second level)-->
+                                                    </li>
 
 
 
-                    </ul>
-                </nav>
-            </div>
+
+
+                                                </ul>
+                                            </nav>
+                                    </div>
                                     <!--side menu-->
                                     <!--layout-->
                                     <div class="wide_layout bg_light" style="width: 100%;">
@@ -401,13 +499,13 @@ $imageserver = $conf['image_server'];
                                             </section>
                                             <!--            <hr class="d_xs_none" style="margin-top: 7px;">-->
 
-                                            
-                                            
-                                            <!--side menu-->
-   
 
-                                            
-                                            
+
+                                            <!--side menu-->
+
+
+
+
                                             <hr style = "margin-bottom: 0px;margin-top: 5px;">
                                                 <section class="sticky_part bg_light" style="">
                                                     <div class="container">
