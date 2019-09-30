@@ -141,12 +141,11 @@ if (isset($_SESSION['user_id'])) {
         {{cart_total_quantity}}
     </span>
 
-    <div class="dropdown_2 bg_light shadow_1 tr_all p_top_0" style="">
+    <div class="dropdown_2 bg_light shadow_1 tr_all p_top_0 dropdownheader2" style="">
         <h5 class="fw_light color_dark m_bottom_23" style="   text-align: left;
             padding: 6px 13px;
             margin-bottom: 9px;
             background: #000000;
-            width: 380px;
             color: #fff;
             margin-left: -15px"><i class="icon-basket  tr_inherit"></i> &nbsp; Your Shopping Cart</h5>
 
@@ -303,7 +302,7 @@ if (isset($_SESSION['user_id'])) {
             <i class="icon-lock color_grey_light_2 tr_inherit"></i>
         </button>
     <?php } ?>
-    <div class="dropdown_2 bg_light shadow_1 tr_all" style=" padding: 0px 15px 0;width: 300px;">
+    <div class="dropdown_2 bg_light shadow_1 tr_all dropdownheader" style=" padding: 0px 15px 0;">
         <?php
         if (isset($_SESSION['user_id'])) {
             $authInfo = $authobj->userProfile($_SESSION['user_id']);
@@ -315,7 +314,7 @@ if (isset($_SESSION['user_id'])) {
                         padding: 6px 13px;
                         margin-bottom: 9px;
                         background: #000000;
-                        width: 300px;
+                      
                         color: #fff;
                         margin-left: -15px;">
                         <i class="icon-user color_white_light_2 tr_inherit"></i> 
@@ -377,7 +376,7 @@ if (isset($_SESSION['user_id'])) {
                 padding: 6px 13px;
                 margin-bottom: 9px;
                 background: #000000;
-                width: 300px;
+             
                 color: #fff;
                 margin-left: -15px;"><i class="icon-lock  tr_inherit"></i> &nbsp; User Login</h5>
             <form action="#" class="login_form m_bottom_20" method="post" action="#">
@@ -456,7 +455,7 @@ if (isset($_SESSION['user_id'])) {
 
 
 
-<div role="search" class="m_right_10 relative type_2 f_left type_3 f_xs_none t_xs_align_l m_xs_bottom_15" style="">
+<div role="search" class="m_right_10 relative type_2 f_left type_3 f_xs_none t_xs_align_l m_xs_bottom_15 hideonmobile" style="">
     <input type="text" placeholder="Search" class="r_corners fw_light bg_light w_full" style="    border-radius: 48px;    border: 1px solid #000000;    width: 100%;" id="searchproduct" data-provide="typeahead">
     <button class="color_grey_light color_purple_hover tr_all" style="color: #000000">
         <i class="icon-search"></i>

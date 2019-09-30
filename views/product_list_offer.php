@@ -427,10 +427,10 @@ if (isset($_REQUEST['category'])) {
                                             </div>
                                         </aside>-->
 
-                    <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:10%;    margin-top: -25px;">
+                    <section class="col-lg-10 col-md-10 col-sm-12 m_bottom_70 m_xs_bottom_30" style=" margin-top: -25px;">
                     </section>
 
-                    <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:80%;    margin-top: -25px;">
+                    <section class="col-lg-10 col-md-10 col-sm-12 m_bottom_70 m_xs_bottom_30" style="   margin-top: -25px;">
                         <!--filter-->
                         <div class="clearfix m_bottom_10">
                             <div class="col-lg-6 col-md-6 col-sm-7 m_bottom_15">
@@ -511,16 +511,16 @@ if (isset($_REQUEST['category'])) {
 
 
 
-                                <div ng-if="productList.length > 0" class=" shop_isotope_container1 t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
+                                     <div ng-if="productList.length > 0" class=" row  t_xs_align_c three_columns m_bottom_15" >
 
-                                    <div class=" shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" ng-repeat="product in productList" >
+                                    <div class="col-md-3 col-sm-6 productitems d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="" ng-repeat="product in productList" >
                                         <figure class="fp_item t_align_c d_xs_inline_b ">
                                             <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
                                                 <!--images container-->
                                                 <a href="shop_product.php?product_id={{product.id}}&item_type=<?php echo $item_type; ?>" class='redirecturl'>
                                                     <div class="fp_images relative ">
-                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
-                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  style="height:250px; width:250px;" >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img1 lazy productlistimage" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"  >
+                                                        <img src="<?php echo "$imageserver/small/" ?>{{product.image}}" alt="" class=" tr_all img2 lazy productlistimage" data-original="<?php echo "$imageserver/small/" ?>{{product.image}}"   >
 
                                                     </div>
                                                     <div class="fabric_color" style="">
@@ -570,13 +570,13 @@ if (isset($_REQUEST['category'])) {
                                                     </a>
                                                 </h6>
 
-                                                <a href="#" class="fs_medium color_grey d_inline_b m_bottom_3"> 
+                                                <a href="#" class="fs_medium color_grey d_inline_b m_bottom_3 textoverflow"> 
                                                     <i class="product_speciality" data-toggle="tooltip" data-placement="center" title="{{product.product_speciality}}">
-                                                        {{product.product_speciality|limitTo:18}} {{product.product_speciality.length>18?'...':''}}
+                                                        {{product.product_speciality|limitTo:25}} {{product.product_speciality.length>25?'...':''}}
                                                     </i>
                                                 </a>
                                                 <div class="price_pd im_half_container m_bottom_10">
-                                                    <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>&nbsp;US$ {{product.price_r}}
+                                                    <span ng-if="product.sale_price != 0" class="cut_price">US$ {{product.price}}</span>US$ {{product.price_r}}
                                                     <!--                                                <div class="half_column d_sm_block w_sm_full d_xs_inline_m w_xs_half_column t_sm_align_c t_xs_align_r d_inline_m t_align_r tr_all animate_fctr with_ie">
                                                                                                         <ul class="rating_list d_inline_m hr_list tr_all">
                                                                                                             <li class="relative active lh_ex_small">
@@ -605,7 +605,7 @@ if (isset($_REQUEST['category'])) {
                                                 </div>
 
                                                 <div class="clearfix fp_buttons">
-                                                    <div class="half_column w_md_full m_md_bottom_10 animate_fctl tr_all f_left f_md_none with_ie">
+                                                    <div class="hideonmobile half_column w_md_full m_md_bottom_10 animate_fctl tr_all f_left f_md_none with_ie">
                                                         <button class="button_wave btn btn-default add_to_cart_button" price="150" item_type="<?php echo $_REQUEST['item_type']; ?>" cartaddid="{{product.id}}" style="font-size: 12px;
                                                                 height: 26px;    color: #000;
                                                                 padding: 0px 6px;
@@ -613,7 +613,20 @@ if (isset($_REQUEST['category'])) {
                                                             <span class="d_inline_m clerarfix">
                                                                 <i class="icon-basket f_left m_right_10 fs_large" style="line-height: 18px;"></i>
                                                                 <span class="fs_medium" style="line-height:19px">
-                                                                    Add to Cart</span></span></button>
+                                                                    Add to Cart</span></span>
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    <div class="showonmobile">
+                                                        <button class="button_wave btn btn-default add_to_cart_button d_inline_m_mob" price="150" item_type="<?php echo $_REQUEST['item_type']; ?>" cartaddid="{{product.id}}" style="font-size: 12px;
+                                                                height: 26px;    color: #000;
+                                                                padding: 0px 6px;
+                                                                width: 118px;">
+                                                            <span class="d_inline_m clerarfix">
+                                                                <i class="icon-basket f_left m_right_10 fs_large" style="line-height: 18px;"></i>
+                                                                <span class="fs_medium" style="line-height:19px">
+                                                                    Add to Cart</span></span>
+                                                        </button>
                                                     </div>
                                                     <?php
                                                     if (isset($_SESSION['user_id'])) {

@@ -85,7 +85,7 @@ $faq = array(
                 <p class="m_bottom_35 heading_2 t_align_c">This page provides guide to basic navigation about Nita Fashions.</p>		
 
             </section>
-            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30" style='  padding:0 125px;'>
+            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 paddinglr125" style=' '>
                 <?php
                 foreach ($faq as $key => $value) {
                     ?>

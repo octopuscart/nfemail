@@ -44,7 +44,7 @@ include 'header.php';
 
 
             </section>
-            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 tnc" style='  padding:0 125px;'>
+            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 tnc paddinglr125" >
                 <p class="m_bottom_35 heading_2 t_align_c">
                     Nita Fashions provides their service to you subject to the following conditions and guidelines.  If you choose to visit or shop with Nita Fashions, your acceptances to these are required. 
                 </p>	

@@ -42,7 +42,7 @@ include 'header.php';
 
 
             </section>
-            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 tnc" style='  padding:0 125px;'>
+            <div class="col-lg-12 col-md-12 col-sm-12 m_bottom_40 m_xs_bottom_30 tnc paddinglr125" >
 
                 <div >
                     <h3 class="color_dark fw_light m_bottom_20"> Collection of your data</h3>
