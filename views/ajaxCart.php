@@ -93,7 +93,7 @@ if (isset($_SESSION['user_id'])) {
 
 
 
-    <div class=" relative m_right_10 f_right dropdown_2_container shoppingcart" style="">
+    <div class=" relative m_right_10 f_right dropdown_2_container shoppingcart hideonmobile" style="">
         <button class="icon_wrap_size_2 color_grey_light circle tr_all">
             <i class="icon-heart color_grey_light_2 tr_inherit"></i>
         </button>

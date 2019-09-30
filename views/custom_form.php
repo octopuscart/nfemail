@@ -396,18 +396,10 @@ if ($_SESSION['user_id'] == '') {
              ">
         <div class="container" style="font-size: 30px;line-height: 28px;
              font-weight: 300;">
-            <a href='#' onclick='goBackCartPage()' class="wave-block">
-                <span style="        font-size: 13px;
-                      font-weight: 500;
-                      margin-left: -83px;
-                      float: left;
-                      /* text-decoration: overline; */
-                      /* border: 1px solid #000; */
-                      padding: 0px 10px;
-                      border-radius: 6px;
-                      background-color: #F1F1F1;">&larr; Back to Customization Cart</span>
+            <a href='#' onclick='goBackCartPage()' class="wave-block backbuttonpart1">
+                <span  style=" ">&larr; Back to Customization Cart</span>
             </a>
-            <span style="    margin-left: -83px;">
+            <span class="custtompart1_header" style=" ">
                 <span class="circle icon_wrap_size_2 d_inline_m m_right_8" style='    margin-top: -7px;'> 
                     <i class="icon-tools"></i>
                 </span>
@@ -511,7 +503,7 @@ if ($_SESSION['user_id'] == '') {
                                 <div class="thumbnail">
                                     <img src="{{product.image}}" alt="" >
                                     <div class="caption">
-                                        <h5 style="margin:0;font-size: 15px" data-title='SKU' >{{product.title}}</h5>
+                                        <h5 style="margin:0;font-size: 15px;    text-align: center;" data-title='SKU' >{{product.title}}</h5>
 
                                     </div>
                                 </div>
@@ -520,7 +512,8 @@ if ($_SESSION['user_id'] == '') {
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="" style="min-height:450px;height:100%;background: url(custom_form_view/background_new_custom/<?php echo $_REQUEST['tag_id']; ?>.jpg);    background-position-y: -157px;">
+                        <div class="" style="min-height:450px;height:100%;background: url(custom_form_view/background_new_custom/<?php echo $_REQUEST['tag_id']; ?>.jpg);   background-position-y: center;
+    background-size: contain;    background-repeat: no-repeat;">
 
                         </div>
                     </div>
@@ -628,7 +621,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <br/>
                                                     <small style="    font-size: 15px;">
                                                         Total Extra Price : 
-                                                        <span style="width: 30px;float: right; text-align: left; padding-left: 5px;">
+                                                        <span style="width: 30px;float: right; text-align: left; padding-left: 5px;padding-right: 5px;">
                                                             {{prstyle.total_price}}
                                                         </span>
                                                     </small>
@@ -755,14 +748,14 @@ if ($_SESSION['user_id'] == '') {
 
                             <button data-toggle="modal" data-target="#tutorial" class="btn btn-danger pull-right" style="margin-top: -5px;background: #E62117;"><i class="fa fa-youtube-play" style="    line-height: 20px;"></i> Show Brief Tutorial</button>
                         </p>
-                        <div class="col-sm-9" style="    padding-right: 0px;    width: 72%;">
+                        <div class="customcontainerpart2 col-sm-9" style=" ">
                             <?php
                             include "./custom_form_view/" . $custom_form . ".php";
                             ?>
                         </div>
 
 
-                        <div class="col-sm-3" id="containerBox" style=" width: 28%;padding:0px;">
+                        <div class="col-sm-3" id="containerBox" style="">
                             <div class="panel panel-default" style="border-color: #000;">
                                 <div class="panel-heading" style="    height: 55px;    background-image: linear-gradient(to bottom,#000 0,#000 100%)!important;">
                                     <div id="productImagesTemplate" class="">
@@ -830,7 +823,7 @@ if ($_SESSION['user_id'] == '') {
                                                         <table class="brif_summary">
                                                             <tr ng-repeat="(k, v) in product.custom_data">
                                                                 <th> {{k}} </th>
-                                                                <th ng-class="k=='Additional Remark'?'small_remark':''" style="padding-left: 5px;">{{v}}</th>
+                                                                <th ng-class="k=='Additional Remark'?'small_remark':''" style="padding-left: 5px;padding-right: 5px;">{{v}}</th>
                                                             </tr>
                                                         </table>
                                                         <button class="btn btn-default btn-xs removefabric" target_product="cart_<?php echo $productArray[$i]; ?>" style="  margin-top: 5px;">
@@ -870,7 +863,7 @@ if ($_SESSION['user_id'] == '') {
 
 
                 <div role="tabpanel" class="tab-pane pantStyle" id="measurment" style="padding-top: 20px">
-                    <div class="col-sm-12 pantSetup" style="    padding-right: 0px; ">
+                    <div class="col-sm-12 pantSetup" style="    padding-right: 0px;padding-left: 0px; ">
                         <?php include './custom_form_view/measurement.php'; ?>
 
                     </div>

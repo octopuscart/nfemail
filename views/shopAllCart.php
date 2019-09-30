@@ -308,7 +308,7 @@ if ($_SESSION['user_id'] == '') {
                                                               ">&nbsp;Add More <?php echo $bas_tag; ?>s To Cart <i class="icon-right-1"></i></span>
                                                     </a>
                                                 </p>
-                                                <form method="post" action="#">
+                                                <form method="post" action="#" style="width: 100%;overflow-x: scroll">
                                                     <table class = "table withoutCustom" style = "background:#fff">
                                                         <thead>
                                                             <tr class = "bg_light_2 color_dark">

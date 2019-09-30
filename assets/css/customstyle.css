@@ -57,7 +57,96 @@
     color: black;
 }
 
+.custtompart1_header{
+    margin-left: -83px;
+}
+
+.backbuttonpart1 span{
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: -83px;
+    float: left;
+    padding: 0px 10px;
+    border-radius: 6px;
+    background-color: #F1F1F1;
+}
+
+#containerBox{
+    width: 28%;padding:0px;
+}
+.customcontainerpart2{
+    padding-right: 0px;    width: 72%;
+}
+
+
 @media only screen and (max-width: 768px) {
+    .suit_control {
+    width: 100%;
+    padding: 0;
+}
+    
+    
+    .style_selection{
+            display: inline;
+    }
+    
+    .style_selection select{
+        font-size: 15px;
+            width: 100%;
+    }
+    
+    .custmo_form_setup .sub_heading{
+        width: auto;
+    }
+    
+    .buttonDiv_span{
+        width: 100%;
+            display: contents;
+    }
+    
+    .button_img{
+         width: 100%!important;
+            text-align: center;
+    }
+    .button_lable{
+        width: 100%!important;
+            text-align: center;
+    }
+    .button_lable div div{
+        text-align: center;
+    }
+
+    #containerBox{
+        width: 100%;padding:10px;
+        top: auto!important;
+    }
+    .customcontainerpart2{
+        padding-right: 10px;    width: 100%;
+    }
+
+    a.wave-block.backbuttonpart1 {
+        display: inline-block;
+        margin-bottom: 25px;
+    }
+
+
+    .backbuttonpart1 span {
+        margin-left: 0px;
+    }
+
+    .custtompart1_header{
+        display: inline-block;
+        margin-left: 0px;
+    }
+
+    .main_custom_tab li{
+        width: 100%;
+    }
+
+    #AjaxCart{
+        width: 165px;
+    }
+
     .paddinglr125{
         padding:0 10px;
     }

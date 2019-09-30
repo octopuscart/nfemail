@@ -372,66 +372,71 @@ function child($table, $column, $id) {
                                                         <a href="#" class="d_block relative fs_large color_black color_blue_hover">Home</a>
                                                         <!--sub menu(second level)-->
                                                         <ul class="d_none m_top_10">       
-                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">About Us</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">FAQ's</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="#" class="d_block relative color_black color_blue_hover">Terms of Service</a></li>
-
-                                                        </ul> </li>                            <li class="  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Our History</a>
-                                                        <!--sub menu(second level)-->
-                                                    </li>                            <li class="has_sub_menu  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Men</a>
+                                                            <li class="m_bottom_10"><a href="pages_about.php" class="d_block relative color_black color_blue_hover">About Us</a></li>
+                                                            <li class="m_bottom_10"><a href="pages_faq.php" class="d_block relative color_black color_blue_hover">FAQ's</a></li>
+                                                            <li class="m_bottom_10"><a href="pages_t&c.php" class="d_block relative color_black color_blue_hover">Terms of Service</a></li>
+                                                            <li class="m_bottom_10"><a href="pages_policy.php" class="d_block relative color_black color_blue_hover">Privacy Policy</a></li>
+                                                            <li class="m_bottom_10"><a href="scheduler2.php" class="d_block relative color_black color_blue_hover">Schedule</a></li>
+                                                            <li class="m_bottom_10"><a href="pages_contact.php" class="d_block relative color_black color_blue_hover">Contact Us</a></li>
+                                                        </ul> 
+                                                    </li>                           
+                                                    <li class="has_sub_menu  m_bottom_10">
+                                                        <a href="#" class="d_block relative fs_large color_black color_blue_hover">Customize Now</a>
                                                         <!--sub menu(second level)-->
                                                         <ul class="d_none m_top_10">       
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/2/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=1 " class="d_block relative color_black color_blue_hover"> Shirt </a>
+                                                            </li>
 
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=11 " class="d_block relative color_black color_blue_hover"> Suit </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=13 " class="d_block relative color_black color_blue_hover"> 3 Piece Suit </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=2 " class="d_block relative color_black color_blue_hover"> Pant </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=5 " class="d_block relative color_black color_blue_hover"> Jacket </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=3 " class="d_block relative color_black color_blue_hover"> Waistcoat </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=12 " class="d_block relative color_black color_blue_hover"> Sports Jacket </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=15 " class="d_block relative color_black color_blue_hover"> Overcoat </a>
+                                                            </li>
+                                                        </ul> 
+                                                    </li> 
 
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/4/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/1/0" class="d_block relative color_light_2 color_blue_hover">Shirts</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/3/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/9/0" class="d_block relative color_light_2 color_blue_hover">Waistcoats</a></li>
-
-                                                        </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Women</a>
-                                                        <!--sub menu(second level)-->
-                                                        <ul class="d_none m_top_10">       
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/5/0" class="d_block relative color_light_2 color_blue_hover">Suits</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/7/0" class="d_block relative color_light_2 color_blue_hover">Jackets</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/6/0" class="d_block relative color_light_2 color_blue_hover">Pants</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Product/ProductList/8/0" class="d_block relative color_light_2 color_blue_hover">Skirts</a></li>
-
-                                                        </ul> </li>                            <li class="has_sub_menu  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_light_2 color_blue_hover">Leather Jacket</a>
-                                                        <!--sub menu(second level)-->
-                                                        <ul class="d_none m_top_10">       
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/men" class="d_block relative color_light_2 color_blue_hover">Men</a></li>
-
-
-                                                            <li class="m_bottom_10"><a href="http://localhost/shanielfashions/Shop/leather_jacket/women" class="d_block relative color_light_2 color_blue_hover">Women</a></li>
-
-                                                        </ul> </li>                            <li class="  m_bottom_10">
-                                                        <a href="http://localhost/shanielfashions/Shop/lookbook/lookbook" class="d_block relative fs_large color_light_2 color_blue_hover">Style Tips</a>
-                                                        <!--sub menu(second level)-->
-                                                    </li>                            <li class="  m_bottom_10">
-                                                        <a href="http://localhost/shanielfashions/Shop/contactus" class="d_block relative fs_large color_light_2 color_blue_hover">Contact Us</a>
-                                                        <!--sub menu(second level)-->
+                                                    <li class="m_bottom_10 has_sub_menu">
+                                                        <a href="# " class="d_block relative color_black color_blue_hover"> Tuxedo </a>
+                                                        <ul class="d_none m_top_10">
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=7 " class="d_block relative color_black color_blue_hover"> Shirt </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=8 " class="d_block relative color_black color_blue_hover"> Pant </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=14 " class="d_block relative color_black color_blue_hover"> Jacket </a>
+                                                            </li>
+                                                            <li class="m_bottom_10">
+                                                                <a href="product_list.php?item_type=10 " class="d_block relative color_black color_blue_hover"> Suit </a>
+                                                            </li>
+                                                        </ul>
                                                     </li>
+
+                                                    <li class="m_bottom_10"><a href="pages_about.php" class="d_block relative color_black color_blue_hover">About Us</a></li>
+                                                    <li class="m_bottom_10"><a href="scheduler2.php" class="d_block relative color_black color_blue_hover">Schedule</a></li>
+                                                    <li class="m_bottom_10"><a href="pages_contact.php" class="d_block relative color_black color_blue_hover">Contact Us</a></li>
+                                                    <li class="m_bottom_10"><a href="pages_offers.php" class="d_block relative color_black color_blue_hover">Offers</a></li>
+                                                    <li class="m_bottom_10"><a href="pages_guide.php" class="d_block relative color_black color_blue_hover">Guide </a></li>
+
+
 
 
 
