@@ -157,10 +157,10 @@ $largeImage = str_replace("small", "large", $largeImage);
 <!--page title-->
 <link rel="stylesheet" href="./custom_form_view/static/animate/animate.min.css" />
 <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style=" padding: 0px 1px 8px 1px;background: black;">
-    <div class="">
+    <div class="mobilecategoryscroll">
 
         <!-- breadcrumbs -->
-        <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+        <ul class="hr_list d_inline_m breadcrumbs mobilecategoryscrollul" style="margin-top: 10px;">
             <?php
             $id = $_REQUEST['item_type'];
             $query = "select tag_title from nfw_product_tag where id = $id";
@@ -455,7 +455,7 @@ $largeImage = str_replace("small", "large", $largeImage);
                 <hr class="hr_clss">
                 <section class="section_offset" style="padding: 0px;">
                     <div class="container">
-                        <p class="fw_light color_dark m_bottom_35 t_align_l" data-appear-animation="bounceInLeft" style="font-weight:normal;color: black;font-size: 18px;margin-left: -14px;">Product Can Customize With</p>
+                        <p class="fw_light color_dark m_bottom_35 t_align_l" data-appear-animation="bounceInLeft" style="font-weight:normal;color: black;font-size: 18px;text-align: center;">Product Can Customize With</p>
                         <div class="relative m_bottom_70 m_xs_bottom_30">
                             <div class="row">
                                 <div class="owl-carousel t_xs_align_c featured_products" data-nav="fproducts_nav_" data-plugin-options='{"singleItem":false,"itemsCustom":[[992,4],[768,3],[600,2],[10,1]]}'>
@@ -467,8 +467,8 @@ $largeImage = str_replace("small", "large", $largeImage);
                                         ?>
                                         <figure class="fp_item t_align_c d_xs_inline_b col-lg-12 col-md-12 col-sm-12" data-appear-animation="bounceIn">
 
-                                            <a href="shop_product.php?product_id=<?php echo $_REQUEST['product_id']; ?>&item_type=<?php echo $res['tag_id']; ?>" class="r_corners category_link w_xs_auto d_xs_inline_b f_xs_none m_xs_bottom_15 d_block f_left wrapper m_right_10 t_align_c" style='    border: 1px solid #000;'>
-                                                <img src="custom_form_view/background_new_custom/<?php echo $res['tag_id']; ?>.jpg" alt="" style ="height:270px; width: 270px">
+                                            <a href="shop_product.php?product_id=<?php echo $_REQUEST['product_id']; ?>&item_type=<?php echo $res['tag_id']; ?>" class="r_corners category_link w_xs_auto d_xs_inline_b f_xs_none m_xs_bottom_15 d_block f_left wrapper m_right_10 t_align_c" style='    border: 1px solid #000;width:100%'>
+                                                <div class="backimageproductdetails" style ="height:270px; background: url(custom_form_view/background_new_custom/<?php echo $res['tag_id']; ?>.jpg)"></div>
                                                 <p class="category_title bg_light_2 tr_all color_dark">
 
                                                     <?php echo $res['tag_title']; ?><br/>

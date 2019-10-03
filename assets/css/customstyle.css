@@ -82,7 +82,39 @@
 
 }
 
+.footersociallisnktext{
+    
+}
+
+.footersociallisnk{
+    width: 26px;
+    height: 26px;
+    float: right; 
+    font-size: 18px;
+    color: #fff;    
+    background: black;
+    border-color: red;
+    line-height: 27px;    
+    margin: 0px 5px;
+}
+
+.backimageproductdetails {
+    background-size: 100%!important;
+    background-position: center!important;
+}
+
 @media only screen and (max-width: 768px) {
+    .footersociallisnktext{
+        font-size: 11px;
+    }
+    
+    .product_view{
+        width: 100%;
+    }
+    .product_info{
+        width: 100%;
+    }
+
     .mobilecategoryscroll{
         width: 100%;
         overflow-x: scroll;

@@ -590,12 +590,13 @@ if (isset($_REQUEST['category'])) {
 
                             <div class='loader_image' ng-if="loader == 1" style="    padding-top: 15%;    padding-bottom: 14%;" >
                                 <center>
-                                    <img src='https://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
+                                    <img src='../assets/loading.gif'>
                                 </center>
                                 <h3 style="    text-align: center;
                                     padding-top: 30px;
                                     font-weight: 300;">
-                                    Loading...
+                                    Loading...   
+
                                 </h3>
                             </div> 
                             <div class="page_navigation"  style="text-align: center;"></div>
