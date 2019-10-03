@@ -67,7 +67,7 @@ if (isset($_REQUEST['category'])) {
 
 
     <style>
-        .page_navigation{float: right;}
+        .page_navigation{}
         .page_navigation a {
             height: 10px;
             padding: 6px;
@@ -176,10 +176,10 @@ if (isset($_REQUEST['category'])) {
         <!--end of template-->
 
         <section class="page_title_2 bg_light_2 t_align_c relative wrapper" style="    padding: 0px 1px 8px 1px;background: black;">
-            <div class="">
+            <div class="mobilecategoryscroll" >
 
                 <!-- breadcrumbs -->
-                <ul class="hr_list d_inline_m breadcrumbs" style="margin-top: 10px;">
+                <ul class="hr_list d_inline_m breadcrumbs mobilecategoryscrollul" style="margin-top: 10px;">
                     <?php
                     $id = $_REQUEST['item_type'];
                     $query = "select tag_title from nfw_product_tag where id = $id";
@@ -283,7 +283,7 @@ if (isset($_REQUEST['category'])) {
 
                             <form id="filterform">
                                 <!--price-->
-                                <div class="m_bottom_12" style="margin-top:-17%">
+                                <div class="m_bottom_12" style="margin-top:-17px;">
                                     <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
                                     <div id="pricerange"><div id="price_loader">Loading...</div></div>
                                     <div class="clearfix" style="font-size:12px;color:black;">
@@ -364,8 +364,8 @@ if (isset($_REQUEST['category'])) {
                             <?php
                         }
                         ?>
-                        <div class="row">
-                            <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
+                            <div class="row" style="margin-bottom: 20px;">
+                            <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;width: 150px;">
                                 <div class="select_title sortby r_corners color_grey fs_medium" style="    font-size: 13px;">Sort By</div>
                                 <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
                                 <select class="target d_none" name="sorting">
@@ -598,7 +598,7 @@ if (isset($_REQUEST['category'])) {
                                     Loading...
                                 </h3>
                             </div> 
-                            <div class="page_navigation"  style="margin-right: 37%;"></div>
+                            <div class="page_navigation"  style="text-align: center;"></div>
 
 
 
@@ -741,7 +741,7 @@ if (isset($_REQUEST['category'])) {
                                 items_per_page: 16,
                                 item_container_id: '.page_container',
                                 nav_panel_id: '.page_navigation',
-                                num_page_links_to_display: 10,
+                                num_page_links_to_display: 5,
                                 nav_label_info: 'Showing {0}-{1} of {2} results',
                                 nav_info_id: '.info_text'
                             });

@@ -78,39 +78,56 @@
     padding-right: 0px;    width: 72%;
 }
 
+.mobilecategoryscroll{
+
+}
 
 @media only screen and (max-width: 768px) {
-    .suit_control {
-    width: 100%;
-    padding: 0;
-}
-    
-    
-    .style_selection{
-            display: inline;
+    .mobilecategoryscroll{
+        width: 100%;
+        overflow-x: scroll;
     }
-    
+    .mobilecategoryscroll::-webkit-scrollbar{
+        background: #000;
+        height: 5px;
+    }
+
+    .mobilecategoryscrollul{
+        width:max-content;
+    }
+
+
+    .suit_control {
+        width: 100%;
+        padding: 0;
+    }
+
+
+    .style_selection{
+        display: inline;
+    }
+
     .style_selection select{
         font-size: 15px;
-            width: 100%;
+        width: 100%;
     }
-    
+
     .custmo_form_setup .sub_heading{
         width: auto;
     }
-    
+
     .buttonDiv_span{
         width: 100%;
-            display: contents;
+        display: contents;
     }
-    
+
     .button_img{
-         width: 100%!important;
-            text-align: center;
+        width: 100%!important;
+        text-align: center;
     }
     .button_lable{
         width: 100%!important;
-            text-align: center;
+        text-align: center;
     }
     .button_lable div div{
         text-align: center;
