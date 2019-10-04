@@ -60,8 +60,8 @@ if ($_SESSION['user_id'] == '') {
 
     <style>
         .disablecheckbox+ label:before{
-           background: #ffffff61!important;
-    border: none!important;
+            background: #ffffff61!important;
+            border: none!important;
         }
     </style>
 
@@ -513,7 +513,7 @@ if ($_SESSION['user_id'] == '') {
                     </div>
                     <div class="col-md-5">
                         <div class="" style="min-height:450px;height:100%;background: url(custom_form_view/background_new_custom/<?php echo $_REQUEST['tag_id']; ?>.jpg);   background-position-y: center;
-    background-size: contain;    background-repeat: no-repeat;">
+                             background-size: contain;    background-repeat: no-repeat;">
 
                         </div>
                     </div>
@@ -608,26 +608,26 @@ if ($_SESSION['user_id'] == '') {
                                 <div class="accordion " style="margin-top: -6px;padding: 0 10px;padding-bottom: 10px;">
                                     <dl class="wave-block custom_measurement accordion_item r_corners wrapper m_bottom_5 tr_all {{$index == 0 ? 'active' : ''}}" style="background-color: white;margin-top: 13px;    border: 1px solid #fff;" ng-repeat="prstyle in preferredStyle">
                                         <dt class="accordion_link relative tr_all color_scheme" style="padding: 9px 19px 10px 19px; cursor: pointer;    height: 44px;">
-                                        <div >
-                                            <div>
-                                                <input type="radio" id="radio_2_{{prstyle.style_profile}}"  name="ship_radio" class="d_none"  ng-model="preferred_style" ng-click="selectPreferredStyle(prstyle)">
-                                                <label for="radio_2_{{prstyle.style_profile}}" class="d_inline_m m_right_10" style="">
-                                                    {{prstyle.style_profile}}
-                                                </label>
-                                                <span style="    float: right;
-                                                      margin-top: -5px;
-                                                      font-size: 11px;"> 
-                                                    {{prstyle.datetime}}
-                                                    <br/>
-                                                    <small style="    font-size: 15px;">
-                                                        Total Extra Price : 
-                                                        <span style="width: 30px;float: right; text-align: left; padding-left: 5px;padding-right: 5px;">
-                                                            {{prstyle.total_price}}
-                                                        </span>
-                                                    </small>
-                                                </span>
+                                            <div >
+                                                <div>
+                                                    <input type="radio" id="radio_2_{{prstyle.style_profile}}"  name="ship_radio" class="d_none"  ng-model="preferred_style" ng-click="selectPreferredStyle(prstyle)">
+                                                    <label for="radio_2_{{prstyle.style_profile}}" class="d_inline_m m_right_10" style="">
+                                                        {{prstyle.style_profile}}
+                                                    </label>
+                                                    <span style="    float: right;
+                                                          margin-top: -5px;
+                                                          font-size: 11px;"> 
+                                                        {{prstyle.datetime}}
+                                                        <br/>
+                                                        <small style="    font-size: 15px;">
+                                                            Total Extra Price : 
+                                                            <span style="width: 30px;float: right; text-align: left; padding-left: 5px;padding-right: 5px;">
+                                                                {{prstyle.total_price}}
+                                                            </span>
+                                                        </small>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
                                         </dt>
                                         <dd class="fw_light color_dark" style="display: block;color:balck;padding: 10px;">
                                             <div class='col-md-12 ' style="padding: 0px;">
@@ -746,8 +746,10 @@ if ($_SESSION['user_id'] == '') {
                                 <i class="icon-zoom-in"></i>  To Zoom, double click on image.
                             </span>
 
-                            <button data-toggle="modal" data-target="#tutorial" class="btn btn-danger pull-right" style="margin-top: -5px;background: #E62117;"><i class="fa fa-youtube-play" style="    line-height: 20px;"></i> Show Brief Tutorial</button>
-                        </p>
+                        </p>                         
+                        <button data-toggle="modal" data-target="#tutorial" class="btn btn-danger desktopright" style="margin-top: -5px;background: #E62117;"><i class="fa fa-youtube-play" style="    line-height: 20px;"></i> Show Brief Tutorial</button>
+
+
                         <div class="customcontainerpart2 col-sm-9" style=" ">
                             <?php
                             include "./custom_form_view/" . $custom_form . ".php";
@@ -777,53 +779,47 @@ if ($_SESSION['user_id'] == '') {
                                     </div>
                                 </div>
                                 <div class="panel-body" style="padding: 0px;">
-                                    <div class="col-md-12 animated animate {{product.animate}}" style="padding:0px 5px 0px 10px;-webkit-animation-duration: 0.6s;" ng-repeat="product  in productStyleArrayNg" >
-                                        <span class=""  style='
-                                              margin-top: 12px;
-                                              position: absolute;
-                                              margin-left: -9px;
-                                              /* font-size: 25px; */
-                                              font-weight: 300; 
-                                              ' ng-if="product.style_id == ''">
+                                    <div class="col-md-12 animated animate {{product.animate}} productboxleft" style="" ng-repeat="product  in productStyleArrayNg" >
+                                        <span class="productcheckbox"  ng-if="product.style_id == ''">
                                             <input type="checkbox" target_product="{{product.cart_id}}" id="checkboxs_{{product.cart_id}}" ng-model="product.selected"  ng-click="selectFabric(product)" name="" class="d_none check_icon product_check disablecheckbox"   value="1">
                                             <label for="checkboxs_{{product.cart_id}}" class="d_inline_m m_right_10"></label>
                                         <!--<i class='icon-circle-arrow-down' ></i>-->   
                                         </span>
-                                        <div class="accordion toggle" style='  margin-left: 21px;'>
+                                        <div class="accordion productboxleftaccordion toggle" >
 
                                             <dl class="wave-block  accordion_item r_corners wrapper m_bottom_5 tr_all" style='    padding: padding: 16px 0px 17px;background: url({{product.image}});    background-repeat: no-repeat;background-size: 77px 77px;'>
                                                 <dt class="accordion_link relative color_dark tr_all" style='padding: 0px;'>
-                                                <div class="fabrics" style="padding: 5px;  width: 88px;">
-                                                    <label class="cartTitle"></label>
-                                                </div>
-                                                <span class="icon_wrap_size_1 circle d_block show expand_button">
-                                                    <i class="icon-plus"></i>
-                                                </span>
-                                                <span class="icon_wrap_size_1 circle d_block show expand_button">
-                                                    <i class="icon-minus"></i>
-                                                </span>
+                                                    <div class="fabrics" style="padding: 5px;  width: 88px;">
+                                                        <label class="cartTitle"></label>
+                                                    </div>
+                                                    <span class="icon_wrap_size_1 circle d_block show expand_button">
+                                                        <i class="icon-plus"></i>
+                                                    </span>
+                                                    <span class="icon_wrap_size_1 circle d_block show expand_button">
+                                                        <i class="icon-minus"></i>
+                                                    </span>
 
-                                                <small data-title='SKU' style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 85px;color: #000;">
-                                                    {{product.title}}
+                                                    <small data-title='SKU' style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 85px;color: #000;">
+                                                        {{product.title}}
 
-                                                </small>
+                                                    </small>
 
-                                                <small  style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 60px;text-align: right;color: #000;">
-                                                    {{product.style_id}}
+                                                    <small  style=" width: 234px;height: 58px; position: absolute;margin-top: -78px;font-size: 11px;margin-left: 60px;text-align: right;color: #000;">
+                                                        {{product.style_id}}
 
-                                                </small>
+                                                    </small>
 
-                                                <div class="" style="width: 208px;height: 58px;position: absolute;margin-top: -62px;font-size: 17px;margin-left: 85px;color: #000;border-top: 1px solid rgba(0, 0, 0, 0.22);">
-                                                    {{product.custom_data[selected_parent_ng]}}
-                                                </div> 
-                                                <small class="fabric_box_pre_style" style="width: 173px;height: 58px; position: absolute;margin-top: -79px;font-size: 13px;margin-left: 147px;color: #000;font-weight: 600;"></small>
+                                                    <div class="selecteditemsstyle" style="">
+                                                        {{product.custom_data[selected_parent_ng]}}
+                                                    </div> 
+                                                    <small class="fabric_box_pre_style" style="width: 173px;height: 58px; position: absolute;margin-top: -79px;font-size: 13px;margin-left: 147px;color: #000;font-weight: 600;"></small>
                                                 </dt>
                                                 <dd class="fw_light color_dark" style='padding: 0px 5px 5px 5px;margin-top: 0px;'>
                                                     <ul class="list-group" style='padding: 5px 2px 0px 0px; margin-bottom: 0px;'>
                                                         <table class="brif_summary">
                                                             <tr ng-repeat="(k, v) in product.custom_data">
                                                                 <th> {{k}} </th>
-                                                                <th ng-class="k=='Additional Remark'?'small_remark':''" style="padding-left: 5px;padding-right: 5px;">{{v}}</th>
+                                                                <th ng-class="k == 'Additional Remark' ? 'small_remark' : ''" style="padding-left: 5px;padding-right: 5px;">{{v}}</th>
                                                             </tr>
                                                         </table>
                                                         <button class="btn btn-default btn-xs removefabric" target_product="cart_<?php echo $productArray[$i]; ?>" style="  margin-top: 5px;">
@@ -1055,8 +1051,7 @@ if ($_SESSION['user_id'] == '') {
                     confirmOnPageExit = false;
                     window.onbeforeunload = confirmOnPageExit;
                     window.location = "shopAllCart.php";
-                }
-                else {
+                } else {
                     swal("Cancelled", "Your style is safe :)", "success");
                 }
             });
@@ -1082,8 +1077,7 @@ if ($_SESSION['user_id'] == '') {
             $("[styleselect]").each(function () {
                 var ck = $(this).text();
                 if (ck) {
-                }
-                else {
+                } else {
                     var prt = $(this).attr("styleselect");
                     console.log(prt)
                 }
@@ -1131,8 +1125,7 @@ if ($_SESSION['user_id'] == '') {
                             window.onbeforeunload = confirmOnPageExit;
 
                             window.location = "shippingCart.php";
-                        }
-                        else {
+                        } else {
                             swal("Review Again", "You can review your style.", "error");
                             $("#submit_order_button").text(" Submit Order ");
                         }
@@ -1230,8 +1223,7 @@ include 'footer.php'
 
             if ($(obj).hasClass("icon-plus")) {
                 $(obj).removeClass("icon-plus").addClass("icon-minus");
-            }
-            else {
+            } else {
                 $(obj).removeClass("icon-minus").addClass("icon-plus");
             }
 

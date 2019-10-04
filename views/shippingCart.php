@@ -359,7 +359,7 @@ if ($_SESSION['user_id'] == '') {
 
         <div role="tabpanel" id="myTabs">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist" style="font-size: 20px">
+            <ul class="nav nav-tabs shippingcartul" role="tablist" style="font-size: 20px">
 
                 <li role="presentation" class="active">
                     <a href="#orderReview" aria-controls="orderReview" role="tab" data-toggle="tab">
@@ -389,7 +389,7 @@ if ($_SESSION['user_id'] == '') {
                 <!-- content -->
 
                 <!-- ##### 1 ######## --> 
-                <div role="tabpanel" class="tab-pane active" id="orderReview" style="margin-top:0px">
+                <div role="tabpanel" class="tab-pane active" id="orderReview" style="margin-top:0px ;   overflow-x: scroll;">
                     <?php
                     //print_r($customizedData);
                     if ($customizedData) {
@@ -398,7 +398,7 @@ if ($_SESSION['user_id'] == '') {
                             <table class="table">
 
                                 <tr>
-                                    <th style="width: 25%;"><span style="margin: 0px 0px 0px 13px;">Product Information</span></th>
+                                    <th style="width: 25%;"><span style="margin: 0px 0px 0px 13px;">Product</span></th>
                                     <th style="width: 7%;">SKU</th>
                                     <th style="width: 7%;">Item</th>
                                     <th style="width: 12%;">Qty.</th>
@@ -436,7 +436,7 @@ if ($_SESSION['user_id'] == '') {
                                                     <img src="<?php echo $cartInfo['image']; ?>" alt="" style="height:74px;width:74px;">
                                                 </a>
                                             </div>
-                                            <div class="col-md-8" style="padding: 0px">
+                                            <div class="col-md-8 hideonmobile" style="padding: 0px">
                                                 <p class="m_bottom_5"><a href="#" class="color_dark tr_all"><?php echo $cartInfo['title']; ?></a></p>
                                                 <?php
                                                 $lens = strlen($cartInfo['product_speciality']);
@@ -846,21 +846,21 @@ if ($_SESSION['user_id'] == '') {
                                                                 </div>
                                                                 <div class="panel-body">
                             <?php if ($billdata) { ?>  
-                                                                                                                                                                                                <address>
-                                                                                                                                                                                                    <strong style="text-transform: capitalize;">
+                                                                                                                                                                                                    <address>
+                                                                                                                                                                                                        <strong style="text-transform: capitalize;">
                                 <?php echo $userInfo[0]['first_name'] . ' ' . $userInfo[0]['middle_name'] . ' ' . $userInfo[0]['last_name'] ?>
-                                                                                                                                                                                                    </strong><br>
+                                                                                                                                                                                                        </strong><br>
                                 <?php echo $billdata[0]['add1']; ?><br>
                                 <?php echo $billdata[0]['add2']; ?><br>
                                 <?php echo $billdata[0]['add3']; ?><br> 
                                 <?php echo $billdata[0]['add4']; ?><br>
-                                                                                                                                                    
-                                                                                                                                                                                                        <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
-                                                                                                                                                                                                </address>
+                                                                                                                                                        
+                                                                                                                                                                                                            <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
+                                                                                                                                                                                                    </address>
                             <?php } else { ?>
-                                                                                                                                                                                                <span style="color:red">
-                                                                                                                                                                                                    BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
-                                                                                                                                                                                                </span>
+                                                                                                                                                                                                    <span style="color:red">
+                                                                                                                                                                                                        BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
+                                                                                                                                                                                                    </span>
                             <?php } ?>
                                                                 </div>
                                                             </div>
@@ -875,7 +875,7 @@ if ($_SESSION['user_id'] == '') {
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Choose Address For Shipping 
-                                            <button class="btn btn-default btn-xs pull-right" style="margin-top:-4px" data-toggle="modal" data-target="#myModal" id="newAddress"> <i class="icon-plus"></i> Add New Address</button>
+                                            <button class="btn btn-default btn-xs pull-right" style="margin-top:-4px" data-toggle="modal" data-target="#myModal" id="newAddress"> <i class="icon-plus"></i> Add New </button>
                                         </h3>
                                     </div>
                                     <div class="panel-body">
@@ -884,7 +884,7 @@ if ($_SESSION['user_id'] == '') {
                                             <thead>
                                                 <tr>
                                                     <th>All Addresses</th>
-                                                    <th>Choose Shipping Address</th>
+                                                    <th><span class="hideonmobile">Choose Shipping Address</span></th>
                                                     <!--<th>Billing Address</th>-->
 
                                                 </tr>
@@ -926,7 +926,7 @@ if ($_SESSION['user_id'] == '') {
                         <p style="text-align: center;color:red;margin-top: 24px;font-size:18px;font-weight:400">SHIPPING ADDRESS NOT FOUND! PLEASE ADD YOUR  SHIPPING ADDRESS</p>
                         <center>
                             <div style="padding:20px">
-                                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" id="newAddress"> <i class="icon-plus"></i> Add New Address</button>
+                                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" id="newAddress"> <i class="icon-plus"></i> Add New</button>
                             </div>
                         </center>
 
@@ -947,7 +947,7 @@ if ($_SESSION['user_id'] == '') {
 
                 <div role="tabpanel" class="tab-pane" id="paymentMode">
                     <div class="" style="margin-top: 10px;">
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_40 m_xs_bottom_30">
+                        <div class="col-lg-6 col-md-6 m_bottom_40 m_xs_bottom_30">
                             <p class="" style="font-size: 28px;font-weight: 300;
                                background-color: #000;
                                padding: 10px;
@@ -964,7 +964,7 @@ if ($_SESSION['user_id'] == '') {
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_40 m_xs_bottom_30">
+                        <div class="col-lg-6 col-md-6  m_bottom_40 m_xs_bottom_30">
                             <p class="" style="   font-size: 28px;
                                font-weight: 300;
                                background-color: #000;
@@ -991,9 +991,9 @@ if ($_SESSION['user_id'] == '') {
 
                                 <input type="radio" checked id="radio_6_card" name="card_id" class="d_none" value="<?php echo $_SESSION['cardinfo']; ?>">
                                 <label for="radio_6_card" class="d_inline_m m_right_15 m_bottom_3 fw_light">Select This Card</label>
-<!--                                <form method="post" action="#">
-                                    <button type="submit" name="removecard" class=" btn btn-danger btn-xs">Remove Card</button>
-                                </form>-->
+                                <!--                                <form method="post" action="#">
+                                                                    <button type="submit" name="removecard" class=" btn btn-danger btn-xs">Remove Card</button>
+                                                                </form>-->
                                 <?php
                             } else {
                                 ?>
@@ -1318,7 +1318,7 @@ include 'footer.php'
                                                             <div class="col-xs-3" style="width:135px">
                                                                 <select class="form-control isNumber" name="expiry-year">
                         <?php for ($i = 2015; $i < 2040; $i++) { ?>
-                                                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                                                                 </select>
                                                             </div>
@@ -1389,15 +1389,13 @@ include 'footer.php'
         var targetdiv = $(target).attr("aria-controls");
         if (targetdiv == 'orderReview') {
             $(".previousStyle").hide();
-        }
-        else {
+        } else {
             $(".previousStyle").show();
         }
 
         if (targetdiv == 'confirmOrder') {
             $(".nextStyle").hide();
-        }
-        else {
+        } else {
             $(".nextStyle").show();
         }
 
@@ -1408,8 +1406,7 @@ include 'footer.php'
         $("#checkbox_71").click(function () {
             if (this.checked) {
                 $("#btn1").show();
-            }
-            else {
+            } else {
                 $("#btn1").hide();
             }
         });
@@ -1438,8 +1435,7 @@ include 'footer.php'
             var total = Number(tot) + Number(sp);
             $("#tPrice").text('$' + total.toFixed(2));
             $("#final_price").text('$' + total.toFixed(2));
-        }
-        else {
+        } else {
             $("#tPrice").text('$00.00');
             $("#final_price").text('$00.00');
         }
@@ -1467,8 +1463,7 @@ include 'footer.php'
         // console.log(wt);
         if (Number(x) <= wt && Number(x) <= total) {
 
-        }
-        else {
+        } else {
             alert("Amount should be less then grand total and wallet amount");
             $(obj).val("");
             // $(obj).parents('tr').find(".netPriceDollar").val('00');
@@ -1481,8 +1476,7 @@ include 'footer.php'
     $('#checkbox_5').click(function () {
         if (this.checked) {
             $('#secend_address').show();
-        }
-        else {
+        } else {
             $('#secend_address').hide();
         }
 
@@ -1563,8 +1557,7 @@ include 'footer.php'
         if (vl == 'paypal') {
             $("#btn1").html("");
             $("#btn1").css("background", "url(https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif)")
-        }
-        else {
+        } else {
             $("#btn1").css("background", "auto");
             $("#btn1").html('<i class="icon-check"></i> Confirm Order')
         }

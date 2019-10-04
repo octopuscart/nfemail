@@ -98,11 +98,6 @@ foreach ($measurement_list as $key => $value) {
 
 </script>
 
-<style>
-    .col-25{
-        width:20%!important;
-    }
-</style>
 
 
 <div class="row col-md-12 measurement_form_setup custmo_form_setup" style="    padding-right: 0;">

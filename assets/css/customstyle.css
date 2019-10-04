@@ -83,7 +83,7 @@
 }
 
 .footersociallisnktext{
-    
+
 }
 
 .footersociallisnk{
@@ -103,11 +103,176 @@
     background-position: center!important;
 }
 
+.selecteditemsstyle{
+    width: 208px;height: 58px;position: absolute;margin-top: -62px;font-size: 17px;margin-left: 85px;color: #000;border-top: 1px solid rgba(0, 0, 0, 0.22);
+}
+
+.desktopright{
+    float:right;
+}
+.productcheckbox{
+
+    margin-top: 12px;
+    position: absolute;
+    margin-left: -9px;
+    /* font-size: 25px; */
+    font-weight: 300; 
+}
+
+.productboxleft{
+    padding:0px 5px 0px 10px;-webkit-animation-duration: 0.6s;
+}
+
+.productboxleftaccordion{
+    margin-left: 21px;
+}
+
+.col-25 {
+    width: 20%;
+}
+
+.inchval {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: -16px!important;
+    position: absolute;
+    float: left;
+    margin-left: 5px;
+}
+
+
+
 @media only screen and (max-width: 768px) {
+    .fe_width_2, .table_type_3 {
+     width: 100%; 
+}
+    
+    #billingShipping .col-md-12{
+        padding:0;
+    }
+    #billingShipping .col-md-6{
+        padding:0;
+    }
+    .shippingcartul li{
+        width: 100%;
+    }
+    
+    .measurement_form_setup{padding: 0px!important;}
+    
+    .measurement_form_setup table{
+        width: 100%;
+    }
+    
+    .create_new_measurement .col-sm-9{
+        padding: 0!important;
+    }
+    
+    .create_new_measurement .col-sm-3{
+        padding: 0!important;
+    }
+
+    .number_slider_div {
+        display: inline-block!important;
+        height: auto;
+        padding-top: 22px!important;
+        width: 100%;
+    }
+
+    .productboxleftaccordion{
+        margin-left: 0px;;
+    }
+    .productboxleft{
+        padding:0px;-webkit-animation-duration: 0.6s;
+    }
+
+    .productcheckbox{
+
+        margin-top: 12px;
+        position: absolute;
+        margin-left: -9px;
+        /* font-size: 25px; */
+        font-weight: 300;
+        left: 16px;
+        z-index: 200;
+    }
+
+    .measurement_form_setup .col-md-12{
+        padding: 0px!important;
+    }
+
+    .measurement_form_setup .col-md-12{
+        padding: 0px!important;
+    }
+
+    .custmo_form_setup .panel-default{
+        border:none;
+    }
+
+    .slider_text {
+        position: relative;
+        height: 40px!important;
+        /* background: #000; */
+        margin-right: 13px;
+        float: left;
+        font: 400 20px/1.5em "Lato","sans-serif";
+        /* text-shadow: 0px 1px 1px rgba(0, 50, 248, 0.39); */
+        color: #000;
+        font-size: 14px!important;
+        width: 100%!important;
+        text-align: left!important;
+    }
+
+    .slider_val {
+        font-size: 25px!important;
+        margin-top: 8px;
+        text-align: left!important;
+        width: 100%!important;
+    }
+    span.slider_text:nth-child(2) {
+        display: none;
+    }
+
+    .col-25{
+        width:auto!important;
+    }
+
+    .inchval {
+        font-size: 15px!important;;
+        font-weight: 400!important;;
+        margin-top: -6px!important;;
+        position: absolute!important;;
+        /* float: left; */
+        margin-left: 5px!important;;
+    }
+    .number_slider_div{    
+    }
+
+    .desktopright{
+        float:inherit;
+    }
+    .customcontainerpart2 .col-md-12{
+        padding:0px;
+    }
+    .customcontainerpart2 .col-sm-3{
+        padding:0px;
+    }
+    .customcontainerpart2 .col-sm-4{
+        padding:0px;
+    }
+    .customcontainerpart2 .col-sm-9{
+        padding:0px;
+    }
+    .customcontainerpart2 .col-sm-12{
+        padding:0px;
+    }
+
+    .selecteditemsstyle{
+        width: 150px;
+    }
     .footersociallisnktext{
         font-size: 11px;
     }
-    
+
     .product_view{
         width: 100%;
     }
