@@ -344,9 +344,7 @@ function child($table, $column, $id) {
                                         $httpProvider.defaults.timeout = 5000;
                                         }])
                                     </script>
-                                    <button id="open_side_menu" class="icon_wrap_size_2 circle color_light bg_gradiant">
-                                        <i class="icon-menu"></i>
-                                    </button>
+
                                     <div id="side_menu" class='bg_gradiant'>
                                         <header class="m_bottom_30 d_table w_full" >
                                             <!--logo-->
@@ -451,7 +449,22 @@ function child($table, $column, $id) {
                                         <!--header markup-->
                                         <header role="banner" class="relative type_2 appheaderpart" style="background-color: #fff;">
                                             <span class="gradient_line"></span>
-                                            <section class="header_top_part p_top_0 p_bottom_0 headertopemail">
+                                            <nav class="navbar navbar-default showonmobile mobilemenu">
+                                                <div class="container-fluid">
+                                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                                    <div class="navbar-header">
+                                                        <button type="button" class="navbar-toggle collapsed" id="open_side_menu3" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                                            <span class="sr-only">Toggle navigation</span>
+                                                            <span class="icon-bar"></span>
+                                                            <span class="icon-bar"></span>
+                                                            <span class="icon-bar"></span>
+                                                        </button>
+                                                        <a class="navbar-brand" href="index.php" style="color:white">Nita Fashions - Since 1953</a>
+                                                    </div>
+
+
+                                            </nav>
+                                            <section class="header_top_part p_top_0 p_bottom_0 headertopemail topheadermobileposition">
                                                 <div class="container" >
                                                     <div class="">
                                                         <!--contact info-->
@@ -467,6 +480,8 @@ function child($table, $column, $id) {
                                                     </div>
                                                 </div>
                                             </section>
+
+                                            </nav>
                                             <!--            <hr>-->
                                             <!--header bottom part-->
                                             <section class="header_bottom_part type_2 bg_light" style="padding: 0px">

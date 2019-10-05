@@ -285,7 +285,7 @@
 
 			var sideMenu = new Object(),
 				sMenu = $('.side_main_menu'),
-				oButton = $('#open_side_menu'),
+				oButton = $('#open_side_menu3'),
 				cButton = $('#close_side_menu'),
 				sideContainer = $('#side_menu'),
 				offset = 20;
@@ -308,18 +308,18 @@
 			}
 			sideMenu.Activate = function(){
 				if(oButton.hasClass('active')) return false;
-				oButton.addClass('active').stop().animate({
-					'right':'30px',
-					'opacity':'0.2'
-				});
+//				oButton.addClass('active').stop().animate({
+//					'right':'30px',
+//					'opacity':'0.2'
+//				});
 			}
 			sideMenu.Deactivate = function(){
 				if(!(oButton.hasClass('active'))) return false;
 				if(sideContainer.hasClass('active')) sideContainer.stop().animate({'right':-280});
-				oButton.removeClass('active').stop().animate({
-					'right':'-40px',
-					'opacity':'0'
-				});
+//				oButton.removeClass('active').stop().animate({
+//					'right':'-40px',
+//					'opacity':'0'
+//				});
 			}
 			sideMenu.clickEvents = function(){
 
@@ -347,7 +347,7 @@
 				}).add(cButton).on('mouseenter',function(){
 					$(this).stop().animate({'opacity':1},400);
 				}).on('mouseleave',function(){
-					$(this).stop().animate({'opacity':'.2'},400);
+					
 				});
 
 				cButton.on('click',function(){

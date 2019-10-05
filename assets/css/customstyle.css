@@ -140,9 +140,51 @@
     margin-left: 5px;
 }
 
+.create_account_form_wrap{
+    
+}
+#side_menu {
+    z-index: 3000;
+}
 
+.birthdaylabel{
+    width:25%;float:left;font-size:15px;color:#fff;font-weight:600;
+}
 
 @media only screen and (max-width: 768px) {
+    .color_black, .color_black_hover:hover {
+    color: #000;
+    font-weight: 500;
+}
+    .mobilemenu{
+        position: fixed;
+        width: 100%;
+        background: black;
+        top:0;
+        z-index: 5000;
+    }
+    .mobilemenu button{
+        /*background: red;*/
+        border:none;
+    }
+    
+    .mobilemenu button span{
+            background-color: white!important;
+    }
+    
+    
+    .topheadermobileposition{
+        margin-top: 55px;
+    }
+    .birthdaylabel{
+    width:100%;
+        text-align: left;
+}
+    
+    .create_account_form_wrap{
+        width: auto;
+    }
+    
     .fe_width_2, .table_type_3 {
      width: 100%; 
 }

@@ -31,7 +31,7 @@ foreach ($country_list as $keyl => $valuel) {
     <!--style="background: url('../images/home_img_19.jpg') no-repeat;"--> 
     <div class="container" onload="new_captcha();"> 
         <div >
-            <div class="col-lg-6 col-md-6 col-sm-6 f_none d_table_cell v_align_m d_xs_block t_align_c" style="float:right">
+            <div class="col-lg-6 col-md-6  f_none d_table_cell v_align_m d_xs_block t_align_c" style="float:right">
                 <div class="create_account_form_wrap r_corners d_inline_b w_xs_full">
                     <h4 class="fw_light color_dark m_bottom_23">Sign Up </h4>
                     <form class="create_account_form" method="post" action="#">
@@ -86,7 +86,7 @@ foreach ($country_list as $keyl => $valuel) {
                             </li>
 
                             <li class="m_bottom_20 m_xs_bottom_15 relative">
-                                <label for="birth" style="width:25%;float:left;font-size:15px;color:#fff;font-weight:600;">Birth Date</label>
+                                <label class="birthdaylabel" for="birth" style="">Birth Date</label>
                                 <br>
                                 <select name="birth_year" class="r_corners bg_light w_full border_none" style="width: 36%;height:30px" required >
                                     <option value="" >-YYYY-</option>
@@ -127,7 +127,7 @@ foreach ($country_list as $keyl => $valuel) {
                                 <input type="password" name="con_pass" placeholder="Confirm Password" class="con_pass r_corners bg_light w_full border_none" required>
                             </li>
                             <li class="m_bottom_20 m_xs_bottom_15 relative">
-                                <img src="captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' style="width: 34%" /> 
+                                <img src="captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' style="width: 30%;    height: fit-content;" /> 
                                 <input name="captcha" id="captcha" type="text" placeholder="Type the text" class="con_pass r_corners bg_light border_none" style="width: 65%" required>
                                 <small class='details'>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
 
