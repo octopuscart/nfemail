@@ -219,9 +219,9 @@ $_SESSION['carts'] = array();
                                                 <span class="d_inline_m clerarfix" style="padding-top: 4px;"><i class="fa fa-shopping-cart"></i><span class="fs_medium">   Add to Cart</span></span>
                                             </button>
                                         </div>
-                                        <div class="half_column w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie">
+                                        <div class="half_column w_md_full animate_fctr tr_all f_left f_md_none clearfix with_ie ">
                                             <?php if (isset($_SESSION['user_id'])) { ?>
-                                                <a href="#" class="button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button"  item_type="<?php echo $result[$k]['tag_id']; ?>"  wishlistaddid="<?php echo $result[$k]['product_id']; ?>"  style="font-size: 12px;
+                                                <a href="#" class="button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button "  item_type="<?php echo $result[$k]['tag_id']; ?>"  wishlistaddid="<?php echo $result[$k]['product_id']; ?>"  style="font-size: 12px;
                                                    height: 26px;
                                                    padding: 0px 6px;
                                                    width: 40px;"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span>
@@ -245,13 +245,7 @@ $_SESSION['carts'] = array();
                                             </button>
                                         </div>
                                         <div class="">
-                                            <?php if (isset($_SESSION['user_id'])) { ?>
-                                                <a href="#" class="button_type_6 relative tooltip_container f_right f_md_none d_md_inline_b d_block color_pink r_corners vc_child tr_all color_purple_hover tr_all t_align_c m_right_5 m_md_right_0 add_to_cart_button"  item_type="<?php echo $result[$k]['tag_id']; ?>"  wishlistaddid="<?php echo $result[$k]['product_id']; ?>"  style="font-size: 12px;
-                                                   height: 26px;
-                                                   padding: 0px 6px;
-                                                   width: 40px;"><i class="icon-heart d_inline_m fs_large"></i><span class="d_block r_corners color_default tooltip fs_small fw_normal tr_all">Add to Wishlist</span>
-                                                </a>
-                                            <?php } ?>
+                                          
                                         </div>
                                     </div>
 

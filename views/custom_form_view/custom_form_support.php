@@ -973,7 +973,7 @@ function shirt_manogram() {
 
                             <div class="col-sm-3 col-sm-3">
                                 <div class="thumbnail bodyfitimg animated  style_selection navigat_error" parent_style="1st Monogram Placement" child_style="<?php echo $value; ?>" ng-click='selectStyle("1st Monogram Placement", "<?php echo $value; ?>")'>
-                                    <img src="./custom_form_view/shirt/monogram_placement/<?php echo $key; ?>.jpg" alt="..." class="suit_controlZoom" style="width:100%;height: 100px;">
+                                    <img src="./custom_form_view/shirt/monogram_placement/<?php echo $key; ?>.jpg" alt="..." class="suit_controlZoom" style="height: 100px;">
                                     <div class="caption ">
                                         <h3><?php echo $value; ?></h3>
                                     </div>
@@ -1001,7 +1001,7 @@ function shirt_manogram() {
 
                         <?php foreach ($monogram as $key => $value) { ?>
 
-                            <div class="col-sm-2 col-sm-2" style="width:20%">
+                            <div class="col-md-3 col-sm-6" >
                                 <div class="thumbnail bodyfitimg animated  style_selection navigat_error" parent_style="1st Monogram Style" child_style="<?php echo $value; ?>" ng-click='selectStyle("1st Monogram Style", "<?php echo $value; ?>")'>
                                     <img src="./custom_form_view/shirt/monogram_shirt/<?php echo $key; ?>.jpg" alt="..." class="suit_controlZoom" style="width:100%;height: 100px;">
                                     <div class="caption">

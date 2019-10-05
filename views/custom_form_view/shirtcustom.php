@@ -894,7 +894,7 @@ $shirt_main_menu = array(
                                         if ($count < 2) {
                                             ?>
 
-                                            <div class="col-sm-4 col-sm-4" style="width:20%">
+                                            <div class="col-sm-4 col-sm-6" style="">
                                                 <div class="thumbnail bodyfitimg animated <?php echo $count == 0 ? 'selected' : 'deselect'; ?> style_selection navigat_error" parent_style="Button" child_style="<?php echo $value; ?>" extra_price="" ng-click='selectStyle("Button", "<?php echo $value;?>")'>
                                                     <img src="./custom_form_view/shirt/button_shirt/<?php echo $key; ?>.png" alt="..." class="suit_controlZoom" style="height: 100px">
                                                     <div class="caption towline">
@@ -910,7 +910,7 @@ $shirt_main_menu = array(
                                             ?>
 
 
-                                            <div class="col-sm-4 col-sm-4" style="width:20%">
+                                            <div class="col-sm-4 col-sm-6" style="">
                                                 <div class="thumbnail bodyfitimg animated  style_selection deselect navigat_error" parent_style="Button" child_style="<?php echo $value; ?> ($10 Extra)" extra_price="10" ng-click='selectStyle("Button", "<?php echo $value;?> ($10 Extra)", 10)'>
                                                     <img src="./custom_form_view/shirt/button_shirt/<?php echo $key; ?>.png" alt="..." class="suit_controlZoom" style="height: 100px">
                                                     <div class="caption towline">
