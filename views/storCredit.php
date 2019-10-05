@@ -57,12 +57,15 @@ if ($_SESSION['user_id'] == '') {
     <div class="section_offset counter">
         <div class="container">
             <div class="row">
-                <aside class="col-lg-3 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30" style=" margin-left: -40px;width:18%" >
-                    <?php
-                    include 'leftMenu.php';
-                    ?>
-                </aside>
-                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30" style="width: 85%;">
+               <aside class="col-lg-3 col-md-3 col-sm-12 m_bottom_50 m_xs_bottom_30 " style=" " >	
+
+                        <?php
+                        include 'leftMenu.php';
+                        ?>
+
+                    </aside>
+
+                    <div class="col-lg-9 col-md-9 col-sm-12 m_bottom_70 m_xs_bottom_30 mobilenopadding" style="">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon-user"></i> Client Code : <?php echo $userInfo[0]['registration_id'] ?></h3>
@@ -208,7 +211,7 @@ if ($_SESSION['user_id'] == '') {
             </div>
         </div>
     </div>
-<? } ?>
+<?php } ?>
 <?php
 include 'footer.php';
 ?>

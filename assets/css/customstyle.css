@@ -152,6 +152,41 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .prerencetableform form{
+        overflow-x: scroll;
+    }
+    
+    .preference_form table{
+        width: 650px;
+    }
+    
+    #DataTables_Table_0_wrapper{
+      
+    }
+    
+    #DataTables_Table_0_wrapper .col-xs-6{
+        width: 100%;
+    }
+    
+    #DataTables_Table_0_wrapper .pagination a{
+        font-size: 10px;
+    }
+    
+    .dataTables_paginate.paging_bootstrap{
+           float: left!important;
+    margin-top: 19px!important;
+    }
+    
+    .dataTables_paginate{
+        float: left;
+    }
+    .mobilenopadding{
+        padding: 0px!important;
+    }
+    .mobilenopadding .panel-body{
+        overflow-x: scroll;
+    }
+    
     .color_black, .color_black_hover:hover {
     color: #000;
     font-weight: 500;

@@ -94,24 +94,27 @@ if ($_SESSION['user_id'] == '') {
     <div class="section_offset counter">
         <div class="container">
             <div class="row">
-                <aside class="col-lg-3 col-md-2 col-sm-2 m_bottom_50 m_xs_bottom_30" style=" margin-left: -40px;width:18%" >	
+         <aside class="col-lg-3 col-md-3 col-sm-12 m_bottom_50 m_xs_bottom_30 " style=" " >	
+
                     <?php
                     include 'leftMenu.php';
                     ?>
+
                 </aside>
-                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30"  style="width: 85%;">
+
+                <div class="col-lg-9 col-md-9 col-sm-12 m_bottom_70 m_xs_bottom_30 mobilenopadding" style="">
 
                     <div class="panel panel-default" style="">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="icon-user"></i> Client Code : <?php echo $userInfo[0]['registration_id'] ?> </h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body mobilenopadding">
 
 
                             <div style="clear: both"></div>
 
 
-                            <div class="col-sm-2" style="  padding: 0px 0px 0px 5px;color:#000">
+                            <div class="col-md-2 mobilenopadding" style=" ;color:#000">
                                 <!-- Nav tabs --> 
                                 <ul class="nav nav-tabs tabs-left vertialTab" role="tablist" style="    padding-top: 12px;     border-right: 1px solid #000; ">
 
@@ -136,7 +139,7 @@ if ($_SESSION['user_id'] == '') {
 
 
 
-                            <div class="col-sm-10" style="    padding-right: 0;">
+                            <div class="col-md-10 mobilenopadding" style="  ">
 
                                 <div class="tab-content">
                                     <?php
@@ -183,7 +186,7 @@ if ($_SESSION['user_id'] == '') {
                                                  border-top-left-radius: 0px;
                                                  border-top-right-radius: 0px;">
 
-                                                <div role="tabpanel" class="tab-pane fade in fabric_preview active" id="style<?php echo $bas_tag_id; ?>" style="padding-top: 10px">
+                                                <div role="tabpanel" class="tab-pane fade in fabric_preview active prerencetableform" id="style<?php echo $bas_tag_id; ?>" style="padding-top: 10px">
                                                     <?php
                                                     if ($custom_style) {
                                                         ?>
@@ -446,7 +449,7 @@ if ($_SESSION['user_id'] == '') {
                                 </p>
 
                                 <div class="col-md-1"></div>
-                                <div class="col-md-10" style="margin: 20px 0px 0px -48px;display:none" id="block_frequncey">
+                                <div class="col-md-10" style=";display:none" id="block_frequncey">
 
                                     <p style="    border-bottom: 1px solid;
                                        background-color: #000;

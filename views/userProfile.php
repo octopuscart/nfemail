@@ -67,7 +67,7 @@ if ($_SESSION['user_id'] == '') {
     <div class="section_offset counter">
         <div class="container">
             <div class="row">
-                <aside class="col-lg-3 col-md-3 col-sm-3 m_bottom_50 m_xs_bottom_30" style=" margin-left: -40px;width:18%" >	
+                <aside class="col-lg-3 col-md-3 col-sm-12 m_bottom_50 m_xs_bottom_30 " style=" " >	
 
                     <?php
                     include 'leftMenu.php';
@@ -75,7 +75,7 @@ if ($_SESSION['user_id'] == '') {
 
                 </aside>
 
-                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30" style="width: 85%;">
+                <div class="col-lg-9 col-md-9 col-sm-12 m_bottom_70 m_xs_bottom_30 mobilenopadding" style="">
                     <?php if ($returnresult) { ?>
                         <p> <?php echo $returnresult; ?> </p>
                     <?php } ?>

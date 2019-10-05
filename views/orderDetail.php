@@ -119,15 +119,18 @@ if ($_SESSION['user_id'] == '') {
     <div class="section_offset counter">
         <div class="container">
             <div class="row">
-                <aside class="col-lg-3 col-md-3 col-sm-3 m_bottom_50 m_xs_bottom_30" style=" margin-left: -40px;width:18%" >	
+                         <aside class="col-lg-3 col-md-3 col-sm-12 m_bottom_50 m_xs_bottom_30 " style=" " >	
+
                     <?php
                     include 'leftMenu.php';
                     ?>
+
                 </aside>
-                <div class="col-lg-9 col-md-9 col-sm-9 m_bottom_70 m_xs_bottom_30" style="width: 85%;">
+
+                <div class="col-lg-9 col-md-9 col-sm-12 m_bottom_70 m_xs_bottom_30 mobilenopadding" style="">
 
 
-                    <form method="post" action="#">
+                    <form method="post" action="#" style="    padding: 0 10px;">
 
                         <span data-toggle="" data-placement="left" title="View Pdf"><a href="./viewOrDownloadOrderPdf.php?order_id=<?php echo $_REQUEST['order_id'] ?>&user_id=<?php echo $_SESSION['user_id']; ?>&option=I"  id ="num_to_word" style="padding: 0px 20px 14px 5px;height: 22px;width:0px;background-color: black;
                                                                                        color: white;" class="btn btn-default btn-xm " target="_blank" ><i class="icon-eye"></i></a></span>
@@ -151,7 +154,7 @@ if ($_SESSION['user_id'] == '') {
                     <div style="clear:both"></div>
                     <hr style="margin-top: 6px;margin-bottom: 0px;background: ivory;">
 
-                    <div class="row invoice-info">
+                    <div class=" invoice-info">
                         <div class="col-sm-4 invoice-col">
 
                             <address>
