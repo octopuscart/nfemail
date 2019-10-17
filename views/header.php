@@ -312,6 +312,20 @@ function child($table, $column, $id) {
                                         //opacity: 0.2;
                                         position: fixed;
                                     }
+                                    .tuxedomobilemenu:after{
+                                        content: '\e9f9';
+    font-family: "fontello";
+    display: block;
+    font-style: normal;
+    position: absolute;
+    top: 0;
+    height: 40px;
+    line-height: 40px;
+    color: #606366;
+    font-size: 20px;
+    right: 14px;
+        line-height: inherit;
+                                    }
                                 </style>
 
 
@@ -367,7 +381,7 @@ function child($table, $column, $id) {
                                                 <ul class="side_main_menu fw_light">
 
                                                     <li class="has_sub_menu  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_black color_blue_hover">Home</a>
+                                                        <a href="#" class="d_block relative  color_black color_blue_hover">Home</a>
                                                         <!--sub menu(second level)-->
                                                         <ul class="d_none m_top_10">       
                                                             <li class="m_bottom_10"><a href="pages_about.php" class="d_block relative color_black color_blue_hover">About Us</a></li>
@@ -379,7 +393,7 @@ function child($table, $column, $id) {
                                                         </ul> 
                                                     </li>                           
                                                     <li class="has_sub_menu  m_bottom_10">
-                                                        <a href="#" class="d_block relative fs_large color_black color_blue_hover">Customize Now</a>
+                                                        <a href="#" class="d_block relative  color_black color_blue_hover">Customize Now</a>
                                                         <!--sub menu(second level)-->
                                                         <ul class="d_none m_top_10">       
                                                             <li class="m_bottom_10">
@@ -407,25 +421,27 @@ function child($table, $column, $id) {
                                                             <li class="m_bottom_10">
                                                                 <a href="product_list.php?item_type=15 " class="d_block relative color_black color_blue_hover"> Overcoat </a>
                                                             </li>
+                                                            <a href="# " class="d_block relative color_black color_blue_hover tuxedomobilemenu"> Tuxedo</a>
+                                                            <ul class="d_none m_top_10">
+                                                                <li class="m_bottom_10">
+                                                                    <a href="product_list.php?item_type=7 " class="d_block relative color_black color_blue_hover"> Shirt </a>
+                                                                </li>
+                                                                <li class="m_bottom_10">
+                                                                    <a href="product_list.php?item_type=8 " class="d_block relative color_black color_blue_hover"> Pant </a>
+                                                                </li>
+                                                                <li class="m_bottom_10">
+                                                                    <a href="product_list.php?item_type=14 " class="d_block relative color_black color_blue_hover"> Jacket </a>
+                                                                </li>
+                                                                <li class="m_bottom_10">
+                                                                    <a href="product_list.php?item_type=10 " class="d_block relative color_black color_blue_hover"> Suit </a>
+                                                                </li>
+                                                            </ul>
                                                         </ul> 
+
                                                     </li> 
 
                                                     <li class="m_bottom_10 has_sub_menu">
-                                                        <a href="# " class="d_block relative color_black color_blue_hover"> Tuxedo </a>
-                                                        <ul class="d_none m_top_10">
-                                                            <li class="m_bottom_10">
-                                                                <a href="product_list.php?item_type=7 " class="d_block relative color_black color_blue_hover"> Shirt </a>
-                                                            </li>
-                                                            <li class="m_bottom_10">
-                                                                <a href="product_list.php?item_type=8 " class="d_block relative color_black color_blue_hover"> Pant </a>
-                                                            </li>
-                                                            <li class="m_bottom_10">
-                                                                <a href="product_list.php?item_type=14 " class="d_block relative color_black color_blue_hover"> Jacket </a>
-                                                            </li>
-                                                            <li class="m_bottom_10">
-                                                                <a href="product_list.php?item_type=10 " class="d_block relative color_black color_blue_hover"> Suit </a>
-                                                            </li>
-                                                        </ul>
+
                                                     </li>
 
                                                     <li class="m_bottom_10"><a href="pages_about.php" class="d_block relative color_black color_blue_hover">About Us</a></li>
