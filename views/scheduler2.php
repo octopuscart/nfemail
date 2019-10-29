@@ -244,32 +244,30 @@ $shedulearray = array();
 
 
 
-            <div class="showonmobile">
+            <div class="row showonmobile">
 
                 <?php
                 foreach ($data as $key => $value) {
                     ?>
-                    <div class="row">
-                        <div class="col-sm-12">
-
-                            <?php echo $value['country']; ?>
-                        </div>
-                        <div class="col-sm-12">
-                            <?php echo $value['city']; ?><br/>  <?php echo $value['state']; ?>
-                        </div>
+                    <div class="scheduleclass">
+                        
 
                         <div class="col-sm-12">
                             <b>
                                 <i class="fa fa-building-o"></i>
                                 <span style="line-height: 14px;"> <?php echo $value['location']; ?></span>
                             </b>
-                            <br/>
-                            <small>
+
+                            <p>
                                 <?php echo $value['address']; ?>
-                            </small>
+                            </p>
+                        </div>
+                        <div class="col-sm-12">
+
+                            <?php echo $value['country']; ?>, <?php echo $value['city']; ?><br/>  <?php echo $value['state']; ?>
                         </div>
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 scheduledate">
                             <i class="fa fa-calendar"></i>
                             <b><?php
                                 $date1 = date_create($value['start_date']);
@@ -282,12 +280,12 @@ $shedulearray = array();
                                            echo date_format($date2, "j<\s\u\p>S</\s\u\p> F Y");
                                            if ($value['total_days'] == "") {
                                                $days = $date2->diff($date1)->format("%a");
-                                               echo "<br/> <center> (" . ($days + 1) . " Days)</center> ";
+                                               echo "<br/> <h4> (" . ($days + 1) . " Days)</h4> ";
                                            } else {
-                                               echo "<br/> <center> (" . ($value['total_days']) . " Days)</center> ";
+                                               echo "<br/> <h4> (" . ($value['total_days']) . " Days)</h4>  ";
                                            }
                                            ?></b>
-                            <br/>
+
 
                             <?php
                             $date_ids = $value['main_id'];
@@ -306,7 +304,7 @@ $shedulearray = array();
                             }
                             $shedulearray[$date_ids] = $temp2;
                             ?>
-                            <br/>
+
 
                             <button class="btn btn-danger" style="background: black" data-toggle="modal" data-target="#schedule_modal" onclick="setAddress(<?php echo $date_ids; ?>)">
                                 Book Now
@@ -318,7 +316,7 @@ $shedulearray = array();
                                   float: left;">
                                 <i class="fa fa-phone-square"></i>  <?php echo $value['contact_no']; ?>
                             </span>
-                            <iframe  frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'  height="100px" width="300px"  src="https://maps.google.com/?q=<?php echo $value['location']; ?>+<?php echo $value['address']; ?>&output=embed">
+                            <iframe  frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'  height="100px" width="100%"  src="https://maps.google.com/?q=<?php echo $value['location']; ?>+<?php echo $value['address']; ?>&output=embed">
                             </iframe>  
 
                         </div>

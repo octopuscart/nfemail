@@ -141,7 +141,7 @@
 }
 
 .create_account_form_wrap{
-    
+
 }
 #side_menu {
     z-index: 3000;
@@ -155,28 +155,28 @@
     .prerencetableform form{
         overflow-x: scroll;
     }
-    
+
     .preference_form table{
         width: 650px;
     }
-    
+
     #DataTables_Table_0_wrapper{
-      
+
     }
-    
+
     #DataTables_Table_0_wrapper .col-xs-6{
         width: 100%;
     }
-    
+
     #DataTables_Table_0_wrapper .pagination a{
         font-size: 10px;
     }
-    
+
     .dataTables_paginate.paging_bootstrap{
-           float: left!important;
-    margin-top: 19px!important;
+        float: left!important;
+        margin-top: 19px!important;
     }
-    
+
     .dataTables_paginate{
         float: left;
     }
@@ -186,11 +186,11 @@
     .mobilenopadding .panel-body{
         overflow-x: scroll;
     }
-    
+
     .color_black, .color_black_hover:hover {
-    color: #000;
-    font-weight: 500;
-}
+        color: #000;
+        font-weight: 500;
+    }
     .mobilemenu{
         position: fixed;
         width: 100%;
@@ -202,28 +202,28 @@
         /*background: red;*/
         border:none;
     }
-    
+
     .mobilemenu button span{
-            background-color: white!important;
+        background-color: white!important;
     }
-    
-    
+
+
     .topheadermobileposition{
         margin-top: 55px;
     }
     .birthdaylabel{
-    width:100%;
+        width:100%;
         text-align: left;
-}
-    
+    }
+
     .create_account_form_wrap{
         width: auto;
     }
-    
+
     .fe_width_2, .table_type_3 {
-     width: 100%; 
-}
-    
+        width: 100%; 
+    }
+
     #billingShipping .col-md-12{
         padding:0;
     }
@@ -233,17 +233,17 @@
     .shippingcartul li{
         width: 100%;
     }
-    
+
     .measurement_form_setup{padding: 0px!important;}
-    
+
     .measurement_form_setup table{
         width: 100%;
     }
-    
+
     .create_new_measurement .col-sm-9{
         padding: 0!important;
     }
-    
+
     .create_new_measurement .col-sm-3{
         padding: 0!important;
     }
@@ -510,6 +510,20 @@
         opacity: 1!important;
         background: red;
         border: 2px solid red;
+    }
+
+    .scheduleclass {
+        padding: 10px 20px;
+        margin: 20px 0px;
+        border: 1px solid #000;
+    }
+    .scheduleclass h4{
+        font-size: 15px;
+    margin-bottom: 15px;
+    }
+    
+    .scheduledate{
+       margin: 20px 0px;
     }
 
 }
