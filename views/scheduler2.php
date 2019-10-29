@@ -250,7 +250,10 @@ $shedulearray = array();
                 foreach ($data as $key => $value) {
                     ?>
                     <div class="scheduleclass">
-                        
+                        <div class="col-sm-12" style="    margin-bottom: 20px;">
+
+                            <h4> <?php echo $value['country']; ?>, <?php echo $value['city']; ?><br/>  <?php echo $value['state']; ?></h4>
+                        </div>
 
                         <div class="col-sm-12">
                             <b>
@@ -262,10 +265,7 @@ $shedulearray = array();
                                 <?php echo $value['address']; ?>
                             </p>
                         </div>
-                        <div class="col-sm-12">
-
-                            <?php echo $value['country']; ?>, <?php echo $value['city']; ?><br/>  <?php echo $value['state']; ?>
-                        </div>
+                        
 
                         <div class="col-sm-12 scheduledate">
                             <i class="fa fa-calendar"></i>
