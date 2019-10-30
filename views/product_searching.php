@@ -157,14 +157,14 @@ if (isset($_REQUEST['searchtag'])) {
     </div>
 
     <div class='template_product' style='display: none'>
-        <div class="shop_isotope_item d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="width: 25%; float: left;" >
+        <div class="col-md-3 col-sm-6 productitems  d_xs_inline_b animated appear-animation bounceIn appear-animation-visible" data-appear-animation="bounceIn" style="" >
             <figure class="fp_item t_align_c d_xs_inline_b ">
                 <div class="relative r_corners d_xs_inline_b d_mxs_block wrapper m_bottom_23 t_xs_align_c">
                     <!--images container-->
                     <a href="" class='redirecturl'>
                         <div class="fp_images relative ">
-                            <img src="" alt="" class="tr_all img1 " style="height:250px; width:250px;" >
-                            <img src="" alt="" class="tr_all img2" style="height:250px; width:250px;" >
+                            <img src="" alt="" class="tr_all img1 productlistimage "  >
+                            <img src="" alt="" class="tr_all img2 productlistimages"  >
                         </div>
                         <div class="fabric_color" style="">
                             <center class="fabric_color_list">
@@ -245,17 +245,17 @@ if (isset($_REQUEST['searchtag'])) {
     </section>
     <!--content-->
     <div class="section_offset" style="padding: 13px 0 67px;">
-        <div class="container" style="    width: 1200px;">
+        <div class="container" >
             <div class="row">
 
-                <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" style="width:20%">
+                <aside class="col-lg-2 col-md-2 col-sm-2 m_bottom_70 m_xs_bottom_30" >
 
                     <div class="m_bottom_45 m_xs_bottom_30">
 
                     
                         <form id="filterform">
                             <!--price-->
-                            <div class="m_bottom_12" style="margin-top:-17%">
+                            <div class="m_bottom_12" >
                                 <p class="m_bottom_15" style="color: #000 !important; font-weight: 500">Price</p>
                                 <div id="price"><div id="price_loader">Loading...</div></div>
                                 <div class="clearfix" style="font-size:12px;color:black;">
@@ -361,7 +361,7 @@ if (isset($_REQUEST['searchtag'])) {
                     </div>
                 </aside>
 
-                <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style="width:80%;    margin-top: -25px;">
+                <section class="col-lg-10 col-md-10 col-sm-10 m_bottom_70 m_xs_bottom_30" style=" margin-top: -25px;">
                     <!--filter-->
                     <div class="clearfix m_bottom_10">
                         <div class="col-lg-6 col-md-6 col-sm-7 m_bottom_15">
@@ -374,7 +374,7 @@ if (isset($_REQUEST['searchtag'])) {
                     <input type="hidden" name="record_per_page" value="3">
                     <!--<hr class="m_bottom_10">-->
 
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 20px;">
                         <div class="custom_select products_filter type_2 f_xs_none m_xs_left_0 f_left m_left_5 m_xs_bottom_10" style="margin: -17px 0px 0px 14px;">
                             <div class="select_title sortby r_corners color_grey fs_medium">Sort By</div>
                             <ul class="select_list r_corners wrapper shadow_1 bg_light tr_all"></ul>
@@ -428,9 +428,7 @@ if (isset($_REQUEST['searchtag'])) {
 
                         <div class="shop_isotope_container t_xs_align_c three_columns m_bottom_15" data-isotope-options='{"itemSelector" : ".shop_isotope_item","layoutMode" : "fitRows","transitionDuration":"0.7s"}'>
                             <div class="loader_image" style="    padding-top: 15%;    padding-bottom: 14%;">
-                                <center>
-                                    <img src='https://preloaders.net/preloaders/335/Thin%20broken%20ring-128.gif'>
-                                </center>
+                          
                                 <h3 style="    text-align: center;
                                     padding-top: 30px;
                                     font-weight: 300;">
