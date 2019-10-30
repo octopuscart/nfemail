@@ -398,6 +398,26 @@ if ($_SESSION['user_id'] == '') {
             window.location = "./product_searching.php?searchtag=" + checkd;
 
         });
+        
+         $('#searchproduct2').typeahead(
+                {highlight: true},
+        {
+            name: 'search',
+            displayKey: 'item_code',
+            limit: 8,
+            source: search.ttAdapter(),
+            templates: {
+                header: '<span class="typeaheadgroup"><i class="icon-search"></i> Searched Result</span>',
+                suggestion: Handlebars.compile($("#result-template").html()),
+            },
+        }
+
+        ).bind('typeahead:selected', function (obj, select_data) {
+            var checkd = select_data.sid;
+//            $("input[name=searchtag]").val(checkd);
+            window.location = "./product_searching.php?searchtag=" + checkd;
+
+        });
 
 
 

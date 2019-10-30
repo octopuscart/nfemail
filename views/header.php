@@ -314,17 +314,17 @@ function child($table, $column, $id) {
                                     }
                                     .tuxedomobilemenu:after{
                                         content: '\e9f9';
-    font-family: "fontello";
-    display: block;
-    font-style: normal;
-    position: absolute;
-    top: 0;
-    height: 40px;
-    line-height: 40px;
-    color: #606366;
-    font-size: 20px;
-    right: 14px;
-        line-height: inherit;
+                                        font-family: "fontello";
+                                        display: block;
+                                        font-style: normal;
+                                        position: absolute;
+                                        top: 0;
+                                        height: 40px;
+                                        line-height: 40px;
+                                        color: #606366;
+                                        font-size: 20px;
+                                        right: 14px;
+                                        line-height: inherit;
                                     }
                                 </style>
 
@@ -480,6 +480,7 @@ function child($table, $column, $id) {
 
 
                                             </nav>
+
                                             <section class="header_top_part p_top_0 p_bottom_0 headertopemail topheadermobileposition">
                                                 <div class="container" >
                                                     <div class="">
@@ -496,6 +497,7 @@ function child($table, $column, $id) {
                                                     </div>
                                                 </div>
                                             </section>
+
 
                                             </nav>
                                             <!--            <hr>-->
@@ -525,14 +527,24 @@ function child($table, $column, $id) {
 
 
 
+
                                                             </div>
 
 
 
                                                         </div>
+
                                                     </div>
+
+                                                </div>
+                                                <div  role="search" class="m_right_10 relative type_2  type_3 f_xs_none t_xs_align_l m_xs_bottom_15 showonmobile mobileserach" style="">
+                                                    <input type="text" placeholder="Search" class="r_corners fw_light bg_light w_full " style="   width: 100%;border-radius: 0px;" id="searchproduct2" data-provide="typeahead">
+<button class="color_grey_light color_purple_hover tr_all" style="color: #000000">
+        <i class="icon-search"></i>
+    </button>
                                                 </div>
                                             </section>
+
                                             <!--            <hr class="d_xs_none" style="margin-top: 7px;">-->
 
 

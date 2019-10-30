@@ -518,13 +518,23 @@
         border: 1px solid #000;
     }
     .scheduleclass h4{
-          font-size: 16px;
-    margin-bottom: 15px;
-    font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 700;
     }
-    
+
     .scheduledate{
-       margin: 20px 0px;
+        margin: 20px 0px;
+    }
+    .mobileserach{
+        width: 100%;
+
+        margin: 10px 0px -6px 0px;
+    }
+
+    [role="search"].type_3 {
+        width: auto;
+        float: inherit;
     }
 
 }

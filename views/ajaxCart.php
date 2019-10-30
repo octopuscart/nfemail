@@ -463,6 +463,7 @@ if (isset($_SESSION['user_id'])) {
 </div>
 
 
+
 <style>
     #cartImages{
 
@@ -489,6 +490,8 @@ if (isset($_SESSION['user_id'])) {
 
     </div>
 </div>
+
+
 
 <script>
     nitaFasions.filter('CartTotal', function () {
