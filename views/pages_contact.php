@@ -22,6 +22,7 @@ if (isset($_POST['submitEnquiry'])) {
 
         $mailtemplate = $template_header . '
             
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
  <table width="100%" border="0" style="padding: 5px; background-color: white;" cellspacing="0" cellpadding="0" align="center">
