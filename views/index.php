@@ -120,7 +120,7 @@ $_SESSION['carts'] = array();
 <!--content-->
 <section class="section_offset" style="padding-bottom: 50px;padding-top: 50px;">
     <div class="container frontpagecontainer" style="margin-top: -50px;">
-        <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products 2019</h3>
+        <h3 class="fw_light color_dark m_bottom_35 t_align_c appear-animation bounceInLeft appear-animation-visible" data-appear-animation="bounceInLeft" style="font-size: 20px; font-weight: 400;margin-bottom: 18px;">Featured Products <?php echo date('Y');?></h3>
 
         <!--
         
@@ -325,13 +325,7 @@ $_SESSION['carts'] = array();
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/1_9-170x100.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
+                            
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
                                 <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
                                     <a href="#" class="d_block translucent tr_all wrapper r_corners">
@@ -339,13 +333,6 @@ $_SESSION['carts'] = array();
                                     </a>
                                 </div>
                             </div>
-
-                        </div>
-
-                    </div>
-                    <div>
-                        <div class="row">
-
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
                                 <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
                                     <a href="#" class="d_block translucent tr_all wrapper r_corners">
@@ -353,46 +340,11 @@ $_SESSION['carts'] = array();
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/client_logo_9-170x100" alt="">
-                                    </a>
-                                </div>
-                            </div>   
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/1_5-170x100.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/1_6-170x100.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/1_9-170x100.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
-                                <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
-                                    <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/1_Holland-Sherry2-170x100.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
 
                         </div>
 
                     </div>
-                    <!--item-->
+                   
 
 
                 </div>
