@@ -1847,6 +1847,7 @@ class CartHandler {
         } else {
             $ship_amt = 0;
         }
+        $coupon_id = 0;
 
 ############billing###################
         $query = "SELECT address1,address2,city,state,country,zip FROM `nfw_billing_shipping_address` where id = $bill_id ";
@@ -1908,7 +1909,9 @@ class CartHandler {
 
         $total_sum = '$' . number_format($total_sum, 2, '.', '');
 //echo "INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','Coupon','$carddata1')";
-        mysql_query("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1')");
+//              echo ("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`, order_no) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1', '')");
+
+        mysql_query("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`, order_no) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1', '')");
 
         $last_id = mysql_insert_id();
         $gen_num = 1100 + $last_id;
@@ -1935,7 +1938,7 @@ class CartHandler {
             $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
             mysql_query($query);
         }
-//        $_SESSION['cardinfo'] = '';
+        $_SESSION['cardinfo'] = '';
         return $last_id;
     }
 
