@@ -336,7 +336,7 @@ $_SESSION['carts'] = array();
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 m_bottom_20 f_mxs_none w_mxs_full m_mxs_bottom_10">
                                 <div class="clients_item db_xs_centered wrapper relative r_corners d_xs_block d_mxs_inline_b">
                                     <a href="#" class="d_block translucent tr_all wrapper r_corners">
-                                        <img src="../assets/images/images/client_logo_9-170x100.jpg" alt="">
+                                        <img src="../assets/images/images/reda.jpg" alt="">
                                     </a>
                                 </div>
                             </div>
