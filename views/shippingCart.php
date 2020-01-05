@@ -51,9 +51,10 @@ if ($_SESSION['user_id'] == '') {
     }
 //$user_coupon = $authobj->userCouponDetail($_SESSION['user_id']);
     $wallet_amount1 = $authobj->wallet_amount($_SESSION['user_id']);
+    $_SESSION['wallet_amount'] = 0;
     if (isset($_REQUEST['wallet'])) {
 
-        $_SESSION['wallet_amount'] = $_POST['wallet_amount'];
+        $_SESSION['wallet_amount'] = 0;// $_POST['wallet_amount'];
         //print_r($_SESSION);
     }
 ### user coupon detail
