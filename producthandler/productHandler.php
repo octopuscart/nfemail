@@ -1909,7 +1909,7 @@ class CartHandler {
 
         $total_sum = '$' . number_format($total_sum, 2, '.', '');
 //echo "INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','Coupon','$carddata1')";
-              echo ("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`, order_no) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1', '')");
+//              echo ("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`, order_no) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1', '')");
 
         mysql_query("INSERT INTO `nfw_product_order` (`user_id`,`user_info`, `op_date`, `op_time`, `total_price`,`shipping_amount`,`total_quantity`,`billing_id`,`shipping_id`,`coupon_id` ,`wallet_amount`,`payment_gateway`,`payment_gateway_return`, order_no) VALUES ('$user_id','$userdata','$dat','$tm','$total_sum','$ship_amt','$quan','$billdata','$shipdata','$coupon_id','$wallet','$cardTitle','$carddata1', '')");
 
@@ -1935,8 +1935,8 @@ class CartHandler {
         mysql_query("insert into nfw_order_status (order_id,status,remark,op_date_time) values('$last_id','1','Confirmed on $dte1','$dte1') ");
 #####
         for ($i = 0; $i < count($arry); $i++) {
-//            $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
-//            mysql_query($query);
+            $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
+            mysql_query($query);
         }
         $_SESSION['cardinfo'] = '';
         return $last_id;
