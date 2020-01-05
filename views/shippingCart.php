@@ -51,10 +51,9 @@ if ($_SESSION['user_id'] == '') {
     }
 //$user_coupon = $authobj->userCouponDetail($_SESSION['user_id']);
     $wallet_amount1 = $authobj->wallet_amount($_SESSION['user_id']);
-    $_SESSION['wallet_amount'] = 0;
     if (isset($_REQUEST['wallet'])) {
 
-        $_SESSION['wallet_amount'] = 0;// $_POST['wallet_amount'];
+        $_SESSION['wallet_amount'] = $_POST['wallet_amount'];
         //print_r($_SESSION);
     }
 ### user coupon detail
@@ -214,7 +213,7 @@ if ($_SESSION['user_id'] == '') {
 
         $shipId = $_POST['shipping_id'];
         $_POST['wallet_amount'] = $use_wallet;
-        $wallet = 0;
+        $wallet = $_POST['wallet_amount'];
         $_POST['sku'] = $_SESSION['sku'];
         $sku = $_POST['sku'];
         $skus = explode(",", $sku);
@@ -234,15 +233,15 @@ if ($_SESSION['user_id'] == '') {
             array_push($urldata, $url);
         }
         $urlpost = implode("&", $urldata);
+
         if ($card_id == 'paypal') {
             header('location: paypal_process.php?payment_type=user_order&' . $urlpost);
         } else {
-
             $order_id = $cartprd->insertInOrderTable($qun, $cartIdss, $user_id, $billId, $shipId, $coupon_id, $card_id, $skus, $imagess, $prices, $tag_titles, $wallet, $ship_amt, $subtotal);
-//            $authobj->orderConfirmMail($order_id, $_SESSION['user_id']);
-//            unset($_SESSION['cp']);
-//            unset($_SESSION['wallet_amount']);
-//            header('location: orderDetail.php?order_id=' . $order_id);
+            //$authobj->orderConfirmMail($order_id, $_SESSION['user_id']);
+            unset($_SESSION['cp']);
+            unset($_SESSION['wallet_amount']);
+            header('location: orderDetail.php?order_id=' . $order_id);
         }
     }
     ?>
@@ -265,7 +264,6 @@ if ($_SESSION['user_id'] == '') {
             padding: 8px;
             line-height: 0.42857143 !important;
             vertical-align: top;
-            // border-bottom: 1px solid;
         }
         .bg_color_purple, .paginations .active a, .paginations li a:hover, .step:hover .step_counter, .title_counter_type:before, .bg_color_purple_hover:hover, .animation_fill.color_purple:before, .p_table.bg_color_purple_hover.active, [class*="button_type_"].transparent.color_purple:hover, [class*="button_type_"].color_purple:not(.transparent) {
             background: black;
@@ -665,37 +663,30 @@ if ($_SESSION['user_id'] == '') {
                                             </div>
                                             <hr style="margin-top: 7px;height: 0px;margin-bottom: 8px;">
                                             <!-- ################# -->
-                                            <div class="d_table w_full">
-                                                <?php
-                                                if (0) {
-                                                    ?>
-                                                    <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
-                                                        <form method="post" action="#">
-                                                            <span>Available Wallet Amount</span><span style="text-align:right">: <?php
-                                                                $wt = $wallet_amount1[0]['result'];
-                                                                if ($wt) {
-                                                                    $wt = $wt - $use_wallet;
-                                                                    echo '$' . number_format($wt, 2, '.', '');
-                                                                } else {
-                                                                    echo "$00.00";
-                                                                }
-                                                                ?>
-                                                            </span>
+                                            <div class="d_table w_full" style="display: none">
+                                                <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
+                                                    <form method="post" action="#">
+                                                        <span>Available Wallet Amount</span><span style="text-align:right">: <?php
+                                                            $wt = $wallet_amount1[0]['result'];
+                                                            if ($wt) {
+                                                                $wt = $wt - $use_wallet;
+                                                                echo '$' . number_format($wt, 2, '.', '');
+                                                            } else {
+                                                                echo "$00.00";
+                                                            }
+                                                            ?>
+                                                        </span>
 
 
-                                                            <input type="text" class="r_corners bg_light fw_light coupon m_xs_bottom_15 is_number" placeholder="Enter amount" name="wallet_amount" style="height:27px;width:20%;" value="" onkeyup="checkNet(this)" autocomplete="off">
-                                                            <button name="wallet" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="" value="gfg" type="submit">
-                                                                Submit
-                                                            </button>
+                                                        <input type="hidden" class="r_corners bg_light fw_light coupon m_xs_bottom_15 is_number" placeholder="Enter amount" name="wallet_amount" style="height:27px;width:20%;" value="" onkeyup="checkNet(this)" autocomplete="off" >
+                                                        <button name="wallet" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="" value="gfg" type="submit">
+                                                            Submit
+                                                        </button>
 
-                                                        </form>
+                                                    </form>
 
 
-                                                    </div>
-
-                                                    <?php
-                                                }
-                                                ?>
+                                                </div>
                                             </div>
 
                                             <!-- ################# -->
@@ -853,21 +844,21 @@ if ($_SESSION['user_id'] == '') {
                                                                 </div>
                                                                 <div class="panel-body">
                             <?php if ($billdata) { ?>  
-                                                                                                                                                                                                        <address>
-                                                                                                                                                                                                            <strong style="text-transform: capitalize;">
+                                                                                                                                                                                                    <address>
+                                                                                                                                                                                                        <strong style="text-transform: capitalize;">
                                 <?php echo $userInfo[0]['first_name'] . ' ' . $userInfo[0]['middle_name'] . ' ' . $userInfo[0]['last_name'] ?>
-                                                                                                                                                                                                            </strong><br>
+                                                                                                                                                                                                        </strong><br>
                                 <?php echo $billdata[0]['add1']; ?><br>
                                 <?php echo $billdata[0]['add2']; ?><br>
                                 <?php echo $billdata[0]['add3']; ?><br> 
                                 <?php echo $billdata[0]['add4']; ?><br>
-                                                                                                                                                            
-                                                                                                                                                                                                                <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
-                                                                                                                                                                                                        </address>
+                                                                                                                                                        
+                                                                                                                                                                                                            <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
+                                                                                                                                                                                                    </address>
                             <?php } else { ?>
-                                                                                                                                                                                                        <span style="color:red">
-                                                                                                                                                                                                            BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
-                                                                                                                                                                                                        </span>
+                                                                                                                                                                                                    <span style="color:red">
+                                                                                                                                                                                                        BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
+                                                                                                                                                                                                    </span>
                             <?php } ?>
                                                                 </div>
                                                             </div>
@@ -1325,7 +1316,7 @@ include 'footer.php'
                                                             <div class="col-xs-3" style="width:135px">
                                                                 <select class="form-control isNumber" name="expiry-year">
                         <?php for ($i = 2015; $i < 2040; $i++) { ?>
-                                                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                                                                 </select>
                                                             </div>
