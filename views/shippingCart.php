@@ -214,7 +214,7 @@ if ($_SESSION['user_id'] == '') {
 
         $shipId = $_POST['shipping_id'];
         $_POST['wallet_amount'] = $use_wallet;
-        $wallet = $_POST['wallet_amount'];
+        $wallet = 0;
         $_POST['sku'] = $_SESSION['sku'];
         $sku = $_POST['sku'];
         $skus = explode(",", $sku);
