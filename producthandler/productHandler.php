@@ -1935,8 +1935,8 @@ class CartHandler {
         mysql_query("insert into nfw_order_status (order_id,status,remark,op_date_time) values('$last_id','1','Confirmed on $dte1','$dte1') ");
 #####
         for ($i = 0; $i < count($arry); $i++) {
-            $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
-            mysql_query($query);
+//            $query = "update nfw_product_cart set order_id = '$last_id',sku='$skus[$i]',item_code = '$skus[$i]',item_image='$imagess[$i]',price='$prices[$i]',tag_title='$tag_titles[$i]'  where id = $arry[$i] ";
+//            mysql_query($query);
         }
         $_SESSION['cardinfo'] = '';
         return $last_id;

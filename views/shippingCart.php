@@ -237,11 +237,11 @@ if ($_SESSION['user_id'] == '') {
         if ($card_id == 'paypal') {
             header('location: paypal_process.php?payment_type=user_order&' . $urlpost);
         } else {
-            $order_id = $cartprd->insertInOrderTable($qun, $cartIdss, $user_id, $billId, $shipId, $coupon_id, $card_id, $skus, $imagess, $prices, $tag_titles, $wallet, $ship_amt, $subtotal);
-            $authobj->orderConfirmMail($order_id, $_SESSION['user_id']);
-            unset($_SESSION['cp']);
-            unset($_SESSION['wallet_amount']);
-            header('location: orderDetail.php?order_id=' . $order_id);
+           echo  $order_id = $cartprd->insertInOrderTable($qun, $cartIdss, $user_id, $billId, $shipId, $coupon_id, $card_id, $skus, $imagess, $prices, $tag_titles, $wallet, $ship_amt, $subtotal);
+           // $authobj->orderConfirmMail($order_id, $_SESSION['user_id']);
+           // unset($_SESSION['cp']);
+           // unset($_SESSION['wallet_amount']);
+           // header('location: orderDetail.php?order_id=' . $order_id);
         }
     }
     ?>
