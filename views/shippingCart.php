@@ -666,29 +666,36 @@ if ($_SESSION['user_id'] == '') {
                                             <hr style="margin-top: 7px;height: 0px;margin-bottom: 8px;">
                                             <!-- ################# -->
                                             <div class="d_table w_full">
-                                                <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
-                                                    <form method="post" action="#">
-                                                        <span>Available Wallet Amount</span><span style="text-align:right">: <?php
-                                                            $wt = $wallet_amount1[0]['result'];
-                                                            if ($wt) {
-                                                                $wt = $wt - $use_wallet;
-                                                                echo '$' . number_format($wt, 2, '.', '');
-                                                            } else {
-                                                                echo "$00.00";
-                                                            }
-                                                            ?>
-                                                        </span>
+                                                <?php
+                                                if (0) {
+                                                    ?>
+                                                    <div class="col-lg-8 col-md-9 col-sm-11 d_table_cell f_none d_xs_block">
+                                                        <form method="post" action="#">
+                                                            <span>Available Wallet Amount</span><span style="text-align:right">: <?php
+                                                                $wt = $wallet_amount1[0]['result'];
+                                                                if ($wt) {
+                                                                    $wt = $wt - $use_wallet;
+                                                                    echo '$' . number_format($wt, 2, '.', '');
+                                                                } else {
+                                                                    echo "$00.00";
+                                                                }
+                                                                ?>
+                                                            </span>
 
 
-                                                        <input type="text" class="r_corners bg_light fw_light coupon m_xs_bottom_15 is_number" placeholder="Enter amount" name="wallet_amount" style="height:27px;width:20%;" value="" onkeyup="checkNet(this)" autocomplete="off">
-                                                        <button name="wallet" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="" value="gfg" type="submit">
-                                                            Submit
-                                                        </button>
+                                                            <input type="text" class="r_corners bg_light fw_light coupon m_xs_bottom_15 is_number" placeholder="Enter amount" name="wallet_amount" style="height:27px;width:20%;" value="" onkeyup="checkNet(this)" autocomplete="off">
+                                                            <button name="wallet" class="d_inline_b tr_all r_corners button_type_1 color_pink transparent fs_medium mini_side_offset" id="" value="gfg" type="submit">
+                                                                Submit
+                                                            </button>
 
-                                                    </form>
+                                                        </form>
 
 
-                                                </div>
+                                                    </div>
+
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
 
                                             <!-- ################# -->
@@ -846,21 +853,21 @@ if ($_SESSION['user_id'] == '') {
                                                                 </div>
                                                                 <div class="panel-body">
                             <?php if ($billdata) { ?>  
-                                                                                                                                                                                                    <address>
-                                                                                                                                                                                                        <strong style="text-transform: capitalize;">
+                                                                                                                                                                                                        <address>
+                                                                                                                                                                                                            <strong style="text-transform: capitalize;">
                                 <?php echo $userInfo[0]['first_name'] . ' ' . $userInfo[0]['middle_name'] . ' ' . $userInfo[0]['last_name'] ?>
-                                                                                                                                                                                                        </strong><br>
+                                                                                                                                                                                                            </strong><br>
                                 <?php echo $billdata[0]['add1']; ?><br>
                                 <?php echo $billdata[0]['add2']; ?><br>
                                 <?php echo $billdata[0]['add3']; ?><br> 
                                 <?php echo $billdata[0]['add4']; ?><br>
-                                                                                                                                                        
-                                                                                                                                                                                                            <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
-                                                                                                                                                                                                    </address>
+                                                                                                                                                            
+                                                                                                                                                                                                                <abbr title="Phone">Contact No.:</abbr> (+523)   <?php echo $billdata[0]['contact_no']; ?> 
+                                                                                                                                                                                                        </address>
                             <?php } else { ?>
-                                                                                                                                                                                                    <span style="color:red">
-                                                                                                                                                                                                        BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
-                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                        <span style="color:red">
+                                                                                                                                                                                                            BILLING  ADDRESS NOT FOUND! PLEASE ADD YOUR  BILLING  ADDRESS
+                                                                                                                                                                                                        </span>
                             <?php } ?>
                                                                 </div>
                                                             </div>
@@ -1318,7 +1325,7 @@ include 'footer.php'
                                                             <div class="col-xs-3" style="width:135px">
                                                                 <select class="form-control isNumber" name="expiry-year">
                         <?php for ($i = 2015; $i < 2040; $i++) { ?>
-                                                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                                                                 </select>
                                                             </div>
