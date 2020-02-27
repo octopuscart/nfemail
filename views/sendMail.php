@@ -162,7 +162,7 @@ $welcomemsg = $template_header . '
 
 switch ($mailtype) {
     case '1':
- 
+
 //==================================================================
 // Start of order type message //
 //==================================================================
@@ -597,7 +597,7 @@ Country</td><td>:';
             $welcomemsg .= $cartInfo['quantity'];
             $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">$';
-            $welcomemsg .= number_format(($cartInfo['price']-$cartInfo['extra_price']), 2, '.', '');
+            $welcomemsg .= number_format(($cartInfo['price'] - $cartInfo['extra_price']), 2, '.', '');
             $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">';
             if ($cartInfo['extra_price']) {
@@ -617,7 +617,7 @@ Country</td><td>:';
 
 
         $out_data = $authobj->coupanDetail($orderDetail[0]['coupon_id'], $totals);
-       
+
         $welcomemsg .= '<tr style="">
             <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=8>
                   ' . mail_template("Order", "footer") . '
@@ -674,7 +674,7 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;">
                 <span>';
 
-        $welcomemsg .=  '$' . number_format((str_replace(",", "", str_replace("$", "", $orderDetail[0]['total_price']))) - $orderDetail[0]['shipping_amount'], 2, '.', '');
+        $welcomemsg .= '$' . number_format((str_replace(",", "", str_replace("$", "", $orderDetail[0]['total_price']))) - $orderDetail[0]['shipping_amount'], 2, '.', '');
 
         $welcomemsg .= '</span>
             </td>                      
@@ -991,21 +991,21 @@ echo $welcomemsg;
 
 $mail = new PHPMailer; // call the class   
 $mail->IsSMTP();
-$mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 $mail->SMTPAuth = true;  // authentication enabled
 //$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-$mail->Host = $mailconf['host'];
-$mail->Port = $mailconf['port'];
-$mail->Username = $mailconf['username']; //Username for SMTP authentication any valid email created in your domain
-$mail->Password = $mailconf['password']; //Password for SMTP authentication
-$mail->AddReplyTo($mailconf['mail_sender'], "Nita Fashions"); //reply-to address
-$mail->SetFrom($mailconf['username'], "Nita Fashions"); //From address of the mail
+$mail->Host = "server.costcokart.com";
+$mail->Port = 587;
+$mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcokart.com"; //Username for SMTP authentication any valid email created in your domain
+$mail->Password = "stljEdTPmYno"; //Password for SMTP authentication
+$mail->AddReplyTo("donotreply@nitafashions.com", "Nita Fashions"); //reply-to address
+$mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
 //$mail->AddCC($mailconf['mail_sender']);
 //$mail->AddBCC($mailconf['username']);  
 foreach ($email as $to_add) {
-//    $mail->AddAddress("tailor123hk@gmail.com", "");
+//    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
     $mail->AddAddress($to_add, "");              // name is optional
 }
 //echo $welcomemsg;
@@ -1016,5 +1016,5 @@ if (isset($_REQUEST['sender_email'])) {
 
 
 $mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
-#$send = $mail->Send(); //Send the mails
+$send = $mail->Send(); //Send the mails
 ?>
