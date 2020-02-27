@@ -1,10 +1,11 @@
 <?php
 
-ob_start();
+//ob_start();
 include '../dbhandler/dbhandler.php';
 include '../producthandler/productHandler.php';
 include '../producthandler/authHandler.php';
-
+error_reporting(-1);
+ini_set('display_errors', 1);
 if (isset($_REQUEST['mail_type'])) {
     $mailtype = $_REQUEST['mail_type'];
 } else {
@@ -132,7 +133,7 @@ $welcomemsg = $template_header . '
                             <tbody>
                                 <tr style="background-color: #FFF;">
                                     <td style="width:100%;    padding: 10px;">
-                                    <center><img src="http://nitafashions.com/frontend/assets/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
+                                    <center><img src="https://www.nitafashions.com/assets/theme/images/logo/nf_logo_8.png" style="height: 100px;width:183px;"></center>
                                     </td>
                                     
                                 </tr>
@@ -161,6 +162,7 @@ $welcomemsg = $template_header . '
 
 switch ($mailtype) {
     case '1':
+ 
 //==================================================================
 // Start of order type message //
 //==================================================================
@@ -249,11 +251,11 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 $trkid = $shipobj['tracking_no'];
                 $trklink = $shipobj['tracking_link'];
                 $trkcomp = $shipobj['shipping_company'];
-                $trktelno= $shipobj['shipping_tel_no'];
+                $trktelno = $shipobj['shipping_tel_no'];
                 $subjectmsg = $subject . "." . "You can track from $trkcomp, Tracking No.:$trkid";
                 $title = "YOUR ORDER HAS BEEN SHIPPED";
                 $titlemsg = $title;
-                $title.="<hr><small style='font-size:11px;font-weight: bold;'>
+                $title .= "<hr><small style='font-size:11px;font-weight: bold;'>
             <center>
                 <table style='    color: #000;
     background: #FFF;
@@ -288,11 +290,11 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 $trkid = $shipobj['tracking_no'];
                 $trklink = $shipobj['tracking_link'];
                 $trkcomp = $shipobj['shipping_company'];
-                $trktelno= $shipobj['shipping_tel_no'];
+                $trktelno = $shipobj['shipping_tel_no'];
                 $subjectmsg = $subject;
                 $title = "YOUR ORDER HAS BEEN PICKED AT STORE";
                 $titlemsg = $title;
-                $title.="";
+                $title .= "";
 
                 break;
             case '4':
@@ -311,7 +313,7 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
                 $subject = "Order No. $order_no on hold";
                 $titlemsg = $subject;
                 $subjectmsg = $reasonobj[0];
-                $title.="<hr><small style='font-size:11px;font-weight: bold;'>" . $reasonobj[0] . "</small>";
+                $title .= "<hr><small style='font-size:11px;font-weight: bold;'>" . $reasonobj[0] . "</small>";
 
 
                 break;
@@ -378,11 +380,11 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
         $count1 = 0;
         foreach ($temp as $key => $value) {
             $ht = "<tr '>";
-            $ht.= "<td style='width:48%; padding: 10px;
+            $ht .= "<td style='width:48%; padding: 10px;
                 text-align: right;
                 padding-right: 31px;
                 border-bottom: 1px solid #000;'>" . $value['date'] . "</td>";
-            $ht.= "<td style='  
+            $ht .= "<td style='  
                 text-align: right;
          
                 border-bottom: 1px solid #000;    border-left: 0px solid;padding: 0;width: 4%; '>
@@ -398,15 +400,15 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
     text-align: center;'>" . $count . "</i></td>";
 
             $count--;
-            $ht.= '<th style="width:48%;border-bottom: 1px solid #000;
-                text-align: left;padding-left: 20px;">' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">' . ($statustype!='7'?$value['remark']:'') . '</small> </th>';
+            $ht .= '<th style="width:48%;border-bottom: 1px solid #000;
+                text-align: left;padding-left: 20px;">' . $value['order_status'] . ' <br><small style="font-weight:300;font-size:13px">' . ($statustype != '7' ? $value['remark'] : '') . '</small> </th>';
 
 
             array_push($proccessArray, $ht);
         }
         $proccessStatus = implode('', $proccessArray);
-        $welcomemsg.= $proccessStatus;
-        $welcomemsg.= '</td></tr>
+        $welcomemsg .= $proccessStatus;
+        $welcomemsg .= '</td></tr>
             
         </table>
     </center>
@@ -419,50 +421,50 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
             <span style="font-size:16px"> Shipping Address</span>
         </div>';
 
-        $welcomemsg.= '<table style="padding-bottom:10px;margin-left: 2px;font-size:12px;font-family: sans-serif">
+        $welcomemsg .= '<table style="padding-bottom:10px;margin-left: 2px;font-size:12px;font-family: sans-serif">
             <tr style="border-bottom: 1px solid black">
                 <td colspan=3>
                     <b>';
-        $welcomemsg.=$userInfo["first_name"] . " " . $userInfo["middle_name"] . " " . $userInfo["last_name"];
-        $welcomemsg.= '</b>
+        $welcomemsg .= $userInfo["first_name"] . " " . $userInfo["middle_name"] . " " . $userInfo["last_name"];
+        $welcomemsg .= '</b>
                 </td> 
             </tr>
             <tr> 
                 <td colspan=3>';
-        $welcomemsg.=$shipping['address1'];
-        $welcomemsg.= '</td> 
+        $welcomemsg .= $shipping['address1'];
+        $welcomemsg .= '</td> 
                     </tr>
                     <tr> 
                         <td colspan=3>';
-        $welcomemsg.=$shipping['address2'];
-        $welcomemsg.= '</td> 
+        $welcomemsg .= $shipping['address2'];
+        $welcomemsg .= '</td> 
                     </tr> 
                     <tr> 
                         <td colspan=3>';
-        $welcomemsg.=$shipping['city'] . ', ' . $shipping['state'];
-        $welcomemsg.= '</td> 
+        $welcomemsg .= $shipping['city'] . ', ' . $shipping['state'];
+        $welcomemsg .= '</td> 
                     </tr> 
                       <tr> 
                       <td>
                       <table style="font-size: 12px;margin: -4px;">
                       <tr>
                       <td>Zip/Postal</td><td>:';
-        $welcomemsg.=$shipping['zip'];
-        $welcomemsg.= '</td></tr>
+        $welcomemsg .= $shipping['zip'];
+        $welcomemsg .= '</td></tr>
             <tr><td>                        
 Country</td><td>:';
-        $welcomemsg.=$shipping['country'];
-        $welcomemsg.= '</td></tr></table></td> 
+        $welcomemsg .= $shipping['country'];
+        $welcomemsg .= '</td></tr></table></td> 
                     </tr>
             <tr> 
                 <td colspan=3>M.:';
-        $welcomemsg.= $userInfo['contact_no'];
-        $welcomemsg.= '</td> 
+        $welcomemsg .= $userInfo['contact_no'];
+        $welcomemsg .= '</td> 
             </tr>
             <tr> 
                 <td colspan=3>E.:';
-        $welcomemsg.= $userInfo['email'];
-        $welcomemsg.= '</td> 
+        $welcomemsg .= $userInfo['email'];
+        $welcomemsg .= '</td> 
             </tr>
         </table>   
     </div>
@@ -480,30 +482,30 @@ Country</td><td>:';
                     <td>Invoice No.</td>
                     <td>:</td>
                     <td><span>';
-        $welcomemsg.=$invoice_data[0]['invoice_no'];
-        $welcomemsg.= '</span></td>
+        $welcomemsg .= $invoice_data[0]['invoice_no'];
+        $welcomemsg .= '</span></td>
                 </tr> 
                 <tr>
                     <td>Date/Time</td>
                     <td>:</td>
                     <td><span>';
-        $welcomemsg.=$invoice_data[0]['op_date'] . "/" . $invoice_data[0]["op_time"];
-        $welcomemsg.= '</span></td>
+        $welcomemsg .= $invoice_data[0]['op_date'] . "/" . $invoice_data[0]["op_time"];
+        $welcomemsg .= '</span></td>
                 </tr>
 
                 <tr>
                     <td>Order No.</td>
                     <td>:</td>
                     <td><span>';
-        $welcomemsg.=$orderDetail[0]['order_no'];
-        $welcomemsg.= '</span></td>
+        $welcomemsg .= $orderDetail[0]['order_no'];
+        $welcomemsg .= '</span></td>
                 </tr>
                 <tr>
                     <td>Client Code</td> 
                     <td>:</td>
                     <td><span>';
-        $welcomemsg.=$userInfo['registration_id'];
-        $welcomemsg.= '</span></td>
+        $welcomemsg .= $userInfo['registration_id'];
+        $welcomemsg .= '</span></td>
                 </tr>
                 <tr>
                     <td>Currency</td> 
@@ -514,8 +516,8 @@ Country</td><td>:';
                     <td>Payment Method</td>  
                     <td>:</td>
                    <td><span>';
-        $welcomemsg.=$orderDetail[0]['payment_gateway'];
-        $welcomemsg.= '</span></td>
+        $welcomemsg .= $orderDetail[0]['payment_gateway'];
+        $welcomemsg .= '</span></td>
                 </tr>
 
             </tbody>
@@ -524,7 +526,7 @@ Country</td><td>:';
 </div>
 <!-----=================== Order Description ============================------->
 ';
-        $welcomemsg.= '<table class="invoiceTable table"  style="width: 100%;margin-top:0;    font-size: 12px;;border-collapse:collapse" >
+        $welcomemsg .= '<table class="invoiceTable table"  style="width: 100%;margin-top:0;    font-size: 12px;;border-collapse:collapse" >
 
     <tbody >
         <tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;" style="font-weight: bold;text-align: left" class="fabricInvoiceTr" >
@@ -559,71 +561,71 @@ Country</td><td>:';
             //$styleids = $productAllId[$i]['customization_id'];
             $cartInfo = $orderDatas[$i];
 
-            $welcomemsg.= '<tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">
+            $welcomemsg .= '<tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">';
-            $welcomemsg.= $i + 1;
-            $welcomemsg.='</td>             
+            $welcomemsg .= $i + 1;
+            $welcomemsg .= '</td>             
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
-            $welcomemsg.= $cartInfo['sku'];
-            $welcomemsg.='</td>
+            $welcomemsg .= $cartInfo['sku'];
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
-            $welcomemsg.= $cartInfo['item_code'];
-            $welcomemsg.='</td>
+            $welcomemsg .= $cartInfo['item_code'];
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
-            $welcomemsg.= '<img src="' . $cartInfo['item_image'] . '" height="46px" width="46px">';
+            $welcomemsg .= '<img src="' . $cartInfo['item_image'] . '" height="46px" width="46px">';
             //    $welcomemsg.= '<img src="" height="40px" width="40px">';
-            $welcomemsg.='</td>
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
             //$res = $cartprd->productCatTagId($cartInfo['cart_product_id']);
-            $welcomemsg.= $cartInfo['tag_title'];
-            $welcomemsg.='</td><td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
-            $welcomemsg.= '<span>Style Id: </span><br/>';
-            $welcomemsg.= '<span style="font-size:12px">';
-            $welcomemsg.= $cartInfo['customization_id'];
+            $welcomemsg .= $cartInfo['tag_title'];
+            $welcomemsg .= '</td><td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;">';
+            $welcomemsg .= '<span>Style Id: </span><br/>';
+            $welcomemsg .= '<span style="font-size:12px">';
+            $welcomemsg .= $cartInfo['customization_data'];
             ;
-            $welcomemsg.='</span><br/>';
+            $welcomemsg .= '</span><br/>';
 
-            $welcomemsg.= '<span>Measurement Profile: </span><br/>';
+            $welcomemsg .= '<span>Measurement Profile: </span><br/>';
             //$profile = $authobj->profile_name($cartInfo['measurement_id']);
-            $welcomemsg.= '<span style="font-size:12px">';
-            $welcomemsg.=$cartInfo['measurement_id'];
-            $welcomemsg.='</span>';
+            $welcomemsg .= '<span style="font-size:12px">';
+            $welcomemsg .= $cartInfo['measurement_data'];
+            $welcomemsg .= '</span>';
 
 
-            $welcomemsg.='</td>
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">';
-            $welcomemsg.= $cartInfo['quantity'];
-            $welcomemsg.='</td>
+            $welcomemsg .= $cartInfo['quantity'];
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">$';
-            $welcomemsg.= number_format($cartInfo['price'], 2, '.', '');
-            $welcomemsg.='</td>
+            $welcomemsg .= number_format(($cartInfo['price']-$cartInfo['extra_price']), 2, '.', '');
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right">';
             if ($cartInfo['extra_price']) {
-                $welcomemsg.= '$' . number_format($cartInfo['extra_price'], 2, '.', '');
+                $welcomemsg .= '$' . number_format($cartInfo['extra_price'], 2, '.', '');
             } else {
-                $welcomemsg.= '$00.00';
+                $welcomemsg .= '$00.00';
             }
 
-            $welcomemsg.='</td>
+            $welcomemsg .= '</td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse; padding: 7px;text-align:right;">$';
-            $welcomemsg.= number_format($cartInfo['cart_price'], 2, '.', '');
-            $welcomemsg.='</td>
+            $welcomemsg .= number_format($cartInfo['total_price'], 2, '.', '');
+            $welcomemsg .= '</td>
 
         </tr>';
-            $totals = $totals + $cartInfo['cart_price'];
             $count++;
         }
 
 
         $out_data = $authobj->coupanDetail($orderDetail[0]['coupon_id'], $totals);
-        $welcomemsg.= '<tr style="">
+       
+        $welcomemsg .= '<tr style="">
             <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=8>
                   ' . mail_template("Order", "footer") . '
             </td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;width:133px"  colspan=2><b>Sub Total</b></td>
-            <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;text-align:right;    width: 75.5;"><span>$';
-        $welcomemsg.= number_format($totals, 2, '.', '');
-        $welcomemsg.= '</span> 
+            <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;text-align:right;    width: 75.5;"><span>';
+        $welcomemsg .= ($orderDetail[0]['total_price']);
+        $welcomemsg .= '</span> 
             </td>  <tr/> 
         </tr> 
 
@@ -634,11 +636,11 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;width:2px">
                 <span>$';
         if ($out_data) {
-            $welcomemsg.=number_format($out_data, 2, '.', '');
+            $welcomemsg .= number_format($out_data, 2, '.', '');
         } else {
-            $welcomemsg.='00.00';
+            $welcomemsg .= '00.00';
         }
-        $welcomemsg.='</span> 
+        $welcomemsg .= '</span> 
             </td>                  
         </tr>
         <tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;width:2px">
@@ -646,12 +648,12 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;width:2px">
                 <span>$';
         if ($orderDetail[0]['shipping_amount']) {
-            $welcomemsg.= $orderDetail[0]['shipping_amount'];
+            $welcomemsg .= $orderDetail[0]['shipping_amount'];
         } else {
-            $welcomemsg.='00.00';
+            $welcomemsg .= '00.00';
         }
 
-        $welcomemsg.='</span> 
+        $welcomemsg .= '</span> 
             </td>                  
         </tr>
         <tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;width:2px">
@@ -659,11 +661,11 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;width:2px">
                               <span>';
         if ($orderDetail[0]['wallet_amount']) {
-            $welcomemsg.= '$' . number_format($orderDetail[0]['wallet_amount'], 2, '.', '');
+            $welcomemsg .= '$' . number_format($orderDetail[0]['wallet_amount'], 2, '.', '');
         } else {
-            $welcomemsg.= "$00.00";
+            $welcomemsg .= "$00.00";
         }
-        $welcomemsg.='</span> 
+        $welcomemsg .= '</span> 
             </td>                  
         </tr>
         <tr style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;">
@@ -672,9 +674,9 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;">
                 <span>';
 
-        $welcomemsg.= $orderDetail[0]['total_price'];
+        $welcomemsg .=  '$' . number_format((str_replace(",", "", str_replace("$", "", $orderDetail[0]['total_price']))) - $orderDetail[0]['shipping_amount'], 2, '.', '');
 
-        $welcomemsg .='</span>
+        $welcomemsg .= '</span>
             </td>                      
         </tr> 
 
@@ -688,8 +690,8 @@ Country</td><td>:';
         $username = trim(urldecode($_REQUEST['user']));
         $country_name = trim(urldecode($_REQUEST['country']));
 //         $username =$_REQUEST['user'];
-        $token = $_REQUEST['token'];    
-        $confirmlink = $baseurl . '/views/confirmregistration.php?token=' . $token.'&access='.$_REQUEST['access'];
+        $token = $_REQUEST['token'];
+        $confirmlink = $baseurl . '/views/confirmregistration.php?token=' . $token . '&access=' . $_REQUEST['access'];
         $welcomemsg .= '
         
         <table style="    width: 100%;" border="0" align="center" cellpadding="0" cellspacing="0" style="padding: 38px  30px  30px  30px; background-color: #fafafa;">
@@ -718,7 +720,7 @@ Country</td><td>:';
 </table>
 <p style=" "><span style="line-height: 1.2;    font-size: 12.8000001907349px;">Dear ' . ucwords($username) . ',</span><br></p>
 
-<div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account from '.$country_name.'. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
+<div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account from ' . $country_name . '. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
 <br/>Your username is <strong>' . $email[0] . '</strong>
     <br/> 
     <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;
@@ -972,20 +974,15 @@ If you made this request, please follow the instructions below.  Rest assured yo
 
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;"></p>
 
-' . mail_template("General", "footer") . '
-';
-
+' . mail_template("General", "footer") . '';
         break;
-
-
-
     default:
         "";
 }
 
 
 
-$welcomemsg .=$template_footer;
+$welcomemsg .= $template_footer;
 
 
 include '../phpPlugin/mailer/class.phpmailer.php';
@@ -1005,11 +1002,11 @@ $mail->AddReplyTo($mailconf['mail_sender'], "Nita Fashions"); //reply-to address
 $mail->SetFrom($mailconf['username'], "Nita Fashions"); //From address of the mail
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
-$mail->AddCC($mailconf['mail_sender']);
-$mail->AddBCC($mailconf['username']);  
+//$mail->AddCC($mailconf['mail_sender']);
+//$mail->AddBCC($mailconf['username']);  
 foreach ($email as $to_add) {
 //    $mail->AddAddress("tailor123hk@gmail.com", "");
-     $mail->AddAddress($to_add, "");              // name is optional
+    $mail->AddAddress($to_add, "");              // name is optional
 }
 //echo $welcomemsg;
 
@@ -1017,39 +1014,7 @@ if (isset($_REQUEST['sender_email'])) {
     $mail->AddAddress($_REQUEST['sender_email'], "");
 }
 
-//echo $welcomemsg;
+
 $mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
-$send = $mail->Send(); //Send the mails
-if (isset($_REQUEST['mail_set'])) {
-    header('location:' . $_SERVER['HTTP_REFERER'] . '&mailsend=' . $mailtype);
-} else {
-    switch ($mailtype) {
-        case '1':
-            header('location:' . $_SERVER['HTTP_REFERER'] . '?mailsend=' . $mailtype);
-            break;
-        case '2':
-            header('location:registration.php?mailsendr=2');
-            break;
-        case '3':
-            header('location:forgetdetail.php?mailsend=' . $mailtype);
-            break;
-        case '4':
-            header('location:scheduler2.php');
-            break;
-        case '5':
-            header('location:couponPurchase.php');
-            break;
-        case '6':
-            header('location:index.php');
-            break;
-
-        case '7':
-            header('location:couponPurchase.php');
-            break;
-
-        default :
-            header('location:index.php');
-            break;
-    }
-}
+#$send = $mail->Send(); //Send the mails
 ?>

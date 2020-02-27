@@ -819,9 +819,10 @@ class AuthHandler {
         //echo $total_price;
         $query = "SELECT value,value_type FROM `nfw_coupon` where id = $cup_id ";
         $result = resultAssociate($query);
-        $val1 = $result[0]['value'];
-        $val_type = $result[0]['value_type'];
+        $val1 = count($result) ? $result[0]['value'] : 0;
+        $val_type =count($result) ?  $result[0]['value_type']:'';
         //echo $total_price;
+        $data = '';
         if ($val_type == '%') {
             //echo "tt";
             $data = ($total_price * $val1) / 100;
@@ -1030,7 +1031,7 @@ class AuthHandler {
         $query = "SELECT id,sku, item_code,item_image,
                   sum(quantity) as quantity,
                   sum(extra_price) as extra_price, 
-                  sum((price*quantity)+extra_price) as cart_price ,
+                  total_price ,
                   price,
                   tag_title, customization_id,customization_data,measurement_id, measurement_data,customization_data_price FROM `nfw_product_cart` 
                    where order_id = $order_id and user_id = $user_id
