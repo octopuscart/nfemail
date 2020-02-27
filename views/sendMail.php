@@ -998,7 +998,7 @@ $mail->Host = "server.costcokart.com";
 $mail->Port = 587;
 $mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcokart.com"; //Username for SMTP authentication any valid email created in your domain
 $mail->Password = "stljEdTPmYno"; //Password for SMTP authentication
-$mail->AddReplyTo("donotreply@nitafashions.com", "Nita Fashions"); //reply-to address
+$mail->AddReplyTo("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 $mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
