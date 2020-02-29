@@ -468,7 +468,7 @@ class AuthHandler {
     #9-dec-2015 update
 
     function userWholeOrderDetail($order_id, $user_id) {
-        $query = " SELECT npo.id,npo.op_date,npo.op_time,npo.order_no,npo.total_price,npo.total_quantity,npo.coupon_id,
+        $query = " SELECT npo.id,npo.op_date,npo.op_time,npo.order_no,npo.total_price,npo.total_quantity,npo.coupon_id,npo.card,
                            npo.billing_id,npo.shipping_id,npo.user_info,npo.wallet_amount,npo.shipping_amount,npo.payment_gateway
                            FROM `nfw_product_order` as npo
                            where npo.id = $order_id and npo.user_id = $user_id";
