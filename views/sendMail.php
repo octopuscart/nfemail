@@ -620,6 +620,7 @@ Country</td><td>:';
 
         $welcomemsg .= '<tr style="">
             <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=8>
+            <p style="white-space: pre-line;font-size:10px;">'. ($orderDetail[0]['payment_gateway'] == 'Credit Card'?$orderDetail[0]['card']:'') .'</p>
                   ' . mail_template("Order", "footer") . '
             </td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;width:133px"  colspan=2><b>Sub Total</b></td>
