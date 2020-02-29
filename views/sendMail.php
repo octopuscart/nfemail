@@ -619,7 +619,7 @@ Country</td><td>:';
         $out_data = $authobj->coupanDetail($orderDetail[0]['coupon_id'], $totals);
 
         $welcomemsg .= '<tr style="">
-            <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=8>
+            <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=7>
             <p style="white-space: pre-line;font-size:10px;">'. ($orderDetail[0]['payment_gateway'] == 'Credit Card'?$orderDetail[0]['card']:'') .'</p>
                   ' . mail_template("Order", "footer") . '
             </td>
