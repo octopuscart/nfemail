@@ -692,7 +692,7 @@ Country</td><td>:';
         $country_name = trim(urldecode($_REQUEST['country']));
 //         $username =$_REQUEST['user'];
         $token = $_REQUEST['token'];
-        $confirmlink = $baseurl . '/views/confirmregistration.php?token=' . $token . '&access=' . $_REQUEST['access'];
+        $confirmlink = $baseurl . '/confirmregistration?token=' . $token . '&access=' . $_REQUEST['access'];
         $welcomemsg .= '
         
         <table style="    width: 100%;" border="0" align="center" cellpadding="0" cellspacing="0" style="padding: 38px  30px  30px  30px; background-color: #fafafa;">
