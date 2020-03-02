@@ -296,7 +296,7 @@ class AuthHandler {
             return 'login';
         } else {
             $query = "SELECT * FROM `auth_user` where id = $user_id ";
-            return resultAssociate($query);
+            return resultAssociate($query)[0];
         }
     }
 

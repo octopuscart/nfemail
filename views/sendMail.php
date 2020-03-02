@@ -39,7 +39,7 @@ switch ($mailtype) {
         break;
     case '2':
         $left_header = 'Thanks for Joining us';
-        $email = array($_REQUEST['email']);
+
         $subject = 'Welcome to Nita Fashions';
         break;
     case '3':
@@ -620,7 +620,7 @@ Country</td><td>:';
 
         $welcomemsg .= '<tr style="">
             <td style="width:499px;px;border-collapse: collapse;padding:7px;"  colspan=7 rowspan=9>
-            <p style="white-space: pre-line;font-size:10px;">'. ($orderDetail[0]['payment_gateway'] == 'Credit Card'?$orderDetail[0]['card']:'') .'</p>
+            <p style="white-space: pre-line;font-size:10px;">' . ($orderDetail[0]['payment_gateway'] == 'Credit Card' ? $orderDetail[0]['card'] : '') . '</p>
                   ' . mail_template("Order", "footer") . '
             </td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;width:133px"  colspan=2><b>Sub Total</b></td>
@@ -688,11 +688,16 @@ Country</td><td>:';
 
         break;
     case '2':
-        $username = trim(urldecode($_REQUEST['user']));
-        $country_name = trim(urldecode($_REQUEST['country']));
-//         $username =$_REQUEST['user'];
-        $token = $_REQUEST['token'];
-        $confirmlink = $baseurl . '/confirmregistration?token=' . $token . '&access=' . $_REQUEST['access'];
+
+        $userid = $_REQUEST['user_id'];
+        $userdetails = $authobj->userProfile($userid);
+        $username = $userdetails['first_name'] . " " . $userdetails['middle_name'] . " " . $userdetails['last_name'];
+        $country_name = $userdetails['country'];
+        $token = $userdetails['user_img'];
+        $email2 = $userdetails['email'];
+        $email = array($email2);
+        $confirmlink = $baseurl . '/confirmregistration?token=' . $token;
+        
         $welcomemsg .= '
         
         <table style="    width: 100%;" border="0" align="center" cellpadding="0" cellspacing="0" style="padding: 38px  30px  30px  30px; background-color: #fafafa;">
@@ -722,7 +727,7 @@ Country</td><td>:';
 <p style=" "><span style="line-height: 1.2;    font-size: 12.8000001907349px;">Dear ' . ucwords($username) . ',</span><br></p>
 
 <div style=""><span style="font-family: Lato, sans-serif; font-size: 12.8000001907349px; line-height: 24px; text-align: start; background-color: rgb(255, 255, 255);">Thank you for registering your online Nita Fashions account from ' . $country_name . '. You are now able to customise your wardrobe at the convenience of your own home, with a few simple steps.
-<br/>Your username is <strong>' . $email[0] . '</strong>
+<br/>Your username is <strong>' . $email2 . '</strong>
     <br/> 
     <div style="     padding: 15px 15px 20px;    margin: 10px 0px 15px;
     background: #ececec;">
@@ -748,7 +753,7 @@ Country</td><td>:';
 Nita Fashions is one of the most respected Bespoke Tailors in Hong Kong. Their quality, workmanship and service are of the highest standards. The chief tailor and proprietor, Mr. Peter Daswani has over 30 years of cutting and tailoring experience; he and his team work around the clock to craft your clothing. <br/>
 We thank you for selecting Nita Fashions to be your first choice in tailored clothing.
 </span></div>
-<p></p>
+
 
 <br>
                ' . mail_template("General", "footer") . '
