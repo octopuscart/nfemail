@@ -691,7 +691,7 @@ Country</td><td>:';
 
         $userid = $_REQUEST['user_id'];
         $userdetails = $authobj->userProfile($userid);
-        print_r($userdetails);
+      
         $username = $userdetails['first_name'] . " " . $userdetails['middle_name'] . " " . $userdetails['last_name'];
         $country_name = $userdetails['country'];
         $token = $userdetails['user_img'];
