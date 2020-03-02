@@ -696,7 +696,7 @@ Country</td><td>:';
         $token = $userdetails['user_img'];
         $email2 = $userdetails['email'];
         $email = array($email2);
-        $confirmlink = $baseurl . '/confirmregistration?token=' . $token;
+        $confirmlink = 'https://www.nitafashions.com/index.php/Account/activation?token=' . $token.'&user_id='.$userid;
         
         $welcomemsg .= '
         
