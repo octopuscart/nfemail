@@ -625,7 +625,7 @@ Country</td><td>:';
             </td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;width:133px"  colspan=2><b>Sub Total</b></td>
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding:7px;text-align:right;    width: 75.5;"><span>';
-        $welcomemsg .= ($orderDetail[0]['total_price']);
+        $welcomemsg .=  '$' . number_format((str_replace(",", "", str_replace("$", "", $orderDetail[0]['total_price']))) - $orderDetail[0]['shipping_amount'], 2, '.', '');
         $welcomemsg .= '</span> 
             </td>  <tr/> 
         </tr> 
@@ -675,7 +675,7 @@ Country</td><td>:';
             <td style="border: 1px solid rgb(157, 153, 150);border-collapse: collapse;padding: 7px;text-align:right;">
                 <span>';
 
-        $welcomemsg .= '$' . number_format((str_replace(",", "", str_replace("$", "", $orderDetail[0]['total_price']))) - $orderDetail[0]['shipping_amount'], 2, '.', '');
+        $welcomemsg .= ($orderDetail[0]['total_price']);
 
         $welcomemsg .= '</span>
             </td>                      
