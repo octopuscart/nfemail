@@ -980,34 +980,34 @@ include '../phpPlugin/mailer/class.phpmailer.php';
 echo $welcomemsg;
 
 
-//$mail = new PHPMailer; // call the class   
-//$mail->IsSMTP();
-//$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
-//$mail->SMTPAuth = true;  // authentication enabled
-////$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-//$mail->Host = "server.costcokart.com";
-//$mail->Port = 587;
-//$mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcokart.com"; //Username for SMTP authentication any valid email created in your domain
-//$mail->Password = "stljEdTPmYno"; //Password for SMTP authentication
-//$mail->AddReplyTo("sales@nitafashions.com", "Nita Fashions"); //reply-to address
-//$mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
-//// put your while loop here like below,
-//$mail->Subject = $subject; //Subject od your mail
-////$mail->AddCC($mailconf['mail_sender']);
-//$mail->AddCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
-//$mail->AddBCC("do-not-reply-nita-fashions-ssl-email-465@costcokart.com");
-//$mail->AddBCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
-//foreach ($email as $to_add) {
-////    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
-//    $mail->AddAddress($to_add, "");              // name is optional
-//}
-////echo $welcomemsg;
-//
-//if (isset($_REQUEST['sender_email'])) {
-//    $mail->AddAddress($_REQUEST['sender_email'], "");
-//}
-//
-//
-//$mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
-//$send = $mail->Send(); //Send the mails
+$mail = new PHPMailer; // call the class   
+$mail->IsSMTP();
+$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true;  // authentication enabled
+//$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+$mail->Host = "server.costcokart.com";
+$mail->Port = 587;
+$mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcokart.com"; //Username for SMTP authentication any valid email created in your domain
+$mail->Password = "stljEdTPmYno"; //Password for SMTP authentication
+$mail->AddReplyTo("sales@nitafashions.com", "Nita Fashions"); //reply-to address
+$mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
+// put your while loop here like below,
+$mail->Subject = $subject; //Subject od your mail
+//$mail->AddCC($mailconf['mail_sender']);
+$mail->AddCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
+$mail->AddBCC("do-not-reply-nita-fashions-ssl-email-465@costcokart.com");
+$mail->AddBCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
+foreach ($email as $to_add) {
+//    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
+    $mail->AddAddress($to_add, "");              // name is optional
+}
+//echo $welcomemsg;
+
+if (isset($_REQUEST['sender_email'])) {
+    $mail->AddAddress($_REQUEST['sender_email'], "");
+}
+
+
+$mail->MsgHTML($welcomemsg); //Put your body of the message you can place html code here
+$send = $mail->Send(); //Send the mails
 ?>
