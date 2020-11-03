@@ -332,7 +332,7 @@ Dear " . $userInfo["first_name"] . " " . $userInfo["last_name"] . ",<br/>
             $inserkey = implode(", ", array_keys($notification));
             $insetval = "'" . implode("', '", array_values($notification)) . "'";
             $query = "INSERT INTO nfw_notification_user ($inserkey) VALUES ($insetval);";
-            resultAssociate($query);
+            //resultAssociate($query);
         }
 
 
@@ -985,9 +985,9 @@ $mail->IsSMTP();
 $mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 $mail->SMTPAuth = true;  // authentication enabled
 //$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-$mail->Host = "server.costcokart.com";
+$mail->Host = "server.costcointernational.com";
 $mail->Port = 587;
-$mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcokart.com"; //Username for SMTP authentication any valid email created in your domain
+$mail->Username = "do-not-reply-nita-fashions-ssl-email-465@costcointernational.com"; //Username for SMTP authentication any valid email created in your domain
 $mail->Password = "stljEdTPmYno"; //Password for SMTP authentication
 $mail->AddReplyTo("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 $mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
