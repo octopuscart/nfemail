@@ -985,17 +985,17 @@ $mail->IsSMTP();
 $mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 $mail->SMTPAuth = true;  // authentication enabled
 //$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-$mail->Host = "email.nitafashions.com";
-$mail->Port = 465;
-$mail->Username = "no-reply@email.nitafashions.com"; //Username for SMTP authentication any valid email created in your domain
-$mail->Password = "^j3pHFH7?XA!"; //Password for SMTP authentication
+$mail->Host = "server.costcointernational.com";
+$mail->Port = 587;
+$mail->Username = $mailconf['username']; //Username for SMTP authentication any valid email created in your domain
+$mail->Password = $mailconf['password']; //Password for SMTP authentication
 $mail->AddReplyTo("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 $mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address of the mail
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
 //$mail->AddCC($mailconf['mail_sender']);
 $mail->AddCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
-$mail->AddBCC("no-reply@email.nitafashions.com");
+$mail->AddBCC("do-not-reply-nita-fashions-ssl-email-465@costcointernational.com");
 $mail->AddBCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 foreach ($email as $to_add) {
 //    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
