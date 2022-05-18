@@ -49,13 +49,19 @@ switch ($mailtype) {
         break;
     case '4':
         $ids = $_REQUEST['last_id'];
-        $data = resultAssociate("select sa.*,ts.schedule_date,ts.schedule_start_time,ts.schedule_end_time,au.email,concat(au.first_name,' ',au.last_name) as name from nfw_app_userlist  as au
+        $data = resultAssociate("select sa.*,ts.schedule_date,ts.schedule_start_time,ts.schedule_end_time,au.email, au.telephone ,concat(au.first_name,' ',au.last_name) as name from nfw_app_userlist  as au
 join nfw_app_time_schedule as ts on au.nfw_time_schedule_id = ts.id
 join nfw_app_start_end_date as ase on ts.nfw_app_start_end_date_id = ase.id
 join nfw_app_set_appointment as sa on  ase.nfw_set_appointment_id = sa.id
 where au.id=  $ids");
         $email = array($data[0]['email']);
         $name = $data[0]['name'];
+        
+        $customer_email = $data[0]['email'];
+        $customer_name = $data[0]['name'];
+        $customer_contact_no = $data[0]['telephone'];
+        
+        
         $dates = $data[0]['schedule_date'];
         $time1 = $data[0]['schedule_start_time'];
         $time2 = $data[0]['schedule_end_time'];
@@ -843,6 +849,20 @@ If you made this request, please follow the instructions below.  Rest assured yo
                 </p>
                 
 <p style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 12.8000001907349px; line-height: normal;">On the day of your appointment, please call Mr. Peter Daswani on his contact no. (<b>' . '' . trim($country) . ':  ' . $contact_no . '</b>) and he will give you his suite number.</p>
+<table border=1 style="border-style: dashed;
+    margin-bottom: 50px;">
+    <tr><td colspan=2 style="    background: #000;
+    color: white;">Contact Details</td></tr>
+   <tr>
+       <td>Name</td><td>'.$customer_name.'</td>
+   </tr>
+    <tr>
+       <td>Contact No.</td><td>'.$customer_contact_no.'</td>
+   </tr>
+    <tr>
+       <td>Email</td><td>'.$customer_email.'</td>
+   </tr>
+</table>
  
 ' . mail_template("General", "footer") . '
                 </p>
@@ -994,14 +1014,14 @@ $mail->SetFrom("donotreply@nitafashions.com", "Nita Fashions"); //From address o
 // put your while loop here like below,
 $mail->Subject = $subject; //Subject od your mail
 //$mail->AddCC($mailconf['mail_sender']);
-$mail->AddCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
+//$mail->AddCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 $mail->AddBCC("do-not-reply-nita-fashions-ssl-email-465@costcointernational.com");
 $mail->AddBCC("sales@nitafashions.com", "Nita Fashions"); //reply-to address
 if (count($email)) {
     $emailt = $email[0];
     foreach ($email as $to_add) {
 //    $mail->AddAddress("imteyaz_bari@yahoo.com", "");
-        $mail->AddAddress($to_add, "");              // name is optional
+        $mail->AddAddress("sales@nitafashions.com", "");              // name is optional
     }
 //echo $welcomemsg;
 
